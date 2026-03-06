@@ -3,673 +3,270 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Synaps AI — LP Preview Hub</title>
+<title>Synaps AI — Landing Page Önizleme</title>
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Lexend:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;700&display=swap');
-
-:root {
-  --purple: #7B2FFF;
-  --violet: #9B4FFF;
-  --lavender: #C4A4FF;
-  --pink: #E040FB;
-  --bg: #050510;
-  --card: rgba(255,255,255,0.04);
-  --border: rgba(255,255,255,0.08);
-  --text: #F0EEFF;
-  --dim: rgba(240,238,255,0.5);
-}
-
-* { margin: 0; padding: 0; box-sizing: border-box; }
-html { scroll-behavior: smooth; }
-body {
-  background: var(--bg);
-  font-family: 'Lexend', sans-serif;
-  color: var(--text);
-  min-height: 100vh;
-  overflow-x: hidden;
-}
-
-/* BACKGROUND */
-.bg-glow {
-  position: fixed;
-  inset: 0;
-  pointer-events: none;
-  z-index: 0;
-}
-.bg-glow::before {
-  content: '';
-  position: absolute;
-  top: -20%;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 800px;
-  height: 800px;
-  background: radial-gradient(circle, rgba(123,47,255,0.12) 0%, transparent 65%);
-}
-.bg-glow::after {
-  content: '';
-  position: absolute;
-  bottom: -10%;
-  right: -10%;
-  width: 500px;
-  height: 500px;
-  background: radial-gradient(circle, rgba(224,64,251,0.06) 0%, transparent 65%);
-}
-
-/* STARS */
-#stars { position: fixed; inset: 0; z-index: 0; pointer-events: none; }
-.star {
-  position: absolute;
-  border-radius: 50%;
-  background: white;
-  animation: twinkle var(--d) var(--dl) ease-in-out infinite alternate;
-}
-@keyframes twinkle {
-  from { opacity: var(--lo); }
-  to { opacity: var(--hi); }
-}
-
-/* WRAPPER */
-.wrapper {
-  position: relative;
-  z-index: 1;
-  max-width: 900px;
-  margin: 0 auto;
-  padding: 80px 40px 120px;
-}
-
-/* HEADER */
-.header {
-  text-align: center;
-  margin-bottom: 72px;
-  animation: fadeUp 0.8s ease both;
-}
-
-.logo-row {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 12px;
-  margin-bottom: 32px;
-}
-
-/* ORB */
-.orb {
-  width: 36px;
-  height: 36px;
-  border-radius: 50%;
-  position: relative;
-  flex-shrink: 0;
-}
-.orb .ob { position: absolute; inset: 0; border-radius: 50%; }
-.orb .ob-base {
-  background:
-    radial-gradient(ellipse at 36% 28%, rgba(255,255,255,0.88) 0%, rgba(200,175,255,0.55) 16%, transparent 36%),
-    radial-gradient(ellipse at 68% 66%, rgba(70,20,170,0.55) 0%, transparent 48%),
-    radial-gradient(circle, #AA80FF 0%, #6E38CC 32%, #481898 60%, #1A0850 82%, #0C0330 100%);
-  box-shadow:
-    inset -5px -4px 10px rgba(0,0,0,0.55),
-    inset 4px 3px 8px rgba(200,165,255,0.25),
-    0 0 20px rgba(123,47,255,0.7);
-}
-.orb .ob-swirl {
-  background: conic-gradient(from 105deg at 44% 56%,
-    transparent 0deg, rgba(255,255,255,0.13) 20deg, transparent 38deg,
-    rgba(180,140,255,0.08) 78deg, transparent 118deg,
-    rgba(255,255,255,0.06) 198deg, transparent 235deg);
-  animation: orbSpin 8s linear infinite;
-}
-.orb .ob-hl {
-  position: absolute;
-  top: 8%; left: 14%;
-  width: 36%; height: 26%;
-  background: radial-gradient(ellipse, rgba(255,255,255,0.72) 0%, rgba(255,255,255,0.08) 60%, transparent 100%);
-  border-radius: 50%;
-  transform: rotate(-28deg);
-}
-@keyframes orbSpin { to { transform: rotate(360deg); } }
-
-.logo-name {
-  font-size: 22px;
-  font-weight: 800;
-  letter-spacing: -0.5px;
-}
-.logo-name span {
-  background: linear-gradient(135deg, #9B4FFF, #C4A4FF, #E040FB);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-}
-
-.badge {
-  display: inline-flex;
-  align-items: center;
-  gap: 7px;
-  background: rgba(123,47,255,0.1);
-  border: 1px solid rgba(123,47,255,0.25);
-  border-radius: 100px;
-  padding: 5px 14px;
-  font-family: 'JetBrains Mono', monospace;
-  font-size: 10px;
-  font-weight: 700;
-  letter-spacing: 2px;
-  text-transform: uppercase;
-  color: var(--lavender);
-  margin-bottom: 20px;
-}
-.badge-dot {
-  width: 5px; height: 5px;
-  border-radius: 50%;
-  background: var(--violet);
-  box-shadow: 0 0 8px var(--violet);
-  animation: pulse 2s infinite;
-}
-@keyframes pulse { 0%,100%{opacity:1;} 50%{opacity:0.4;} }
-
-.header h1 {
-  font-size: clamp(28px, 4vw, 46px);
-  font-weight: 800;
-  letter-spacing: -2px;
-  line-height: 1.1;
-  margin-bottom: 14px;
-}
-.header p {
-  font-size: 15px;
-  font-weight: 300;
-  color: var(--dim);
-  line-height: 1.7;
-}
-
-/* SECTION LABEL */
-.section-label {
-  font-family: 'JetBrains Mono', monospace;
-  font-size: 9px;
-  font-weight: 700;
-  letter-spacing: 3px;
-  text-transform: uppercase;
-  color: rgba(155,79,255,0.6);
-  margin-bottom: 16px;
-  animation: fadeUp 0.8s 0.2s ease both;
-}
-
-/* CARDS */
-.cards {
-  display: flex;
-  flex-direction: column;
-  gap: 14px;
-  margin-bottom: 48px;
-}
-
-.card {
-  display: flex;
-  align-items: center;
-  gap: 20px;
-  background: var(--card);
-  border: 1px solid var(--border);
-  border-radius: 16px;
-  padding: 20px 24px;
-  text-decoration: none;
-  color: inherit;
-  transition: all 0.3s ease;
-  position: relative;
-  overflow: hidden;
-  animation: fadeUp 0.6s ease both;
-}
-.card::before {
-  content: '';
-  position: absolute;
-  inset: -1px;
-  border-radius: 17px;
-  background: linear-gradient(135deg, rgba(123,47,255,0.2), transparent 50%, rgba(224,64,251,0.08));
-  opacity: 0;
-  transition: opacity 0.3s;
-}
-.card:hover::before { opacity: 1; }
-.card:hover {
-  transform: translateY(-3px) translateX(3px);
-  border-color: rgba(123,47,255,0.3);
-  box-shadow: 0 12px 40px rgba(123,47,255,0.12), -4px 0 0 rgba(123,47,255,0.5);
-}
-
-.card-num {
-  font-family: 'JetBrains Mono', monospace;
-  font-size: 11px;
-  font-weight: 700;
-  color: rgba(155,79,255,0.5);
-  width: 28px;
-  flex-shrink: 0;
-}
-
-.card-icon {
-  width: 44px;
-  height: 44px;
-  border-radius: 12px;
-  flex-shrink: 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.card-body {
-  flex: 1;
-}
-.card-title {
-  font-size: 15px;
-  font-weight: 600;
-  margin-bottom: 3px;
-  transition: color 0.2s;
-}
-.card:hover .card-title { color: var(--lavender); }
-.card-desc {
-  font-size: 12px;
-  font-weight: 300;
-  color: var(--dim);
-}
-
-.card-arrow {
-  font-size: 18px;
-  color: rgba(155,79,255,0.4);
-  transition: all 0.3s;
-  flex-shrink: 0;
-}
-.card:hover .card-arrow {
-  color: var(--violet);
-  transform: translateX(4px);
-}
-
-.card-tag {
-  font-family: 'JetBrains Mono', monospace;
-  font-size: 9px;
-  font-weight: 700;
-  letter-spacing: 1.5px;
-  text-transform: uppercase;
-  padding: 3px 9px;
-  border-radius: 100px;
-  flex-shrink: 0;
-}
-.tag-new {
-  background: rgba(123,47,255,0.15);
-  border: 1px solid rgba(123,47,255,0.3);
-  color: var(--lavender);
-}
-.tag-v4 {
-  background: rgba(255,255,255,0.04);
-  border: 1px solid rgba(255,255,255,0.08);
-  color: var(--dim);
-}
-
-/* DIVIDER */
-.divider {
-  height: 1px;
-  background: var(--border);
-  margin: 40px 0;
-}
-
-/* FOOTER */
-.footer {
-  text-align: center;
-  animation: fadeUp 0.8s 0.6s ease both;
-}
-.footer p {
-  font-size: 12px;
-  color: rgba(240,238,255,0.2);
-  font-family: 'JetBrains Mono', monospace;
-  letter-spacing: 1px;
-}
-
-@keyframes fadeUp {
-  from { opacity: 0; transform: translateY(20px); }
-  to { opacity: 1; transform: translateY(0); }
-}
-
-/* Stagger delays */
-.card:nth-child(1) { animation-delay: 0.15s; }
-.card:nth-child(2) { animation-delay: 0.25s; }
-.card:nth-child(3) { animation-delay: 0.35s; }
-.card:nth-child(4) { animation-delay: 0.45s; }
-.card:nth-child(5) { animation-delay: 0.55s; }
+@import url('https://fonts.googleapis.com/css2?family=Lexend:wght@300;400;500;600;700;800&display=swap');
+*{margin:0;padding:0;box-sizing:border-box;}
+body{background:#05050F;font-family:'Lexend',sans-serif;color:#F0EEFF;min-height:100vh;padding:60px 40px 100px;}
+.header{text-align:center;margin-bottom:64px;}
+.header-tag{font-size:10px;font-weight:700;letter-spacing:4px;text-transform:uppercase;color:#9B4FFF;margin-bottom:14px;}
+.header h1{font-size:38px;font-weight:800;letter-spacing:-1.5px;background:linear-gradient(135deg,#F0EEFF,#C4A4FF);-webkit-background-clip:text;-webkit-text-fill-color:transparent;}
+.header p{font-size:14px;color:rgba(240,238,255,0.45);margin-top:10px;}
+.section-label{font-size:10px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:#9B4FFF;margin:48px 0 20px;padding-left:4px;}
+.cards{display:flex;flex-direction:column;gap:10px;max-width:860px;}
+.card{display:flex;align-items:center;gap:18px;background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.07);border-radius:16px;padding:18px 22px;text-decoration:none;color:inherit;transition:all 0.25s;cursor:pointer;}
+.card:hover{background:rgba(123,47,255,0.08);border-color:rgba(123,47,255,0.3);transform:translateX(4px);}
+.card-num{font-size:11px;font-weight:700;color:rgba(240,238,255,0.2);font-family:monospace;width:24px;flex-shrink:0;}
+.card-icon{width:40px;height:40px;border-radius:10px;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+.card-body{flex:1;}
+.card-title{font-size:14px;font-weight:600;margin-bottom:3px;transition:color 0.2s;}
+.card:hover .card-title{color:#C4A4FF;}
+.card-desc{font-size:11px;color:rgba(240,238,255,0.35);font-weight:300;}
+.card-tag{font-size:9px;font-weight:700;letter-spacing:0.5px;padding:3px 10px;border-radius:20px;border:1px solid;white-space:nowrap;flex-shrink:0;}
+.card-arrow{font-size:16px;color:rgba(240,238,255,0.2);transition:all 0.2s;flex-shrink:0;}
+.card:hover .card-arrow{color:#9B4FFF;transform:translateX(3px);}
+.divider{height:1px;background:rgba(255,255,255,0.05);margin:12px 0;}
 </style>
 </head>
 <body>
-
-<div class="bg-glow"></div>
-<div id="stars"></div>
-
-<div class="wrapper">
-
-  <!-- HEADER -->
-  <div class="header">
-    <div class="logo-row">
-      <div class="orb">
-        <div class="ob ob-base"></div>
-        <div class="ob ob-swirl"></div>
-        <div class="ob-hl"></div>
-      </div>
-      <div class="logo-name"><span>Synaps</span><sup style="font-size:13px;vertical-align:super;-webkit-text-fill-color:#9B4FFF;background:none;">+</sup></div>
-    </div>
-    <div class="badge"><span class="badge-dot"></span>LP Preview Hub</div>
-    <h1>Landing Page<br>Varyasyonları</h1>
-    <p>Tüm tasarım varyasyonlarına buradan erişebilirsiniz.</p>
-  </div>
-
-  <!-- V6 VARIANTS -->
-  <div class="section-label">✦ Güncel Varyasyonlar — V6</div>
-  <div class="cards">
-
-    <a class="card" href="synaps-v6-slider.html" target="_blank">
-      <div class="card-num">01</div>
-      <div class="card-icon" style="background:linear-gradient(135deg,#1A0844,#4A1A9A)">
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
-          <rect x="2" y="7" width="20" height="13" rx="2" stroke="#C4A4FF" stroke-width="1.6"/>
-          <path d="M8 7V5a4 4 0 018 0v2" stroke="#C4A4FF" stroke-width="1.6" stroke-linecap="round"/>
-          <circle cx="9" cy="13.5" r="1.5" fill="#C4A4FF"/>
-          <circle cx="15" cy="13.5" r="1.5" fill="#9B4FFF" opacity="0.5"/>
-        </svg>
-      </div>
-      <div class="card-body">
-        <div class="card-title">V6 — Slider</div>
-        <div class="card-desc">B2B ürün kartları slider formatında, koyu tema</div>
-      </div>
-      <span class="card-tag tag-new">Güncel</span>
-      <div class="card-arrow">→</div>
-    </a>
-
-    <a class="card" href="synaps-v6-grid.html" target="_blank">
-      <div class="card-num">02</div>
-      <div class="card-icon" style="background:linear-gradient(135deg,#0A1830,#1A3880)">
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
-          <rect x="3" y="3" width="7" height="7" rx="1.5" stroke="#7AB4FF" stroke-width="1.6"/>
-          <rect x="14" y="3" width="7" height="7" rx="1.5" stroke="#7AB4FF" stroke-width="1.6" opacity="0.7"/>
-          <rect x="3" y="14" width="7" height="7" rx="1.5" stroke="#7AB4FF" stroke-width="1.6" opacity="0.7"/>
-          <rect x="14" y="14" width="7" height="7" rx="1.5" stroke="#7AB4FF" stroke-width="1.6" opacity="0.4"/>
-        </svg>
-      </div>
-      <div class="card-body">
-        <div class="card-title">V6 — Grid</div>
-        <div class="card-desc">B2B ürün kartları grid formatında, koyu tema</div>
-      </div>
-      <span class="card-tag tag-new">Güncel</span>
-      <div class="card-arrow">→</div>
-    </a>
-
-    <a class="card" href="synaps-v6-category.html" target="_blank">
-      <div class="card-num">03</div>
-      <div class="card-icon" style="background:linear-gradient(135deg,#1A0830,#481880)">
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
-          <path d="M3 5h6M3 12h10M3 19h6" stroke="#B48AFF" stroke-width="1.8" stroke-linecap="round"/>
-          <path d="M17 9l4 4-4 4" stroke="#E080FF" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
-        </svg>
-      </div>
-      <div class="card-body">
-        <div class="card-title">V6 — Category</div>
-        <div class="card-desc">B2B ürün kategorilere ayrılmış, sekme navigasyonu</div>
-      </div>
-      <span class="card-tag tag-new">Güncel</span>
-      <div class="card-arrow">→</div>
-    </a>
-
-  </div>
-
-  <div class="divider"></div>
-
-  <!-- TOGGLE VARIANT -->
-  <div class="section-label">⚡ Dark / Light Toggle</div>
-  <div class="cards">
-
-    <a class="card" href="synaps-v9-toggle.html" target="_blank">
-      <div class="card-num">17</div>
-      <div class="card-icon" style="background:linear-gradient(135deg,#0D0820,#7B2FFF)">
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
-          <circle cx="12" cy="12" r="5" stroke="#C4A4FF" stroke-width="1.6"/>
-          <path d="M12 2v2M12 20v2M2 12h2M20 12h2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41" stroke="#C4A4FF" stroke-width="1.4" stroke-linecap="round"/>
-        </svg>
-      </div>
-      <div class="card-body">
-        <div class="card-title">V9 — Dark / Light Toggle</div>
-        <div class="card-desc">Tek dosya · Navbar'da switch · Default dark · Tercih localStorage'a kaydedilir</div>
-      </div>
-      <span class="card-tag" style="background:rgba(123,47,255,0.2);border:1px solid rgba(123,47,255,0.4);color:#C4A4FF;padding:3px 10px;border-radius:20px;font-size:10px;font-weight:700;">Öne Çıkan</span>
-      <div class="card-arrow">→</div>
-    </a>
-
-  </div>
-
-  <div class="divider"></div>
-
-  <!-- V9 VARIANTS -->
-  <div class="section-label">🚀 En Güncel — V9</div>
-  <div class="cards">
-
-    <a class="card" href="synaps-v9-dark-slider.html" target="_blank">
-      <div class="card-num">14</div>
-      <div class="card-icon" style="background:linear-gradient(135deg,#1A0844,#4A1A9A)">
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
-          <path d="M4 6h16M4 10h16M4 14h10" stroke="#C4A4FF" stroke-width="1.8" stroke-linecap="round"/>
-        </svg>
-      </div>
-      <div class="card-body">
-        <div class="card-title">V9 — Dark Slider</div>
-        <div class="card-desc">Bold italic ticker · Büyük ekosistem (mor kutular) · B2C 3 kart · Kart testi</div>
-      </div>
-      <span class="card-tag" style="background:rgba(0,200,255,0.15);border-color:rgba(0,200,255,0.3);color:#00C8FF;border:1px solid;padding:3px 10px;border-radius:20px;font-size:10px;font-weight:700;">Güncel</span>
-      <div class="card-arrow">→</div>
-    </a>
-
-    <a class="card" href="synaps-v9-dark-grid.html" target="_blank">
-      <div class="card-num">15</div>
-      <div class="card-icon" style="background:linear-gradient(135deg,#0A1830,#1A3880)">
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
-          <rect x="3" y="3" width="7" height="7" rx="1.5" stroke="#7AB4FF" stroke-width="1.6"/>
-          <rect x="14" y="3" width="7" height="7" rx="1.5" stroke="#7AB4FF" stroke-width="1.6" opacity="0.7"/>
-          <rect x="3" y="14" width="7" height="7" rx="1.5" stroke="#7AB4FF" stroke-width="1.6" opacity="0.7"/>
-          <rect x="14" y="14" width="7" height="7" rx="1.5" stroke="#7AB4FF" stroke-width="1.6" opacity="0.4"/>
-        </svg>
-      </div>
-      <div class="card-body">
-        <div class="card-title">V9 — Dark Grid</div>
-        <div class="card-desc">Grid layout · Büyük ticker · Mor ekosistem kutular · B2C 3 kart · Kart testi</div>
-      </div>
-      <span class="card-tag" style="background:rgba(0,200,255,0.15);border-color:rgba(0,200,255,0.3);color:#00C8FF;border:1px solid;padding:3px 10px;border-radius:20px;font-size:10px;font-weight:700;">Güncel</span>
-      <div class="card-arrow">→</div>
-    </a>
-
-    <a class="card" href="synaps-v9-light.html" target="_blank">
-      <div class="card-num">16</div>
-      <div class="card-icon" style="background:linear-gradient(135deg,#E8E0FF,#D4C8FF)">
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
-          <circle cx="12" cy="12" r="5" stroke="#7B2FFF" stroke-width="1.6"/>
-          <path d="M12 2v2M12 20v2M2 12h2M20 12h2" stroke="#7B2FFF" stroke-width="1.6" stroke-linecap="round"/>
-        </svg>
-      </div>
-      <div class="card-body">
-        <div class="card-title">V9 — Light Mode</div>
-        <div class="card-desc">Beyaz tema · Mor&siyah okunur ticker · Beyaz eco kutular · CTA başlık beyaz</div>
-      </div>
-      <span class="card-tag" style="background:rgba(0,200,255,0.15);border-color:rgba(0,200,255,0.3);color:#00C8FF;border:1px solid;padding:3px 10px;border-radius:20px;font-size:10px;font-weight:700;">Güncel</span>
-      <div class="card-arrow">→</div>
-    </a>
-
-  </div>
-
-  <div class="divider"></div>
-
-  <!-- V8 VARIANTS -->
-  <div class="section-label">⚡ En Yeni — V8</div>
-  <div class="cards">
-
-    <a class="card" href="synaps-v8-dark-slider.html" target="_blank">
-      <div class="card-num">11</div>
-      <div class="card-icon" style="background:linear-gradient(135deg,#1A0844,#4A1A9A)">
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
-          <circle cx="12" cy="12" r="3" stroke="#C4A4FF" stroke-width="1.8"/>
-          <circle cx="12" cy="12" r="7" stroke="#C4A4FF" stroke-width="1.2" stroke-dasharray="2 2"/>
-        </svg>
-      </div>
-      <div class="card-body">
-        <div class="card-title">V8 — Dark Slider</div>
-        <div class="card-desc">B2C 4 kart grid, büyük ticker, büyük ekosistem, journey kaldırıldı</div>
-      </div>
-      <span class="card-tag tag-new" style="background:rgba(0,220,130,0.15);border-color:rgba(0,220,130,0.3);color:#00DC82;">En Yeni</span>
-      <div class="card-arrow">→</div>
-    </a>
-
-    <a class="card" href="synaps-v8-dark-grid.html" target="_blank">
-      <div class="card-num">12</div>
-      <div class="card-icon" style="background:linear-gradient(135deg,#0A1830,#1A3880)">
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
-          <rect x="3" y="3" width="7" height="7" rx="1.5" stroke="#7AB4FF" stroke-width="1.6"/>
-          <rect x="14" y="3" width="7" height="7" rx="1.5" stroke="#7AB4FF" stroke-width="1.6" opacity="0.7"/>
-          <rect x="3" y="14" width="7" height="7" rx="1.5" stroke="#7AB4FF" stroke-width="1.6" opacity="0.7"/>
-          <rect x="14" y="14" width="7" height="7" rx="1.5" stroke="#7AB4FF" stroke-width="1.6" opacity="0.4"/>
-        </svg>
-      </div>
-      <div class="card-body">
-        <div class="card-title">V8 — Dark Grid</div>
-        <div class="card-desc">Grid layout + B2C 4 kart, büyük ticker, büyük ekosistem</div>
-      </div>
-      <span class="card-tag tag-new" style="background:rgba(0,220,130,0.15);border-color:rgba(0,220,130,0.3);color:#00DC82;">En Yeni</span>
-      <div class="card-arrow">→</div>
-    </a>
-
-    <a class="card" href="synaps-v8-light.html" target="_blank">
-      <div class="card-num">13</div>
-      <div class="card-icon" style="background:linear-gradient(135deg,#E8E0FF,#D4C8FF)">
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
-          <circle cx="12" cy="12" r="5" stroke="#7B2FFF" stroke-width="1.6"/>
-          <path d="M12 2v2M12 20v2M2 12h2M20 12h2" stroke="#7B2FFF" stroke-width="1.6" stroke-linecap="round"/>
-        </svg>
-      </div>
-      <div class="card-body">
-        <div class="card-title">V8 — Light Mode</div>
-        <div class="card-desc">Beyaz tema, B2C 4 kart, büyük ticker, büyük ekosistem, journey yok</div>
-      </div>
-      <span class="card-tag tag-new" style="background:rgba(0,220,130,0.15);border-color:rgba(0,220,130,0.3);color:#00DC82;">En Yeni</span>
-      <div class="card-arrow">→</div>
-    </a>
-
-  </div>
-
-  <div class="divider"></div>
-
-  <!-- V7 VARIANTS -->
-  <div class="section-label">★ Yeni Varyasyonlar — V7</div>
-  <div class="cards">
-
-    <a class="card" href="synaps-v7-dark-slider.html" target="_blank">
-      <div class="card-num">06</div>
-      <div class="card-icon" style="background:linear-gradient(135deg,#1A0844,#4A1A9A)">
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
-          <rect x="2" y="7" width="20" height="13" rx="2" stroke="#C4A4FF" stroke-width="1.6"/>
-          <path d="M8 7V5a4 4 0 018 0v2" stroke="#C4A4FF" stroke-width="1.6" stroke-linecap="round"/>
-          <circle cx="9" cy="13.5" r="1.5" fill="#C4A4FF"/>
-        </svg>
-      </div>
-      <div class="card-body">
-        <div class="card-title">V7 — Dark Slider</div>
-        <div class="card-desc">Logo slider testimonials, "Neden Şirketlerin Tercihi" video, sade footer</div>
-      </div>
-      <span class="card-tag tag-new" style="background:rgba(224,64,251,0.15);border-color:rgba(224,64,251,0.3);color:#E040FB;">Yeni</span>
-      <div class="card-arrow">→</div>
-    </a>
-
-    <a class="card" href="synaps-v7-dark-grid.html" target="_blank">
-      <div class="card-num">07</div>
-      <div class="card-icon" style="background:linear-gradient(135deg,#0A1830,#1A3880)">
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
-          <rect x="3" y="3" width="7" height="7" rx="1.5" stroke="#7AB4FF" stroke-width="1.6"/>
-          <rect x="14" y="3" width="7" height="7" rx="1.5" stroke="#7AB4FF" stroke-width="1.6" opacity="0.7"/>
-          <rect x="3" y="14" width="7" height="7" rx="1.5" stroke="#7AB4FF" stroke-width="1.6" opacity="0.7"/>
-          <rect x="14" y="14" width="7" height="7" rx="1.5" stroke="#7AB4FF" stroke-width="1.6" opacity="0.4"/>
-        </svg>
-      </div>
-      <div class="card-body">
-        <div class="card-title">V7 — Dark Grid</div>
-        <div class="card-desc">Grid layout + logo slider testimonials, koyu tema</div>
-      </div>
-      <span class="card-tag tag-new" style="background:rgba(224,64,251,0.15);border-color:rgba(224,64,251,0.3);color:#E040FB;">Yeni</span>
-      <div class="card-arrow">→</div>
-    </a>
-
-    <a class="card" href="synaps-v7-light.html" target="_blank">
-      <div class="card-num">08</div>
-      <div class="card-icon" style="background:linear-gradient(135deg,#E8E0FF,#D4C8FF)">
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
-          <circle cx="12" cy="12" r="5" stroke="#7B2FFF" stroke-width="1.6"/>
-          <path d="M12 2v2M12 20v2M2 12h2M20 12h2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41" stroke="#7B2FFF" stroke-width="1.6" stroke-linecap="round"/>
-        </svg>
-      </div>
-      <div class="card-body">
-        <div class="card-title">V7 — Light Mode</div>
-        <div class="card-desc">Aynı yapı, beyaz arka plan, Synaps moru ile açık tema</div>
-      </div>
-      <span class="card-tag tag-new" style="background:rgba(224,64,251,0.15);border-color:rgba(224,64,251,0.3);color:#E040FB;">Yeni</span>
-      <div class="card-arrow">→</div>
-    </a>
-
-  </div>
-
-  <div class="divider"></div>
-
-  <!-- V4 VARIANTS -->
-  <div class="section-label">◈ Önceki Varyasyonlar — V4</div>
-  <div class="cards">
-
-    <a class="card" href="synaps-v4-dark-cards.html" target="_blank">
-      <div class="card-num">09</div>
-      <div class="card-icon" style="background:linear-gradient(135deg,#1A1020,#3A1850)">
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
-          <rect x="2" y="4" width="9" height="16" rx="2" stroke="#AA80FF" stroke-width="1.6"/>
-          <rect x="13" y="4" width="9" height="9" rx="2" stroke="#AA80FF" stroke-width="1.6" opacity="0.7"/>
-          <rect x="13" y="15" width="9" height="5" rx="1.5" stroke="#AA80FF" stroke-width="1.6" opacity="0.4"/>
-        </svg>
-      </div>
-      <div class="card-body">
-        <div class="card-title">V4 — Dark Cards</div>
-        <div class="card-desc">Koyu kart tasarımı, statik grid layout</div>
-      </div>
-      <span class="card-tag tag-v4">V4</span>
-      <div class="card-arrow">→</div>
-    </a>
-
-    <a class="card" href="synaps-v4-dark-slider.html" target="_blank">
-      <div class="card-num">10</div>
-      <div class="card-icon" style="background:linear-gradient(135deg,#100A20,#2A1240)">
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
-          <path d="M5 12h14M15 8l4 4-4 4" stroke="#9070D0" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/>
-          <circle cx="5" cy="12" r="2" stroke="#9070D0" stroke-width="1.4"/>
-        </svg>
-      </div>
-      <div class="card-body">
-        <div class="card-title">V4 — Dark Slider</div>
-        <div class="card-desc">Koyu slider tasarımı, geçişli animasyon</div>
-      </div>
-      <span class="card-tag tag-v4">V4</span>
-      <div class="card-arrow">→</div>
-    </a>
-
-  </div>
-
-  <div class="divider"></div>
-  <div class="footer">
-    <p>synaps-lppreview · berkecivelek.github.io</p>
-  </div>
-
+<div class="header">
+  <div class="header-tag">Synaps AI</div>
+  <h1>Landing Page Önizleme</h1>
+  <p>Tüm varyasyonlar — en güncel en üstte</p>
 </div>
 
-<script>
-// Generate stars
-const container = document.getElementById('stars');
-for (let i = 0; i < 80; i++) {
-  const s = document.createElement('div');
-  s.className = 'star';
-  const size = Math.random() * 1.5 + 0.5;
-  s.style.cssText = `
-    width:${size}px; height:${size}px;
-    top:${Math.random()*100}%; left:${Math.random()*100}%;
-    --d:${2+Math.random()*4}s; --dl:${Math.random()*3}s;
-    --lo:${0.05+Math.random()*0.1}; --hi:${0.3+Math.random()*0.4};
-  `;
-  container.appendChild(s);
-}
-</script>
+<!-- ══ V9 TOGGLE (EN GÜNCEL) ══ -->
+<div class="section-label">⭐ En Güncel — V9 Toggle</div>
+<div class="cards">
+  <a class="card" href="synaps-v9-toggle.html" target="_blank">
+    <div class="card-num">01</div>
+    <div class="card-icon" style="background:linear-gradient(135deg,#0D0820,#7B2FFF)">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+        <circle cx="12" cy="12" r="5" stroke="#C4A4FF" stroke-width="1.6"/>
+        <path d="M12 2v2M12 20v2M2 12h2M20 12h2" stroke="#C4A4FF" stroke-width="1.4" stroke-linecap="round"/>
+      </svg>
+    </div>
+    <div class="card-body">
+      <div class="card-title">V10 — Dark / Light Toggle</div>
+      <div class="card-desc">Tek dosya · Navbar switch · Default dark · 15 marka · CSS ATS bracket · Instagram + sosyal linkler</div>
+    </div>
+    <span class="card-tag" style="background:rgba(123,47,255,0.2);border-color:rgba(123,47,255,0.5);color:#C4A4FF;">Öne Çıkan</span>
+    <div class="card-arrow">→</div>
+  </a>
+</div>
+
+<div class="divider"></div>
+
+<!-- ══ V9 ══ -->
+<div class="section-label">🚀 V9 Varyasyonları</div>
+<div class="cards">
+  <a class="card" href="synaps-v9-dark-slider.html" target="_blank">
+    <div class="card-num">02</div>
+    <div class="card-icon" style="background:linear-gradient(135deg,#1A0844,#4A1A9A)">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+        <path d="M4 6h16M4 10h16M4 14h10" stroke="#C4A4FF" stroke-width="1.8" stroke-linecap="round"/>
+      </svg>
+    </div>
+    <div class="card-body">
+      <div class="card-title">V9 — Dark Slider</div>
+      <div class="card-desc">Bold italic ticker · Büyük ekosistem · B2C 3 kart · Kart testimonial</div>
+    </div>
+    <span class="card-tag" style="background:rgba(0,200,255,0.1);border-color:rgba(0,200,255,0.3);color:#00C8FF;">V9</span>
+    <div class="card-arrow">→</div>
+  </a>
+  <a class="card" href="synaps-v9-dark-grid.html" target="_blank">
+    <div class="card-num">03</div>
+    <div class="card-icon" style="background:linear-gradient(135deg,#0A1830,#1A3880)">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+        <rect x="3" y="3" width="7" height="7" rx="1.5" stroke="#7AB4FF" stroke-width="1.6"/>
+        <rect x="14" y="3" width="7" height="7" rx="1.5" stroke="#7AB4FF" stroke-width="1.6" opacity="0.7"/>
+        <rect x="3" y="14" width="7" height="7" rx="1.5" stroke="#7AB4FF" stroke-width="1.6" opacity="0.7"/>
+        <rect x="14" y="14" width="7" height="7" rx="1.5" stroke="#7AB4FF" stroke-width="1.6" opacity="0.4"/>
+      </svg>
+    </div>
+    <div class="card-body">
+      <div class="card-title">V9 — Dark Grid</div>
+      <div class="card-desc">Grid layout · Büyük ticker · Mor ekosistem · B2C 3 kart · Kart testimonial</div>
+    </div>
+    <span class="card-tag" style="background:rgba(0,200,255,0.1);border-color:rgba(0,200,255,0.3);color:#00C8FF;">V9</span>
+    <div class="card-arrow">→</div>
+  </a>
+  <a class="card" href="synaps-v9-light.html" target="_blank">
+    <div class="card-num">04</div>
+    <div class="card-icon" style="background:linear-gradient(135deg,#E8E0FF,#D4C8FF)">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+        <circle cx="12" cy="12" r="5" stroke="#7B2FFF" stroke-width="1.6"/>
+        <path d="M12 2v2M12 20v2M2 12h2M20 12h2" stroke="#7B2FFF" stroke-width="1.6" stroke-linecap="round"/>
+      </svg>
+    </div>
+    <div class="card-body">
+      <div class="card-title">V9 — Light Mode</div>
+      <div class="card-desc">Beyaz tema · Mor ticker · Beyaz eco kutular · CTA başlık beyaz</div>
+    </div>
+    <span class="card-tag" style="background:rgba(0,200,255,0.1);border-color:rgba(0,200,255,0.3);color:#00C8FF;">V9</span>
+    <div class="card-arrow">→</div>
+  </a>
+</div>
+
+<div class="divider"></div>
+
+<!-- ══ V8 ══ -->
+<div class="section-label">V8 Varyasyonları</div>
+<div class="cards">
+  <a class="card" href="synaps-v8-dark-slider.html" target="_blank">
+    <div class="card-num">05</div>
+    <div class="card-icon" style="background:linear-gradient(135deg,#1A0844,#4A1A9A)">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M4 6h16M4 10h16M4 14h10" stroke="#C4A4FF" stroke-width="1.8" stroke-linecap="round"/></svg>
+    </div>
+    <div class="card-body">
+      <div class="card-title">V8 — Dark Slider</div>
+      <div class="card-desc">B2C 4 kart grid · Büyük ticker · Büyük ekosistem · Journey kaldırıldı</div>
+    </div>
+    <span class="card-tag" style="background:rgba(255,255,255,0.05);border-color:rgba(255,255,255,0.1);color:rgba(240,238,255,0.4);">V8</span>
+    <div class="card-arrow">→</div>
+  </a>
+  <a class="card" href="synaps-v8-dark-grid.html" target="_blank">
+    <div class="card-num">06</div>
+    <div class="card-icon" style="background:linear-gradient(135deg,#0A1830,#1A3880)">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><rect x="3" y="3" width="7" height="7" rx="1.5" stroke="#7AB4FF" stroke-width="1.6"/><rect x="14" y="3" width="7" height="7" rx="1.5" stroke="#7AB4FF" stroke-width="1.6" opacity="0.7"/><rect x="3" y="14" width="7" height="7" rx="1.5" stroke="#7AB4FF" stroke-width="1.6" opacity="0.7"/><rect x="14" y="14" width="7" height="7" rx="1.5" stroke="#7AB4FF" stroke-width="1.6" opacity="0.4"/></svg>
+    </div>
+    <div class="card-body">
+      <div class="card-title">V8 — Dark Grid</div>
+      <div class="card-desc">Grid layout + B2C 4 kart · Büyük ticker · Büyük ekosistem</div>
+    </div>
+    <span class="card-tag" style="background:rgba(255,255,255,0.05);border-color:rgba(255,255,255,0.1);color:rgba(240,238,255,0.4);">V8</span>
+    <div class="card-arrow">→</div>
+  </a>
+  <a class="card" href="synaps-v8-light.html" target="_blank">
+    <div class="card-num">07</div>
+    <div class="card-icon" style="background:linear-gradient(135deg,#E8E0FF,#D4C8FF)">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="5" stroke="#7B2FFF" stroke-width="1.6"/><path d="M12 2v2M12 20v2M2 12h2M20 12h2" stroke="#7B2FFF" stroke-width="1.6" stroke-linecap="round"/></svg>
+    </div>
+    <div class="card-body">
+      <div class="card-title">V8 — Light Mode</div>
+      <div class="card-desc">Beyaz tema · B2C 4 kart · Büyük ticker · Büyük ekosistem</div>
+    </div>
+    <span class="card-tag" style="background:rgba(255,255,255,0.05);border-color:rgba(255,255,255,0.1);color:rgba(240,238,255,0.4);">V8</span>
+    <div class="card-arrow">→</div>
+  </a>
+</div>
+
+<div class="divider"></div>
+
+<!-- ══ V7 ══ -->
+<div class="section-label">V7 Varyasyonları</div>
+<div class="cards">
+  <a class="card" href="synaps-v7-dark-slider.html" target="_blank">
+    <div class="card-num">08</div>
+    <div class="card-icon" style="background:linear-gradient(135deg,#1A0844,#4A1A9A)">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M4 6h16M4 10h16M4 14h10" stroke="#C4A4FF" stroke-width="1.8" stroke-linecap="round"/></svg>
+    </div>
+    <div class="card-body">
+      <div class="card-title">V7 — Dark Slider</div>
+      <div class="card-desc">Logo testimonial slider · V4 video bölümü · Footer sadeleştirildi</div>
+    </div>
+    <span class="card-tag" style="background:rgba(255,255,255,0.05);border-color:rgba(255,255,255,0.1);color:rgba(240,238,255,0.4);">V7</span>
+    <div class="card-arrow">→</div>
+  </a>
+  <a class="card" href="synaps-v7-dark-grid.html" target="_blank">
+    <div class="card-num">09</div>
+    <div class="card-icon" style="background:linear-gradient(135deg,#0A1830,#1A3880)">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><rect x="3" y="3" width="7" height="7" rx="1.5" stroke="#7AB4FF" stroke-width="1.6"/><rect x="14" y="3" width="7" height="7" rx="1.5" stroke="#7AB4FF" stroke-width="1.6" opacity="0.7"/><rect x="3" y="14" width="7" height="7" rx="1.5" stroke="#7AB4FF" stroke-width="1.6" opacity="0.7"/><rect x="14" y="14" width="7" height="7" rx="1.5" stroke="#7AB4FF" stroke-width="1.6" opacity="0.4"/></svg>
+    </div>
+    <div class="card-body">
+      <div class="card-title">V7 — Dark Grid</div>
+      <div class="card-desc">Grid layout · Logo testimonial · V4 video</div>
+    </div>
+    <span class="card-tag" style="background:rgba(255,255,255,0.05);border-color:rgba(255,255,255,0.1);color:rgba(240,238,255,0.4);">V7</span>
+    <div class="card-arrow">→</div>
+  </a>
+  <a class="card" href="synaps-v7-light.html" target="_blank">
+    <div class="card-num">10</div>
+    <div class="card-icon" style="background:linear-gradient(135deg,#E8E0FF,#D4C8FF)">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="5" stroke="#7B2FFF" stroke-width="1.6"/><path d="M12 2v2M12 20v2M2 12h2M20 12h2" stroke="#7B2FFF" stroke-width="1.6" stroke-linecap="round"/></svg>
+    </div>
+    <div class="card-body">
+      <div class="card-title">V7 — Light Mode</div>
+      <div class="card-desc">Beyaz tema · Logo testimonial · V4 video</div>
+    </div>
+    <span class="card-tag" style="background:rgba(255,255,255,0.05);border-color:rgba(255,255,255,0.1);color:rgba(240,238,255,0.4);">V7</span>
+    <div class="card-arrow">→</div>
+  </a>
+</div>
+
+<div class="divider"></div>
+
+<!-- ══ V6 ══ -->
+<div class="section-label">V6 Varyasyonları</div>
+<div class="cards">
+  <a class="card" href="synaps-v6-slider.html" target="_blank">
+    <div class="card-num">11</div>
+    <div class="card-icon" style="background:linear-gradient(135deg,#1A0844,#4A1A9A)">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M4 6h16M4 10h16M4 14h10" stroke="#C4A4FF" stroke-width="1.8" stroke-linecap="round"/></svg>
+    </div>
+    <div class="card-body">
+      <div class="card-title">V6 — Slider</div>
+      <div class="card-desc">Ürün slider · Ekosistem akışı · Kart testimonial</div>
+    </div>
+    <span class="card-tag" style="background:rgba(255,255,255,0.05);border-color:rgba(255,255,255,0.1);color:rgba(240,238,255,0.4);">V6</span>
+    <div class="card-arrow">→</div>
+  </a>
+  <a class="card" href="synaps-v6-grid.html" target="_blank">
+    <div class="card-num">12</div>
+    <div class="card-icon" style="background:linear-gradient(135deg,#0A1830,#1A3880)">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><rect x="3" y="3" width="7" height="7" rx="1.5" stroke="#7AB4FF" stroke-width="1.6"/><rect x="14" y="3" width="7" height="7" rx="1.5" stroke="#7AB4FF" stroke-width="1.6" opacity="0.7"/><rect x="3" y="14" width="7" height="7" rx="1.5" stroke="#7AB4FF" stroke-width="1.6" opacity="0.7"/><rect x="14" y="14" width="7" height="7" rx="1.5" stroke="#7AB4FF" stroke-width="1.6" opacity="0.4"/></svg>
+    </div>
+    <div class="card-body">
+      <div class="card-title">V6 — Grid</div>
+      <div class="card-desc">Grid ürün kartları · Ekosistem akışı</div>
+    </div>
+    <span class="card-tag" style="background:rgba(255,255,255,0.05);border-color:rgba(255,255,255,0.1);color:rgba(240,238,255,0.4);">V6</span>
+    <div class="card-arrow">→</div>
+  </a>
+  <a class="card" href="synaps-v6-category.html" target="_blank">
+    <div class="card-num">13</div>
+    <div class="card-icon" style="background:linear-gradient(135deg,#0A1818,#1A3838)">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M4 6h16M4 12h10M4 18h6" stroke="#4AE0C0" stroke-width="1.8" stroke-linecap="round"/></svg>
+    </div>
+    <div class="card-body">
+      <div class="card-title">V6 — Category</div>
+      <div class="card-desc">Kategori bazlı ürün listeleme · Accordion yapısı</div>
+    </div>
+    <span class="card-tag" style="background:rgba(255,255,255,0.05);border-color:rgba(255,255,255,0.1);color:rgba(240,238,255,0.4);">V6</span>
+    <div class="card-arrow">→</div>
+  </a>
+</div>
+
+<div class="divider"></div>
+
+<!-- ══ V4 ══ -->
+<div class="section-label">V4 Varyasyonları</div>
+<div class="cards">
+  <a class="card" href="synaps-v4-dark.html" target="_blank">
+    <div class="card-num">14</div>
+    <div class="card-icon" style="background:linear-gradient(135deg,#0D0820,#3A1880)">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z" stroke="#C4A4FF" stroke-width="1.6"/></svg>
+    </div>
+    <div class="card-body">
+      <div class="card-title">V4 — Dark</div>
+      <div class="card-desc">V4 orijinal dark varyasyon</div>
+    </div>
+    <span class="card-tag" style="background:rgba(255,255,255,0.05);border-color:rgba(255,255,255,0.1);color:rgba(240,238,255,0.4);">V4</span>
+    <div class="card-arrow">→</div>
+  </a>
+  <a class="card" href="synaps-v4-light.html" target="_blank">
+    <div class="card-num">15</div>
+    <div class="card-icon" style="background:linear-gradient(135deg,#E8E0FF,#D4C8FF)">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="5" stroke="#7B2FFF" stroke-width="1.6"/><path d="M12 2v2M12 20v2M2 12h2M20 12h2" stroke="#7B2FFF" stroke-width="1.6" stroke-linecap="round"/></svg>
+    </div>
+    <div class="card-body">
+      <div class="card-title">V4 — Light</div>
+      <div class="card-desc">V4 orijinal light varyasyon</div>
+    </div>
+    <span class="card-tag" style="background:rgba(255,255,255,0.05);border-color:rgba(255,255,255,0.1);color:rgba(240,238,255,0.4);">V4</span>
+    <div class="card-arrow">→</div>
+  </a>
+</div>
+
 </body>
 </html>

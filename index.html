@@ -2,271 +2,215 @@
 <html lang="tr">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Synaps AI — Landing Page Önizleme</title>
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Synaps AI — GitHub Pages Preview Hub</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Lexend:wght@300;400;600;700;800;900&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Lexend:wght@300;400;500;600;700;800&display=swap');
 *{margin:0;padding:0;box-sizing:border-box;}
-body{background:#05050F;font-family:'Lexend',sans-serif;color:#F0EEFF;min-height:100vh;padding:60px 40px 100px;}
-.header{text-align:center;margin-bottom:64px;}
-.header-tag{font-size:10px;font-weight:700;letter-spacing:4px;text-transform:uppercase;color:#9B4FFF;margin-bottom:14px;}
-.header h1{font-size:38px;font-weight:800;letter-spacing:-1.5px;background:linear-gradient(135deg,#F0EEFF,#C4A4FF);-webkit-background-clip:text;-webkit-text-fill-color:transparent;}
-.header p{font-size:14px;color:rgba(240,238,255,0.45);margin-top:10px;}
-.section-label{font-size:10px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:#9B4FFF;margin:48px 0 20px;padding-left:4px;}
-.cards{display:flex;flex-direction:column;gap:10px;max-width:860px;}
-.card{display:flex;align-items:center;gap:18px;background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.07);border-radius:16px;padding:18px 22px;text-decoration:none;color:inherit;transition:all 0.25s;cursor:pointer;}
-.card:hover{background:rgba(123,47,255,0.08);border-color:rgba(123,47,255,0.3);transform:translateX(4px);}
-.card-num{font-size:11px;font-weight:700;color:rgba(240,238,255,0.2);font-family:monospace;width:24px;flex-shrink:0;}
-.card-icon{width:40px;height:40px;border-radius:10px;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
-.card-body{flex:1;}
-.card-title{font-size:14px;font-weight:600;margin-bottom:3px;transition:color 0.2s;}
-.card:hover .card-title{color:#C4A4FF;}
-.card-desc{font-size:11px;color:rgba(240,238,255,0.35);font-weight:300;}
-.card-tag{font-size:9px;font-weight:700;letter-spacing:0.5px;padding:3px 10px;border-radius:20px;border:1px solid;white-space:nowrap;flex-shrink:0;}
-.card-arrow{font-size:16px;color:rgba(240,238,255,0.2);transition:all 0.2s;flex-shrink:0;}
-.card:hover .card-arrow{color:#9B4FFF;transform:translateX(3px);}
-.divider{height:1px;background:rgba(255,255,255,0.05);margin:12px 0;}
+body{background:#06040F;color:#F0EEFF;font-family:'Lexend',sans-serif;min-height:100vh;overflow-x:hidden;}
+body::before{content:'';position:fixed;inset:0;pointer-events:none;z-index:0;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='.025'/%3E%3C/svg%3E");}
+
+/* hero */
+.hero{padding:80px 40px 60px;text-align:center;position:relative;}
+.hero-bg{position:absolute;inset:0;background:radial-gradient(ellipse 80% 60% at 50% 0%,rgba(123,47,255,.12),transparent 65%);pointer-events:none;}
+.orb-wrap{display:flex;justify-content:center;margin-bottom:28px;}
+.orb{width:56px;height:56px;border-radius:50%;position:relative;overflow:hidden;}
+.ob{position:absolute;inset:0;border-radius:50%;}
+.ob-base{background:radial-gradient(ellipse at 36% 28%,rgba(255,255,255,.88) 0%,rgba(200,175,255,.55) 16%,transparent 36%),radial-gradient(ellipse at 68% 66%,rgba(70,20,170,.55) 0%,transparent 48%),radial-gradient(circle,#AA80FF 0%,#6E38CC 32%,#481898 60%,#1A0850 82%,#0C0330 100%);box-shadow:inset -4px -3px 8px rgba(0,0,0,.55),inset 3px 2px 6px rgba(200,165,255,.25),0 0 24px rgba(123,47,255,.7);}
+.ob-swirl{background:conic-gradient(from 105deg at 44% 56%,transparent 0deg,rgba(255,255,255,.13) 20deg,transparent 38deg,rgba(180,140,255,.08) 78deg,transparent 118deg,rgba(255,255,255,.06) 198deg,transparent 235deg);animation:spin 8s linear infinite;}
+.ob-hl{position:absolute;top:8%;left:14%;width:36%;height:26%;background:radial-gradient(ellipse,rgba(255,255,255,.72),rgba(255,255,255,.08) 60%,transparent);border-radius:50%;transform:rotate(-28deg);}
+@keyframes spin{to{transform:rotate(360deg);}}
+
+.brand{font-size:13px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:rgba(196,164,255,.6);margin-bottom:20px;font-family:'JetBrains Mono',monospace;}
+.hero-h{font-size:clamp(32px,4vw,56px);font-weight:900;letter-spacing:-2.5px;line-height:1.05;margin-bottom:14px;}
+.hero-h span{background:linear-gradient(135deg,#9B4FFF,#C4A4FF,#E040FB);-webkit-background-clip:text;-webkit-text-fill-color:transparent;}
+.hero-sub{font-size:15px;color:rgba(240,238,255,.5);font-weight:300;max-width:540px;margin:0 auto 36px;line-height:1.75;}
+.main-cta{display:inline-flex;align-items:center;gap:10px;background:linear-gradient(135deg,#7B2FFF,#5A1ECC);color:#fff;font-size:15px;font-weight:700;padding:16px 36px;border-radius:12px;text-decoration:none;box-shadow:0 8px 28px rgba(123,47,255,.45);transition:all .25s;}
+.main-cta:hover{transform:translateY(-2px);box-shadow:0 16px 40px rgba(123,47,255,.55);}
+
+/* section */
+.section{padding:0 40px 80px;position:relative;z-index:1;max-width:1400px;margin:0 auto;}
+.sec-label{font-family:'JetBrains Mono',monospace;font-size:10px;font-weight:700;letter-spacing:4px;text-transform:uppercase;color:#9B4FFF;margin-bottom:14px;}
+.sec-title{font-size:clamp(22px,2.8vw,36px);font-weight:900;letter-spacing:-1.2px;line-height:1.1;margin-bottom:8px;}
+.sec-title em{font-style:normal;background:linear-gradient(135deg,#9B4FFF,#C4A4FF);-webkit-background-clip:text;-webkit-text-fill-color:transparent;}
+.sec-sub{font-size:13px;color:rgba(240,238,255,.45);font-weight:300;margin-bottom:36px;max-width:500px;line-height:1.7;}
+
+/* main page card (featured) */
+.featured-card{background:linear-gradient(135deg,rgba(123,47,255,.14),rgba(155,79,255,.07));border:1px solid rgba(123,47,255,.35);border-radius:20px;padding:32px 36px;display:grid;grid-template-columns:1fr auto;align-items:center;gap:24px;margin-bottom:28px;transition:all .3s;}
+.featured-card:hover{border-color:rgba(123,47,255,.6);transform:translateY(-2px);box-shadow:0 16px 48px rgba(123,47,255,.15);}
+.fc-tag{font-family:'JetBrains Mono',monospace;font-size:9px;font-weight:700;letter-spacing:3px;color:#C4A4FF;text-transform:uppercase;margin-bottom:8px;}
+.fc-name{font-size:22px;font-weight:800;letter-spacing:-.5px;margin-bottom:6px;}
+.fc-desc{font-size:13px;color:rgba(240,238,255,.5);line-height:1.65;font-weight:300;}
+.fc-badge{font-family:'JetBrains Mono',monospace;font-size:9px;font-weight:700;letter-spacing:2px;background:rgba(123,47,255,.15);border:1px solid rgba(123,47,255,.3);color:#9B4FFF;padding:4px 12px;border-radius:20px;white-space:nowrap;}
+.fc-btn{display:inline-flex;align-items:center;gap:8px;background:linear-gradient(135deg,#7B2FFF,#5A1ECC);color:#fff;font-size:13px;font-weight:700;padding:11px 24px;border-radius:9px;text-decoration:none;margin-top:14px;box-shadow:0 4px 16px rgba(123,47,255,.35);transition:all .25s;}
+.fc-btn:hover{transform:translateY(-1px);box-shadow:0 8px 24px rgba(123,47,255,.45);}
+
+/* product grid */
+.prod-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:14px;}
+.prod-card{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.07);border-radius:16px;padding:22px 24px;text-decoration:none;color:inherit;display:flex;flex-direction:column;gap:10px;transition:all .28s;position:relative;overflow:hidden;}
+.prod-card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,#7B2FFF,#C4A4FF);transform:scaleX(0);transform-origin:left;transition:transform .35s;}
+.prod-card:hover{background:rgba(123,47,255,.09);border-color:rgba(123,47,255,.3);transform:translateY(-3px);box-shadow:0 12px 36px rgba(123,47,255,.12);}
+.prod-card:hover::before{transform:scaleX(1);}
+.pc-top{display:flex;align-items:center;justify-content:space-between;}
+.pc-step{font-family:'JetBrains Mono',monospace;font-size:8px;font-weight:700;letter-spacing:2px;color:rgba(240,238,255,.3);text-transform:uppercase;background:rgba(255,255,255,.05);padding:3px 9px;border-radius:10px;}
+.pc-icon{font-size:20px;}
+.pc-name{font-size:15px;font-weight:800;letter-spacing:-.3px;line-height:1.25;}
+.pc-desc{font-size:12px;color:rgba(240,238,255,.45);line-height:1.65;font-weight:300;flex:1;}
+.pc-link{font-family:'JetBrains Mono',monospace;font-size:10px;font-weight:700;color:#9B4FFF;display:flex;align-items:center;gap:5px;margin-top:4px;}
+
+/* divider */
+.divider{border:none;border-top:1px solid rgba(255,255,255,.06);margin:0 40px 64px;}
+
+/* footer */
+footer{border-top:1px solid rgba(255,255,255,.06);padding:28px 40px;text-align:center;position:relative;z-index:1;}
+footer p{font-size:12px;color:rgba(240,238,255,.2);font-family:'JetBrains Mono',monospace;}
+footer a{color:rgba(155,79,255,.7);text-decoration:none;}
+
+@media(max-width:768px){
+  .hero{padding:60px 20px 40px;}
+  .section{padding:0 20px 60px;}
+  .featured-card{grid-template-columns:1fr;}
+  .divider{margin:0 20px 48px;}
+  footer{padding:20px;}
+}
 </style>
 </head>
 <body>
-<div class="header">
-  <div class="header-tag">Synaps AI</div>
-  <h1>Landing Page Önizleme</h1>
-  <p>Tüm varyasyonlar — en güncel en üstte</p>
+
+<div class="hero">
+  <div class="hero-bg"></div>
+  <div class="orb-wrap">
+    <div class="orb">
+      <div class="ob ob-base"></div>
+      <div class="ob ob-swirl"></div>
+      <div class="ob-hl"></div>
+    </div>
+  </div>
+  <div class="brand">Synaps AI · Preview Hub</div>
+  <h1 class="hero-h">LP Preview — <span>v11 Toggle</span></h1>
+  <p class="hero-sub">Tüm Synaps AI landing page'lerinin GitHub Pages önizlemesi. Ana sayfa + 12 ürün LP'si, dark/light toggle ile.</p>
+  <a href="synaps-v11-toggle.html" class="main-cta">Ana Sayfayı Aç →</a>
 </div>
 
-<!-- ══ V9 TOGGLE (EN GÜNCEL) ══ -->
-<div class="section-label">⭐ En Güncel — V9 Toggle</div>
-<div class="cards">
-  <a class="card" href="synaps-v9-toggle.html" target="_blank">
-    <div class="card-num">01</div>
-    <div class="card-icon" style="background:linear-gradient(135deg,#0D0820,#7B2FFF)">
-      <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
-        <circle cx="12" cy="12" r="5" stroke="#C4A4FF" stroke-width="1.6"/>
-        <path d="M12 2v2M12 20v2M2 12h2M20 12h2" stroke="#C4A4FF" stroke-width="1.4" stroke-linecap="round"/>
-      </svg>
+<div class="section">
+
+  <!-- FEATURED: ANA SAYFA -->
+  <div class="sec-label">Ana Sayfa</div>
+  <a href="synaps-v11-toggle.html" class="featured-card" style="text-decoration:none;color:inherit;">
+    <div>
+      <div class="fc-tag">🏠 Ana Sayfa · v11</div>
+      <div class="fc-name">synaps-v11-toggle.html</div>
+      <div class="fc-desc">Tam ekosistem diyagramı, ticker, testimonials, B2C kartları, ATS bracket — dark/light toggle. Tüm 12 ürün LP'sine bağlı navbar dropdown ve eco-node'lar.</div>
+      <a href="synaps-v11-toggle.html" class="fc-btn">Önizle →</a>
     </div>
-    <div class="card-body">
-      <div class="card-title">V10 — Dark / Light Toggle</div>
-      <div class="card-desc">Tek dosya · Navbar switch · Default dark · 15 marka · CSS ATS bracket · Instagram + sosyal linkler</div>
+    <div style="display:flex;flex-direction:column;align-items:flex-end;gap:8px;">
+      <span class="fc-badge">v11 Toggle</span>
+      <span class="fc-badge">12 LP Bağlı</span>
+      <span class="fc-badge">Dark / Light</span>
     </div>
-    <span class="card-tag" style="background:rgba(123,47,255,0.2);border-color:rgba(123,47,255,0.5);color:#C4A4FF;">Öne Çıkan</span>
-    <div class="card-arrow">→</div>
   </a>
+
+  <hr class="divider">
+
+  <!-- B2B ÜRÜNLER -->
+  <div class="sec-label">B2B Ürün Landing Page'leri</div>
+  <div class="sec-title">12 Ürün LP — <em>Synaps Purple</em></div>
+  <div class="sec-sub">Her sayfa: benzersiz hero widget, dark/light toggle, navbar breadcrumb, ekosistemle uyumlu tasarım.</div>
+
+  <div class="prod-grid">
+
+    <a href="synaps-product-ai-yetenek-bulma.html" class="prod-card">
+      <div class="pc-top"><span class="pc-step">1. Adım · B2B</span><span class="pc-icon">🎯</span></div>
+      <div class="pc-name">AI Yetenek Bulma</div>
+      <div class="pc-desc">Editorial bento grid layout. Canlı aday havuzu, eşleştirme skorları ve kaynak kanal analizi.</div>
+      <div class="pc-link">Önizle <span>→</span></div>
+    </a>
+
+    <a href="synaps-product-ai-interviewer.html" class="prod-card">
+      <div class="pc-top"><span class="pc-step">2. Adım · B2B</span><span class="pc-icon">🤖</span></div>
+      <div class="pc-name">AI Interviewer</div>
+      <div class="pc-desc">Sinematik hero + canlı chat simulator. 7/24 otonom mülakat, ses & duygu analizi.</div>
+      <div class="pc-link">Önizle <span>→</span></div>
+    </a>
+
+    <a href="synaps-product-ai-telefonla-mulakat.html" class="prod-card">
+      <div class="pc-top"><span class="pc-step">2. Adım · B2B</span><span class="pc-icon">📱</span></div>
+      <div class="pc-name">AI Telefonla Mülakat</div>
+      <div class="pc-desc">Phone mockup + waveform animasyon. Sesli AI ön eleme, canlı transkript.</div>
+      <div class="pc-link">Önizle <span>→</span></div>
+    </a>
+
+    <a href="synaps-product-ai-dil-mulakati.html" class="prod-card">
+      <div class="pc-top"><span class="pc-step">2. Adım · B2B</span><span class="pc-icon">🌐</span></div>
+      <div class="pc-name">AI Dil Mülakatı</div>
+      <div class="pc-desc">CEFR matrix layout. A1–C2 skala, 4 beceri bar'ı, 40+ dil desteği haritası.</div>
+      <div class="pc-link">Önizle <span>→</span></div>
+    </a>
+
+    <a href="synaps-product-ai-yazilim-mulakati.html" class="prod-card">
+      <div class="pc-top"><span class="pc-step">2. Adım · B2B</span><span class="pc-icon">💻</span></div>
+      <div class="pc-name">AI Yazılım Mülakatı</div>
+      <div class="pc-desc">Gerçek IDE editör mockup. Syntax highlighting, test sonuçları, AI kod skoru.</div>
+      <div class="pc-link">Önizle <span>→</span></div>
+    </a>
+
+    <a href="synaps-product-ai-rol-bazli-mulakat.html" class="prod-card">
+      <div class="pc-top"><span class="pc-step">2. Adım · B2B</span><span class="pc-icon">🎭</span></div>
+      <div class="pc-name">AI Rol Bazlı Mülakat</div>
+      <div class="pc-desc">Yetkinlik ağırlık slider'ları, aktif soru paneli. Pozisyona özel konfigürasyon.</div>
+      <div class="pc-link">Önizle <span>→</span></div>
+    </a>
+
+    <a href="synaps-product-ai-mulakat-asistani.html" class="prod-card">
+      <div class="pc-top"><span class="pc-step">2. Adım · B2B</span><span class="pc-icon">💡</span></div>
+      <div class="pc-name">AI Mülakat Asistanı</div>
+      <div class="pc-desc">Canlı öneri paneli, otomatik not, önyargı uyarısı. İnsan mülakatçıya gerçek zamanlı destek.</div>
+      <div class="pc-link">Önizle <span>→</span></div>
+    </a>
+
+    <a href="synaps-product-ai-referans-aramasi.html" class="prod-card">
+      <div class="pc-top"><span class="pc-step">3. Adım · B2B</span><span class="pc-icon">✅</span></div>
+      <div class="pc-name">AI Referans Araması</div>
+      <div class="pc-desc">Doğrulama status listesi, skor kartları, AI özet. Otomatik referans doğrulama.</div>
+      <div class="pc-link">Önizle <span>→</span></div>
+    </a>
+
+    <a href="synaps-product-ai-calisan-deneyimi.html" class="prod-card">
+      <div class="pc-top"><span class="pc-step">4. Adım · B2B</span><span class="pc-icon">📊</span></div>
+      <div class="pc-name">AI Çalışan Deneyimi</div>
+      <div class="pc-desc">Bağlılık skoru donut grafiği, departman bar'ları, risk uyarısı. Nabız anketleri.</div>
+      <div class="pc-link">Önizle <span>→</span></div>
+    </a>
+
+    <a href="synaps-product-ai-role-play.html" class="prod-card">
+      <div class="pc-top"><span class="pc-step">4. Adım · B2B</span><span class="pc-icon">🎬</span></div>
+      <div class="pc-name">AI Role Play</div>
+      <div class="pc-desc">Senaryo chat + empati/çözüm skor kartı. Simülasyon bazlı yetkinlik geliştirme.</div>
+      <div class="pc-link">Önizle <span>→</span></div>
+    </a>
+
+    <a href="synaps-product-ai-cikis-mulakati.html" class="prod-card">
+      <div class="pc-top"><span class="pc-step">4. Adım · B2B</span><span class="pc-icon">🚪</span></div>
+      <div class="pc-name">AI Çıkış Mülakatı</div>
+      <div class="pc-desc">Bar chart ayrılış nedenleri, AI aksiyon önerisi. Anonim görüşme, duygu analizi.</div>
+      <div class="pc-link">Önizle <span>→</span></div>
+    </a>
+
+    <a href="synaps-product-ai-mulakat-kocu.html" class="prod-card" style="background:rgba(123,47,255,.06);border-color:rgba(123,47,255,.18);">
+      <div class="pc-top"><span class="pc-step">B2C · Bireysel</span><span class="pc-icon">🏆</span></div>
+      <div class="pc-name">AI Mülakat Koçu</div>
+      <div class="pc-desc">STAR yöntemi skor paneli, pekiştirme modu. Hayalindeki işe hazırlan, 7/24 koç.</div>
+      <div class="pc-link">Önizle <span>→</span></div>
+    </a>
+
+  </div>
 </div>
 
-<div class="divider"></div>
-
-<!-- ══ V9 ══ -->
-<div class="section-label">🚀 V9 Varyasyonları</div>
-<div class="cards">
-  <a class="card" href="synaps-v9-dark-slider.html" target="_blank">
-    <div class="card-num">02</div>
-    <div class="card-icon" style="background:linear-gradient(135deg,#1A0844,#4A1A9A)">
-      <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
-        <path d="M4 6h16M4 10h16M4 14h10" stroke="#C4A4FF" stroke-width="1.8" stroke-linecap="round"/>
-      </svg>
-    </div>
-    <div class="card-body">
-      <div class="card-title">V9 — Dark Slider</div>
-      <div class="card-desc">Bold italic ticker · Büyük ekosistem · B2C 3 kart · Kart testimonial</div>
-    </div>
-    <span class="card-tag" style="background:rgba(0,200,255,0.1);border-color:rgba(0,200,255,0.3);color:#00C8FF;">V9</span>
-    <div class="card-arrow">→</div>
-  </a>
-  <a class="card" href="synaps-v9-dark-grid.html" target="_blank">
-    <div class="card-num">03</div>
-    <div class="card-icon" style="background:linear-gradient(135deg,#0A1830,#1A3880)">
-      <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
-        <rect x="3" y="3" width="7" height="7" rx="1.5" stroke="#7AB4FF" stroke-width="1.6"/>
-        <rect x="14" y="3" width="7" height="7" rx="1.5" stroke="#7AB4FF" stroke-width="1.6" opacity="0.7"/>
-        <rect x="3" y="14" width="7" height="7" rx="1.5" stroke="#7AB4FF" stroke-width="1.6" opacity="0.7"/>
-        <rect x="14" y="14" width="7" height="7" rx="1.5" stroke="#7AB4FF" stroke-width="1.6" opacity="0.4"/>
-      </svg>
-    </div>
-    <div class="card-body">
-      <div class="card-title">V9 — Dark Grid</div>
-      <div class="card-desc">Grid layout · Büyük ticker · Mor ekosistem · B2C 3 kart · Kart testimonial</div>
-    </div>
-    <span class="card-tag" style="background:rgba(0,200,255,0.1);border-color:rgba(0,200,255,0.3);color:#00C8FF;">V9</span>
-    <div class="card-arrow">→</div>
-  </a>
-  <a class="card" href="synaps-v9-light.html" target="_blank">
-    <div class="card-num">04</div>
-    <div class="card-icon" style="background:linear-gradient(135deg,#E8E0FF,#D4C8FF)">
-      <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
-        <circle cx="12" cy="12" r="5" stroke="#7B2FFF" stroke-width="1.6"/>
-        <path d="M12 2v2M12 20v2M2 12h2M20 12h2" stroke="#7B2FFF" stroke-width="1.6" stroke-linecap="round"/>
-      </svg>
-    </div>
-    <div class="card-body">
-      <div class="card-title">V9 — Light Mode</div>
-      <div class="card-desc">Beyaz tema · Mor ticker · Beyaz eco kutular · CTA başlık beyaz</div>
-    </div>
-    <span class="card-tag" style="background:rgba(0,200,255,0.1);border-color:rgba(0,200,255,0.3);color:#00C8FF;">V9</span>
-    <div class="card-arrow">→</div>
-  </a>
-</div>
-
-<div class="divider"></div>
-
-<!-- ══ V8 ══ -->
-<div class="section-label">V8 Varyasyonları</div>
-<div class="cards">
-  <a class="card" href="synaps-v8-dark-slider.html" target="_blank">
-    <div class="card-num">05</div>
-    <div class="card-icon" style="background:linear-gradient(135deg,#1A0844,#4A1A9A)">
-      <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M4 6h16M4 10h16M4 14h10" stroke="#C4A4FF" stroke-width="1.8" stroke-linecap="round"/></svg>
-    </div>
-    <div class="card-body">
-      <div class="card-title">V8 — Dark Slider</div>
-      <div class="card-desc">B2C 4 kart grid · Büyük ticker · Büyük ekosistem · Journey kaldırıldı</div>
-    </div>
-    <span class="card-tag" style="background:rgba(255,255,255,0.05);border-color:rgba(255,255,255,0.1);color:rgba(240,238,255,0.4);">V8</span>
-    <div class="card-arrow">→</div>
-  </a>
-  <a class="card" href="synaps-v8-dark-grid.html" target="_blank">
-    <div class="card-num">06</div>
-    <div class="card-icon" style="background:linear-gradient(135deg,#0A1830,#1A3880)">
-      <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><rect x="3" y="3" width="7" height="7" rx="1.5" stroke="#7AB4FF" stroke-width="1.6"/><rect x="14" y="3" width="7" height="7" rx="1.5" stroke="#7AB4FF" stroke-width="1.6" opacity="0.7"/><rect x="3" y="14" width="7" height="7" rx="1.5" stroke="#7AB4FF" stroke-width="1.6" opacity="0.7"/><rect x="14" y="14" width="7" height="7" rx="1.5" stroke="#7AB4FF" stroke-width="1.6" opacity="0.4"/></svg>
-    </div>
-    <div class="card-body">
-      <div class="card-title">V8 — Dark Grid</div>
-      <div class="card-desc">Grid layout + B2C 4 kart · Büyük ticker · Büyük ekosistem</div>
-    </div>
-    <span class="card-tag" style="background:rgba(255,255,255,0.05);border-color:rgba(255,255,255,0.1);color:rgba(240,238,255,0.4);">V8</span>
-    <div class="card-arrow">→</div>
-  </a>
-  <a class="card" href="synaps-v8-light.html" target="_blank">
-    <div class="card-num">07</div>
-    <div class="card-icon" style="background:linear-gradient(135deg,#E8E0FF,#D4C8FF)">
-      <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="5" stroke="#7B2FFF" stroke-width="1.6"/><path d="M12 2v2M12 20v2M2 12h2M20 12h2" stroke="#7B2FFF" stroke-width="1.6" stroke-linecap="round"/></svg>
-    </div>
-    <div class="card-body">
-      <div class="card-title">V8 — Light Mode</div>
-      <div class="card-desc">Beyaz tema · B2C 4 kart · Büyük ticker · Büyük ekosistem</div>
-    </div>
-    <span class="card-tag" style="background:rgba(255,255,255,0.05);border-color:rgba(255,255,255,0.1);color:rgba(240,238,255,0.4);">V8</span>
-    <div class="card-arrow">→</div>
-  </a>
-</div>
-
-<div class="divider"></div>
-
-<!-- ══ V7 ══ -->
-<div class="section-label">V7 Varyasyonları</div>
-<div class="cards">
-  <a class="card" href="synaps-v7-dark-slider.html" target="_blank">
-    <div class="card-num">08</div>
-    <div class="card-icon" style="background:linear-gradient(135deg,#1A0844,#4A1A9A)">
-      <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M4 6h16M4 10h16M4 14h10" stroke="#C4A4FF" stroke-width="1.8" stroke-linecap="round"/></svg>
-    </div>
-    <div class="card-body">
-      <div class="card-title">V7 — Dark Slider</div>
-      <div class="card-desc">Logo testimonial slider · V4 video bölümü · Footer sadeleştirildi</div>
-    </div>
-    <span class="card-tag" style="background:rgba(255,255,255,0.05);border-color:rgba(255,255,255,0.1);color:rgba(240,238,255,0.4);">V7</span>
-    <div class="card-arrow">→</div>
-  </a>
-  <a class="card" href="synaps-v7-dark-grid.html" target="_blank">
-    <div class="card-num">09</div>
-    <div class="card-icon" style="background:linear-gradient(135deg,#0A1830,#1A3880)">
-      <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><rect x="3" y="3" width="7" height="7" rx="1.5" stroke="#7AB4FF" stroke-width="1.6"/><rect x="14" y="3" width="7" height="7" rx="1.5" stroke="#7AB4FF" stroke-width="1.6" opacity="0.7"/><rect x="3" y="14" width="7" height="7" rx="1.5" stroke="#7AB4FF" stroke-width="1.6" opacity="0.7"/><rect x="14" y="14" width="7" height="7" rx="1.5" stroke="#7AB4FF" stroke-width="1.6" opacity="0.4"/></svg>
-    </div>
-    <div class="card-body">
-      <div class="card-title">V7 — Dark Grid</div>
-      <div class="card-desc">Grid layout · Logo testimonial · V4 video</div>
-    </div>
-    <span class="card-tag" style="background:rgba(255,255,255,0.05);border-color:rgba(255,255,255,0.1);color:rgba(240,238,255,0.4);">V7</span>
-    <div class="card-arrow">→</div>
-  </a>
-  <a class="card" href="synaps-v7-light.html" target="_blank">
-    <div class="card-num">10</div>
-    <div class="card-icon" style="background:linear-gradient(135deg,#E8E0FF,#D4C8FF)">
-      <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="5" stroke="#7B2FFF" stroke-width="1.6"/><path d="M12 2v2M12 20v2M2 12h2M20 12h2" stroke="#7B2FFF" stroke-width="1.6" stroke-linecap="round"/></svg>
-    </div>
-    <div class="card-body">
-      <div class="card-title">V7 — Light Mode</div>
-      <div class="card-desc">Beyaz tema · Logo testimonial · V4 video</div>
-    </div>
-    <span class="card-tag" style="background:rgba(255,255,255,0.05);border-color:rgba(255,255,255,0.1);color:rgba(240,238,255,0.4);">V7</span>
-    <div class="card-arrow">→</div>
-  </a>
-</div>
-
-<div class="divider"></div>
-
-<!-- ══ V6 ══ -->
-<div class="section-label">V6 Varyasyonları</div>
-<div class="cards">
-  <a class="card" href="synaps-v6-slider.html" target="_blank">
-    <div class="card-num">11</div>
-    <div class="card-icon" style="background:linear-gradient(135deg,#1A0844,#4A1A9A)">
-      <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M4 6h16M4 10h16M4 14h10" stroke="#C4A4FF" stroke-width="1.8" stroke-linecap="round"/></svg>
-    </div>
-    <div class="card-body">
-      <div class="card-title">V6 — Slider</div>
-      <div class="card-desc">Ürün slider · Ekosistem akışı · Kart testimonial</div>
-    </div>
-    <span class="card-tag" style="background:rgba(255,255,255,0.05);border-color:rgba(255,255,255,0.1);color:rgba(240,238,255,0.4);">V6</span>
-    <div class="card-arrow">→</div>
-  </a>
-  <a class="card" href="synaps-v6-grid.html" target="_blank">
-    <div class="card-num">12</div>
-    <div class="card-icon" style="background:linear-gradient(135deg,#0A1830,#1A3880)">
-      <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><rect x="3" y="3" width="7" height="7" rx="1.5" stroke="#7AB4FF" stroke-width="1.6"/><rect x="14" y="3" width="7" height="7" rx="1.5" stroke="#7AB4FF" stroke-width="1.6" opacity="0.7"/><rect x="3" y="14" width="7" height="7" rx="1.5" stroke="#7AB4FF" stroke-width="1.6" opacity="0.7"/><rect x="14" y="14" width="7" height="7" rx="1.5" stroke="#7AB4FF" stroke-width="1.6" opacity="0.4"/></svg>
-    </div>
-    <div class="card-body">
-      <div class="card-title">V6 — Grid</div>
-      <div class="card-desc">Grid ürün kartları · Ekosistem akışı</div>
-    </div>
-    <span class="card-tag" style="background:rgba(255,255,255,0.05);border-color:rgba(255,255,255,0.1);color:rgba(240,238,255,0.4);">V6</span>
-    <div class="card-arrow">→</div>
-  </a>
-  <a class="card" href="synaps-v6-category.html" target="_blank">
-    <div class="card-num">13</div>
-    <div class="card-icon" style="background:linear-gradient(135deg,#0A1818,#1A3838)">
-      <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M4 6h16M4 12h10M4 18h6" stroke="#4AE0C0" stroke-width="1.8" stroke-linecap="round"/></svg>
-    </div>
-    <div class="card-body">
-      <div class="card-title">V6 — Category</div>
-      <div class="card-desc">Kategori bazlı ürün listeleme · Accordion yapısı</div>
-    </div>
-    <span class="card-tag" style="background:rgba(255,255,255,0.05);border-color:rgba(255,255,255,0.1);color:rgba(240,238,255,0.4);">V6</span>
-    <div class="card-arrow">→</div>
-  </a>
-</div>
-
-<div class="divider"></div>
-
-<!-- ══ V4 ══ -->
-<div class="section-label">V4 Varyasyonları</div>
-<div class="cards">
-  <a class="card" href="synaps-v4-dark.html" target="_blank">
-    <div class="card-num">14</div>
-    <div class="card-icon" style="background:linear-gradient(135deg,#0D0820,#3A1880)">
-      <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z" stroke="#C4A4FF" stroke-width="1.6"/></svg>
-    </div>
-    <div class="card-body">
-      <div class="card-title">V4 — Dark</div>
-      <div class="card-desc">V4 orijinal dark varyasyon</div>
-    </div>
-    <span class="card-tag" style="background:rgba(255,255,255,0.05);border-color:rgba(255,255,255,0.1);color:rgba(240,238,255,0.4);">V4</span>
-    <div class="card-arrow">→</div>
-  </a>
-  <a class="card" href="synaps-v4-light.html" target="_blank">
-    <div class="card-num">15</div>
-    <div class="card-icon" style="background:linear-gradient(135deg,#E8E0FF,#D4C8FF)">
-      <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="5" stroke="#7B2FFF" stroke-width="1.6"/><path d="M12 2v2M12 20v2M2 12h2M20 12h2" stroke="#7B2FFF" stroke-width="1.6" stroke-linecap="round"/></svg>
-    </div>
-    <div class="card-body">
-      <div class="card-title">V4 — Light</div>
-      <div class="card-desc">V4 orijinal light varyasyon</div>
-    </div>
-    <span class="card-tag" style="background:rgba(255,255,255,0.05);border-color:rgba(255,255,255,0.1);color:rgba(240,238,255,0.4);">V4</span>
-    <div class="card-arrow">→</div>
-  </a>
-</div>
+<footer>
+  <p>Synaps AI · LP Preview Hub · <a href="synaps-v11-toggle.html">v11-toggle</a> · © 2025 Synaps Yapay Zeka Teknolojileri A.Ş.</p>
+</footer>
 
 </body>
 </html>

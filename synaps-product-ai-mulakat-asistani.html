@@ -3,273 +3,299 @@
 <head>
 <meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
 <title>AI Mülakat Asistanı — Synaps AI</title>
-<link rel="preconnect" href="https://fonts.googleapis.com"><link href="https://fonts.googleapis.com/css2?family=Lexend:wght@200;300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Lexend:wght@200;300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
 <style>
-
-:root{
-  --bg:#06040F;--bg2:#0C0818;--bg3:#120E20;
-  --card:rgba(255,255,255,.04);--card2:rgba(255,255,255,.07);--card3:rgba(255,255,255,.1);
-  --border:rgba(255,255,255,.08);--border2:rgba(255,255,255,.05);
-  --text:#F0EEFF;--dim:rgba(240,238,255,.55);--dim2:rgba(240,238,255,.28);
-  --pu:#7B2FFF;--vi:#9B4FFF;--lav:#C4A4FF;--pk:#E040FB;
-  --nav-bg:rgba(6,4,15,.9);
-  --glow:rgba(123,47,255,.3);--gbg:rgba(123,47,255,.1);
-  --sh:0 32px 80px rgba(0,0,0,.55);
-}
-[data-theme="light"]{
-  --bg:#F0EEF9;--bg2:#E8E4F5;--bg3:#DDD8EF;
-  --card:rgba(255,255,255,.85);--card2:rgba(255,255,255,.95);--card3:rgba(255,255,255,.98);
-  --border:rgba(123,47,255,.11);--border2:rgba(123,47,255,.07);
-  --text:#1A0A3C;--dim:rgba(26,10,60,.58);--dim2:rgba(26,10,60,.3);
-  --nav-bg:rgba(240,238,249,.92);
-  --glow:rgba(123,47,255,.15);--gbg:rgba(123,47,255,.07);
-  --sh:0 20px 60px rgba(123,47,255,.12);
-}
-
-*{margin:0;padding:0;box-sizing:border-box;}
-html{scroll-behavior:smooth;}
-body{background:var(--bg);color:var(--text);font-family:'Lexend',sans-serif;overflow-x:hidden;transition:background .4s,color .4s;line-height:1.6;}
-body::before{content:'';position:fixed;inset:0;pointer-events:none;z-index:0;
-background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='.025'/%3E%3C/svg%3E");}
-
-/* ─── NAV ──────────────────────────────────────── */
-#snav{position:fixed;top:0;left:0;right:0;z-index:900;height:62px;
-  display:flex;align-items:center;padding:0 32px;gap:20px;
-  background:var(--nav-bg);backdrop-filter:blur(28px) saturate(200%);
-  border-bottom:1px solid var(--border);transition:background .4s;}
+:root{--bg:#06040F;--bg2:#0C0818;--card:rgba(255,255,255,.04);--card2:rgba(255,255,255,.07);--border:rgba(255,255,255,.08);--text:#F0EEFF;--dim:rgba(240,238,255,.55);--dim2:rgba(240,238,255,.28);--vi:#9B4FFF;--lav:#C4A4FF;--nav-bg:rgba(6,4,15,.9);--gbg:rgba(123,47,255,.1);}
+[data-theme="light"]{--bg:#F0EEF9;--bg2:#E8E4F5;--card:rgba(255,255,255,.85);--card2:rgba(255,255,255,.95);--border:rgba(123,47,255,.11);--text:#1A0A3C;--dim:rgba(26,10,60,.58);--dim2:rgba(26,10,60,.3);--nav-bg:rgba(240,238,249,.92);--gbg:rgba(123,47,255,.07);}
+*{margin:0;padding:0;box-sizing:border-box;}html{scroll-behavior:smooth;}
+body{background:var(--bg);color:var(--text);font-family:'Lexend',sans-serif;overflow-x:hidden;transition:background .4s,color .4s;}
+body::before{content:'';position:fixed;inset:0;pointer-events:none;z-index:0;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='.025'/%3E%3C/svg%3E");}
+#snav{position:fixed;top:0;left:0;right:0;z-index:900;height:62px;display:flex;align-items:center;padding:0 32px;gap:20px;background:var(--nav-bg);backdrop-filter:blur(28px) saturate(200%);border-bottom:1px solid var(--border);transition:background .4s;}
 .orb-sm{width:28px;height:28px;border-radius:50%;position:relative;overflow:hidden;flex-shrink:0;}
 .ob{position:absolute;inset:0;border-radius:50%;}
-.ob-base{background:radial-gradient(ellipse at 36% 28%,rgba(255,255,255,.88) 0%,rgba(200,175,255,.55) 16%,transparent 36%),radial-gradient(ellipse at 68% 66%,rgba(70,20,170,.55) 0%,transparent 48%),radial-gradient(circle,#AA80FF 0%,#6E38CC 32%,#481898 60%,#1A0850 82%,#0C0330 100%);
-  box-shadow:inset -4px -3px 8px rgba(0,0,0,.55),inset 3px 2px 6px rgba(200,165,255,.25),0 0 14px rgba(123,47,255,.65);}
-.ob-swirl{background:conic-gradient(from 105deg at 44% 56%,transparent 0deg,rgba(255,255,255,.13) 20deg,transparent 38deg,rgba(180,140,255,.08) 78deg,transparent 118deg,rgba(255,255,255,.06) 198deg,transparent 235deg);animation:orbSpin 8s linear infinite;}
-.ob-hl{position:absolute;top:8%;left:14%;width:36%;height:26%;background:radial-gradient(ellipse,rgba(255,255,255,.72) 0%,rgba(255,255,255,.08) 60%,transparent 100%);border-radius:50%;transform:rotate(-28deg);}
-.ob-gleam{position:absolute;bottom:14%;right:11%;width:18%;height:13%;background:radial-gradient(ellipse,rgba(200,160,255,.42) 0%,transparent 100%);border-radius:50%;}
+.ob-base{background:radial-gradient(ellipse at 36% 28%,rgba(255,255,255,.88) 0%,rgba(200,175,255,.55) 16%,transparent 36%),radial-gradient(ellipse at 68% 66%,rgba(70,20,170,.55) 0%,transparent 48%),radial-gradient(circle,#AA80FF 0%,#6E38CC 32%,#481898 60%,#1A0850 82%,#0C0330 100%);box-shadow:inset -4px -3px 8px rgba(0,0,0,.55),inset 3px 2px 6px rgba(200,165,255,.25),0 0 14px rgba(123,47,255,.65);}
+.ob-swirl{background:conic-gradient(from 105deg at 44% 56%,transparent,rgba(255,255,255,.13) 20deg,transparent 38deg,rgba(180,140,255,.08) 78deg,transparent 118deg,rgba(255,255,255,.06) 198deg,transparent 235deg);animation:orbSpin 8s linear infinite;}
+.ob-hl{position:absolute;top:8%;left:14%;width:36%;height:26%;background:radial-gradient(ellipse,rgba(255,255,255,.72),rgba(255,255,255,.08) 60%,transparent);border-radius:50%;transform:rotate(-28deg);}
 @keyframes orbSpin{to{transform:rotate(360deg);}}
-.nav-wordmark{font-size:15px;font-weight:700;color:var(--text);letter-spacing:-.3px;}
-.nw-hi{color:#9B4FFF;}
+.nav-wordmark{font-size:15px;font-weight:700;color:var(--text);letter-spacing:-.3px;}.nw-hi{color:#9B4FFF;}
 .nav-bc{flex:1;display:flex;align-items:center;gap:8px;}
-.bc-home{font-size:12px;color:var(--dim);text-decoration:none;transition:color .2s;}
-.bc-home:hover{color:#9B4FFF;}
-.bc-sep{color:var(--dim2);font-size:12px;}
-.bc-cur{font-size:12px;font-weight:600;color:#C4A4FF;}
+.bc-home{font-size:12px;color:var(--dim);text-decoration:none;transition:color .2s;}.bc-home:hover{color:#9B4FFF;}
+.bc-sep{color:var(--dim2);font-size:12px;}.bc-cur{font-size:12px;font-weight:600;color:#C4A4FF;}
 .nav-right{display:flex;align-items:center;gap:14px;flex-shrink:0;}
-.nav-back{font-size:12px;color:var(--dim);text-decoration:none;font-weight:500;transition:color .2s;}
-.nav-back:hover{color:#9B4FFF;}
-/* toggle */
-.ts-wrap{position:relative;width:44px;height:23px;cursor:pointer;}
-.ts-wrap input{opacity:0;position:absolute;width:0;height:0;}
+.nav-back{font-size:12px;color:var(--dim);text-decoration:none;font-weight:500;transition:color .2s;}.nav-back:hover{color:#9B4FFF;}
+.ts-wrap{position:relative;width:44px;height:23px;cursor:pointer;}.ts-wrap input{opacity:0;position:absolute;width:0;height:0;}
 .ts-track{position:absolute;inset:0;border-radius:12px;background:rgba(255,255,255,.07);border:1px solid var(--border);transition:all .3s;}
 .ts-wrap input:checked~.ts-track{background:rgba(123,47,255,.2);border-color:rgba(155,79,255,.4);}
 .ts-thumb{position:absolute;top:3px;left:3px;width:15px;height:15px;border-radius:50%;background:var(--dim2);transition:all .3s;}
 .ts-wrap input:checked~.ts-track .ts-thumb{transform:translateX(21px);background:#9B4FFF;}
-.ts-m,.ts-s{position:absolute;top:50%;transform:translateY(-50%);font-size:9px;}
-.ts-m{right:5px;}.ts-s{left:5px;opacity:0;}
-.ts-wrap input:checked~.ts-track .ts-m{opacity:0;}
-.ts-wrap input:checked~.ts-track .ts-s{opacity:1;}
-.nav-cta{background:linear-gradient(135deg,#7B2FFF,#5A1ECC);color:#fff;font-size:12px;font-weight:700;padding:8px 18px;border-radius:8px;text-decoration:none;transition:all .2s;box-shadow:0 4px 14px rgba(123,47,255,.4);}
-.nav-cta:hover{transform:translateY(-1px);box-shadow:0 7px 20px rgba(123,47,255,.5);}
+.ts-m,.ts-s{position:absolute;top:50%;transform:translateY(-50%);font-size:9px;}.ts-m{right:5px;}.ts-s{left:5px;opacity:0;}
+.ts-wrap input:checked~.ts-track .ts-m{opacity:0;}.ts-wrap input:checked~.ts-track .ts-s{opacity:1;}
+.nav-cta{background:linear-gradient(135deg,#7B2FFF,#5A1ECC);color:#fff;font-size:12px;font-weight:700;padding:8px 18px;border-radius:8px;text-decoration:none;box-shadow:0 4px 14px rgba(123,47,255,.4);transition:all .2s;}.nav-cta:hover{transform:translateY(-1px);}
 @media(max-width:768px){.nav-bc{display:none;}.nav-back{display:none;}}
-
-
 .lp-footer{border-top:1px solid var(--border);padding:32px 40px;position:relative;z-index:1;}
 .lp-footer-in{max-width:1280px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;gap:20px;flex-wrap:wrap;}
-.lf-brand{display:flex;align-items:center;gap:10px;}
-.lf-name{font-size:14px;font-weight:700;color:var(--text);}.lf-name b{color:#9B4FFF;}
+.lf-brand{display:flex;align-items:center;gap:10px;}.lf-name{font-size:14px;font-weight:700;color:var(--text);}.lf-name b{color:#9B4FFF;}
 .lf-prod{font-size:10px;color:var(--dim2);letter-spacing:1.5px;text-transform:uppercase;font-family:'JetBrains Mono',monospace;}
 .lf-links{display:flex;gap:20px;}.lf-links a{font-size:12px;color:var(--dim2);text-decoration:none;transition:color .2s;}.lf-links a:hover{color:#9B4FFF;}
 .lf-copy{font-size:11px;color:var(--dim2);}
-@media(max-width:600px){.lp-footer-in{flex-direction:column;gap:14px;text-align:center;}.lf-links{justify-content:center;}}
-
-
 @keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.4;transform:scale(.65)}}
 @keyframes floatY{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
 @keyframes flowGrad{0%{background-position:0% 50%}100%{background-position:200% 50%}}
-@keyframes fadeUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
-:root{
-  --ac:#7B2FFF;--ac2:#9B4FFF;
-  --ac-g:rgba(123,47,255,.1);--ac-b:rgba(123,47,255,.22);
-}
-[data-theme="light"]{--ac:#9B4FFF;--ac-g:rgba(123,47,255,.07);--ac-b:rgba(123,47,255,.18);}
+@keyframes ripple{0%{transform:scale(1);opacity:.5}100%{transform:scale(2.5);opacity:0}}
+@keyframes waveB{0%,100%{transform:scaleY(.4);opacity:.4}50%{transform:scaleY(1);opacity:1}}
 
-.gp-hero{min-height:100vh;padding:90px 60px 60px;display:grid;grid-template-columns:1fr 1fr;align-items:center;gap:64px;position:relative;overflow:hidden;}
-.gp-bg{position:absolute;inset:0;background:radial-gradient(ellipse 80% 70% at 75% 45%,var(--ac-g),transparent 55%),radial-gradient(ellipse 50% 40% at 15% 70%,rgba(123,47,255,.04),transparent 50%);}
-.gp-eyebrow{display:flex;align-items:center;gap:10px;margin-bottom:26px;}
-.gp-step{font-family:'JetBrains Mono',monospace;font-size:9px;font-weight:700;letter-spacing:2px;color:var(--dim2);background:var(--gbg);border:1px solid rgba(123,47,255,.2);padding:4px 10px;border-radius:20px;}
-.gp-badge{display:flex;align-items:center;gap:7px;background:var(--ac-g);border:1px solid var(--ac-b);border-radius:20px;padding:5px 14px;font-family:'JetBrains Mono',monospace;font-size:10px;font-weight:700;color:var(--ac);letter-spacing:1px;}
-.gp-dot{width:6px;height:6px;border-radius:50%;background:var(--ac);animation:pulse 2s infinite;}
-.gp-h1{font-size:clamp(38px,4.5vw,62px);font-weight:900;letter-spacing:-3px;line-height:1.04;margin-bottom:22px;}
-.gp-h1 em{font-style:normal;background:linear-gradient(135deg,var(--ac),var(--ac2),#9B4FFF);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-size:200%;animation:flowGrad 4s linear infinite;}
-.gp-sub{font-size:16px;color:var(--dim);font-weight:300;line-height:1.78;max-width:500px;margin-bottom:34px;}
-.gp-btns{display:flex;gap:12px;flex-wrap:wrap;}
-.btn-ac{background:linear-gradient(135deg,#7B2FFF,#9B4FFF);color:#fff;font-size:14px;font-weight:700;padding:14px 32px;border-radius:10px;text-decoration:none;transition:all .25s;box-shadow:0 6px 22px rgba(123,47,255,.3);}
-.btn-ac:hover{transform:translateY(-2px);box-shadow:0 12px 32px rgba(123,47,255,.3);}
-.btn-gh{font-size:14px;font-weight:500;color:var(--dim);padding:13px 22px;border-radius:10px;border:1px solid var(--border);text-decoration:none;transition:all .25s;}
-.btn-gh:hover{border-color:var(--ac-b);color:var(--ac);}
+/* HERO — full-width video call scene */
+.hero{padding:100px 0 0;position:relative;overflow:hidden;}
+.hbg{position:fixed;inset:0;background:radial-gradient(ellipse 90% 60% at 50% 20%,rgba(123,47,255,.1),transparent 55%);pointer-events:none;}
 
-/* features */
-.gp-feats{padding:80px 60px;position:relative;z-index:1;background:var(--bg2);border-top:1px solid var(--border);}
-.gp-feats-in{max-width:1280px;margin:0 auto;}
-.section-tag{font-family:'JetBrains Mono',monospace;font-size:10px;font-weight:700;letter-spacing:4px;text-transform:uppercase;color:var(--ac);margin-bottom:14px;}
-.section-h2{font-size:clamp(28px,3.5vw,46px);font-weight:900;letter-spacing:-1.5px;line-height:1.08;margin-bottom:14px;}
-.section-h2 em{font-style:normal;background:linear-gradient(135deg,var(--ac),#9B4FFF);-webkit-background-clip:text;-webkit-text-fill-color:transparent;}
-.section-sub{font-size:15px;color:var(--dim);font-weight:300;line-height:1.75;max-width:540px;}
-.gp-feat-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1px;margin-top:52px;border:1px solid var(--border);border-radius:18px;overflow:hidden;}
-.gp-fi{background:var(--card);padding:36px 32px;transition:background .3s;position:relative;overflow:hidden;}
-.gp-fi:hover{background:var(--card2);}
-.gp-fi::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--ac),#9B4FFF);transform:scaleX(0);transform-origin:left;transition:transform .4s;}
-.gp-fi:hover::before{transform:scaleX(1);}
-.gfi-n{font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--dim2);letter-spacing:2px;margin-bottom:14px;}
-.gfi-icon{font-size:26px;margin-bottom:12px;display:block;}
-.gfi-t{font-size:16px;font-weight:800;margin-bottom:8px;}
-.gfi-d{font-size:13px;color:var(--dim);line-height:1.72;font-weight:300;}
+/* TEXT + CTA */
+.hero-text{max-width:1280px;margin:0 auto;padding:0 60px 60px;display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center;}
+.eyebrow{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:26px;}
+.tag-s{font-family:'JetBrains Mono',monospace;font-size:9px;font-weight:700;letter-spacing:3px;color:var(--dim2);background:var(--gbg);border:1px solid rgba(123,47,255,.2);padding:5px 12px;border-radius:20px;}
+.tag-p{background:rgba(123,47,255,.12);border:1px solid rgba(123,47,255,.3);color:#9B4FFF;font-family:'JetBrains Mono',monospace;font-size:9px;font-weight:700;letter-spacing:2px;padding:5px 12px;border-radius:20px;display:flex;align-items:center;gap:6px;}
+.pd{width:6px;height:6px;border-radius:50%;background:#9B4FFF;animation:pulse 2s infinite;}
+h1{font-size:clamp(40px,4.5vw,68px);font-weight:900;letter-spacing:-3px;line-height:.98;margin-bottom:24px;}
+h1 .gr{background:linear-gradient(135deg,#9B4FFF,#C4A4FF,#E040FB);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-size:200%;animation:flowGrad 5s linear infinite;}
+.sub{font-size:16px;color:var(--dim);font-weight:300;line-height:1.8;max-width:480px;margin-bottom:36px;}
+.acts{display:flex;gap:12px;flex-wrap:wrap;}
+.btn-p{background:linear-gradient(135deg,#7B2FFF,#5A1ECC);color:#fff;font-size:14px;font-weight:700;padding:14px 32px;border-radius:10px;text-decoration:none;transition:all .25s;box-shadow:0 6px 22px rgba(123,47,255,.4);}
+.btn-p:hover{transform:translateY(-2px);box-shadow:0 12px 32px rgba(123,47,255,.5);}
+.btn-g{font-size:14px;font-weight:500;color:var(--dim);padding:13px 22px;border-radius:10px;border:1px solid var(--border);text-decoration:none;transition:all .25s;}
+.btn-g:hover{border-color:rgba(123,47,255,.4);color:#9B4FFF;}
 
-/* metrics */
-.gp-met{padding:60px;border-top:1px solid var(--border);border-bottom:1px solid var(--border);position:relative;z-index:1;}
-.gp-met-in{max-width:1280px;margin:0 auto;display:grid;grid-template-columns:repeat(4,1fr);border:1px solid var(--border);border-radius:16px;overflow:hidden;}
-.gp-m{padding:36px 20px;text-align:center;border-right:1px solid var(--border);transition:background .3s;}
-.gp-m:last-child{border-right:none;}
-.gp-m:hover{background:var(--ac-g);}
-.gp-m-n{font-family:'JetBrains Mono',monospace;font-size:44px;font-weight:900;background:linear-gradient(135deg,var(--ac),var(--ac2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;line-height:1;}
-.gp-m-l{font-size:12px;color:var(--dim);margin-top:8px;}
+/* LIVE INDICATOR SIDE */
+.hero-live-side{display:flex;flex-direction:column;justify-content:center;gap:16px;}
+.live-banner{background:rgba(123,47,255,.1);border:1px solid rgba(123,47,255,.25);border-radius:14px;padding:20px 24px;display:flex;align-items:center;gap:14px;}
+.lb-dot{width:10px;height:10px;border-radius:50%;background:#9B4FFF;animation:pulse 1.5s infinite;flex-shrink:0;}
+.lb-text{font-size:14px;color:var(--dim);line-height:1.6;}
+.lb-text strong{color:var(--text);}
+.wave-indicator{display:flex;align-items:center;gap:3px;padding:0 2px;}
+.wi-bar{width:3px;background:#9B4FFF;border-radius:2px;animation:waveB 1.2s ease-in-out infinite;}
+.wi-bar:nth-child(1){height:8px;animation-delay:0s;}.wi-bar:nth-child(2){height:16px;animation-delay:.15s;}.wi-bar:nth-child(3){height:12px;animation-delay:.3s;}.wi-bar:nth-child(4){height:20px;animation-delay:.45s;}.wi-bar:nth-child(5){height:12px;animation-delay:.6s;}.wi-bar:nth-child(6){height:8px;animation-delay:.75s;}
 
-/* cta */
-.gp-cta{padding:100px 40px;text-align:center;position:relative;overflow:hidden;}
-.gp-cta-g{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:600px;height:350px;background:radial-gradient(ellipse,var(--ac-g),transparent 60%);pointer-events:none;}
-.gp-cta-in{position:relative;z-index:1;max-width:560px;margin:0 auto;}
-.gp-cta-h{font-size:clamp(30px,4vw,50px);font-weight:900;letter-spacing:-2px;line-height:1.06;margin-bottom:16px;}
-.gp-cta-h em{font-style:normal;background:linear-gradient(135deg,var(--ac),#9B4FFF);-webkit-background-clip:text;-webkit-text-fill-color:transparent;}
-.gp-cta-sub{font-size:15px;color:var(--dim);margin-bottom:38px;font-weight:300;line-height:1.72;}
-.gp-cta-btns{display:flex;justify-content:center;gap:14px;flex-wrap:wrap;}
+/* VIDEO CALL SCENE */
+.vc-scene{width:100%;background:#000;border-top:1px solid rgba(255,255,255,.06);position:relative;}
+.vc-inner{max-width:1400px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr 1fr;gap:2px;background:rgba(255,255,255,.04);}
+/* Participant panes */
+.vc-pane{aspect-ratio:16/9;position:relative;overflow:hidden;background:#0A0616;}
+.vc-pane-human{background:linear-gradient(135deg,#1A1030,#2A1848);}
+.human-bg{position:absolute;inset:0;background:radial-gradient(ellipse at 50% 30%,rgba(100,60,180,.2),transparent 60%);}
+.human-avatar{position:absolute;bottom:0;left:50%;transform:translateX(-50%);width:80px;height:80px;border-radius:50%;background:linear-gradient(135deg,#4A2080,#8040C0);display:flex;align-items:center;justify-content:center;font-size:32px;}
+.human-nm{position:absolute;bottom:8px;left:10px;font-family:'JetBrains Mono',monospace;font-size:9px;color:rgba(255,255,255,.7);background:rgba(0,0,0,.55);padding:2px 8px;border-radius:4px;}
 
-@media(max-width:960px){.gp-hero{grid-template-columns:1fr;padding:80px 28px 40px;}.gp-feat-grid{grid-template-columns:1fr;}.gp-met-in{grid-template-columns:1fr 1fr;}.gp-feats,.gp-met,.gp-cta{padding-left:28px;padding-right:28px;}}
-@media(max-width:600px){.gp-met-in{grid-template-columns:1fr;}.gp-cta{padding:60px 20px;}}
+/* AI orb pane */
+.vc-pane-ai-main{background:linear-gradient(135deg,#0A0420,#14086E);}
+.ai-pane-inner{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;}
+/* ripples */
+.rp{position:absolute;border-radius:50%;border:1.5px solid rgba(155,79,255,.3);animation:ripple 2.4s ease-out infinite;}
+.rp:nth-child(1){width:100px;height:100px;animation-delay:0s;}
+.rp:nth-child(2){width:140px;height:140px;animation-delay:.8s;}
+.rp:nth-child(3){width:180px;height:180px;animation-delay:1.6s;}
+.ai-orb-hero{width:70px;height:70px;border-radius:50%;position:relative;overflow:hidden;z-index:1;}
+.ao-base{position:absolute;inset:0;border-radius:50%;background:radial-gradient(ellipse at 36% 28%,rgba(255,255,255,.88),rgba(200,175,255,.55) 16%,transparent 36%),radial-gradient(ellipse at 68% 66%,rgba(70,20,170,.55),transparent 48%),radial-gradient(circle,#AA80FF 0%,#6E38CC 32%,#481898 60%,#1A0850 82%,#0C0330 100%);box-shadow:0 0 40px rgba(155,79,255,.8);}
+.ao-spin{position:absolute;inset:0;border-radius:50%;background:conic-gradient(from 105deg at 44% 56%,transparent,rgba(255,255,255,.13) 20deg,transparent 38deg,rgba(180,140,255,.08) 78deg,transparent 118deg,rgba(255,255,255,.06) 198deg,transparent 235deg);animation:orbSpin 6s linear infinite;}
+.ao-hl{position:absolute;top:8%;left:14%;width:36%;height:26%;background:radial-gradient(ellipse,rgba(255,255,255,.72),rgba(255,255,255,.08) 60%,transparent);border-radius:50%;transform:rotate(-28deg);}
+.ai-brand-name{font-size:11px;font-weight:700;color:rgba(196,164,255,.9);letter-spacing:1px;z-index:1;}
+.ai-sub-label{font-family:'JetBrains Mono',monospace;font-size:8px;color:rgba(155,79,255,.6);letter-spacing:1.5px;z-index:1;}
+.ai-nm{position:absolute;bottom:8px;left:10px;font-family:'JetBrains Mono',monospace;font-size:9px;color:rgba(255,255,255,.7);background:rgba(0,0,0,.55);padding:2px 8px;border-radius:4px;}
 
+/* bottom bar of scene */
+.vc-bot{background:#0D0920;border-top:1px solid rgba(255,255,255,.06);padding:12px 24px;display:flex;align-items:center;justify-content:space-between;}
+.vc-meeting{font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--dim2);}
+.vc-controls{display:flex;gap:10px;align-items:center;}
+.vc-ctrl{width:34px;height:34px;border-radius:50%;background:rgba(255,255,255,.07);display:flex;align-items:center;justify-content:center;font-size:14px;}
+.vc-ctrl-end{background:#EF4444;width:40px;}
+.vc-assist{background:rgba(123,47,255,.15);border:1px solid rgba(123,47,255,.3);border-radius:8px;padding:6px 14px;font-family:'JetBrains Mono',monospace;font-size:10px;color:#9B4FFF;font-weight:700;display:flex;align-items:center;gap:6px;}
+.vc-assist-dot{width:6px;height:6px;border-radius:50%;background:#9B4FFF;animation:pulse 1.5s infinite;}
+
+/* STAT BAND */
+.statband{background:var(--bg2);border-top:1px solid var(--border);border-bottom:1px solid var(--border);position:relative;z-index:1;}
+.statband-in{max-width:1280px;margin:0 auto;display:grid;grid-template-columns:repeat(4,1fr);}
+.ss{padding:32px 20px;text-align:center;border-right:1px solid var(--border);transition:background .3s;}
+.ss:last-child{border-right:none;}.ss:hover{background:var(--gbg);}
+.ss-n{font-family:'JetBrains Mono',monospace;font-size:40px;font-weight:900;letter-spacing:-2px;background:linear-gradient(135deg,#9B4FFF,#C4A4FF);-webkit-background-clip:text;-webkit-text-fill-color:transparent;line-height:1;}
+.ss-l{font-size:11px;color:var(--dim);margin-top:6px;font-weight:300;}
+
+/* FEATURES 3-card */
+.feats-sec{padding:88px 60px;position:relative;z-index:1;max-width:1400px;margin:0 auto;}
+.stag{font-family:'JetBrains Mono',monospace;font-size:10px;font-weight:700;letter-spacing:4px;text-transform:uppercase;color:#9B4FFF;margin-bottom:14px;}
+.sh{font-size:clamp(28px,3.5vw,46px);font-weight:900;letter-spacing:-1.8px;line-height:1.06;margin-bottom:14px;}
+.sh em{font-style:normal;background:linear-gradient(135deg,#9B4FFF,#C4A4FF);-webkit-background-clip:text;-webkit-text-fill-color:transparent;}
+.ssub{font-size:15px;color:var(--dim);font-weight:300;line-height:1.75;max-width:540px;margin-bottom:52px;}
+
+.feat-g{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;}
+.fc{background:var(--card2);border:1px solid var(--border);border-radius:18px;padding:32px 26px;transition:all .3s;position:relative;overflow:hidden;}
+.fc:hover{border-color:rgba(123,47,255,.35);transform:translateY(-4px);box-shadow:0 14px 40px rgba(123,47,255,.1);}
+.fc::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,#7B2FFF,#C4A4FF);transform:scaleX(0);transform-origin:left;transition:transform .35s;}
+.fc:hover::before{transform:scaleX(1);}
+.fc-ico{width:52px;height:52px;border-radius:14px;background:linear-gradient(135deg,rgba(123,47,255,.22),rgba(155,79,255,.1));border:1px solid rgba(123,47,255,.25);display:flex;align-items:center;justify-content:center;font-size:24px;margin-bottom:16px;}
+.fc-t{font-size:16px;font-weight:800;margin-bottom:10px;}
+.fc-d{font-size:13px;color:var(--dim);line-height:1.72;font-weight:300;}
+
+/* CTA */
+.cta-sec{padding:100px 60px;text-align:center;position:relative;overflow:hidden;}
+.cta-g{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:700px;height:400px;background:radial-gradient(ellipse,rgba(123,47,255,.12),transparent 65%);pointer-events:none;}
+.cta-in{position:relative;z-index:1;max-width:580px;margin:0 auto;}
+.ch{font-size:clamp(30px,4vw,52px);font-weight:900;letter-spacing:-2px;line-height:1.06;margin-bottom:18px;}
+.ch em{font-style:normal;background:linear-gradient(135deg,#9B4FFF,#C4A4FF);-webkit-background-clip:text;-webkit-text-fill-color:transparent;}
+.csub{font-size:15px;color:var(--dim);margin-bottom:40px;font-weight:300;line-height:1.72;}
+.cacts{display:flex;justify-content:center;gap:14px;flex-wrap:wrap;}
+
+@media(max-width:1100px){.hero-text{grid-template-columns:1fr;max-width:680px;}.vc-inner{grid-template-columns:1fr 1fr;}}
+@media(max-width:900px){.feat-g{grid-template-columns:1fr;}.statband-in{grid-template-columns:1fr 1fr;}}
+@media(max-width:600px){.hero-text{padding:0 20px 40px;}.feats-sec,.cta-sec{padding-left:20px;padding-right:20px;}.statband-in{grid-template-columns:1fr;}.vc-inner{grid-template-columns:1fr;}}
 </style>
 </head>
 <body>
 <nav id="snav">
-  <a href="synaps-v10-toggle.html" class="nav-logo">
-    <div class="orb-sm">
-      <div class="ob ob-base"></div>
-      <div class="ob ob-swirl"></div>
-      <div class="ob-hl"></div>
-      <div class="ob-gleam"></div>
-    </div>
+  <a href="synaps-v11-toggle.html" style="display:flex;align-items:center;gap:10px;text-decoration:none;">
+    <div class="orb-sm"><div class="ob ob-base"></div><div class="ob ob-swirl"></div><div class="ob-hl"></div></div>
     <span class="nav-wordmark">Synaps<span class="nw-hi">AI</span></span>
   </a>
-  <div class="nav-bc">
-    <a href="synaps-v10-toggle.html" class="bc-home">Ana Sayfa</a>
-    <span class="bc-sep">›</span>
-    <span class="bc-cur">AI Mülakat Asistanı</span>
-  </div>
+  <div class="nav-bc"><a href="synaps-v11-toggle.html" class="bc-home">Ana Sayfa</a><span class="bc-sep">›</span><span class="bc-cur">AI Mülakat Asistanı</span></div>
   <div class="nav-right">
-    <a href="synaps-v10-toggle.html" class="nav-back">← Ekosisteme Dön</a>
-    <label class="ts-wrap">
-      <input type="checkbox" id="themeToggle">
-      <div class="ts-track"><div class="ts-thumb"></div><span class="ts-m">🌙</span><span class="ts-s">☀️</span></div>
-    </label>
+    <a href="synaps-v11-toggle.html" class="nav-back">← Ekosisteme Dön</a>
+    <label class="ts-wrap"><input type="checkbox" id="themeToggle"><div class="ts-track"><div class="ts-thumb"></div><span class="ts-m">🌙</span><span class="ts-s">☀️</span></div></label>
     <a href="https://synapsai.io" class="nav-cta">Demo İste</a>
   </div>
 </nav>
 
-<section class="gp-hero">
-  <div class="gp-bg"></div>
-  <div style="position:relative;z-index:1;">
-    <div class="gp-eyebrow">
-      <span class="gp-step">2. ADIM</span>
-      <span class="gp-badge"><span class="gp-dot"></span>2. ADIM · Asistan</span>
+<!-- HERO -->
+<section class="hero">
+  <div class="hbg"></div>
+  <!-- TEXT -->
+  <div class="hero-text" style="position:relative;z-index:1;">
+    <div>
+      <div class="eyebrow">
+        <span class="tag-s">2. Adım</span>
+        <span class="tag-p"><span class="pd"></span>Canlı Mülakat · AI Destekli</span>
+      </div>
+      <h1>
+        <span>Mülakatta</span>
+        <span class="gr">AI Asistanınız</span>
+        <span>Yanınızda</span>
+      </h1>
+      <p class="sub">İki kişi mülakat yaparken, AI görüşmeye sessizce katılır. Canlı soru önerileri, otomatik notlar, önyargı uyarısı — mülakatçının kararını güçlendirir.</p>
+      <div class="acts">
+        <a href="https://synapsai.io" class="btn-p">Demo İste →</a>
+        <a href="synaps-v11-toggle.html" class="btn-g">Tüm Ürünler</a>
+      </div>
     </div>
-    <h1 class="gp-h1">Mülakatçınızın<br><em>Akıllı Asistanı</em></h1>
-    <p class="gp-sub">Yüz yüze veya video mülakatlarında yapay zeka mülakatçıya canlı soru önerileri, not alma desteği, önyargı uyarıları ve anlık analiz sağlar. İK ekibiniz daha iyi kararlar alır.</p>
-    <div class="gp-btns">
-      <a href="https://synapsai.io" class="btn-ac">Demo İste →</a>
-      <a href="synaps-v10-toggle.html" class="btn-gh">Tüm Ürünler</a>
+    <div class="hero-live-side">
+      <div class="live-banner">
+        <div class="lb-dot"></div>
+        <div class="lb-text">Mülakat devam ediyor — <strong>AI asistan aktif</strong>. Adayın cevapları analiz ediliyor, soru önerileri hazır.</div>
+      </div>
+      <div class="live-banner" style="background:rgba(74,224,138,.06);border-color:rgba(74,224,138,.2);">
+        <div style="width:10px;height:10px;border-radius:50%;background:#4AE08A;flex-shrink:0;animation:pulse 2s infinite;"></div>
+        <div class="lb-text">AI anlık not alıyor · <span style="color:#4AE08A;font-weight:600;">0 önyargı uyarısı</span></div>
+        <div class="wave-indicator">
+          <div class="wi-bar"></div><div class="wi-bar"></div><div class="wi-bar"></div><div class="wi-bar"></div><div class="wi-bar"></div><div class="wi-bar"></div>
+        </div>
+      </div>
     </div>
   </div>
-  <div style="position:relative;z-index:1;">
-    <div style="background:var(--card2);border:1px solid var(--border);border-radius:20px;overflow:hidden;box-shadow:0 24px 64px rgba(0,0,0,.5);">
-  <div style="background:var(--bg2);border-bottom:1px solid var(--border);padding:14px 20px;display:flex;align-items:center;justify-content:space-between;">
-    <div style="display:flex;align-items:center;gap:8px;font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--dim2);">
-      <span style="width:6px;height:6px;border-radius:50%;background:#9B4FFF;display:inline-block;animation:pulse 1.5s infinite;"></span>
-      Asistan Aktif — Canlı Mülakat
+
+  <!-- VIDEO CALL SCENE -->
+  <div class="vc-scene">
+    <div class="vc-inner">
+      <!-- Participant 1 -->
+      <div class="vc-pane vc-pane-human">
+        <div class="human-bg"></div>
+        <div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;">
+          <div style="width:70px;height:70px;border-radius:50%;background:linear-gradient(135deg,#5A2896,#8040C0);display:flex;align-items:center;justify-content:center;font-size:28px;">👩‍💼</div>
+        </div>
+        <div class="human-nm">Kimberly Reynolds · İK Müdürü</div>
+      </div>
+      <!-- AI ORB — center -->
+      <div class="vc-pane vc-pane-ai-main">
+        <div class="ai-pane-inner">
+          <div class="rp"></div><div class="rp"></div><div class="rp"></div>
+          <div class="ai-orb-hero">
+            <div class="ao-base"></div><div class="ao-spin"></div><div class="ao-hl"></div>
+          </div>
+          <div class="ai-brand-name">SynapsAI</div>
+          <div class="ai-sub-label">AI MÜL. ASİSTANI</div>
+        </div>
+        <div class="ai-nm">AI Asistan · Aktif</div>
+      </div>
+      <!-- Participant 2 -->
+      <div class="vc-pane vc-pane-human" style="background:linear-gradient(135deg,#12202C,#1E3448);">
+        <div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;">
+          <div style="width:70px;height:70px;border-radius:50%;background:linear-gradient(135deg,#1A3A6A,#2A5AAA);display:flex;align-items:center;justify-content:center;font-size:28px;">👨‍💼</div>
+        </div>
+        <div class="human-nm">Damon Donovan · Aday</div>
+      </div>
     </div>
-    <span style="font-size:11px;font-weight:700;color:#9B4FFF;">17:32</span>
+    <div class="vc-bot">
+      <div class="vc-meeting">11:48 AM · Design Chat · Mülakat Oturumu</div>
+      <div class="vc-controls">
+        <div class="vc-ctrl">🎤</div>
+        <div class="vc-ctrl">📷</div>
+        <div class="vc-ctrl">💬</div>
+        <div class="vc-ctrl vc-ctrl-end">📵</div>
+      </div>
+      <div class="vc-assist"><div class="vc-assist-dot"></div>AI Asistan: Not Alıyor</div>
+    </div>
   </div>
-  <div style="padding:20px;">
-    <div style="font-family:'JetBrains Mono',monospace;font-size:9px;color:#9B4FFF;letter-spacing:2px;margin-bottom:12px;">ÖNERİLEN SORU</div>
-    <div style="background:rgba(123,47,255,.07);border:1px solid rgba(123,47,255,.2);border-radius:10px;padding:14px;margin-bottom:14px;font-size:12px;color:var(--dim);line-height:1.7;">
-      💡 "Bahsettiğiniz projedeki teknik borcu nasıl önceliklendirdiniz?"
-    </div>
-    <div style="font-family:'JetBrains Mono',monospace;font-size:9px;color:var(--dim2);letter-spacing:2px;margin-bottom:10px;">CANLI NOTLAR</div>
-    <div style="display:flex;flex-direction:column;gap:6px;margin-bottom:14px;">
-      <div style="display:flex;align-items:flex-start;gap:8px;font-size:11px;color:var(--dim);">
-        <span style="color:#9B4FFF;flex-shrink:0;">✓</span> Liderlik deneyimi — 3 kez vurguladı
-      </div>
-      <div style="display:flex;align-items:flex-start;gap:8px;font-size:11px;color:var(--dim);">
-        <span style="color:#9B4FFF;flex-shrink:0;">✓</span> Takım büyüklüğü 12 kişi
-      </div>
-      <div style="display:flex;align-items:flex-start;gap:8px;font-size:11px;color:var(--dim);">
-        <span style="color:#FCD34D;flex-shrink:0;">⚠</span> Metrik henüz belirtilmedi
-      </div>
-    </div>
-    <div style="background:rgba(255,80,80,.07);border:1px solid rgba(255,80,80,.2);border-radius:8px;padding:10px 12px;font-size:11px;color:var(--dim);">
-      <span style="color:#FF5050;font-weight:700;">● Önyargı Uyarısı:</span> Eğitim bilgisine aşırı ağırlık verildi
-    </div>
+</section>
+
+<!-- STAT -->
+<div class="statband">
+  <div class="statband-in">
+    <div class="ss"><div class="ss-n">7/24</div><div class="ss-l">Kesintisiz asistan desteği</div></div>
+    <div class="ss"><div class="ss-n">40%</div><div class="ss-l">Daha az önyargılı karar</div></div>
+    <div class="ss"><div class="ss-n">2x</div><div class="ss-l">Daha hızlı mülakat notu</div></div>
+    <div class="ss"><div class="ss-n">95%</div><div class="ss-l">Mülakatçı memnuniyeti</div></div>
   </div>
 </div>
-  </div>
-</section>
 
-<section class="gp-feats">
-  <div class="gp-feats-in">
-    <div class="section-tag">Temel Özellikler</div>
-    <h2 class="section-h2">Ne İşe <em>Yarıyor?</em></h2>
-    <p class="section-sub">İnsan mülakatçıya gerçek zamanlı destek veren, önyargısız değerlendirme asistanı.</p>
-    <div class="gp-feat-grid"><div class="gp-fi"><div class="gfi-n">01</div><span class="gfi-icon">💡</span><div class="gfi-t">Canlı Soru Önerileri</div><p class="gfi-d">Adayın cevaplarını analiz ederek konuyla ilgili takip soruları gerçek zamanlı önerir.</p></div><div class="gp-fi"><div class="gfi-n">02</div><span class="gfi-icon">📝</span><div class="gfi-t">Otomatik Not Alma</div><p class="gfi-d">Görüşme boyunca anahtar noktalar, belirtilen rakamlar ve önemli bilgiler otomatik kaydedilir.</p></div><div class="gp-fi"><div class="gfi-n">03</div><span class="gfi-icon">⚖️</span><div class="gfi-t">Önyargı Uyarısı</div><p class="gfi-d">Mülakatçının belirli kriterlere aşırı odaklandığını tespit eder ve uyarı verir.</p></div><div class="gp-fi"><div class="gfi-n">04</div><span class="gfi-icon">📋</span><div class="gfi-t">Anlık Değerlendirme</div><p class="gfi-d">Mülakat biterken özet rapor ve işe alım skoru hazırdır.</p></div></div>
-  </div>
-</section>
-
-<div class="gp-met">
-  <div class="gp-met-in"><div class="gp-m"><div class="gp-m-n">Real-time</div><div class="gp-m-l">Canlı analiz</div></div><div class="gp-m"><div class="gp-m-n">40%</div><div class="gp-m-l">Daha nesnel kararlar</div></div><div class="gp-m"><div class="gp-m-n">0</div><div class="gp-m-l">Belgeleme yükü</div></div><div class="gp-m"><div class="gp-m-n">100%</div><div class="gp-m-l">Yapılandırılmış mülakat</div></div></div>
-</div>
-
-<section class="gp-cta">
-  <div class="gp-cta-g"></div>
-  <div class="gp-cta-in">
-    <div class="section-tag" style="text-align:center;">2. ADIM · AI Mülakat Asistanı</div>
-    <h2 class="gp-cta-h">AI Mülakat Asistanı'ı<br><em>Bugün Deneyin</em></h2>
-    <p class="gp-cta-sub">Demo almak veya hemen başlamak için bize ulaşın.</p>
-    <div class="gp-cta-btns">
-      <a href="https://synapsai.io" class="btn-ac">Demo İste →</a>
-      <a href="synaps-v10-toggle.html" class="btn-gh">← Ana Sayfaya Dön</a>
+<!-- FEATURES — 3 adım -->
+<section class="feats-sec">
+  <div class="stag">Temel Özellikler</div>
+  <h2 class="sh">Ne İşe <em>Yarıyor?</em></h2>
+  <p class="ssub">Mülakatçının süreç boyunca daha iyi kararlar almasına yardımcı olan, görüşmenin içine entegre AI destek sistemi.</p>
+  <div class="feat-g">
+    <div class="fc">
+      <div class="fc-ico">💡</div>
+      <div class="fc-t">Canlı Soru Önerileri</div>
+      <p class="fc-d">Adayın cevaplarını analiz ederek konuyla ilgili takip soruları gerçek zamanlı önerir. Mülakatçı asla konuyu kaçırmaz, akış doğal devam eder.</p>
+    </div>
+    <div class="fc">
+      <div class="fc-ico">📝</div>
+      <div class="fc-t">Otomatik Not Alma</div>
+      <p class="fc-d">Görüşme boyunca anahtar noktalar, belirtilen rakamlar ve önemli bilgiler otomatik kaydedilir. Mülakat biter bitmez özet rapor hazır.</p>
+    </div>
+    <div class="fc">
+      <div class="fc-ico">⚖️</div>
+      <div class="fc-t">Önyargı Uyarısı & Anlık Değerlendirme</div>
+      <p class="fc-d">Mülakatçının belirli kriterlere aşırı odaklandığını tespit eder ve uyarı verir. Mülakat biterken özet rapor ve işe alım skoru hazırdır.</p>
     </div>
   </div>
 </section>
+
+<!-- CTA -->
+<section class="cta-sec">
+  <div class="cta-g"></div>
+  <div class="cta-in">
+    <div class="stag" style="text-align:center;">2. Adım · AI Mülakat Asistanı</div>
+    <h2 class="ch">AI Asistanı<br><em>Bugün Aktifleştirin</em></h2>
+    <p class="csub">Demo almak veya hemen başlamak için bize ulaşın.</p>
+    <div class="cacts">
+      <a href="https://synapsai.io" class="btn-p">Demo İste →</a>
+      <a href="synaps-v11-toggle.html" class="btn-g">← Ana Sayfaya Dön</a>
+    </div>
+  </div>
+</section>
+
 <footer class="lp-footer">
   <div class="lp-footer-in">
-    <div class="lf-brand">
-      <div class="orb-sm"><div class="ob ob-base"></div><div class="ob ob-swirl"></div><div class="ob-hl"></div></div>
-      <div><div class="lf-name">Synaps<b>AI</b></div><div class="lf-prod">AI Mülakat Asistanı</div></div>
-    </div>
-    <nav class="lf-links">
-      <a href="synaps-v10-toggle.html">Ana Sayfa</a>
-      <a href="#">Gizlilik</a>
-      <a href="#">Şartlar</a>
-      <a href="mailto:destek@synapsai.ai">Destek</a>
-    </nav>
+    <div class="lf-brand"><div class="orb-sm"><div class="ob ob-base"></div><div class="ob ob-swirl"></div><div class="ob-hl"></div></div><div><div class="lf-name">Synaps<b>AI</b></div><div class="lf-prod">AI Mülakat Asistanı</div></div></div>
+    <nav class="lf-links"><a href="synaps-v11-toggle.html">Ana Sayfa</a><a href="#">Gizlilik</a><a href="#">Şartlar</a><a href="#">Destek</a></nav>
     <p class="lf-copy">© 2025 Synaps Yapay Zeka Teknolojileri A.Ş.</p>
   </div>
 </footer>
-<script>
-(function(){
-  var t=document.getElementById('themeToggle'),h=document.documentElement;
-  var s=localStorage.getItem('synaps-theme')||'dark';
-  if(s==='light'){h.setAttribute('data-theme','light');if(t)t.checked=true;}
-  if(t)t.addEventListener('change',function(){
-    var v=t.checked?'light':'dark';
-    h.setAttribute('data-theme',v);localStorage.setItem('synaps-theme',v);
-  });
-})();
-</script>
+<script>(function(){var t=document.getElementById('themeToggle'),h=document.documentElement;var s=localStorage.getItem('synaps-theme')||'dark';if(s==='light'){h.setAttribute('data-theme','light');if(t)t.checked=true;}if(t)t.addEventListener('change',function(){var m=t.checked?'light':'dark';h.setAttribute('data-theme',m);localStorage.setItem('synaps-theme',m);});})();</script>
 </body>
 </html>

@@ -3,352 +3,362 @@
 <head>
 <meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
 <title>AI Dil Mülakatı — Synaps AI</title>
-<link rel="preconnect" href="https://fonts.googleapis.com"><link href="https://fonts.googleapis.com/css2?family=Lexend:wght@200;300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Lexend:wght@200;300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
 <style>
-
-:root{
-  --bg:#06040F;--bg2:#0C0818;--bg3:#120E20;
-  --card:rgba(255,255,255,.04);--card2:rgba(255,255,255,.07);--card3:rgba(255,255,255,.1);
-  --border:rgba(255,255,255,.08);--border2:rgba(255,255,255,.05);
-  --text:#F0EEFF;--dim:rgba(240,238,255,.55);--dim2:rgba(240,238,255,.28);
-  --pu:#7B2FFF;--vi:#9B4FFF;--lav:#C4A4FF;--pk:#E040FB;
-  --nav-bg:rgba(6,4,15,.9);
-  --glow:rgba(123,47,255,.3);--gbg:rgba(123,47,255,.1);
-  --sh:0 32px 80px rgba(0,0,0,.55);
-}
-[data-theme="light"]{
-  --bg:#F0EEF9;--bg2:#E8E4F5;--bg3:#DDD8EF;
-  --card:rgba(255,255,255,.85);--card2:rgba(255,255,255,.95);--card3:rgba(255,255,255,.98);
-  --border:rgba(123,47,255,.11);--border2:rgba(123,47,255,.07);
-  --text:#1A0A3C;--dim:rgba(26,10,60,.58);--dim2:rgba(26,10,60,.3);
-  --nav-bg:rgba(240,238,249,.92);
-  --glow:rgba(123,47,255,.15);--gbg:rgba(123,47,255,.07);
-  --sh:0 20px 60px rgba(123,47,255,.12);
-}
-
-*{margin:0;padding:0;box-sizing:border-box;}
-html{scroll-behavior:smooth;}
-body{background:var(--bg);color:var(--text);font-family:'Lexend',sans-serif;overflow-x:hidden;transition:background .4s,color .4s;line-height:1.6;}
-body::before{content:'';position:fixed;inset:0;pointer-events:none;z-index:0;
-background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='.025'/%3E%3C/svg%3E");}
-
-/* ─── NAV ──────────────────────────────────────── */
-#snav{position:fixed;top:0;left:0;right:0;z-index:900;height:62px;
-  display:flex;align-items:center;padding:0 32px;gap:20px;
-  background:var(--nav-bg);backdrop-filter:blur(28px) saturate(200%);
-  border-bottom:1px solid var(--border);transition:background .4s;}
+:root{--bg:#06040F;--bg2:#0C0818;--bg3:#120E20;--card:rgba(255,255,255,.04);--card2:rgba(255,255,255,.07);--border:rgba(255,255,255,.08);--text:#F0EEFF;--dim:rgba(240,238,255,.55);--dim2:rgba(240,238,255,.28);--pu:#7B2FFF;--vi:#9B4FFF;--lav:#C4A4FF;--nav-bg:rgba(6,4,15,.9);--gbg:rgba(123,47,255,.1);}
+[data-theme="light"]{--bg:#F0EEF9;--bg2:#E8E4F5;--bg3:#DDD8EF;--card:rgba(255,255,255,.85);--card2:rgba(255,255,255,.95);--border:rgba(123,47,255,.11);--text:#1A0A3C;--dim:rgba(26,10,60,.58);--dim2:rgba(26,10,60,.3);--nav-bg:rgba(240,238,249,.92);--gbg:rgba(123,47,255,.07);}
+*{margin:0;padding:0;box-sizing:border-box;}html{scroll-behavior:smooth;}
+body{background:var(--bg);color:var(--text);font-family:'Lexend',sans-serif;overflow-x:hidden;transition:background .4s,color .4s;}
+body::before{content:'';position:fixed;inset:0;pointer-events:none;z-index:0;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='.025'/%3E%3C/svg%3E");}
+/* NAV */
+#snav{position:fixed;top:0;left:0;right:0;z-index:900;height:62px;display:flex;align-items:center;padding:0 32px;gap:20px;background:var(--nav-bg);backdrop-filter:blur(28px) saturate(200%);border-bottom:1px solid var(--border);transition:background .4s;}
 .orb-sm{width:28px;height:28px;border-radius:50%;position:relative;overflow:hidden;flex-shrink:0;}
 .ob{position:absolute;inset:0;border-radius:50%;}
-.ob-base{background:radial-gradient(ellipse at 36% 28%,rgba(255,255,255,.88) 0%,rgba(200,175,255,.55) 16%,transparent 36%),radial-gradient(ellipse at 68% 66%,rgba(70,20,170,.55) 0%,transparent 48%),radial-gradient(circle,#AA80FF 0%,#6E38CC 32%,#481898 60%,#1A0850 82%,#0C0330 100%);
-  box-shadow:inset -4px -3px 8px rgba(0,0,0,.55),inset 3px 2px 6px rgba(200,165,255,.25),0 0 14px rgba(123,47,255,.65);}
-.ob-swirl{background:conic-gradient(from 105deg at 44% 56%,transparent 0deg,rgba(255,255,255,.13) 20deg,transparent 38deg,rgba(180,140,255,.08) 78deg,transparent 118deg,rgba(255,255,255,.06) 198deg,transparent 235deg);animation:orbSpin 8s linear infinite;}
-.ob-hl{position:absolute;top:8%;left:14%;width:36%;height:26%;background:radial-gradient(ellipse,rgba(255,255,255,.72) 0%,rgba(255,255,255,.08) 60%,transparent 100%);border-radius:50%;transform:rotate(-28deg);}
-.ob-gleam{position:absolute;bottom:14%;right:11%;width:18%;height:13%;background:radial-gradient(ellipse,rgba(200,160,255,.42) 0%,transparent 100%);border-radius:50%;}
+.ob-base{background:radial-gradient(ellipse at 36% 28%,rgba(255,255,255,.88) 0%,rgba(200,175,255,.55) 16%,transparent 36%),radial-gradient(ellipse at 68% 66%,rgba(70,20,170,.55) 0%,transparent 48%),radial-gradient(circle,#AA80FF 0%,#6E38CC 32%,#481898 60%,#1A0850 82%,#0C0330 100%);box-shadow:inset -4px -3px 8px rgba(0,0,0,.55),inset 3px 2px 6px rgba(200,165,255,.25),0 0 14px rgba(123,47,255,.65);}
+.ob-swirl{background:conic-gradient(from 105deg at 44% 56%,transparent,rgba(255,255,255,.13) 20deg,transparent 38deg,rgba(180,140,255,.08) 78deg,transparent 118deg,rgba(255,255,255,.06) 198deg,transparent 235deg);animation:orbSpin 8s linear infinite;}
+.ob-hl{position:absolute;top:8%;left:14%;width:36%;height:26%;background:radial-gradient(ellipse,rgba(255,255,255,.72),rgba(255,255,255,.08) 60%,transparent);border-radius:50%;transform:rotate(-28deg);}
 @keyframes orbSpin{to{transform:rotate(360deg);}}
-.nav-wordmark{font-size:15px;font-weight:700;color:var(--text);letter-spacing:-.3px;}
-.nw-hi{color:#9B4FFF;}
+.nav-wordmark{font-size:15px;font-weight:700;color:var(--text);letter-spacing:-.3px;}.nw-hi{color:#9B4FFF;}
 .nav-bc{flex:1;display:flex;align-items:center;gap:8px;}
-.bc-home{font-size:12px;color:var(--dim);text-decoration:none;transition:color .2s;}
-.bc-home:hover{color:#9B4FFF;}
-.bc-sep{color:var(--dim2);font-size:12px;}
-.bc-cur{font-size:12px;font-weight:600;color:#C4A4FF;}
+.bc-home{font-size:12px;color:var(--dim);text-decoration:none;transition:color .2s;}.bc-home:hover{color:#9B4FFF;}
+.bc-sep{color:var(--dim2);font-size:12px;}.bc-cur{font-size:12px;font-weight:600;color:#C4A4FF;}
 .nav-right{display:flex;align-items:center;gap:14px;flex-shrink:0;}
-.nav-back{font-size:12px;color:var(--dim);text-decoration:none;font-weight:500;transition:color .2s;}
-.nav-back:hover{color:#9B4FFF;}
-/* toggle */
-.ts-wrap{position:relative;width:44px;height:23px;cursor:pointer;}
-.ts-wrap input{opacity:0;position:absolute;width:0;height:0;}
+.nav-back{font-size:12px;color:var(--dim);text-decoration:none;font-weight:500;transition:color .2s;}.nav-back:hover{color:#9B4FFF;}
+.ts-wrap{position:relative;width:44px;height:23px;cursor:pointer;}.ts-wrap input{opacity:0;position:absolute;width:0;height:0;}
 .ts-track{position:absolute;inset:0;border-radius:12px;background:rgba(255,255,255,.07);border:1px solid var(--border);transition:all .3s;}
 .ts-wrap input:checked~.ts-track{background:rgba(123,47,255,.2);border-color:rgba(155,79,255,.4);}
 .ts-thumb{position:absolute;top:3px;left:3px;width:15px;height:15px;border-radius:50%;background:var(--dim2);transition:all .3s;}
 .ts-wrap input:checked~.ts-track .ts-thumb{transform:translateX(21px);background:#9B4FFF;}
-.ts-m,.ts-s{position:absolute;top:50%;transform:translateY(-50%);font-size:9px;}
-.ts-m{right:5px;}.ts-s{left:5px;opacity:0;}
-.ts-wrap input:checked~.ts-track .ts-m{opacity:0;}
-.ts-wrap input:checked~.ts-track .ts-s{opacity:1;}
+.ts-m,.ts-s{position:absolute;top:50%;transform:translateY(-50%);font-size:9px;}.ts-m{right:5px;}.ts-s{left:5px;opacity:0;}
+.ts-wrap input:checked~.ts-track .ts-m{opacity:0;}.ts-wrap input:checked~.ts-track .ts-s{opacity:1;}
 .nav-cta{background:linear-gradient(135deg,#7B2FFF,#5A1ECC);color:#fff;font-size:12px;font-weight:700;padding:8px 18px;border-radius:8px;text-decoration:none;transition:all .2s;box-shadow:0 4px 14px rgba(123,47,255,.4);}
-.nav-cta:hover{transform:translateY(-1px);box-shadow:0 7px 20px rgba(123,47,255,.5);}
+.nav-cta:hover{transform:translateY(-1px);}
 @media(max-width:768px){.nav-bc{display:none;}.nav-back{display:none;}}
-
-
+/* FOOTER */
 .lp-footer{border-top:1px solid var(--border);padding:32px 40px;position:relative;z-index:1;}
 .lp-footer-in{max-width:1280px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;gap:20px;flex-wrap:wrap;}
-.lf-brand{display:flex;align-items:center;gap:10px;}
-.lf-name{font-size:14px;font-weight:700;color:var(--text);}.lf-name b{color:#9B4FFF;}
+.lf-brand{display:flex;align-items:center;gap:10px;}.lf-name{font-size:14px;font-weight:700;color:var(--text);}.lf-name b{color:#9B4FFF;}
 .lf-prod{font-size:10px;color:var(--dim2);letter-spacing:1.5px;text-transform:uppercase;font-family:'JetBrains Mono',monospace;}
 .lf-links{display:flex;gap:20px;}.lf-links a{font-size:12px;color:var(--dim2);text-decoration:none;transition:color .2s;}.lf-links a:hover{color:#9B4FFF;}
 .lf-copy{font-size:11px;color:var(--dim2);}
-@media(max-width:600px){.lp-footer-in{flex-direction:column;gap:14px;text-align:center;}.lf-links{justify-content:center;}}
-
-
+/* ANIMS */
 @keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.4;transform:scale(.65)}}
 @keyframes floatY{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
 @keyframes flowGrad{0%{background-position:0% 50%}100%{background-position:200% 50%}}
-@keyframes fadeIn{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:translateY(0)}}
-@keyframes fillBar{from{width:0}to{width:var(--w)}}
-:root{--gr:#7B2FFF;--gr2:#9B4FFF;--gr-g:rgba(123,47,255,.12);--gr-b:rgba(123,47,255,.22);}
-[data-theme="light"]{--gr:#6818CC;--gr2:#22C55E;--gr-g:rgba(123,47,255,.07);--gr-b:rgba(123,47,255,.2);}
 
-.dil-page{overflow:hidden;}
-.dil-hero{min-height:100vh;padding:90px 60px 60px;display:grid;grid-template-columns:1fr 1fr;align-items:center;gap:64px;position:relative;}
-.dil-bg{position:absolute;inset:0;background:radial-gradient(ellipse 80% 65% at 80% 50%,rgba(123,47,255,.06) 0%,transparent 55%),radial-gradient(ellipse 50% 40% at 15% 25%,rgba(123,47,255,.05) 0%,transparent 50%);}
-.dil-eyebrow{display:flex;align-items:center;gap:10px;margin-bottom:26px;}
-.dil-step{font-family:'JetBrains Mono',monospace;font-size:9px;font-weight:700;letter-spacing:2px;color:var(--dim2);background:var(--gbg);border:1px solid rgba(123,47,255,.2);padding:4px 10px;border-radius:20px;}
-.dil-badge{display:flex;align-items:center;gap:7px;background:var(--gr-g);border:1px solid var(--gr-b);border-radius:20px;padding:5px 14px;font-family:'JetBrains Mono',monospace;font-size:10px;font-weight:700;color:var(--gr);letter-spacing:1px;}
-.dil-dot{width:6px;height:6px;border-radius:50%;background:var(--gr);animation:pulse 2s infinite;}
-.dil-h1{font-size:clamp(40px,4.5vw,64px);font-weight:900;letter-spacing:-3px;line-height:1.02;margin-bottom:22px;}
-.dil-h1 em{font-style:normal;background:linear-gradient(135deg,var(--gr),var(--gr2),#9B4FFF);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-size:200%;animation:flowGrad 4s linear infinite;}
-.dil-sub{font-size:16px;color:var(--dim);font-weight:300;line-height:1.78;max-width:500px;margin-bottom:32px;}
-.dil-btns{display:flex;gap:12px;flex-wrap:wrap;}
-.btn-gr{background:linear-gradient(135deg,#7B2FFF,#9B4FFF);color:#fff;font-size:14px;font-weight:700;padding:14px 32px;border-radius:10px;text-decoration:none;transition:all .25s;box-shadow:0 6px 22px rgba(123,47,255,.3);}
-.btn-gr:hover{transform:translateY(-2px);box-shadow:0 12px 32px rgba(123,47,255,.4);}
-.btn-gh{font-size:14px;font-weight:500;color:var(--dim);padding:13px 22px;border-radius:10px;border:1px solid var(--border);text-decoration:none;transition:all .25s;}
-.btn-gh:hover{border-color:var(--gr-b);color:var(--gr);}
-.dil-langs{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:28px;}
-.dil-lang{padding:6px 14px;border-radius:8px;background:var(--card2);border:1px solid var(--border);font-size:12px;font-weight:700;letter-spacing:.5px;}
+/* HERO */
+.hero{min-height:100vh;padding:110px 60px 60px;display:grid;grid-template-columns:1fr 1fr;align-items:center;gap:64px;position:relative;overflow:hidden;max-width:1400px;margin:0 auto;}
+.hbg{position:fixed;inset:0;background:radial-gradient(ellipse 80% 60% at 60% 30%,rgba(123,47,255,.1),transparent 60%);pointer-events:none;}
+.hgrid{position:fixed;inset:0;background-image:linear-gradient(rgba(123,47,255,.03) 1px,transparent 1px),linear-gradient(90deg,rgba(123,47,255,.03) 1px,transparent 1px);background-size:60px 60px;pointer-events:none;}
 
-/* CEFR Card */
-.dil-card{background:var(--card2);border:1px solid var(--border);border-radius:20px;overflow:hidden;box-shadow:0 24px 64px rgba(0,0,0,.5);}
-.dil-card-header{background:linear-gradient(135deg,rgba(34,197,94,.08),rgba(123,47,255,.06));padding:20px 24px;border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;}
-.dc-left{display:flex;flex-direction:column;gap:2px;}
-.dc-name{font-size:16px;font-weight:800;}
-.dc-role{font-size:11px;color:var(--dim2);}
-.dc-lang{display:flex;align-items:center;gap:8px;}
-.dc-lang-flag{font-size:22px;}
-.dc-level{font-family:'JetBrains Mono',monospace;font-size:28px;font-weight:900;color:var(--gr);}
-.dc-lvl-label{font-size:9px;color:var(--dim2);letter-spacing:1.5px;}
-.dil-card-body{padding:20px 24px;}
-.cefr-row{display:flex;align-items:center;justify-content:space-between;margin-bottom:14px;}
-.cefr-levels{display:flex;gap:6px;}
-.cefr-box{width:36px;height:36px;border-radius:8px;border:1px solid var(--border);display:flex;align-items:center;justify-content:center;font-family:'JetBrains Mono',monospace;font-size:12px;font-weight:700;color:var(--dim2);cursor:default;transition:all .2s;}
-.cefr-box.active{background:var(--gr);border-color:var(--gr);color:#fff;box-shadow:0 4px 12px rgba(123,47,255,.3);}
-.dil-skills{display:flex;flex-direction:column;gap:10px;margin-top:18px;}
-.dil-skill-row{display:flex;align-items:center;gap:10px;font-size:12px;color:var(--dim);}
-.dil-sk-label{width:72px;flex-shrink:0;font-weight:600;}
-.dil-sk-track{flex:1;height:8px;background:var(--border);border-radius:4px;overflow:hidden;}
-.dil-sk-fill{height:100%;background:linear-gradient(90deg,var(--gr),var(--gr2));border-radius:4px;transition:width 1.2s ease;}
-.dil-sk-score{font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--gr);width:36px;text-align:right;font-weight:700;}
-.dil-ai-note{background:rgba(123,47,255,.07);border:1px solid var(--gr-b);border-radius:10px;padding:12px 16px;margin-top:14px;font-size:11px;color:var(--dim);line-height:1.7;}
-.dil-ai-label{font-family:'JetBrains Mono',monospace;font-size:8px;color:var(--gr);letter-spacing:2px;margin-bottom:4px;}
+.eyebrow{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:26px;}
+.tag-s{font-family:'JetBrains Mono',monospace;font-size:9px;font-weight:700;letter-spacing:3px;color:var(--dim2);background:var(--gbg);border:1px solid rgba(123,47,255,.2);padding:5px 12px;border-radius:20px;}
+.tag-p{background:rgba(123,47,255,.12);border:1px solid rgba(123,47,255,.3);color:#9B4FFF;font-family:'JetBrains Mono',monospace;font-size:9px;font-weight:700;letter-spacing:2px;padding:5px 12px;border-radius:20px;display:flex;align-items:center;gap:6px;}
+.pd{width:6px;height:6px;border-radius:50%;background:#9B4FFF;animation:pulse 2s infinite;}
+h1{font-size:clamp(40px,4.5vw,68px);font-weight:900;letter-spacing:-3px;line-height:.98;margin-bottom:24px;}
+h1 .gr{background:linear-gradient(135deg,#9B4FFF,#C4A4FF,#E040FB);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-size:200%;animation:flowGrad 5s linear infinite;}
+.sub{font-size:16px;color:var(--dim);font-weight:300;line-height:1.8;max-width:480px;margin-bottom:36px;}
+.acts{display:flex;gap:12px;flex-wrap:wrap;}
+.btn-p{background:linear-gradient(135deg,#7B2FFF,#5A1ECC);color:#fff;font-size:14px;font-weight:700;padding:14px 32px;border-radius:10px;text-decoration:none;transition:all .25s;box-shadow:0 6px 22px rgba(123,47,255,.4);}
+.btn-p:hover{transform:translateY(-2px);box-shadow:0 12px 32px rgba(123,47,255,.5);}
+.btn-g{font-size:14px;font-weight:500;color:var(--dim);padding:13px 22px;border-radius:10px;border:1px solid var(--border);text-decoration:none;transition:all .25s;}
+.btn-g:hover{border-color:rgba(123,47,255,.4);color:#9B4FFF;}
 
-/* language matrix */
-.dil-matrix{padding:80px 60px;position:relative;z-index:1;background:var(--bg2);border-top:1px solid var(--border);}
-.dil-matrix-in{max-width:1280px;margin:0 auto;}
-.section-tag{font-family:'JetBrains Mono',monospace;font-size:10px;font-weight:700;letter-spacing:4px;text-transform:uppercase;color:var(--gr);margin-bottom:14px;}
-.section-h2{font-size:clamp(28px,3.5vw,46px);font-weight:900;letter-spacing:-1.5px;line-height:1.08;margin-bottom:14px;}
-.section-h2 em{font-style:normal;background:linear-gradient(135deg,var(--gr),#9B4FFF);-webkit-background-clip:text;-webkit-text-fill-color:transparent;}
-.section-sub{font-size:15px;color:var(--dim);font-weight:300;line-height:1.75;max-width:540px;}
-.lang-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:52px;}
-.lang-card{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:22px;text-align:center;transition:all .3s;cursor:default;}
-.lang-card:hover{background:var(--card2);border-color:var(--gr-b);transform:translateY(-4px);}
-.lang-flag{font-size:28px;display:block;margin-bottom:8px;}
-.lang-name{font-size:14px;font-weight:700;margin-bottom:4px;}
-.lang-sub{font-size:10px;color:var(--dim2);}
+/* LANG GRID */
+.lang-card{background:var(--card2);border:1px solid var(--border);border-radius:20px;overflow:hidden;box-shadow:0 32px 80px rgba(0,0,0,.5);}
+.lc-header{background:var(--bg2);border-bottom:1px solid var(--border);padding:14px 20px;display:flex;align-items:center;justify-content:space-between;}
+.lc-title{font-size:13px;font-weight:700;color:var(--text);}
+.lc-badge{font-family:'JetBrains Mono',monospace;font-size:9px;color:#9B4FFF;background:rgba(123,47,255,.12);border:1px solid rgba(123,47,255,.25);padding:3px 10px;border-radius:6px;font-weight:700;}
+.lang-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--border);padding:0;}
+.lg-cell{background:var(--bg);padding:16px;display:flex;flex-direction:column;align-items:center;gap:6px;transition:background .25s;cursor:default;}
+.lg-cell:hover{background:var(--gbg);}
+.lg-flag{font-size:22px;}
+.lg-name{font-size:11px;font-weight:600;color:var(--text);}
+.lg-cefr{font-family:'JetBrains Mono',monospace;font-size:9px;color:#9B4FFF;}
+.lc-cefr-strip{background:var(--bg2);border-top:1px solid var(--border);padding:14px 20px;}
+.cefr-label{font-family:'JetBrains Mono',monospace;font-size:9px;color:var(--dim2);letter-spacing:2px;margin-bottom:10px;}
+.cefr-row{display:flex;gap:6px;}
+.cefr-lvl{flex:1;text-align:center;padding:6px 0;border-radius:6px;font-family:'JetBrains Mono',monospace;font-size:10px;font-weight:700;}
 
-/* how it works */
-.dil-how{padding:80px 60px;position:relative;z-index:1;}
-.dil-how-in{max-width:1280px;margin:0 auto;}
-.dil-how-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:52px;}
-.dil-how-step{background:var(--card2);border:1px solid var(--border);border-radius:16px;padding:28px;transition:border-color .3s;}
-.dil-how-step:hover{border-color:var(--gr-b);}
-.dhs-n{font-family:'JetBrains Mono',monospace;font-size:32px;font-weight:900;color:var(--gr);opacity:.25;margin-bottom:12px;}
-.dhs-icon{font-size:24px;display:block;margin-bottom:12px;}
-.dhs-t{font-size:15px;font-weight:800;margin-bottom:8px;}
-.dhs-d{font-size:12px;color:var(--dim);line-height:1.7;font-weight:300;}
+/* FLOAT BADGE */
+.fl-b{position:absolute;background:var(--card2);border:1px solid rgba(123,47,255,.3);border-radius:12px;padding:10px 14px;box-shadow:0 8px 28px rgba(0,0,0,.4);animation:floatY 5s ease-in-out infinite;}
+.fb-icon{font-size:18px;margin-bottom:3px;}
+.fb-val{font-family:'JetBrains Mono',monospace;font-size:14px;font-weight:700;color:#9B4FFF;}
+.fb-lbl{font-size:9px;color:var(--dim2);}
 
-/* metrics */
-.dil-met{padding:60px;background:var(--bg2);border-top:1px solid var(--border);border-bottom:1px solid var(--border);position:relative;z-index:1;}
-.dil-met-in{max-width:1280px;margin:0 auto;display:grid;grid-template-columns:repeat(4,1fr);gap:0;border:1px solid var(--border);border-radius:16px;overflow:hidden;}
-.dil-m{padding:32px 20px;text-align:center;border-right:1px solid var(--border);transition:background .3s;}
-.dil-m:last-child{border-right:none;}
-.dil-m:hover{background:var(--gr-g);}
-.dil-m-n{font-family:'JetBrains Mono',monospace;font-size:42px;font-weight:900;background:linear-gradient(135deg,var(--gr),var(--gr2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;line-height:1;}
-.dil-m-l{font-size:12px;color:var(--dim);margin-top:8px;}
+/* STAT BAND */
+.statband{background:var(--bg2);border-top:1px solid var(--border);border-bottom:1px solid var(--border);position:relative;z-index:1;}
+.statband-in{max-width:1280px;margin:0 auto;display:grid;grid-template-columns:repeat(4,1fr);}
+.ss{padding:32px 20px;text-align:center;border-right:1px solid var(--border);transition:background .3s;}
+.ss:last-child{border-right:none;}.ss:hover{background:var(--gbg);}
+.ss-n{font-family:'JetBrains Mono',monospace;font-size:40px;font-weight:900;letter-spacing:-2px;background:linear-gradient(135deg,#9B4FFF,#C4A4FF);-webkit-background-clip:text;-webkit-text-fill-color:transparent;line-height:1;}
+.ss-l{font-size:11px;color:var(--dim);margin-top:6px;font-weight:300;}
 
-/* cta */
-.dil-cta{padding:100px 40px;text-align:center;position:relative;overflow:hidden;}
-.dil-cta-g{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:600px;height:350px;background:radial-gradient(ellipse,rgba(123,47,255,.07),transparent 60%);pointer-events:none;}
-.dil-cta-in{position:relative;z-index:1;max-width:560px;margin:0 auto;}
-.dil-cta-h{font-size:clamp(30px,4vw,50px);font-weight:900;letter-spacing:-2px;line-height:1.06;margin-bottom:16px;}
-.dil-cta-h em{font-style:normal;background:linear-gradient(135deg,var(--gr),#9B4FFF);-webkit-background-clip:text;-webkit-text-fill-color:transparent;}
-.dil-cta-sub{font-size:15px;color:var(--dim);margin-bottom:38px;font-weight:300;line-height:1.72;}
-.dil-cta-btns{display:flex;justify-content:center;gap:14px;flex-wrap:wrap;}
-@media(max-width:960px){.dil-hero{grid-template-columns:1fr;padding:80px 28px 40px;}.lang-grid{grid-template-columns:1fr 1fr;}.dil-how-grid{grid-template-columns:1fr;}.dil-met-in{grid-template-columns:1fr 1fr;}.dil-matrix,.dil-how,.dil-met,.dil-cta{padding-left:28px;padding-right:28px;}}
-@media(max-width:600px){.lang-grid{grid-template-columns:1fr 1fr;}.dil-met-in{grid-template-columns:1fr;}}
+/* HOW IT WORKS */
+.hiw{padding:88px 60px;background:var(--bg2);border-top:1px solid var(--border);border-bottom:1px solid var(--border);position:relative;z-index:1;}
+.hiw-in{max-width:1280px;margin:0 auto;}
+.stag{font-family:'JetBrains Mono',monospace;font-size:10px;font-weight:700;letter-spacing:4px;text-transform:uppercase;color:#9B4FFF;margin-bottom:14px;}
+.sh{font-size:clamp(28px,3.5vw,46px);font-weight:900;letter-spacing:-1.8px;line-height:1.06;margin-bottom:14px;}
+.sh em{font-style:normal;background:linear-gradient(135deg,#9B4FFF,#C4A4FF);-webkit-background-clip:text;-webkit-text-fill-color:transparent;}
+.ssub{font-size:15px;color:var(--dim);font-weight:300;line-height:1.75;max-width:540px;margin-bottom:52px;}
+.steps-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;}
+.step-card{background:var(--card);border:1px solid var(--border);border-radius:18px;padding:32px 28px;position:relative;overflow:hidden;transition:all .3s;}
+.step-card:hover{background:var(--card2);border-color:rgba(123,47,255,.3);transform:translateY(-3px);}
+.step-card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,#7B2FFF,#C4A4FF);transform:scaleX(0);transform-origin:left;transition:transform .35s;}
+.step-card:hover::before{transform:scaleX(1);}
+.step-n{font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--dim2);letter-spacing:2px;margin-bottom:16px;}
+.step-ico{width:52px;height:52px;border-radius:14px;background:linear-gradient(135deg,rgba(123,47,255,.22),rgba(155,79,255,.1));border:1px solid rgba(123,47,255,.25);display:flex;align-items:center;justify-content:center;font-size:24px;margin-bottom:16px;}
+.step-t{font-size:17px;font-weight:800;margin-bottom:10px;}
+.step-d{font-size:13px;color:var(--dim);line-height:1.72;font-weight:300;}
 
+/* REPORT SECTION */
+.report-sec{padding:88px 60px;position:relative;z-index:1;}
+.report-in{max-width:1280px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center;}
+.report-mock{background:var(--card2);border:1px solid var(--border);border-radius:20px;overflow:hidden;box-shadow:0 24px 64px rgba(0,0,0,.4);}
+.rm-head{background:var(--bg2);border-bottom:1px solid var(--border);padding:14px 20px;display:flex;align-items:center;justify-content:space-between;}
+.rm-title{font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--dim2);}
+.rm-badge{font-family:'JetBrains Mono',monospace;font-size:9px;color:#9B4FFF;background:rgba(123,47,255,.12);border:1px solid rgba(123,47,255,.25);padding:2px 9px;border-radius:5px;}
+.rm-body{padding:20px;}
+.rm-cand{display:flex;align-items:center;gap:10px;margin-bottom:16px;}
+.rm-av{width:36px;height:36px;border-radius:50%;background:linear-gradient(135deg,#4A2080,#8040C0);display:flex;align-items:center;justify-content:center;font-size:15px;}
+.rm-nm{font-size:12px;font-weight:700;}
+.rm-em{font-family:'JetBrains Mono',monospace;font-size:9px;color:var(--dim2);}
+.rm-score-row{display:flex;align-items:center;justify-content:space-between;margin-bottom:12px;}
+.rm-big-score{font-family:'JetBrains Mono',monospace;font-size:32px;font-weight:900;color:#9B4FFF;line-height:1;}
+.rm-lvl{background:rgba(123,47,255,.15);border:1px solid rgba(123,47,255,.3);border-radius:6px;padding:4px 12px;font-family:'JetBrains Mono',monospace;font-size:10px;color:#9B4FFF;font-weight:700;}
+.rm-bars{display:flex;flex-direction:column;gap:8px;margin-bottom:14px;}
+.rm-br{display:flex;align-items:center;gap:8px;}
+.rm-br-l{font-size:10px;color:var(--dim);width:80px;flex-shrink:0;}
+.rm-br-t{flex:1;height:5px;background:var(--border);border-radius:3px;overflow:hidden;}
+.rm-br-f{height:100%;border-radius:3px;background:linear-gradient(90deg,#7B2FFF,#9B4FFF);}
+.rm-br-v{font-family:'JetBrains Mono',monospace;font-size:10px;color:#9B4FFF;width:28px;text-align:right;}
+.rm-note{background:rgba(123,47,255,.07);border:1px solid rgba(123,47,255,.15);border-radius:8px;padding:12px;}
+.rm-note-t{font-size:9px;color:var(--dim2);margin-bottom:4px;}
+.rm-note-d{font-size:11px;color:var(--dim);line-height:1.6;}
+.rm-export{margin-top:14px;display:flex;gap:8px;}
+.rm-exp-btn{flex:1;background:linear-gradient(135deg,#7B2FFF,#5A1ECC);color:#fff;font-size:10px;font-weight:700;padding:8px 12px;border-radius:7px;text-align:center;border:none;cursor:pointer;}
+.rm-exp-btn-g{flex:1;background:var(--card);border:1px solid var(--border);color:var(--dim);font-size:10px;padding:8px 12px;border-radius:7px;text-align:center;border:1px solid var(--border);cursor:pointer;}
+
+/* FEATS */
+.feats-sec{padding:88px 60px;background:var(--bg2);border-top:1px solid var(--border);border-bottom:1px solid var(--border);position:relative;z-index:1;}
+.feats-in{max-width:1280px;margin:0 auto;}
+.feat-g{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;margin-top:52px;}
+.fc{background:var(--card);border:1px solid var(--border);border-radius:18px;padding:30px 26px;transition:all .3s;position:relative;overflow:hidden;}
+.fc:hover{background:var(--card2);border-color:rgba(123,47,255,.3);transform:translateY(-3px);}
+.fc::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,#7B2FFF,#C4A4FF);transform:scaleX(0);transform-origin:left;transition:transform .35s;}
+.fc:hover::before{transform:scaleX(1);}
+.fc-ico{width:48px;height:48px;border-radius:14px;background:linear-gradient(135deg,rgba(123,47,255,.2),rgba(155,79,255,.1));border:1px solid rgba(123,47,255,.2);display:flex;align-items:center;justify-content:center;font-size:22px;margin-bottom:14px;}
+.fc-t{font-size:16px;font-weight:800;margin-bottom:8px;}
+.fc-d{font-size:13px;color:var(--dim);line-height:1.72;font-weight:300;}
+
+/* CTA */
+.cta-sec{padding:100px 60px;text-align:center;position:relative;overflow:hidden;}
+.cta-g{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:700px;height:400px;background:radial-gradient(ellipse,rgba(123,47,255,.12),transparent 65%);pointer-events:none;}
+.cta-in{position:relative;z-index:1;max-width:580px;margin:0 auto;}
+.ch{font-size:clamp(30px,4vw,52px);font-weight:900;letter-spacing:-2px;line-height:1.06;margin-bottom:18px;}
+.ch em{font-style:normal;background:linear-gradient(135deg,#9B4FFF,#C4A4FF);-webkit-background-clip:text;-webkit-text-fill-color:transparent;}
+.csub{font-size:15px;color:var(--dim);margin-bottom:40px;font-weight:300;line-height:1.72;}
+.cacts{display:flex;justify-content:center;gap:14px;flex-wrap:wrap;}
+
+@media(max-width:1100px){.hero{grid-template-columns:1fr;max-width:700px;}.report-in{grid-template-columns:1fr;}}
+@media(max-width:900px){.steps-grid{grid-template-columns:1fr;}.feat-g{grid-template-columns:1fr;}.statband-in{grid-template-columns:1fr 1fr;}.lang-grid{grid-template-columns:repeat(2,1fr);}}
+@media(max-width:600px){.hero,.hiw,.feats-sec,.report-sec,.cta-sec{padding-left:20px;padding-right:20px;}.statband-in{grid-template-columns:1fr;}}
 </style>
 </head>
 <body>
 <nav id="snav">
-  <a href="synaps-v10-toggle.html" class="nav-logo">
-    <div class="orb-sm">
-      <div class="ob ob-base"></div>
-      <div class="ob ob-swirl"></div>
-      <div class="ob-hl"></div>
-      <div class="ob-gleam"></div>
-    </div>
+  <a href="synaps-v11-toggle.html" style="display:flex;align-items:center;gap:10px;text-decoration:none;">
+    <div class="orb-sm"><div class="ob ob-base"></div><div class="ob ob-swirl"></div><div class="ob-hl"></div></div>
     <span class="nav-wordmark">Synaps<span class="nw-hi">AI</span></span>
   </a>
-  <div class="nav-bc">
-    <a href="synaps-v10-toggle.html" class="bc-home">Ana Sayfa</a>
-    <span class="bc-sep">›</span>
-    <span class="bc-cur">AI Dil Mülakatı</span>
-  </div>
+  <div class="nav-bc"><a href="synaps-v11-toggle.html" class="bc-home">Ana Sayfa</a><span class="bc-sep">›</span><span class="bc-cur">AI Dil Mülakatı</span></div>
   <div class="nav-right">
-    <a href="synaps-v10-toggle.html" class="nav-back">← Ekosisteme Dön</a>
-    <label class="ts-wrap">
-      <input type="checkbox" id="themeToggle">
-      <div class="ts-track"><div class="ts-thumb"></div><span class="ts-m">🌙</span><span class="ts-s">☀️</span></div>
-    </label>
+    <a href="synaps-v11-toggle.html" class="nav-back">← Ekosisteme Dön</a>
+    <label class="ts-wrap"><input type="checkbox" id="themeToggle"><div class="ts-track"><div class="ts-thumb"></div><span class="ts-m">🌙</span><span class="ts-s">☀️</span></div></label>
     <a href="https://synapsai.io" class="nav-cta">Demo İste</a>
   </div>
 </nav>
 
-<div class="dil-page">
-<section class="dil-hero">
-  <div class="dil-bg"></div>
+<!-- HERO -->
+<section class="hero" style="position:relative;">
+  <div class="hbg"></div><div class="hgrid"></div>
   <div style="position:relative;z-index:1;">
-    <div class="dil-eyebrow">
-      <span class="dil-step">2. ADIM</span>
-      <span class="dil-badge"><span class="dil-dot"></span>CEFR A1–C2 Değerlendirme</span>
+    <div class="eyebrow">
+      <span class="tag-s">2. Adım</span>
+      <span class="tag-p"><span class="pd"></span>Dil Değerlendirme · 9 Dil</span>
     </div>
-    <div class="dil-langs">
-      <span class="dil-lang">🇹🇷 Türkçe</span><span class="dil-lang">🇬🇧 İngilizce</span>
-      <span class="dil-lang">🇩🇪 Almanca</span><span class="dil-lang">🇫🇷 Fransızca</span>
-      <span class="dil-lang">+40 dil</span>
-    </div>
-    <h1 class="dil-h1">AI ile <em>CEFR</em><br>Dil Değerlendirme</h1>
-    <p class="dil-sub">40+ dilde A1'den C2'ye CEFR uyumlu dil mülakatı. Konuşma, yazma, okuma ve dinleme becerilerini nesnel olarak değerlendirir. Sertifika düzeyinde hassasiyet.</p>
-    <div class="dil-btns">
-      <a href="https://synapsai.io" class="btn-gr">Demo İste →</a>
-      <a href="synaps-v10-toggle.html" class="btn-gh">Tüm Ürünler</a>
+    <h1>
+      <span>9 Dilde</span>
+      <span class="gr">AI Dil</span>
+      <span>Mülakatı</span>
+    </h1>
+    <p class="sub">Küresel yeteneğe ulaşın. Her dil için CEFR uyumlu soru bankası ve değerlendirme modeli. A1'den C2'ye tam otomatik dil yetkinliği ölçümü.</p>
+    <div class="acts">
+      <a href="https://synapsai.io" class="btn-p">Demo İste →</a>
+      <a href="synaps-v11-toggle.html" class="btn-g">Tüm Ürünler</a>
     </div>
   </div>
 
+  <!-- LANG WIDGET -->
   <div style="position:relative;z-index:1;">
-    <div class="dil-card">
-      <div class="dil-card-header">
-        <div class="dc-left">
-          <div class="dc-name">Zeynep Arslan</div>
-          <div class="dc-role">İngilizce Dil Değerlendirmesi</div>
-        </div>
-        <div class="dc-lang">
-          <div class="dc-lang-flag">🇬🇧</div>
-          <div style="text-align:right;">
-            <div class="dc-level">B2</div>
-            <div class="dc-lvl-label">CEFR SEVİYESİ</div>
-          </div>
-        </div>
+    <div class="lang-card">
+      <div class="lc-header">
+        <span class="lc-title">9 Dilde Değerlendirme</span>
+        <span class="lc-badge">CEFR A1 → C2</span>
       </div>
-      <div class="dil-card-body">
+      <div class="lang-grid">
+        <div class="lg-cell"><span class="lg-flag">🇬🇧</span><span class="lg-name">İngilizce</span><span class="lg-cefr">A1 → C2</span></div>
+        <div class="lg-cell"><span class="lg-flag">🇩🇪</span><span class="lg-name">Almanca</span><span class="lg-cefr">A1 → C2</span></div>
+        <div class="lg-cell"><span class="lg-flag">🇫🇷</span><span class="lg-name">Fransızca</span><span class="lg-cefr">A1 → C2</span></div>
+        <div class="lg-cell"><span class="lg-flag">🇪🇸</span><span class="lg-name">İspanyolca</span><span class="lg-cefr">A1 → C2</span></div>
+        <div class="lg-cell"><span class="lg-flag">🇮🇹</span><span class="lg-name">İtalyanca</span><span class="lg-cefr">A1 → C2</span></div>
+        <div class="lg-cell"><span class="lg-flag">🇯🇵</span><span class="lg-name">Japonca</span><span class="lg-cefr">JLPT N5-N1</span></div>
+        <div class="lg-cell"><span class="lg-flag">🇸🇦</span><span class="lg-name">Arapça</span><span class="lg-cefr">A1 → C2</span></div>
+        <div class="lg-cell"><span class="lg-flag">🇷🇺</span><span class="lg-name">Rusça</span><span class="lg-cefr">A1 → C2</span></div>
+        <div class="lg-cell"><span class="lg-flag">🇨🇳</span><span class="lg-name">Çince</span><span class="lg-cefr">HSK 1–6</span></div>
+      </div>
+      <div class="lc-cefr-strip">
+        <div class="cefr-label">CEFR SEVİYELERİ</div>
         <div class="cefr-row">
-          <span style="font-family:'JetBrains Mono',monospace;font-size:9px;color:var(--dim2);letter-spacing:2px;">CEFR SKALASI</span>
-          <div class="cefr-levels">
-            <div class="cefr-box">A1</div>
-            <div class="cefr-box">A2</div>
-            <div class="cefr-box">B1</div>
-            <div class="cefr-box active">B2</div>
-            <div class="cefr-box">C1</div>
-            <div class="cefr-box">C2</div>
-          </div>
-        </div>
-        <div class="dil-skills">
-          <div class="dil-skill-row"><span class="dil-sk-label">Konuşma</span><div class="dil-sk-track"><div class="dil-sk-fill" style="width:78%"></div></div><span class="dil-sk-score">78</span></div>
-          <div class="dil-skill-row"><span class="dil-sk-label">Dinleme</span><div class="dil-sk-track"><div class="dil-sk-fill" style="width:85%"></div></div><span class="dil-sk-score">85</span></div>
-          <div class="dil-skill-row"><span class="dil-sk-label">Yazma</span><div class="dil-sk-track"><div class="dil-sk-fill" style="width:72%"></div></div><span class="dil-sk-score">72</span></div>
-          <div class="dil-skill-row"><span class="dil-sk-label">Okuma</span><div class="dil-sk-track"><div class="dil-sk-fill" style="width:91%"></div></div><span class="dil-sk-score">91</span></div>
-        </div>
-        <div class="dil-ai-note">
-          <div class="dil-ai-label">AI YORUM</div>
-          "Aday iş dilini akıcı kullanıyor. Teknik terminoloji güçlü, spontane konuşmada C1 sınırına yakın performans gösterdi."
+          <div class="cefr-lvl" style="background:rgba(107,114,128,.15);color:#9CA3AF;">A1</div>
+          <div class="cefr-lvl" style="background:rgba(107,114,128,.15);color:#9CA3AF;">A2</div>
+          <div class="cefr-lvl" style="background:rgba(123,47,255,.18);color:#9B4FFF;">B1</div>
+          <div class="cefr-lvl" style="background:rgba(123,47,255,.28);color:#C4A4FF;">B2</div>
+          <div class="cefr-lvl" style="background:rgba(123,47,255,.38);color:#C4A4FF;">C1</div>
+          <div class="cefr-lvl" style="background:linear-gradient(135deg,#7B2FFF,#9B4FFF);color:#fff;">C2</div>
         </div>
       </div>
     </div>
-  </div>
-</section>
-
-<!-- LANGUAGE MATRIX -->
-<section class="dil-matrix">
-  <div class="dil-matrix-in">
-    <div class="section-tag">Dil Desteği</div>
-    <h2 class="section-h2">40+ Dilde <em>Değerlendirme</em></h2>
-    <p class="section-sub">Küresel yeteneğe ulaşın. Her dil için CEFR uyumlu soru bankası ve değerlendirme modeli.</p>
-    <div class="lang-grid">
-      <div class="lang-card"><span class="lang-flag">🇬🇧</span><div class="lang-name">İngilizce</div><div class="lang-sub">A1 → C2</div></div>
-      <div class="lang-card"><span class="lang-flag">🇩🇪</span><div class="lang-name">Almanca</div><div class="lang-sub">A1 → C2</div></div>
-      <div class="lang-card"><span class="lang-flag">🇫🇷</span><div class="lang-name">Fransızca</div><div class="lang-sub">A1 → C2</div></div>
-      <div class="lang-card"><span class="lang-flag">🇪🇸</span><div class="lang-name">İspanyolca</div><div class="lang-sub">A1 → C2</div></div>
-      <div class="lang-card"><span class="lang-flag">🇮🇹</span><div class="lang-name">İtalyanca</div><div class="lang-sub">A1 → C2</div></div>
-      <div class="lang-card"><span class="lang-flag">🇯🇵</span><div class="lang-name">Japonca</div><div class="lang-sub">JLPT N5–N1</div></div>
-      <div class="lang-card"><span class="lang-flag">🇸🇦</span><div class="lang-name">Arapça</div><div class="lang-sub">A1 → C2</div></div>
-      <div class="lang-card"><span class="lang-flag">+ 33</span><div class="lang-name">Daha Fazla</div><div class="lang-sub">40+ dil toplam</div></div>
+    <div class="fl-b" style="top:-16px;right:-16px;animation-delay:0s;">
+      <div class="fb-icon">🌐</div><div class="fb-val">9</div><div class="fb-lbl">Desteklenen dil</div>
+    </div>
+    <div class="fl-b" style="bottom:-14px;left:-14px;animation-delay:1.8s;">
+      <div class="fb-icon">📜</div><div class="fb-val">CEFR</div><div class="fb-lbl">Uyumlu sertifika</div>
     </div>
   </div>
 </section>
 
-<!-- HOW IT WORKS -->
-<section class="dil-how">
-  <div class="dil-how-in">
-    <div class="section-tag">Süreç</div>
-    <h2 class="section-h2">Nasıl <em>Çalışıyor?</em></h2>
-    <p class="section-sub">3 adımda tamamen otomatik dil değerlendirmesi.</p>
-    <div class="dil-how-grid">
-      <div class="dil-how-step"><div class="dhs-n">01</div><span class="dhs-icon">📨</span><div class="dhs-t">Davet Gönder</div><p class="dhs-d">Adaya değerlendirilecek dil ve seviye belirtilerek bağlantı gönderilir. Aday istediği zaman katılır.</p></div>
-      <div class="dil-how-step"><div class="dhs-n">02</div><span class="dhs-icon">🎤</span><div class="dhs-t">AI Mülakatı Yönet</div><p class="dhs-d">AI konuşma, yazma ve dinleme testlerini yönetir. Otomatik yönlendirme ve geri bildirim.</p></div>
-      <div class="dil-how-step"><div class="dhs-n">03</div><span class="dhs-icon">📜</span><div class="dhs-t">CEFR Raporu Al</div><p class="dhs-d">Anlık CEFR sertifikası ve yetkinlik raporu. ATS'e otomatik aktarım, ekip paylaşımı.</p></div>
-    </div>
-  </div>
-</section>
-
-<!-- METRICS -->
-<div class="dil-met">
-  <div class="dil-met-in">
-    <div class="dil-m"><div class="dil-m-n">40+</div><div class="dil-m-l">Desteklenen dil</div></div>
-    <div class="dil-m"><div class="dil-m-n">95%</div><div class="dil-m-l">CEFR uyum hassasiyeti</div></div>
-    <div class="dil-m"><div class="dil-m-n">25dk</div><div class="dil-m-l">Ortalama test süresi</div></div>
-    <div class="dil-m"><div class="dil-m-n">3×</div><div class="dil-m-l">Daha hızlı değerlendirme</div></div>
+<!-- STAT -->
+<div class="statband">
+  <div class="statband-in">
+    <div class="ss"><div class="ss-n">9</div><div class="ss-l">Desteklenen dil</div></div>
+    <div class="ss"><div class="ss-n">6</div><div class="ss-l">CEFR seviye kademesi</div></div>
+    <div class="ss"><div class="ss-n">95%</div><div class="ss-l">Değerlendirme isabeti</div></div>
+    <div class="ss"><div class="ss-n">80%</div><div class="ss-l">Daha hızlı ön eleme</div></div>
   </div>
 </div>
+
+<!-- HOW IT WORKS — 3 ADIM -->
+<section class="hiw">
+  <div class="hiw-in">
+    <div class="stag">Süreç</div>
+    <h2 class="sh">Nasıl <em>Çalışıyor?</em></h2>
+    <p class="ssub">3 adımda tamamen otomatik dil değerlendirmesi. Davet et, değerlendir, raporu ATS'e aktar.</p>
+    <div class="steps-grid">
+      <div class="step-card">
+        <div class="step-n">01</div>
+        <div class="step-ico">📨</div>
+        <div class="step-t">Davet Gönder</div>
+        <p class="step-d">Adaya değerlendirileceği dil ve seviye belirtilerek davet bağlantısı gönderilir. Aday istediği zaman katılır, 7/24 aktif.</p>
+      </div>
+      <div class="step-card">
+        <div class="step-n">02</div>
+        <div class="step-ico">✍️</div>
+        <div class="step-t">AI Mülakatı Yönet</div>
+        <p class="step-d">AI konuşma, yazma ve dinleme testlerini yönetir. Otomatik yönlendirme ve anlık geri bildirim ile adayı dengeli değerlendirir.</p>
+      </div>
+      <div class="step-card">
+        <div class="step-n">03</div>
+        <div class="step-ico">📋</div>
+        <div class="step-t">Rapor Al & ATS'e Aktar</div>
+        <p class="step-d">Anlık CEFR sertifikası ve yetkinlik raporu üretilir. ATS'e otomatik aktarım, ekip paylaşımı ve tek tıkla arşivleme.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- REPORT MOCKUP SECTION -->
+<section class="report-sec">
+  <div class="report-in">
+    <div>
+      <div class="stag">Rapor & Aktarım</div>
+      <h2 class="sh">CEFR Raporu &<br><em>Tek Tıkla Aktarım</em></h2>
+      <p class="ssub" style="margin-bottom:28px;">Mülakat bitişiyle birlikte anlık CEFR sertifikası ve detaylı yetkinlik raporu hazır. ATS entegrasyonu veya manuel paylaşım — her ikisi de saniyeler içinde.</p>
+      <ul style="list-style:none;display:flex;flex-direction:column;gap:12px;">
+        <li style="display:flex;align-items:center;gap:12px;font-size:14px;color:var(--dim);"><span style="width:24px;height:24px;border-radius:7px;background:rgba(123,47,255,.15);border:1px solid rgba(123,47,255,.3);display:flex;align-items:center;justify-content:center;font-size:12px;flex-shrink:0;">✓</span>Konuşma, yazma, dinleme, okuma — 4 beceri ayrı skorlanır</li>
+        <li style="display:flex;align-items:center;gap:12px;font-size:14px;color:var(--dim);"><span style="width:24px;height:24px;border-radius:7px;background:rgba(123,47,255,.15);border:1px solid rgba(123,47,255,.3);display:flex;align-items:center;justify-content:center;font-size:12px;flex-shrink:0;">✓</span>PDF rapor + ATS'e JSON aktarım</li>
+        <li style="display:flex;align-items:center;gap:12px;font-size:14px;color:var(--dim);"><span style="width:24px;height:24px;border-radius:7px;background:rgba(123,47,255,.15);border:1px solid rgba(123,47,255,.3);display:flex;align-items:center;justify-content:center;font-size:12px;flex-shrink:0;">✓</span>Ekip paylaşımı ve yorum ekleme</li>
+        <li style="display:flex;align-items:center;gap:12px;font-size:14px;color:var(--dim);"><span style="width:24px;height:24px;border-radius:7px;background:rgba(123,47,255,.15);border:1px solid rgba(123,47,255,.3);display:flex;align-items:center;justify-content:center;font-size:12px;flex-shrink:0;">✓</span>Aday bazında karşılaştırmalı tablo</li>
+      </ul>
+    </div>
+    <!-- Report mock -->
+    <div class="report-mock">
+      <div class="rm-head">
+        <span class="rm-title">CEFR Değerlendirme Raporu</span>
+        <span class="rm-badge">● TAMAMLANDI</span>
+      </div>
+      <div class="rm-body">
+        <div class="rm-cand">
+          <div class="rm-av">👤</div>
+          <div><div class="rm-nm">Zeynep Arslan</div><div class="rm-em">zeynep.arslan@gmail.com · İngilizce</div></div>
+        </div>
+        <div class="rm-score-row">
+          <div><div style="font-size:10px;color:var(--dim2);margin-bottom:2px;">GENEL SKOR</div><div class="rm-big-score">B2</div><div style="font-size:9px;color:var(--dim2);">Upper-Intermediate</div></div>
+          <div class="rm-lvl">87 / 100 puan</div>
+        </div>
+        <div class="rm-bars">
+          <div class="rm-br"><span class="rm-br-l">Konuşma</span><div class="rm-br-t"><div class="rm-br-f" style="width:90%;"></div></div><span class="rm-br-v">%90</span></div>
+          <div class="rm-br"><span class="rm-br-l">Yazma</span><div class="rm-br-t"><div class="rm-br-f" style="width:84%;"></div></div><span class="rm-br-v">%84</span></div>
+          <div class="rm-br"><span class="rm-br-l">Dinleme</span><div class="rm-br-t"><div class="rm-br-f" style="width:88%;"></div></div><span class="rm-br-v">%88</span></div>
+          <div class="rm-br"><span class="rm-br-l">Okuma</span><div class="rm-br-t"><div class="rm-br-f" style="width:82%;"></div></div><span class="rm-br-v">%82</span></div>
+        </div>
+        <div class="rm-note"><div class="rm-note-t">AI Değerlendirme Notu</div><div class="rm-note-d">Aday iş İngilizce yazışmalarında ve sunum iletişiminde yüksek yetkinlik gösterdi. Teknik terminoloji kullanımı gelişmiş seviyede.</div></div>
+        <div class="rm-export">
+          <button class="rm-exp-btn">ATS'e Aktar</button>
+          <button class="rm-exp-btn-g">PDF İndir</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FEATURES -->
+<section class="feats-sec">
+  <div class="feats-in">
+    <div class="stag">Temel Özellikler</div>
+    <h2 class="sh">Ne İşe <em>Yarıyor?</em></h2>
+    <p class="ssub">Küresel işe alımda dil engelini kaldıran, CEFR tabanlı tam otomatik değerlendirme altyapısı.</p>
+    <div class="feat-g">
+      <div class="fc"><div class="fc-ico">🌐</div><div class="fc-t">9 Dil, Tam CEFR Uyumu</div><p class="fc-d">İngilizce'den Japonca'ya, Arapça'dan Çince'ye. Her dil için özel soru bankası ve A1–C2 seviye kalibrasyonu.</p></div>
+      <div class="fc"><div class="fc-ico">🧑‍💼</div><div class="fc-t">4 Beceri Ayrı Skorlanır</div><p class="fc-d">Konuşma, yazma, dinleme ve okuma becerileri ayrı ayrı ölçülür. İş pozisyonuna göre ağırlık ayarlanabilir.</p></div>
+      <div class="fc"><div class="fc-ico">📤</div><div class="fc-t">ATS Otomatik Aktarım</div><p class="fc-d">Mülakat tamamlanır tamamlanmaz rapor ATS'e iletilir. Manuel veri girişi sıfır. Ekip anında bilgilendirilir.</p></div>
+      <div class="fc"><div class="fc-ico">🏆</div><div class="fc-t">CEFR Sertifikası</div><p class="fc-d">Her mülakat sonunda aday ve kurum için CEFR uyumlu sertifika üretilir. Arşivleme ve tekrar kullanım desteklenir.</p></div>
+    </div>
+  </div>
+</section>
 
 <!-- CTA -->
-<section class="dil-cta">
-  <div class="dil-cta-g"></div>
-  <div class="dil-cta-in">
-    <div class="section-tag" style="text-align:center;">2. ADIM · AI Dil Mülakatı</div>
-    <h2 class="dil-cta-h">Global Yetenekleri<br><em>Doğru Değerlendirin</em></h2>
-    <p class="dil-cta-sub">40+ dil desteğiyle CEFR uyumlu dil mülakatını bugün başlatın.</p>
-    <div class="dil-cta-btns">
-      <a href="https://synapsai.io" class="btn-gr">Demo İste →</a>
-      <a href="synaps-v10-toggle.html" class="btn-gh">← Ana Sayfaya Dön</a>
+<section class="cta-sec">
+  <div class="cta-g"></div>
+  <div class="cta-in">
+    <div class="stag" style="text-align:center;">2. Adım · AI Dil Mülakatı</div>
+    <h2 class="ch">9 Dilde Mülakat'ı<br><em>Bugün Başlatın</em></h2>
+    <p class="csub">Demo almak veya hemen başlamak için bize ulaşın.</p>
+    <div class="cacts">
+      <a href="https://synapsai.io" class="btn-p">Demo İste →</a>
+      <a href="synaps-v11-toggle.html" class="btn-g">← Ana Sayfaya Dön</a>
     </div>
   </div>
 </section>
-</div>
+
 <footer class="lp-footer">
   <div class="lp-footer-in">
-    <div class="lf-brand">
-      <div class="orb-sm"><div class="ob ob-base"></div><div class="ob ob-swirl"></div><div class="ob-hl"></div></div>
-      <div><div class="lf-name">Synaps<b>AI</b></div><div class="lf-prod">AI Dil Mülakatı</div></div>
-    </div>
-    <nav class="lf-links">
-      <a href="synaps-v10-toggle.html">Ana Sayfa</a>
-      <a href="#">Gizlilik</a>
-      <a href="#">Şartlar</a>
-      <a href="mailto:destek@synapsai.ai">Destek</a>
-    </nav>
+    <div class="lf-brand"><div class="orb-sm"><div class="ob ob-base"></div><div class="ob ob-swirl"></div><div class="ob-hl"></div></div><div><div class="lf-name">Synaps<b>AI</b></div><div class="lf-prod">AI Dil Mülakatı</div></div></div>
+    <nav class="lf-links"><a href="synaps-v11-toggle.html">Ana Sayfa</a><a href="#">Gizlilik</a><a href="#">Şartlar</a><a href="#">Destek</a></nav>
     <p class="lf-copy">© 2025 Synaps Yapay Zeka Teknolojileri A.Ş.</p>
   </div>
 </footer>
-<script>
-(function(){
-  var t=document.getElementById('themeToggle'),h=document.documentElement;
-  var s=localStorage.getItem('synaps-theme')||'dark';
-  if(s==='light'){h.setAttribute('data-theme','light');if(t)t.checked=true;}
-  if(t)t.addEventListener('change',function(){
-    var v=t.checked?'light':'dark';
-    h.setAttribute('data-theme',v);localStorage.setItem('synaps-theme',v);
-  });
-})();
-</script>
+<script>(function(){var t=document.getElementById('themeToggle'),h=document.documentElement;var s=localStorage.getItem('synaps-theme')||'dark';if(s==='light'){h.setAttribute('data-theme','light');if(t)t.checked=true;}if(t)t.addEventListener('change',function(){var m=t.checked?'light':'dark';h.setAttribute('data-theme',m);localStorage.setItem('synaps-theme',m);});})();</script>
 </body>
 </html>

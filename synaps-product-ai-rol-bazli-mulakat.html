@@ -3,74 +3,39 @@
 <head>
 <meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
 <title>AI Rol Bazlı Mülakat — Synaps AI</title>
-<link rel="preconnect" href="https://fonts.googleapis.com"><link href="https://fonts.googleapis.com/css2?family=Lexend:wght@200;300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Lexend:wght@200;300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
 <style>
-
-:root{
-  --bg:#06040F;--bg2:#0C0818;--bg3:#120E20;
-  --card:rgba(255,255,255,.04);--card2:rgba(255,255,255,.07);--card3:rgba(255,255,255,.1);
-  --border:rgba(255,255,255,.08);--border2:rgba(255,255,255,.05);
-  --text:#F0EEFF;--dim:rgba(240,238,255,.55);--dim2:rgba(240,238,255,.28);
-  --pu:#7B2FFF;--vi:#9B4FFF;--lav:#C4A4FF;--pk:#E040FB;
-  --nav-bg:rgba(6,4,15,.9);
-  --glow:rgba(123,47,255,.3);--gbg:rgba(123,47,255,.1);
-  --sh:0 32px 80px rgba(0,0,0,.55);
-}
-[data-theme="light"]{
-  --bg:#F0EEF9;--bg2:#E8E4F5;--bg3:#DDD8EF;
-  --card:rgba(255,255,255,.85);--card2:rgba(255,255,255,.95);--card3:rgba(255,255,255,.98);
-  --border:rgba(123,47,255,.11);--border2:rgba(123,47,255,.07);
-  --text:#1A0A3C;--dim:rgba(26,10,60,.58);--dim2:rgba(26,10,60,.3);
-  --nav-bg:rgba(240,238,249,.92);
-  --glow:rgba(123,47,255,.15);--gbg:rgba(123,47,255,.07);
-  --sh:0 20px 60px rgba(123,47,255,.12);
-}
-
-*{margin:0;padding:0;box-sizing:border-box;}
-html{scroll-behavior:smooth;}
+:root{--bg:#06040F;--bg2:#0C0818;--bg3:#120E20;--card:rgba(255,255,255,.04);--card2:rgba(255,255,255,.07);--border:rgba(255,255,255,.08);--text:#F0EEFF;--dim:rgba(240,238,255,.55);--dim2:rgba(240,238,255,.28);--pu:#7B2FFF;--vi:#9B4FFF;--lav:#C4A4FF;--nav-bg:rgba(6,4,15,.9);--gbg:rgba(123,47,255,.1);}
+[data-theme="light"]{--bg:#F0EEF9;--bg2:#E8E4F5;--bg3:#DDD8EF;--card:rgba(255,255,255,.85);--card2:rgba(255,255,255,.95);--border:rgba(123,47,255,.11);--text:#1A0A3C;--dim:rgba(26,10,60,.58);--dim2:rgba(26,10,60,.3);--nav-bg:rgba(240,238,249,.92);--gbg:rgba(123,47,255,.07);}
+*{margin:0;padding:0;box-sizing:border-box;}html{scroll-behavior:smooth;}
 body{background:var(--bg);color:var(--text);font-family:'Lexend',sans-serif;overflow-x:hidden;transition:background .4s,color .4s;line-height:1.6;}
-body::before{content:'';position:fixed;inset:0;pointer-events:none;z-index:0;
-background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='.025'/%3E%3C/svg%3E");}
-
-/* ─── NAV ──────────────────────────────────────── */
-#snav{position:fixed;top:0;left:0;right:0;z-index:900;height:62px;
-  display:flex;align-items:center;padding:0 32px;gap:20px;
-  background:var(--nav-bg);backdrop-filter:blur(28px) saturate(200%);
-  border-bottom:1px solid var(--border);transition:background .4s;}
+body::before{content:'';position:fixed;inset:0;pointer-events:none;z-index:0;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='.025'/%3E%3C/svg%3E");}
+/* NAV */
+#snav{position:fixed;top:0;left:0;right:0;z-index:900;height:62px;display:flex;align-items:center;padding:0 32px;gap:20px;background:var(--nav-bg);backdrop-filter:blur(28px) saturate(200%);border-bottom:1px solid var(--border);transition:background .4s;}
 .orb-sm{width:28px;height:28px;border-radius:50%;position:relative;overflow:hidden;flex-shrink:0;}
 .ob{position:absolute;inset:0;border-radius:50%;}
-.ob-base{background:radial-gradient(ellipse at 36% 28%,rgba(255,255,255,.88) 0%,rgba(200,175,255,.55) 16%,transparent 36%),radial-gradient(ellipse at 68% 66%,rgba(70,20,170,.55) 0%,transparent 48%),radial-gradient(circle,#AA80FF 0%,#6E38CC 32%,#481898 60%,#1A0850 82%,#0C0330 100%);
-  box-shadow:inset -4px -3px 8px rgba(0,0,0,.55),inset 3px 2px 6px rgba(200,165,255,.25),0 0 14px rgba(123,47,255,.65);}
+.ob-base{background:radial-gradient(ellipse at 36% 28%,rgba(255,255,255,.88) 0%,rgba(200,175,255,.55) 16%,transparent 36%),radial-gradient(ellipse at 68% 66%,rgba(70,20,170,.55) 0%,transparent 48%),radial-gradient(circle,#AA80FF 0%,#6E38CC 32%,#481898 60%,#1A0850 82%,#0C0330 100%);box-shadow:inset -4px -3px 8px rgba(0,0,0,.55),inset 3px 2px 6px rgba(200,165,255,.25),0 0 14px rgba(123,47,255,.65);}
 .ob-swirl{background:conic-gradient(from 105deg at 44% 56%,transparent 0deg,rgba(255,255,255,.13) 20deg,transparent 38deg,rgba(180,140,255,.08) 78deg,transparent 118deg,rgba(255,255,255,.06) 198deg,transparent 235deg);animation:orbSpin 8s linear infinite;}
-.ob-hl{position:absolute;top:8%;left:14%;width:36%;height:26%;background:radial-gradient(ellipse,rgba(255,255,255,.72) 0%,rgba(255,255,255,.08) 60%,transparent 100%);border-radius:50%;transform:rotate(-28deg);}
-.ob-gleam{position:absolute;bottom:14%;right:11%;width:18%;height:13%;background:radial-gradient(ellipse,rgba(200,160,255,.42) 0%,transparent 100%);border-radius:50%;}
+.ob-hl{position:absolute;top:8%;left:14%;width:36%;height:26%;background:radial-gradient(ellipse,rgba(255,255,255,.72),rgba(255,255,255,.08) 60%,transparent);border-radius:50%;transform:rotate(-28deg);}
 @keyframes orbSpin{to{transform:rotate(360deg);}}
-.nav-wordmark{font-size:15px;font-weight:700;color:var(--text);letter-spacing:-.3px;}
-.nw-hi{color:#9B4FFF;}
+.nav-wordmark{font-size:15px;font-weight:700;color:var(--text);letter-spacing:-.3px;}.nw-hi{color:#9B4FFF;}
 .nav-bc{flex:1;display:flex;align-items:center;gap:8px;}
-.bc-home{font-size:12px;color:var(--dim);text-decoration:none;transition:color .2s;}
-.bc-home:hover{color:#9B4FFF;}
-.bc-sep{color:var(--dim2);font-size:12px;}
-.bc-cur{font-size:12px;font-weight:600;color:#C4A4FF;}
+.bc-home{font-size:12px;color:var(--dim);text-decoration:none;transition:color .2s;}.bc-home:hover{color:#9B4FFF;}
+.bc-sep{color:var(--dim2);font-size:12px;}.bc-cur{font-size:12px;font-weight:600;color:#C4A4FF;}
 .nav-right{display:flex;align-items:center;gap:14px;flex-shrink:0;}
-.nav-back{font-size:12px;color:var(--dim);text-decoration:none;font-weight:500;transition:color .2s;}
-.nav-back:hover{color:#9B4FFF;}
-/* toggle */
-.ts-wrap{position:relative;width:44px;height:23px;cursor:pointer;}
-.ts-wrap input{opacity:0;position:absolute;width:0;height:0;}
+.nav-back{font-size:12px;color:var(--dim);text-decoration:none;font-weight:500;transition:color .2s;}.nav-back:hover{color:#9B4FFF;}
+.ts-wrap{position:relative;width:44px;height:23px;cursor:pointer;}.ts-wrap input{opacity:0;position:absolute;width:0;height:0;}
 .ts-track{position:absolute;inset:0;border-radius:12px;background:rgba(255,255,255,.07);border:1px solid var(--border);transition:all .3s;}
 .ts-wrap input:checked~.ts-track{background:rgba(123,47,255,.2);border-color:rgba(155,79,255,.4);}
 .ts-thumb{position:absolute;top:3px;left:3px;width:15px;height:15px;border-radius:50%;background:var(--dim2);transition:all .3s;}
 .ts-wrap input:checked~.ts-track .ts-thumb{transform:translateX(21px);background:#9B4FFF;}
-.ts-m,.ts-s{position:absolute;top:50%;transform:translateY(-50%);font-size:9px;}
-.ts-m{right:5px;}.ts-s{left:5px;opacity:0;}
-.ts-wrap input:checked~.ts-track .ts-m{opacity:0;}
-.ts-wrap input:checked~.ts-track .ts-s{opacity:1;}
+.ts-m,.ts-s{position:absolute;top:50%;transform:translateY(-50%);font-size:9px;}.ts-m{right:5px;}.ts-s{left:5px;opacity:0;}
+.ts-wrap input:checked~.ts-track .ts-m{opacity:0;}.ts-wrap input:checked~.ts-track .ts-s{opacity:1;}
 .nav-cta{background:linear-gradient(135deg,#7B2FFF,#5A1ECC);color:#fff;font-size:12px;font-weight:700;padding:8px 18px;border-radius:8px;text-decoration:none;transition:all .2s;box-shadow:0 4px 14px rgba(123,47,255,.4);}
-.nav-cta:hover{transform:translateY(-1px);box-shadow:0 7px 20px rgba(123,47,255,.5);}
+.nav-cta:hover{transform:translateY(-1px);}
 @media(max-width:768px){.nav-bc{display:none;}.nav-back{display:none;}}
-
-
+/* FOOTER */
 .lp-footer{border-top:1px solid var(--border);padding:32px 40px;position:relative;z-index:1;}
 .lp-footer-in{max-width:1280px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;gap:20px;flex-wrap:wrap;}
 .lf-brand{display:flex;align-items:center;gap:10px;}
@@ -78,203 +43,285 @@ background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/sv
 .lf-prod{font-size:10px;color:var(--dim2);letter-spacing:1.5px;text-transform:uppercase;font-family:'JetBrains Mono',monospace;}
 .lf-links{display:flex;gap:20px;}.lf-links a{font-size:12px;color:var(--dim2);text-decoration:none;transition:color .2s;}.lf-links a:hover{color:#9B4FFF;}
 .lf-copy{font-size:11px;color:var(--dim2);}
-@media(max-width:600px){.lp-footer-in{flex-direction:column;gap:14px;text-align:center;}.lf-links{justify-content:center;}}
-
-
+/* ANIMS */
 @keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.4;transform:scale(.65)}}
 @keyframes floatY{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
 @keyframes flowGrad{0%{background-position:0% 50%}100%{background-position:200% 50%}}
-@keyframes fadeUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
-:root{
-  --ac:#7B2FFF;--ac2:#9B4FFF;
-  --ac-g:rgba(123,47,255,.1);--ac-b:rgba(123,47,255,.22);
-}
-[data-theme="light"]{--ac:#9B4FFF;--ac-g:rgba(123,47,255,.07);--ac-b:rgba(123,47,255,.18);}
 
-.gp-hero{min-height:100vh;padding:90px 60px 60px;display:grid;grid-template-columns:1fr 1fr;align-items:center;gap:64px;position:relative;overflow:hidden;}
-.gp-bg{position:absolute;inset:0;background:radial-gradient(ellipse 80% 70% at 75% 45%,var(--ac-g),transparent 55%),radial-gradient(ellipse 50% 40% at 15% 70%,rgba(123,47,255,.04),transparent 50%);}
-.gp-eyebrow{display:flex;align-items:center;gap:10px;margin-bottom:26px;}
-.gp-step{font-family:'JetBrains Mono',monospace;font-size:9px;font-weight:700;letter-spacing:2px;color:var(--dim2);background:var(--gbg);border:1px solid rgba(123,47,255,.2);padding:4px 10px;border-radius:20px;}
-.gp-badge{display:flex;align-items:center;gap:7px;background:var(--ac-g);border:1px solid var(--ac-b);border-radius:20px;padding:5px 14px;font-family:'JetBrains Mono',monospace;font-size:10px;font-weight:700;color:var(--ac);letter-spacing:1px;}
-.gp-dot{width:6px;height:6px;border-radius:50%;background:var(--ac);animation:pulse 2s infinite;}
-.gp-h1{font-size:clamp(38px,4.5vw,62px);font-weight:900;letter-spacing:-3px;line-height:1.04;margin-bottom:22px;}
-.gp-h1 em{font-style:normal;background:linear-gradient(135deg,var(--ac),var(--ac2),#9B4FFF);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-size:200%;animation:flowGrad 4s linear infinite;}
-.gp-sub{font-size:16px;color:var(--dim);font-weight:300;line-height:1.78;max-width:500px;margin-bottom:34px;}
-.gp-btns{display:flex;gap:12px;flex-wrap:wrap;}
-.btn-ac{background:linear-gradient(135deg,#7B2FFF,#9B4FFF);color:#fff;font-size:14px;font-weight:700;padding:14px 32px;border-radius:10px;text-decoration:none;transition:all .25s;box-shadow:0 6px 22px rgba(123,47,255,.3);}
-.btn-ac:hover{transform:translateY(-2px);box-shadow:0 12px 32px rgba(123,47,255,.3);}
-.btn-gh{font-size:14px;font-weight:500;color:var(--dim);padding:13px 22px;border-radius:10px;border:1px solid var(--border);text-decoration:none;transition:all .25s;}
-.btn-gh:hover{border-color:var(--ac-b);color:var(--ac);}
+/* HERO */
+.hero{min-height:100vh;padding:100px 0 60px;display:grid;grid-template-columns:1fr 1fr;align-items:center;gap:60px;position:relative;overflow:hidden;max-width:1400px;margin:0 auto;padding-left:60px;padding-right:60px;}
+.hero-bg{position:fixed;inset:0;background:radial-gradient(ellipse 80% 60% at 70% 40%,rgba(123,47,255,.09),transparent 55%);pointer-events:none;}
+.hero-grid{position:fixed;inset:0;background-image:linear-gradient(rgba(123,47,255,.03) 1px,transparent 1px),linear-gradient(90deg,rgba(123,47,255,.03) 1px,transparent 1px);background-size:60px 60px;pointer-events:none;}
 
-/* features */
-.gp-feats{padding:80px 60px;position:relative;z-index:1;background:var(--bg2);border-top:1px solid var(--border);}
-.gp-feats-in{max-width:1280px;margin:0 auto;}
-.section-tag{font-family:'JetBrains Mono',monospace;font-size:10px;font-weight:700;letter-spacing:4px;text-transform:uppercase;color:var(--ac);margin-bottom:14px;}
-.section-h2{font-size:clamp(28px,3.5vw,46px);font-weight:900;letter-spacing:-1.5px;line-height:1.08;margin-bottom:14px;}
-.section-h2 em{font-style:normal;background:linear-gradient(135deg,var(--ac),#9B4FFF);-webkit-background-clip:text;-webkit-text-fill-color:transparent;}
-.section-sub{font-size:15px;color:var(--dim);font-weight:300;line-height:1.75;max-width:540px;}
-.gp-feat-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1px;margin-top:52px;border:1px solid var(--border);border-radius:18px;overflow:hidden;}
-.gp-fi{background:var(--card);padding:36px 32px;transition:background .3s;position:relative;overflow:hidden;}
-.gp-fi:hover{background:var(--card2);}
-.gp-fi::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--ac),#9B4FFF);transform:scaleX(0);transform-origin:left;transition:transform .4s;}
-.gp-fi:hover::before{transform:scaleX(1);}
-.gfi-n{font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--dim2);letter-spacing:2px;margin-bottom:14px;}
-.gfi-icon{font-size:26px;margin-bottom:12px;display:block;}
-.gfi-t{font-size:16px;font-weight:800;margin-bottom:8px;}
-.gfi-d{font-size:13px;color:var(--dim);line-height:1.72;font-weight:300;}
+.eyebrow{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:26px;}
+.tag-s{font-family:'JetBrains Mono',monospace;font-size:9px;font-weight:700;letter-spacing:3px;color:var(--dim2);background:var(--gbg);border:1px solid rgba(123,47,255,.2);padding:5px 12px;border-radius:20px;}
+.tag-p{background:rgba(123,47,255,.12);border:1px solid rgba(123,47,255,.3);color:#9B4FFF;font-family:'JetBrains Mono',monospace;font-size:9px;font-weight:700;letter-spacing:2px;padding:5px 12px;border-radius:20px;display:flex;align-items:center;gap:6px;}
+.pd{width:6px;height:6px;border-radius:50%;background:#9B4FFF;animation:pulse 2s infinite;}
 
-/* metrics */
-.gp-met{padding:60px;border-top:1px solid var(--border);border-bottom:1px solid var(--border);position:relative;z-index:1;}
-.gp-met-in{max-width:1280px;margin:0 auto;display:grid;grid-template-columns:repeat(4,1fr);border:1px solid var(--border);border-radius:16px;overflow:hidden;}
-.gp-m{padding:36px 20px;text-align:center;border-right:1px solid var(--border);transition:background .3s;}
-.gp-m:last-child{border-right:none;}
-.gp-m:hover{background:var(--ac-g);}
-.gp-m-n{font-family:'JetBrains Mono',monospace;font-size:44px;font-weight:900;background:linear-gradient(135deg,var(--ac),var(--ac2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;line-height:1;}
-.gp-m-l{font-size:12px;color:var(--dim);margin-top:8px;}
+h1{font-size:clamp(40px,4.5vw,68px);font-weight:900;letter-spacing:-3px;line-height:.98;margin-bottom:24px;}
+h1 span{display:block;}
+h1 .gr{background:linear-gradient(135deg,#9B4FFF,#C4A4FF,#E040FB);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-size:200%;animation:flowGrad 5s linear infinite;}
+.sub{font-size:16px;color:var(--dim);font-weight:300;line-height:1.8;max-width:480px;margin-bottom:36px;}
+.acts{display:flex;gap:12px;flex-wrap:wrap;}
+.btn-p{background:linear-gradient(135deg,#7B2FFF,#5A1ECC);color:#fff;font-size:14px;font-weight:700;padding:14px 32px;border-radius:10px;text-decoration:none;transition:all .25s;box-shadow:0 6px 22px rgba(123,47,255,.4);}
+.btn-p:hover{transform:translateY(-2px);box-shadow:0 12px 32px rgba(123,47,255,.5);}
+.btn-g{font-size:14px;font-weight:500;color:var(--dim);padding:13px 22px;border-radius:10px;border:1px solid var(--border);text-decoration:none;transition:all .25s;}
+.btn-g:hover{border-color:rgba(123,47,255,.4);color:#9B4FFF;}
 
-/* cta */
-.gp-cta{padding:100px 40px;text-align:center;position:relative;overflow:hidden;}
-.gp-cta-g{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:600px;height:350px;background:radial-gradient(ellipse,var(--ac-g),transparent 60%);pointer-events:none;}
-.gp-cta-in{position:relative;z-index:1;max-width:560px;margin:0 auto;}
-.gp-cta-h{font-size:clamp(30px,4vw,50px);font-weight:900;letter-spacing:-2px;line-height:1.06;margin-bottom:16px;}
-.gp-cta-h em{font-style:normal;background:linear-gradient(135deg,var(--ac),#9B4FFF);-webkit-background-clip:text;-webkit-text-fill-color:transparent;}
-.gp-cta-sub{font-size:15px;color:var(--dim);margin-bottom:38px;font-weight:300;line-height:1.72;}
-.gp-cta-btns{display:flex;justify-content:center;gap:14px;flex-wrap:wrap;}
+/* LAPTOP MOCKUP */
+.laptop-wrap{position:relative;}
+.laptop{position:relative;}
+.laptop-body{background:linear-gradient(135deg,#1A1A2E,#252540);border-radius:16px 16px 4px 4px;padding:10px 10px 6px;box-shadow:0 40px 100px rgba(0,0,0,.7),0 0 0 1px rgba(255,255,255,.06);position:relative;}
+.laptop-screen{background:#0A0616;border-radius:8px;overflow:hidden;aspect-ratio:16/10;position:relative;}
+/* synaps panel inside screen */
+.panel-chrome{background:#0D0920;height:100%;}
+.panel-top{background:#120E20;border-bottom:1px solid rgba(255,255,255,.06);padding:9px 14px;display:flex;align-items:center;justify-content:space-between;}
+.panel-brand{font-size:11px;font-weight:700;color:#9B4FFF;}
+.panel-title{font-family:'JetBrains Mono',monospace;font-size:9px;color:rgba(196,164,255,.7);}
+.panel-body{padding:12px;display:grid;grid-template-columns:1fr 1fr;gap:10px;height:calc(100% - 36px);}
+/* Left: candidate profile */
+.pane-l{display:flex;flex-direction:column;gap:8px;}
+.cand-card{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.06);border-radius:8px;padding:10px;}
+.cand-row{display:flex;align-items:center;gap:8px;margin-bottom:8px;}
+.cand-av{width:32px;height:32px;border-radius:50%;background:linear-gradient(135deg,#4A2080,#8040C0);display:flex;align-items:center;justify-content:center;font-size:13px;flex-shrink:0;}
+.cand-name{font-size:10px;font-weight:700;color:var(--text);}
+.cand-email{font-family:'JetBrains Mono',monospace;font-size:8px;color:var(--dim2);}
+.ai-score-pill{display:inline-flex;align-items:center;gap:4px;background:rgba(123,47,255,.15);border:1px solid rgba(123,47,255,.3);border-radius:4px;padding:2px 7px;font-family:'JetBrains Mono',monospace;font-size:8px;color:#9B4FFF;font-weight:700;margin-bottom:6px;}
+.detail-row{display:flex;justify-content:space-between;margin-bottom:3px;}
+.dr-l{font-family:'JetBrains Mono',monospace;font-size:7.5px;color:var(--dim2);text-transform:uppercase;letter-spacing:.5px;}
+.dr-v{font-family:'JetBrains Mono',monospace;font-size:8px;color:var(--dim);font-weight:600;}
+/* Right: scores */
+.pane-r{display:flex;flex-direction:column;gap:8px;}
+.score-header{font-family:'JetBrains Mono',monospace;font-size:8px;color:var(--dim2);letter-spacing:1px;text-transform:uppercase;margin-bottom:2px;}
+.score-big{font-family:'JetBrains Mono',monospace;font-size:26px;font-weight:900;color:#9B4FFF;line-height:1;}
+.score-sub{font-size:8px;color:var(--dim2);}
+.score-bar-wrap{margin-top:6px;display:flex;flex-direction:column;gap:5px;}
+.sbr{display:flex;align-items:center;gap:6px;}
+.sbr-l{font-family:'JetBrains Mono',monospace;font-size:7px;color:var(--dim2);width:60px;flex-shrink:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
+.sbr-t{flex:1;height:4px;background:rgba(255,255,255,.05);border-radius:2px;overflow:hidden;}
+.sbr-f{height:100%;border-radius:2px;}
+.sbr-v{font-family:'JetBrains Mono',monospace;font-size:7.5px;color:#9B4FFF;width:22px;text-align:right;}
+.eval-box{background:rgba(123,47,255,.08);border:1px solid rgba(123,47,255,.18);border-radius:6px;padding:8px;}
+.eval-t{font-size:8px;color:var(--dim2);line-height:1.5;}
+/* base */
+.laptop-base{background:linear-gradient(180deg,#252540,#1A1A2E);height:12px;border-radius:0 0 12px 12px;position:relative;}
+.laptop-base::after{content:'';position:absolute;bottom:0;left:50%;transform:translateX(-50%);width:80px;height:4px;background:rgba(255,255,255,.06);border-radius:0 0 6px 6px;}
+.laptop-stand{width:120px;height:6px;background:linear-gradient(90deg,transparent,rgba(255,255,255,.05),transparent);margin:0 auto;}
 
-@media(max-width:960px){.gp-hero{grid-template-columns:1fr;padding:80px 28px 40px;}.gp-feat-grid{grid-template-columns:1fr;}.gp-met-in{grid-template-columns:1fr 1fr;}.gp-feats,.gp-met,.gp-cta{padding-left:28px;padding-right:28px;}}
-@media(max-width:600px){.gp-met-in{grid-template-columns:1fr;}.gp-cta{padding:60px 20px;}}
+/* float */
+.fl-b{position:absolute;background:var(--card2);border:1px solid rgba(123,47,255,.3);border-radius:12px;padding:10px 14px;box-shadow:0 8px 28px rgba(0,0,0,.4);animation:floatY 5s ease-in-out infinite;}
+.fb-icon{font-size:18px;margin-bottom:3px;}
+.fb-val{font-family:'JetBrains Mono',monospace;font-size:14px;font-weight:700;color:#9B4FFF;}
+.fb-lbl{font-size:9px;color:var(--dim2);}
 
+/* STAT BAND */
+.statband{background:var(--bg2);border-top:1px solid var(--border);border-bottom:1px solid var(--border);position:relative;z-index:1;}
+.statband-in{max-width:1280px;margin:0 auto;display:grid;grid-template-columns:repeat(4,1fr);}
+.ss{padding:32px 20px;text-align:center;border-right:1px solid var(--border);transition:background .3s;}
+.ss:last-child{border-right:none;}.ss:hover{background:var(--gbg);}
+.ss-n{font-family:'JetBrains Mono',monospace;font-size:40px;font-weight:900;letter-spacing:-2px;background:linear-gradient(135deg,#9B4FFF,#C4A4FF);-webkit-background-clip:text;-webkit-text-fill-color:transparent;line-height:1;}
+.ss-l{font-size:11px;color:var(--dim);margin-top:6px;font-weight:300;}
+
+/* SEC */
+.sec{padding:88px 60px;position:relative;z-index:1;max-width:1400px;margin:0 auto;}
+.sec-alt{background:var(--bg2);max-width:none!important;padding-left:0!important;padding-right:0!important;}
+.sec-alt-in{max-width:1280px;margin:0 auto;padding:88px 60px;}
+.stag{font-family:'JetBrains Mono',monospace;font-size:10px;font-weight:700;letter-spacing:4px;text-transform:uppercase;color:#9B4FFF;margin-bottom:14px;}
+.sh{font-size:clamp(28px,3.5vw,46px);font-weight:900;letter-spacing:-1.8px;line-height:1.06;margin-bottom:14px;}
+.sh em{font-style:normal;background:linear-gradient(135deg,#9B4FFF,#C4A4FF);-webkit-background-clip:text;-webkit-text-fill-color:transparent;}
+.ssub{font-size:15px;color:var(--dim);font-weight:300;line-height:1.75;max-width:540px;margin-bottom:52px;}
+
+/* FEAT GRID */
+.feat-g{display:grid;grid-template-columns:repeat(2,1fr);gap:1px;border:1px solid var(--border);border-radius:18px;overflow:hidden;}
+.fi{background:var(--card);padding:36px 32px;transition:background .3s;position:relative;overflow:hidden;}
+.fi:hover{background:var(--card2);}
+.fi::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,#7B2FFF,#C4A4FF);transform:scaleX(0);transform-origin:left;transition:transform .4s;}
+.fi:hover::before{transform:scaleX(1);}
+.fi-n{font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--dim2);letter-spacing:2px;margin-bottom:14px;}
+.fi-ico{width:48px;height:48px;border-radius:14px;background:linear-gradient(135deg,rgba(123,47,255,.2),rgba(155,79,255,.1));border:1px solid rgba(123,47,255,.2);display:flex;align-items:center;justify-content:center;font-size:22px;margin-bottom:14px;}
+.fi-t{font-size:16px;font-weight:800;margin-bottom:8px;}
+.fi-d{font-size:13px;color:var(--dim);line-height:1.72;font-weight:300;}
+
+/* MET */
+.met-g{display:grid;grid-template-columns:repeat(4,1fr);border:1px solid var(--border);border-radius:16px;overflow:hidden;}
+.mg{padding:36px 20px;text-align:center;border-right:1px solid var(--border);transition:background .3s;}
+.mg:last-child{border-right:none;}.mg:hover{background:var(--gbg);}
+.mg-n{font-family:'JetBrains Mono',monospace;font-size:44px;font-weight:900;background:linear-gradient(135deg,#9B4FFF,#C4A4FF);-webkit-background-clip:text;-webkit-text-fill-color:transparent;line-height:1;}
+.mg-l{font-size:12px;color:var(--dim);margin-top:8px;font-weight:300;}
+
+/* CTA */
+.cta-sec{padding:100px 60px;text-align:center;position:relative;overflow:hidden;}
+.cta-g{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:700px;height:400px;background:radial-gradient(ellipse,rgba(123,47,255,.12),transparent 65%);pointer-events:none;}
+.cta-in{position:relative;z-index:1;max-width:580px;margin:0 auto;}
+.ch{font-size:clamp(30px,4vw,52px);font-weight:900;letter-spacing:-2px;line-height:1.06;margin-bottom:18px;}
+.ch em{font-style:normal;background:linear-gradient(135deg,#9B4FFF,#C4A4FF);-webkit-background-clip:text;-webkit-text-fill-color:transparent;}
+.csub{font-size:15px;color:var(--dim);margin-bottom:40px;font-weight:300;line-height:1.72;}
+.cacts{display:flex;justify-content:center;gap:14px;flex-wrap:wrap;}
+
+@media(max-width:1100px){.hero{grid-template-columns:1fr;max-width:700px;}.sec{padding:60px 28px;}}
+@media(max-width:900px){.feat-g{grid-template-columns:1fr;}.met-g{grid-template-columns:1fr 1fr;}.statband-in{grid-template-columns:1fr 1fr;}}
+@media(max-width:600px){.cta-sec{padding:60px 20px;}.statband-in{grid-template-columns:1fr;}}
 </style>
 </head>
 <body>
 <nav id="snav">
-  <a href="synaps-v10-toggle.html" class="nav-logo">
-    <div class="orb-sm">
-      <div class="ob ob-base"></div>
-      <div class="ob ob-swirl"></div>
-      <div class="ob-hl"></div>
-      <div class="ob-gleam"></div>
-    </div>
+  <a href="synaps-v11-toggle.html" style="display:flex;align-items:center;gap:10px;text-decoration:none;">
+    <div class="orb-sm"><div class="ob ob-base"></div><div class="ob ob-swirl"></div><div class="ob-hl"></div></div>
     <span class="nav-wordmark">Synaps<span class="nw-hi">AI</span></span>
   </a>
   <div class="nav-bc">
-    <a href="synaps-v10-toggle.html" class="bc-home">Ana Sayfa</a>
+    <a href="synaps-v11-toggle.html" class="bc-home">Ana Sayfa</a>
     <span class="bc-sep">›</span>
     <span class="bc-cur">AI Rol Bazlı Mülakat</span>
   </div>
   <div class="nav-right">
-    <a href="synaps-v10-toggle.html" class="nav-back">← Ekosisteme Dön</a>
-    <label class="ts-wrap">
-      <input type="checkbox" id="themeToggle">
-      <div class="ts-track"><div class="ts-thumb"></div><span class="ts-m">🌙</span><span class="ts-s">☀️</span></div>
-    </label>
+    <a href="synaps-v11-toggle.html" class="nav-back">← Ekosisteme Dön</a>
+    <label class="ts-wrap"><input type="checkbox" id="themeToggle"><div class="ts-track"><div class="ts-thumb"></div><span class="ts-m">🌙</span><span class="ts-s">☀️</span></div></label>
     <a href="https://synapsai.io" class="nav-cta">Demo İste</a>
   </div>
 </nav>
 
-<section class="gp-hero">
-  <div class="gp-bg"></div>
+<!-- HERO -->
+<section class="hero" style="position:relative;">
+  <div class="hero-bg"></div>
+  <div class="hero-grid"></div>
   <div style="position:relative;z-index:1;">
-    <div class="gp-eyebrow">
-      <span class="gp-step">2. ADIM</span>
-      <span class="gp-badge"><span class="gp-dot"></span>2. ADIM · Mülakat</span>
+    <div class="eyebrow">
+      <span class="tag-s">2. Adım</span>
+      <span class="tag-p"><span class="pd"></span>Rol Odaklı Değerlendirme</span>
     </div>
-    <h1 class="gp-h1">Pozisyona Göre<br><em>Özelleştirilmiş Mülakat</em></h1>
-    <p class="gp-sub">Her rol için yetkinlik ağırlıklarını siz belirleyin, AI o kriterlere göre değerlendirsin. Müdür pozisyonu için liderlik, yazılımcı için teknik — tam olarak ihtiyacınız olan değerlendirme.</p>
-    <div class="gp-btns">
-      <a href="https://synapsai.io" class="btn-ac">Demo İste →</a>
-      <a href="synaps-v10-toggle.html" class="btn-gh">Tüm Ürünler</a>
+    <h1>
+      <span>Pozisyona Göre</span>
+      <span class="gr">Kişiselleştirilmiş</span>
+      <span>Mülakat</span>
+    </h1>
+    <p class="sub">Kuruluşunuzun ihtiyaç duyduğu yeteneğin sahip olması gereken tüm yetkinlikleri doğru biçimde ölçün. Teknik, analitik, iletişim, problem çözme ve sektöre özgü nokta atışı değerlendirmeler.</p>
+    <div class="acts">
+      <a href="https://synapsai.io" class="btn-p">Demo İste →</a>
+      <a href="synaps-v11-toggle.html" class="btn-g">Tüm Ürünler</a>
     </div>
   </div>
-  <div style="position:relative;z-index:1;">
-    <div style="background:var(--card2);border:1px solid var(--border);border-radius:20px;overflow:hidden;box-shadow:0 24px 64px rgba(0,0,0,.5);">
-  <div style="background:var(--bg2);border-bottom:1px solid var(--border);padding:14px 20px;display:flex;align-items:center;justify-content:space-between;">
-    <span style="font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--dim2);">Rol Konfigürasyonu</span>
-    <span style="background:rgba(123,47,255,.15);border:1px solid rgba(123,47,255,.3);border-radius:6px;padding:3px 10px;font-family:'JetBrains Mono',monospace;font-size:9px;color:#9B4FFF;font-weight:700;">Senior Product Manager</span>
+
+  <!-- LAPTOP MOCKUP -->
+  <div class="laptop-wrap" style="position:relative;z-index:1;">
+    <div class="laptop">
+      <div class="laptop-body">
+        <div class="laptop-screen">
+          <div class="panel-chrome">
+            <div class="panel-top">
+              <span class="panel-brand">Synaps+</span>
+              <span class="panel-title">Product Owner Teknik Mülakat Sonucu</span>
+            </div>
+            <div class="panel-body">
+              <!-- Left -->
+              <div class="pane-l">
+                <div class="cand-card">
+                  <div class="cand-row">
+                    <div class="cand-av">👤</div>
+                    <div>
+                      <div class="cand-name">Deniz Öztürk</div>
+                      <div class="cand-email">deniz.ozturk@gmail.com</div>
+                    </div>
+                  </div>
+                  <div class="ai-score-pill">AI Ortalama Puanı: 78/100</div>
+                  <div style="font-family:'JetBrains Mono',monospace;font-size:8px;color:rgba(123,47,255,.7);letter-spacing:1px;margin-bottom:6px;">MÜLAKAT DETAYLARI</div>
+                  <div class="detail-row"><span class="dr-l">Başlangıç</span><span class="dr-v">20.08.2024</span></div>
+                  <div class="detail-row"><span class="dr-l">Bitiş</span><span class="dr-v">27.08.2024</span></div>
+                  <div class="detail-row"><span class="dr-l">Toplam Soru</span><span class="dr-v">10 Soru</span></div>
+                  <div class="detail-row"><span class="dr-l">Mülakat Süre</span><span class="dr-v">20 dk</span></div>
+                  <div class="detail-row"><span class="dr-l">Yanıt Süre</span><span class="dr-v">17 dk 28 sn</span></div>
+                </div>
+                <div class="cand-card" style="background:rgba(123,47,255,.06);border-color:rgba(123,47,255,.15);">
+                  <div style="font-size:8px;color:var(--dim2);margin-bottom:4px;">Adayı detaylı değerlendir</div>
+                  <div style="display:flex;gap:3px;margin-bottom:4px;">⭐⭐⭐☆☆</div>
+                  <div style="font-size:7.5px;color:var(--dim2);">Aday pozisyona uygun mu?</div>
+                </div>
+              </div>
+              <!-- Right -->
+              <div class="pane-r">
+                <div style="font-size:10px;font-weight:700;color:var(--dim);margin-bottom:4px;">Mülakat skoru: 78/100</div>
+                <div style="height:6px;background:rgba(255,255,255,.05);border-radius:3px;overflow:hidden;margin-bottom:8px;">
+                  <div style="width:78%;height:100%;background:linear-gradient(90deg,#22C55E,#FBBF24,#EF4444);"></div>
+                </div>
+                <div class="score-bar-wrap">
+                  <div class="sbr"><span class="sbr-l">Ürün Yön. ve Str.</span><div class="sbr-t"><div class="sbr-f" style="width:78%;background:linear-gradient(90deg,#7B2FFF,#9B4FFF);"></div></div><span class="sbr-v">%78</span></div>
+                  <div class="sbr"><span class="sbr-l">İletişim ve İşbirliği</span><div class="sbr-t"><div class="sbr-f" style="width:44%;background:linear-gradient(90deg,#F59E0B,#FBBF24);"></div></div><span class="sbr-v">%44</span></div>
+                  <div class="sbr"><span class="sbr-l">Teknik Bilgi</span><div class="sbr-t"><div class="sbr-f" style="width:60%;background:linear-gradient(90deg,#7B2FFF,#C4A4FF);"></div></div><span class="sbr-v">%60</span></div>
+                </div>
+                <div class="eval-box" style="margin-top:6px;">
+                  <div style="font-size:8px;font-weight:700;color:var(--dim);margin-bottom:4px;">Genel Değerlendirme</div>
+                  <div style="font-family:'JetBrains Mono',monospace;font-size:8px;color:#9B4FFF;margin-bottom:3px;">Sonuç: 78/100 · Seviye: Mid</div>
+                  <div class="eval-t">Çalışan ürün yönetimi ve iletişim konularında güçlü bir Product Owner adayı. Gelişim alanlarına odaklanarak kariyer yolculuğunu ilerletebilir.</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="laptop-base"></div>
+      <div class="laptop-stand"></div>
+    </div>
+    <!-- float badges -->
+    <div class="fl-b" style="top:-16px;right:-16px;animation-delay:0s;">
+      <div class="fb-icon">🎯</div>
+      <div class="fb-val">75+</div>
+      <div class="fb-lbl">Rol şablonu</div>
+    </div>
+    <div class="fl-b" style="bottom:-16px;left:-16px;animation-delay:1.5s;">
+      <div class="fb-icon">⚡</div>
+      <div class="fb-val">60%</div>
+      <div class="fb-lbl">Daha az mülakat</div>
+    </div>
   </div>
-  <div style="padding:20px;">
-    <div style="font-family:'JetBrains Mono',monospace;font-size:9px;color:rgba(123,47,255,.8);letter-spacing:2px;margin-bottom:14px;">YETKİNLİK AĞIRLIKLARI</div>
-    <div style="display:flex;flex-direction:column;gap:10px;margin-bottom:16px;">
-      <div style="display:flex;align-items:center;gap:10px;font-size:12px;">
-        <span style="width:100px;color:var(--dim);flex-shrink:0;">Liderlik</span>
-        <div style="flex:1;height:8px;background:var(--border);border-radius:4px;overflow:hidden;"><div style="width:90%;height:100%;background:linear-gradient(90deg,#7B2FFF,#9B4FFF);border-radius:4px;"></div></div>
-        <span style="font-family:'JetBrains Mono',monospace;font-size:11px;color:#9B4FFF;font-weight:700;">90%</span>
-      </div>
-      <div style="display:flex;align-items:center;gap:10px;font-size:12px;">
-        <span style="width:100px;color:var(--dim);flex-shrink:0;">Stratejik Düşünce</span>
-        <div style="flex:1;height:8px;background:var(--border);border-radius:4px;overflow:hidden;"><div style="width:85%;height:100%;background:linear-gradient(90deg,#7B2FFF,#9B4FFF);border-radius:4px;"></div></div>
-        <span style="font-family:'JetBrains Mono',monospace;font-size:11px;color:#9B4FFF;font-weight:700;">85%</span>
-      </div>
-      <div style="display:flex;align-items:center;gap:10px;font-size:12px;">
-        <span style="width:100px;color:var(--dim);flex-shrink:0;">Analitik Beceri</span>
-        <div style="flex:1;height:8px;background:var(--border);border-radius:4px;overflow:hidden;"><div style="width:80%;height:100%;background:linear-gradient(90deg,#7B2FFF,#9B4FFF);border-radius:4px;"></div></div>
-        <span style="font-family:'JetBrains Mono',monospace;font-size:11px;color:#9B4FFF;font-weight:700;">80%</span>
-      </div>
-      <div style="display:flex;align-items:center;gap:10px;font-size:12px;">
-        <span style="width:100px;color:var(--dim);flex-shrink:0;">İletişim</span>
-        <div style="flex:1;height:8px;background:var(--border);border-radius:4px;overflow:hidden;"><div style="width:75%;height:100%;background:linear-gradient(90deg,#7B2FFF,#9B4FFF);border-radius:4px;"></div></div>
-        <span style="font-family:'JetBrains Mono',monospace;font-size:11px;color:#9B4FFF;font-weight:700;">75%</span>
-      </div>
-    </div>
-    <div style="background:rgba(123,47,255,.08);border:1px solid rgba(123,47,255,.2);border-radius:10px;padding:14px;">
-      <div style="font-family:'JetBrains Mono',monospace;font-size:8px;color:rgba(123,47,255,.7);letter-spacing:2px;margin-bottom:8px;">AKTİF SORU</div>
-      <div style="font-size:12px;color:var(--dim);line-height:1.7;">"Geçmişte yönettiğiniz en karmaşık ürün sürecini anlatır mısınız? Paydaş yönetimini nasıl ele aldınız?"</div>
-    </div>
+</section>
+
+<!-- STAT BAND -->
+<div class="statband">
+  <div class="statband-in">
+    <div class="ss"><div class="ss-n">75+</div><div class="ss-l">Hazır rol şablonu</div></div>
+    <div class="ss"><div class="ss-n">500+</div><div class="ss-l">Soru bankası</div></div>
+    <div class="ss"><div class="ss-n">98%</div><div class="ss-l">Değerlendirme tutarlılığı</div></div>
+    <div class="ss"><div class="ss-n">60%</div><div class="ss-l">Daha az mülakat süresi</div></div>
   </div>
 </div>
+
+<!-- FEATURES -->
+<section class="sec">
+  <div class="stag">Temel Özellikler</div>
+  <h2 class="sh">Ne İşe <em>Yarıyor?</em></h2>
+  <p class="ssub">Her pozisyona özel konfigüre edilmiş, yetkinlik ağırlıklı AI mülakat sistemi. Çalışanlarınızda ve adaylarınızda yetkinliği ölçün.</p>
+  <div class="feat-g">
+    <div class="fi"><div class="fi-n">01</div><div class="fi-ico">🎯</div><div class="fi-t">Rol Odaklı Yapılandırma</div><p class="fi-d">Her pozisyon için yetkinlik ağırlıkları özelleştirilebilir. Teknik, soft skill ve liderlik dengesi sizin kontrolünüzde. 75+ hazır şablon ile dakikalar içinde hazır.</p></div>
+    <div class="fi"><div class="fi-n">02</div><div class="fi-ico">⚖️</div><div class="fi-t">Ağırlıklı Puanlama Motoru</div><p class="fi-d">Seçilen kriterlere göre ağırlıklı toplam puan hesaplanır. Her aday aynı standarda göre değerlendirilir — önyargısız, tutarlı, adil.</p></div>
+    <div class="fi"><div class="fi-n">03</div><div class="fi-ico">📝</div><div class="fi-t">Dinamik Soru Bankası</div><p class="fi-d">500+ soru bankasından rol ve seviyeye uygun sorular otomatik seçilir. Teknik, davranışsal ve vaka soruları dengeli dağıtılır.</p></div>
+    <div class="fi"><div class="fi-n">04</div><div class="fi-ico">📊</div><div class="fi-t">Karşılaştırmalı Panel Raporu</div><p class="fi-d">Aynı role başvuran tüm adaylar panel raporunda yan yana gösterilir. Skoru, duygu durumunu, iletişim ve teknik notlarını karşılaştırın.</p></div>
   </div>
 </section>
 
-<section class="gp-feats">
-  <div class="gp-feats-in">
-    <div class="section-tag">Temel Özellikler</div>
-    <h2 class="section-h2">Ne İşe <em>Yarıyor?</em></h2>
-    <p class="section-sub">Her pozisyona özel konfigüre edilmiş, yetkinlik ağırlıklı mülakat sistemleri.</p>
-    <div class="gp-feat-grid"><div class="gp-fi"><div class="gfi-n">01</div><span class="gfi-icon">🎯</span><div class="gfi-t">Rol Odaklı Yapılandırma</div><p class="gfi-d">Her pozisyon için yetkinlik ağırlıkları özelleştirilebilir. Teknik, soft skill ve liderlik dengesi sizin kontrolünüzde.</p></div><div class="gp-fi"><div class="gfi-n">02</div><span class="gfi-icon">⚖️</span><div class="gfi-t">Ağırlıklı Puanlama</div><p class="gfi-d">Seçilen kriterlere göre ağırlıklı toplam puan hesaplanır. Her aday aynı standarda göre değerlendirilir.</p></div><div class="gp-fi"><div class="gfi-n">03</div><span class="gfi-icon">📝</span><div class="gfi-t">Dinamik Soru Bankası</div><p class="gfi-d">500+ soru bankasından rol ve pozisyon seviyesine uygun sorular otomatik seçilir.</p></div><div class="gp-fi"><div class="gfi-n">04</div><span class="gfi-icon">📊</span><div class="gfi-t">Karşılaştırmalı Rapor</div><p class="gfi-d">Aynı role başvuran tüm adaylar karşılaştırmalı raporda gösterilir. Karar verme kolaylaşır.</p></div></div>
-  </div>
-</section>
-
-<div class="gp-met">
-  <div class="gp-met-in"><div class="gp-m"><div class="gp-m-n">75+</div><div class="gp-m-l">Hazır rol şablonu</div></div><div class="gp-m"><div class="gp-m-n">500+</div><div class="gp-m-l">Soru bankası</div></div><div class="gp-m"><div class="gp-m-n">98%</div><div class="gp-m-l">Değerlendirme tutarlılığı</div></div><div class="gp-m"><div class="gp-m-n">60%</div><div class="gp-m-l">Daha az mülakat süresi</div></div></div>
-</div>
-
-<section class="gp-cta">
-  <div class="gp-cta-g"></div>
-  <div class="gp-cta-in">
-    <div class="section-tag" style="text-align:center;">2. ADIM · AI Rol Bazlı Mülakat</div>
-    <h2 class="gp-cta-h">AI Rol Bazlı Mülakat'ı<br><em>Bugün Deneyin</em></h2>
-    <p class="gp-cta-sub">Demo almak veya hemen başlamak için bize ulaşın.</p>
-    <div class="gp-cta-btns">
-      <a href="https://synapsai.io" class="btn-ac">Demo İste →</a>
-      <a href="synaps-v10-toggle.html" class="btn-gh">← Ana Sayfaya Dön</a>
+<!-- CTA -->
+<section class="cta-sec">
+  <div class="cta-g"></div>
+  <div class="cta-in">
+    <div class="stag" style="text-align:center;">2. Adım · AI Rol Bazlı Mülakat</div>
+    <h2 class="ch">AI Rol Bazlı Mülakat'ı<br><em>Bugün Deneyin</em></h2>
+    <p class="csub">Demo almak veya hemen başlamak için bize ulaşın.</p>
+    <div class="cacts">
+      <a href="https://synapsai.io" class="btn-p">Demo İste →</a>
+      <a href="synaps-v11-toggle.html" class="btn-g">← Ana Sayfaya Dön</a>
     </div>
   </div>
 </section>
+
 <footer class="lp-footer">
   <div class="lp-footer-in">
     <div class="lf-brand">
       <div class="orb-sm"><div class="ob ob-base"></div><div class="ob ob-swirl"></div><div class="ob-hl"></div></div>
       <div><div class="lf-name">Synaps<b>AI</b></div><div class="lf-prod">AI Rol Bazlı Mülakat</div></div>
     </div>
-    <nav class="lf-links">
-      <a href="synaps-v10-toggle.html">Ana Sayfa</a>
-      <a href="#">Gizlilik</a>
-      <a href="#">Şartlar</a>
-      <a href="mailto:destek@synapsai.ai">Destek</a>
-    </nav>
+    <nav class="lf-links"><a href="synaps-v11-toggle.html">Ana Sayfa</a><a href="#">Gizlilik</a><a href="#">Şartlar</a><a href="#">Destek</a></nav>
     <p class="lf-copy">© 2025 Synaps Yapay Zeka Teknolojileri A.Ş.</p>
   </div>
 </footer>
-<script>
-(function(){
-  var t=document.getElementById('themeToggle'),h=document.documentElement;
-  var s=localStorage.getItem('synaps-theme')||'dark';
-  if(s==='light'){h.setAttribute('data-theme','light');if(t)t.checked=true;}
-  if(t)t.addEventListener('change',function(){
-    var v=t.checked?'light':'dark';
-    h.setAttribute('data-theme',v);localStorage.setItem('synaps-theme',v);
-  });
-})();
-</script>
+<script>(function(){var t=document.getElementById('themeToggle'),h=document.documentElement;var s=localStorage.getItem('synaps-theme')||'dark';if(s==='light'){h.setAttribute('data-theme','light');if(t)t.checked=true;}if(t)t.addEventListener('change',function(){var m=t.checked?'light':'dark';h.setAttribute('data-theme',m);localStorage.setItem('synaps-theme',m);});})();</script>
 </body>
 </html>

@@ -3,47 +3,36 @@
 <head>
 <meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
 <title>AI Interviewer — Synaps AI</title>
-<link rel="preconnect" href="https://fonts.googleapis.com"><link href="https://fonts.googleapis.com/css2?family=Lexend:wght@200;300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Lexend:wght@200;300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
 <style>
-
 :root{
   --bg:#06040F;--bg2:#0C0818;--bg3:#120E20;
   --card:rgba(255,255,255,.04);--card2:rgba(255,255,255,.07);--card3:rgba(255,255,255,.1);
   --border:rgba(255,255,255,.08);--border2:rgba(255,255,255,.05);
   --text:#F0EEFF;--dim:rgba(240,238,255,.55);--dim2:rgba(240,238,255,.28);
   --pu:#7B2FFF;--vi:#9B4FFF;--lav:#C4A4FF;--pk:#E040FB;
-  --nav-bg:rgba(6,4,15,.9);
-  --glow:rgba(123,47,255,.3);--gbg:rgba(123,47,255,.1);
-  --sh:0 32px 80px rgba(0,0,0,.55);
+  --nav-bg:rgba(6,4,15,.9);--glow:rgba(123,47,255,.3);--gbg:rgba(123,47,255,.1);
 }
 [data-theme="light"]{
   --bg:#F0EEF9;--bg2:#E8E4F5;--bg3:#DDD8EF;
   --card:rgba(255,255,255,.85);--card2:rgba(255,255,255,.95);--card3:rgba(255,255,255,.98);
   --border:rgba(123,47,255,.11);--border2:rgba(123,47,255,.07);
   --text:#1A0A3C;--dim:rgba(26,10,60,.58);--dim2:rgba(26,10,60,.3);
-  --nav-bg:rgba(240,238,249,.92);
-  --glow:rgba(123,47,255,.15);--gbg:rgba(123,47,255,.07);
-  --sh:0 20px 60px rgba(123,47,255,.12);
+  --nav-bg:rgba(240,238,249,.92);--glow:rgba(123,47,255,.15);--gbg:rgba(123,47,255,.07);
 }
-
 *{margin:0;padding:0;box-sizing:border-box;}
 html{scroll-behavior:smooth;}
 body{background:var(--bg);color:var(--text);font-family:'Lexend',sans-serif;overflow-x:hidden;transition:background .4s,color .4s;line-height:1.6;}
-body::before{content:'';position:fixed;inset:0;pointer-events:none;z-index:0;
-background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='.025'/%3E%3C/svg%3E");}
+body::before{content:'';position:fixed;inset:0;pointer-events:none;z-index:0;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='.025'/%3E%3C/svg%3E");}
 
-/* ─── NAV ──────────────────────────────────────── */
-#snav{position:fixed;top:0;left:0;right:0;z-index:900;height:62px;
-  display:flex;align-items:center;padding:0 32px;gap:20px;
-  background:var(--nav-bg);backdrop-filter:blur(28px) saturate(200%);
-  border-bottom:1px solid var(--border);transition:background .4s;}
+/* NAV */
+#snav{position:fixed;top:0;left:0;right:0;z-index:900;height:62px;display:flex;align-items:center;padding:0 32px;gap:20px;background:var(--nav-bg);backdrop-filter:blur(28px) saturate(200%);border-bottom:1px solid var(--border);transition:background .4s;}
 .orb-sm{width:28px;height:28px;border-radius:50%;position:relative;overflow:hidden;flex-shrink:0;}
 .ob{position:absolute;inset:0;border-radius:50%;}
-.ob-base{background:radial-gradient(ellipse at 36% 28%,rgba(255,255,255,.88) 0%,rgba(200,175,255,.55) 16%,transparent 36%),radial-gradient(ellipse at 68% 66%,rgba(70,20,170,.55) 0%,transparent 48%),radial-gradient(circle,#AA80FF 0%,#6E38CC 32%,#481898 60%,#1A0850 82%,#0C0330 100%);
-  box-shadow:inset -4px -3px 8px rgba(0,0,0,.55),inset 3px 2px 6px rgba(200,165,255,.25),0 0 14px rgba(123,47,255,.65);}
+.ob-base{background:radial-gradient(ellipse at 36% 28%,rgba(255,255,255,.88) 0%,rgba(200,175,255,.55) 16%,transparent 36%),radial-gradient(ellipse at 68% 66%,rgba(70,20,170,.55) 0%,transparent 48%),radial-gradient(circle,#AA80FF 0%,#6E38CC 32%,#481898 60%,#1A0850 82%,#0C0330 100%);box-shadow:inset -4px -3px 8px rgba(0,0,0,.55),inset 3px 2px 6px rgba(200,165,255,.25),0 0 14px rgba(123,47,255,.65);}
 .ob-swirl{background:conic-gradient(from 105deg at 44% 56%,transparent 0deg,rgba(255,255,255,.13) 20deg,transparent 38deg,rgba(180,140,255,.08) 78deg,transparent 118deg,rgba(255,255,255,.06) 198deg,transparent 235deg);animation:orbSpin 8s linear infinite;}
 .ob-hl{position:absolute;top:8%;left:14%;width:36%;height:26%;background:radial-gradient(ellipse,rgba(255,255,255,.72) 0%,rgba(255,255,255,.08) 60%,transparent 100%);border-radius:50%;transform:rotate(-28deg);}
-.ob-gleam{position:absolute;bottom:14%;right:11%;width:18%;height:13%;background:radial-gradient(ellipse,rgba(200,160,255,.42) 0%,transparent 100%);border-radius:50%;}
 @keyframes orbSpin{to{transform:rotate(360deg);}}
 .nav-wordmark{font-size:15px;font-weight:700;color:var(--text);letter-spacing:-.3px;}
 .nw-hi{color:#9B4FFF;}
@@ -55,7 +44,6 @@ background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/sv
 .nav-right{display:flex;align-items:center;gap:14px;flex-shrink:0;}
 .nav-back{font-size:12px;color:var(--dim);text-decoration:none;font-weight:500;transition:color .2s;}
 .nav-back:hover{color:#9B4FFF;}
-/* toggle */
 .ts-wrap{position:relative;width:44px;height:23px;cursor:pointer;}
 .ts-wrap input{opacity:0;position:absolute;width:0;height:0;}
 .ts-track{position:absolute;inset:0;border-radius:12px;background:rgba(255,255,255,.07);border:1px solid var(--border);transition:all .3s;}
@@ -70,7 +58,7 @@ background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/sv
 .nav-cta:hover{transform:translateY(-1px);box-shadow:0 7px 20px rgba(123,47,255,.5);}
 @media(max-width:768px){.nav-bc{display:none;}.nav-back{display:none;}}
 
-
+/* FOOTER */
 .lp-footer{border-top:1px solid var(--border);padding:32px 40px;position:relative;z-index:1;}
 .lp-footer-in{max-width:1280px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;gap:20px;flex-wrap:wrap;}
 .lf-brand{display:flex;align-items:center;gap:10px;}
@@ -78,219 +66,407 @@ background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/sv
 .lf-prod{font-size:10px;color:var(--dim2);letter-spacing:1.5px;text-transform:uppercase;font-family:'JetBrains Mono',monospace;}
 .lf-links{display:flex;gap:20px;}.lf-links a{font-size:12px;color:var(--dim2);text-decoration:none;transition:color .2s;}.lf-links a:hover{color:#9B4FFF;}
 .lf-copy{font-size:11px;color:var(--dim2);}
-@media(max-width:600px){.lp-footer-in{flex-direction:column;gap:14px;text-align:center;}.lf-links{justify-content:center;}}
 
-
+/* ANIMATIONS */
 @keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.4;transform:scale(.65)}}
-@keyframes slide{from{opacity:0;transform:translateX(-16px)}to{opacity:1;transform:translateX(0)}}
-@keyframes typing{0%,100%{opacity:1}50%{opacity:0}}
 @keyframes flowGrad{0%{background-position:0% 50%}100%{background-position:200% 50%}}
-@keyframes waveBar{0%,100%{transform:scaleY(.4);opacity:.5}50%{transform:scaleY(1);opacity:1}}
+@keyframes floatY{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
+@keyframes fadeUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
+@keyframes shimmer{0%{background-position:-200% 0}100%{background-position:200% 0}}
+@keyframes ripple{0%{transform:scale(1);opacity:.6}100%{transform:scale(2.2);opacity:0}}
 
-.ai-hero{min-height:100vh;padding:90px 0 0;display:flex;flex-direction:column;position:relative;overflow:hidden;}
-.ai-hero-bg{position:absolute;inset:0;background:radial-gradient(ellipse 100% 80% at 50% 0%,rgba(123,47,255,.1) 0%,transparent 60%);}
-.ai-hero-inner{position:relative;z-index:1;max-width:1280px;margin:0 auto;width:100%;padding:0 40px;display:grid;grid-template-columns:1fr 480px;gap:64px;align-items:center;padding-bottom:60px;}
+/* HERO */
+.hero{min-height:100vh;padding:100px 0 60px;position:relative;overflow:hidden;}
+.hero-bg{position:absolute;inset:0;background:radial-gradient(ellipse 90% 70% at 55% 10%,rgba(123,47,255,.12),transparent 60%);}
+.hero-grid{position:absolute;inset:0;background-image:linear-gradient(rgba(123,47,255,.04) 1px,transparent 1px),linear-gradient(90deg,rgba(123,47,255,.04) 1px,transparent 1px);background-size:60px 60px;pointer-events:none;}
+.hero-inner{position:relative;z-index:1;max-width:1280px;margin:0 auto;padding:0 48px;display:grid;grid-template-columns:1fr 500px;gap:72px;align-items:center;}
 
-.ai-h1{font-size:clamp(44px,5.5vw,78px);font-weight:900;letter-spacing:-3.5px;line-height:.98;margin-bottom:24px;}
-.ai-h1 span{display:block;}
-.ai-h1 .grad{background:linear-gradient(135deg,#9B4FFF,#C4A4FF,#E040FB);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-size:200%;animation:flowGrad 5s linear infinite;}
-.ai-sub{font-size:17px;color:var(--dim);font-weight:300;line-height:1.78;max-width:520px;margin-bottom:36px;}
-.ai-badge-row{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:32px;}
-.ai-badge{display:flex;align-items:center;gap:6px;background:var(--card2);border:1px solid var(--border);border-radius:8px;padding:8px 14px;font-size:12px;font-weight:600;color:var(--dim);}
-.ai-badge .dot{width:6px;height:6px;border-radius:50%;background:#9B4FFF;animation:pulse 2s infinite;}
-.ai-actions{display:flex;gap:12px;flex-wrap:wrap;}
-.btn-pu{background:linear-gradient(135deg,#7B2FFF,#5A1ECC);color:#fff;font-size:14px;font-weight:700;padding:14px 32px;border-radius:10px;text-decoration:none;transition:all .25s;box-shadow:0 6px 22px rgba(123,47,255,.4);}
+.hero-eyebrow{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:28px;}
+.tag-step{font-family:'JetBrains Mono',monospace;font-size:9px;font-weight:700;letter-spacing:3px;color:var(--dim2);background:var(--gbg);border:1px solid rgba(123,47,255,.2);padding:5px 12px;border-radius:20px;text-transform:uppercase;}
+.tag-live{font-family:'JetBrains Mono',monospace;font-size:9px;font-weight:700;letter-spacing:2px;color:#9B4FFF;background:rgba(123,47,255,.12);border:1px solid rgba(123,47,255,.3);padding:5px 12px;border-radius:20px;display:flex;align-items:center;gap:6px;}
+.live-dot{width:6px;height:6px;border-radius:50%;background:#9B4FFF;animation:pulse 1.5s infinite;}
+
+h1.h-main{font-size:clamp(46px,5.5vw,80px);font-weight:900;letter-spacing:-3.5px;line-height:.96;margin-bottom:26px;}
+h1.h-main span{display:block;}
+h1.h-main .grad{background:linear-gradient(135deg,#9B4FFF,#C4A4FF,#E040FB);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-size:200%;animation:flowGrad 5s linear infinite;}
+.hero-sub{font-size:17px;color:var(--dim);font-weight:300;line-height:1.78;max-width:500px;margin-bottom:38px;}
+.hero-acts{display:flex;gap:12px;flex-wrap:wrap;}
+.btn-pu{background:linear-gradient(135deg,#7B2FFF,#5A1ECC);color:#fff;font-size:14px;font-weight:700;padding:15px 34px;border-radius:11px;text-decoration:none;transition:all .25s;box-shadow:0 6px 22px rgba(123,47,255,.4);}
 .btn-pu:hover{transform:translateY(-2px);box-shadow:0 12px 32px rgba(123,47,255,.5);}
-.btn-gh{font-size:14px;font-weight:500;color:var(--dim);padding:13px 22px;border-radius:10px;border:1px solid var(--border);text-decoration:none;transition:all .25s;}
-.btn-gh:hover{border-color:rgba(123,47,255,.4);color:#9B4FFF;}
+.btn-ghost{font-size:14px;font-weight:500;color:var(--dim);padding:14px 22px;border-radius:11px;border:1px solid var(--border);text-decoration:none;transition:all .25s;}
+.btn-ghost:hover{border-color:rgba(123,47,255,.4);color:#9B4FFF;}
 
-/* chat window */
-.ai-chat-wrap{position:relative;}
-.ai-chat{background:var(--card2);border:1px solid var(--border);border-radius:20px;overflow:hidden;box-shadow:0 32px 80px rgba(0,0,0,.5);}
-.ai-chat-header{background:var(--bg2);border-bottom:1px solid var(--border);padding:14px 18px;display:flex;align-items:center;gap:10px;}
-.ai-ch-dots{display:flex;gap:5px;}.ai-ch-dots span{width:10px;height:10px;border-radius:50%;}
-.ai-ch-dots span:nth-child(1){background:#FF5F57;}.ai-ch-dots span:nth-child(2){background:#FEBC2E;}.ai-ch-dots span:nth-child(3){background:#28C840;}
-.ai-ch-title{font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--dim2);flex:1;text-align:center;}
-.ai-ch-live{font-family:'JetBrains Mono',monospace;font-size:9px;color:#9B4FFF;background:rgba(123,47,255,.12);padding:3px 8px;border-radius:6px;font-weight:700;letter-spacing:1px;}
-.ai-chat-body{padding:18px;}
-.ai-session-bar{display:flex;align-items:center;gap:8px;padding:8px 12px;background:rgba(123,47,255,.1);border:1px solid rgba(123,47,255,.2);border-radius:8px;margin-bottom:14px;font-size:11px;color:var(--dim);}
-.ai-session-bar .sdot{width:5px;height:5px;border-radius:50%;background:#9B4FFF;animation:pulse 1.5s infinite;}
-.ai-msgs{display:flex;flex-direction:column;gap:9px;margin-bottom:14px;}
-.ai-msg-ai,.ai-msg-user{padding:10px 14px;border-radius:12px;font-size:12px;line-height:1.65;color:var(--dim);}
-.ai-msg-ai{background:rgba(123,47,255,.1);border:1px solid rgba(123,47,255,.2);border-bottom-left-radius:3px;max-width:90%;align-self:flex-start;}
-.ai-msg-user{background:rgba(155,79,255,.1);border:1px solid rgba(155,79,255,.2);border-bottom-right-radius:3px;max-width:90%;align-self:flex-end;}
-.ai-typing{display:flex;align-items:center;gap:4px;padding:8px 14px;}
-.ai-typing span{width:6px;height:6px;border-radius:50%;background:#9B4FFF;animation:pulse 1.2s infinite;}
-.ai-typing span:nth-child(2){animation-delay:.2s;}.ai-typing span:nth-child(3){animation-delay:.4s;}
-.ai-analysis{background:var(--bg2);border-top:1px solid var(--border);padding:14px 18px;}
-.ai-an-title{font-family:'JetBrains Mono',monospace;font-size:9px;color:#9B4FFF;letter-spacing:2px;margin-bottom:10px;}
-.ai-an-row{display:flex;align-items:center;gap:8px;font-size:11px;color:var(--dim);margin-bottom:6px;}
-.ai-an-bar-t{flex:1;height:4px;background:var(--border);border-radius:2px;overflow:hidden;}
-.ai-an-bar-f{height:100%;background:linear-gradient(90deg,#7B2FFF,#C4A4FF);border-radius:2px;}
-.ai-an-row b{font-family:'JetBrains Mono',monospace;font-size:10px;color:#9B4FFF;width:28px;text-align:right;}
+/* HERO VISUAL — VIDEO CALL MOCKUP */
+.vc-wrap{position:relative;}
+.vc-card{background:var(--bg3);border:1px solid var(--border);border-radius:22px;overflow:hidden;box-shadow:0 40px 100px rgba(0,0,0,.6);}
+.vc-titlebar{background:var(--bg2);border-bottom:1px solid var(--border);padding:12px 16px;display:flex;align-items:center;gap:10px;}
+.vc-dots{display:flex;gap:5px;}.vc-dots span{width:10px;height:10px;border-radius:50%;}
+.vc-dots span:nth-child(1){background:#FF5F57;}
+.vc-dots span:nth-child(2){background:#FEBC2E;}
+.vc-dots span:nth-child(3){background:#28C840;}
+.vc-meeting-name{font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--dim2);margin-left:8px;}
+.vc-time{font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--dim2);margin-left:auto;}
 
-/* floating badges */
-.ai-float{position:absolute;background:var(--card2);border:1px solid rgba(123,47,255,.3);border-radius:12px;padding:10px 14px;box-shadow:0 8px 28px rgba(0,0,0,.4);}
-.ai-float-icon{font-size:16px;}.ai-float-val{font-family:'JetBrains Mono',monospace;font-size:14px;font-weight:700;color:#9B4FFF;margin:2px 0;}.ai-float-lbl{font-size:10px;color:var(--dim2);}
+.vc-grid{display:grid;grid-template-columns:1fr 1fr;gap:3px;background:var(--border);padding:3px;}
+.vc-pane{background:var(--bg);aspect-ratio:4/3;position:relative;border-radius:4px;overflow:hidden;}
+.vc-pane-ai{background:linear-gradient(135deg,#1A0840,#2A0E6A);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;}
+.ai-orb-large{width:56px;height:56px;border-radius:50%;position:relative;overflow:hidden;margin-bottom:4px;}
+.ao-base{position:absolute;inset:0;border-radius:50%;background:radial-gradient(ellipse at 36% 28%,rgba(255,255,255,.88),rgba(200,175,255,.55) 16%,transparent 36%),radial-gradient(ellipse at 68% 66%,rgba(70,20,170,.55),transparent 48%),radial-gradient(circle,#AA80FF 0%,#6E38CC 32%,#481898 60%,#1A0850 82%,#0C0330 100%);box-shadow:0 0 30px rgba(155,79,255,.7);}
+.ao-spin{position:absolute;inset:0;border-radius:50%;background:conic-gradient(from 105deg at 44% 56%,transparent,rgba(255,255,255,.13) 20deg,transparent 38deg,rgba(180,140,255,.08) 78deg,transparent 118deg,rgba(255,255,255,.06) 198deg,transparent 235deg);animation:orbSpin 6s linear infinite;}
+.ao-hl{position:absolute;top:8%;left:14%;width:36%;height:26%;background:radial-gradient(ellipse,rgba(255,255,255,.72),rgba(255,255,255,.08) 60%,transparent);border-radius:50%;transform:rotate(-28deg);}
+/* ripple */
+.ai-ripple{position:absolute;border-radius:50%;border:1.5px solid rgba(155,79,255,.35);animation:ripple 2.4s ease-out infinite;}
+.ai-ripple:nth-child(1){width:80px;height:80px;animation-delay:0s;}
+.ai-ripple:nth-child(2){width:110px;height:110px;animation-delay:.8s;}
+.ai-ripple:nth-child(3){width:140px;height:140px;animation-delay:1.6s;}
+.vc-pane-name{position:absolute;bottom:8px;left:8px;font-family:'JetBrains Mono',monospace;font-size:9px;color:rgba(255,255,255,.7);background:rgba(0,0,0,.5);padding:2px 8px;border-radius:4px;}
+.vc-pane-human{background:linear-gradient(135deg,#1C1028,#2A1840);}
+.human-avatar{width:60px;height:60px;border-radius:50%;background:linear-gradient(135deg,#4A2080,#8040C0);display:flex;align-items:center;justify-content:center;font-size:24px;margin:auto;}
+.vc-pane-human{display:flex;align-items:center;justify-content:center;}
 
-/* stat band */
-.ai-statband{background:var(--bg2);border-top:1px solid var(--border);border-bottom:1px solid var(--border);padding:32px 40px;position:relative;z-index:1;}
-.ai-statband-in{max-width:1280px;margin:0 auto;display:grid;grid-template-columns:repeat(4,1fr);gap:0;border:1px solid var(--border);border-radius:14px;overflow:hidden;}
-.ai-stat{padding:28px 20px;text-align:center;border-right:1px solid var(--border);transition:background .3s;}
-.ai-stat:last-child{border-right:none;}
-.ai-stat:hover{background:var(--gbg);}
-.ai-stat-n{font-family:'JetBrains Mono',monospace;font-size:38px;font-weight:900;letter-spacing:-2px;background:linear-gradient(135deg,#9B4FFF,#C4A4FF);-webkit-background-clip:text;-webkit-text-fill-color:transparent;line-height:1;}
-.ai-stat-l{font-size:12px;color:var(--dim);margin-top:6px;}
+.vc-ai-label{font-size:10px;font-weight:700;color:rgba(196,164,255,.8);letter-spacing:1px;}
 
-/* features */
-.ai-feats{padding:80px 40px;position:relative;z-index:1;}
-.ai-feats-in{max-width:1280px;margin:0 auto;}
-.section-tag{font-family:'JetBrains Mono',monospace;font-size:10px;font-weight:700;letter-spacing:4px;text-transform:uppercase;color:#9B4FFF;margin-bottom:14px;}
-.section-h2{font-size:clamp(28px,3.5vw,46px);font-weight:900;letter-spacing:-1.5px;line-height:1.08;margin-bottom:14px;}
-.section-h2 em{font-style:normal;background:linear-gradient(135deg,#9B4FFF,#C4A4FF);-webkit-background-clip:text;-webkit-text-fill-color:transparent;}
-.section-sub{font-size:15px;color:var(--dim);font-weight:300;line-height:1.75;max-width:540px;}
-.ai-feat-cards{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-top:52px;}
-.ai-fc{background:var(--card2);border:1px solid var(--border);border-radius:16px;padding:28px 22px;transition:all .3s;}
-.ai-fc:hover{border-color:rgba(123,47,255,.35);transform:translateY(-4px);box-shadow:0 14px 40px rgba(123,47,255,.1);}
-.ai-fc-icon{font-size:24px;margin-bottom:14px;display:block;}
-.ai-fc-t{font-size:15px;font-weight:800;letter-spacing:-.3px;margin-bottom:8px;}
-.ai-fc-d{font-size:12px;color:var(--dim);line-height:1.7;font-weight:300;}
+/* bottom bar */
+.vc-bar{background:var(--bg2);border-top:1px solid var(--border);padding:12px 16px;display:flex;align-items:center;justify-content:space-between;gap:10px;}
+.vc-bar-pill{display:flex;align-items:center;gap:6px;background:rgba(123,47,255,.15);border:1px solid rgba(123,47,255,.3);border-radius:8px;padding:6px 12px;font-size:10px;color:#C4A4FF;font-family:'JetBrains Mono',monospace;}
+.vc-wave{display:flex;align-items:center;gap:2px;}
+.vc-wave span{width:2px;background:#9B4FFF;border-radius:2px;animation:waveB 1.2s ease-in-out infinite;}
+.vc-wave span:nth-child(1){height:8px;animation-delay:0s;}
+.vc-wave span:nth-child(2){height:14px;animation-delay:.15s;}
+.vc-wave span:nth-child(3){height:10px;animation-delay:.3s;}
+.vc-wave span:nth-child(4){height:18px;animation-delay:.45s;}
+.vc-wave span:nth-child(5){height:10px;animation-delay:.6s;}
+.vc-wave span:nth-child(6){height:8px;animation-delay:.75s;}
+@keyframes waveB{0%,100%{transform:scaleY(.5);opacity:.5}50%{transform:scaleY(1);opacity:1}}
 
-/* cta */
-.ai-cta{padding:100px 40px;text-align:center;position:relative;overflow:hidden;}
-.ai-cta-g{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:600px;height:350px;background:radial-gradient(ellipse,rgba(123,47,255,.12),transparent 60%);pointer-events:none;}
-.ai-cta-in{position:relative;z-index:1;max-width:560px;margin:0 auto;}
-.ai-cta-h{font-size:clamp(30px,4vw,50px);font-weight:900;letter-spacing:-2px;line-height:1.06;margin-bottom:16px;}
-.ai-cta-h em{font-style:normal;background:linear-gradient(135deg,#9B4FFF,#C4A4FF);-webkit-background-clip:text;-webkit-text-fill-color:transparent;}
-.ai-cta-sub{font-size:15px;color:var(--dim);margin-bottom:38px;font-weight:300;line-height:1.72;}
-.ai-cta-btns{display:flex;justify-content:center;gap:14px;flex-wrap:wrap;}
+/* floating badge */
+.f-badge{position:absolute;background:var(--card2);border:1px solid rgba(123,47,255,.3);border-radius:12px;padding:10px 14px;box-shadow:0 8px 28px rgba(0,0,0,.4);animation:floatY 5s ease-in-out infinite;}
+.fb-icon{font-size:18px;margin-bottom:3px;}
+.fb-val{font-family:'JetBrains Mono',monospace;font-size:15px;font-weight:700;color:#9B4FFF;}
+.fb-lbl{font-size:9px;color:var(--dim2);margin-top:1px;}
 
-@media(max-width:960px){.ai-hero-inner{grid-template-columns:1fr;gap:40px;}.ai-feat-cards{grid-template-columns:1fr 1fr;}.ai-statband-in{grid-template-columns:1fr 1fr;}}
-@media(max-width:600px){.ai-hero-inner{padding:0 20px 40px;}.ai-feats,.ai-cta{padding-left:20px;padding-right:20px;}.ai-statband{padding-left:20px;padding-right:20px;}.ai-feat-cards{grid-template-columns:1fr;}}
+/* STAT BAND */
+.statband{background:var(--bg2);border-top:1px solid var(--border);border-bottom:1px solid var(--border);padding:0 40px;position:relative;z-index:1;}
+.statband-in{max-width:1280px;margin:0 auto;display:grid;grid-template-columns:repeat(4,1fr);}
+.s-stat{padding:32px 20px;text-align:center;border-right:1px solid var(--border);transition:background .3s;position:relative;}
+.s-stat:last-child{border-right:none;}
+.s-stat:hover{background:var(--gbg);}
+.s-n{font-family:'JetBrains Mono',monospace;font-size:40px;font-weight:900;letter-spacing:-2px;background:linear-gradient(135deg,#9B4FFF,#C4A4FF);-webkit-background-clip:text;-webkit-text-fill-color:transparent;line-height:1;}
+.s-l{font-size:11px;color:var(--dim);margin-top:6px;font-weight:300;}
 
+/* SECTION COMMONS */
+.sec{padding:88px 48px;position:relative;z-index:1;}
+.sec-in{max-width:1280px;margin:0 auto;}
+.sec-tag{font-family:'JetBrains Mono',monospace;font-size:10px;font-weight:700;letter-spacing:4px;text-transform:uppercase;color:#9B4FFF;margin-bottom:14px;}
+.sec-h{font-size:clamp(28px,3.5vw,46px);font-weight:900;letter-spacing:-1.8px;line-height:1.06;margin-bottom:14px;}
+.sec-h em{font-style:normal;background:linear-gradient(135deg,#9B4FFF,#C4A4FF);-webkit-background-clip:text;-webkit-text-fill-color:transparent;}
+.sec-sub{font-size:15px;color:var(--dim);font-weight:300;line-height:1.75;max-width:540px;margin-bottom:56px;}
+
+/* FEATURES 4-card */
+.feat-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;}
+.fc{background:var(--card2);border:1px solid var(--border);border-radius:18px;padding:28px 22px;transition:all .3s;position:relative;overflow:hidden;}
+.fc::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,#7B2FFF,#C4A4FF);transform:scaleX(0);transform-origin:left;transition:transform .35s;}
+.fc:hover{border-color:rgba(123,47,255,.35);transform:translateY(-4px);box-shadow:0 14px 40px rgba(123,47,255,.1);}
+.fc:hover::before{transform:scaleX(1);}
+.fc-ico{width:44px;height:44px;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:20px;margin-bottom:16px;background:linear-gradient(135deg,rgba(123,47,255,.2),rgba(155,79,255,.1));border:1px solid rgba(123,47,255,.2);}
+.fc-t{font-size:15px;font-weight:800;letter-spacing:-.3px;margin-bottom:8px;}
+.fc-d{font-size:12px;color:var(--dim);line-height:1.72;font-weight:300;}
+
+/* PARTICIPATION FLOW */
+.part-flow{display:grid;grid-template-columns:repeat(4,1fr);gap:0;position:relative;margin-top:52px;}
+.part-flow::after{content:'';position:absolute;top:32px;left:12%;right:12%;height:2px;background:linear-gradient(90deg,#7B2FFF,#C4A4FF,#E040FB);z-index:0;}
+.pf-step{display:flex;flex-direction:column;align-items:center;text-align:center;position:relative;z-index:1;}
+.pf-circle{width:64px;height:64px;border-radius:50%;background:linear-gradient(135deg,#7B2FFF,#5A1ECC);color:#fff;font-family:'JetBrains Mono',monospace;font-size:18px;font-weight:700;display:flex;align-items:center;justify-content:center;margin-bottom:20px;box-shadow:0 0 0 6px var(--bg),0 0 0 7px rgba(123,47,255,.3);}
+.pf-t{font-size:13px;font-weight:700;margin-bottom:6px;}
+.pf-d{font-size:11px;color:var(--dim);line-height:1.6;padding:0 8px;}
+
+/* COMPARE BANNER */
+.compare-banner{background:linear-gradient(135deg,#7B2FFF,#9B4FFF,#C44FFF);border-radius:24px;padding:52px 60px;display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center;margin-top:28px;position:relative;overflow:hidden;}
+.compare-banner::before{content:'';position:absolute;inset:0;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='3'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='.04'/%3E%3C/svg%3E");pointer-events:none;}
+.cb-label{font-family:'JetBrains Mono',monospace;font-size:9px;font-weight:700;letter-spacing:3px;color:rgba(255,255,255,.6);text-transform:uppercase;margin-bottom:14px;}
+.cb-h{font-size:clamp(26px,3vw,40px);font-weight:900;letter-spacing:-1.5px;color:#fff;line-height:1.1;margin-bottom:14px;}
+.cb-sub{font-size:14px;color:rgba(255,255,255,.75);line-height:1.7;font-weight:300;}
+.cb-checks{display:flex;flex-direction:column;gap:12px;position:relative;z-index:1;}
+.cb-check{display:flex;align-items:center;gap:12px;font-size:14px;color:rgba(255,255,255,.9);}
+.cb-chk-ico{width:24px;height:24px;border-radius:7px;background:rgba(255,255,255,.18);display:flex;align-items:center;justify-content:center;font-size:12px;flex-shrink:0;}
+
+/* SECURITY SECTION */
+.security-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:52px;}
+.sec-card{background:var(--card2);border:1px solid var(--border);border-radius:18px;padding:28px 24px;transition:all .3s;}
+.sec-card:hover{border-color:rgba(123,47,255,.3);transform:translateY(-2px);}
+.sec-card-ico{width:48px;height:48px;border-radius:14px;background:linear-gradient(135deg,rgba(123,47,255,.2),rgba(155,79,255,.1));border:1px solid rgba(123,47,255,.25);display:flex;align-items:center;justify-content:center;font-size:22px;margin-bottom:16px;}
+.sec-card-t{font-size:15px;font-weight:800;letter-spacing:-.3px;margin-bottom:8px;}
+.sec-card-d{font-size:12px;color:var(--dim);line-height:1.72;font-weight:300;}
+
+/* CTA */
+.cta-sec{padding:100px 48px;text-align:center;position:relative;overflow:hidden;}
+.cta-glow{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:700px;height:400px;background:radial-gradient(ellipse,rgba(123,47,255,.12),transparent 65%);pointer-events:none;}
+.cta-in{position:relative;z-index:1;max-width:580px;margin:0 auto;}
+.cta-h{font-size:clamp(30px,4vw,52px);font-weight:900;letter-spacing:-2px;line-height:1.06;margin-bottom:18px;}
+.cta-h em{font-style:normal;background:linear-gradient(135deg,#9B4FFF,#C4A4FF);-webkit-background-clip:text;-webkit-text-fill-color:transparent;}
+.cta-sub{font-size:15px;color:var(--dim);margin-bottom:40px;font-weight:300;line-height:1.72;}
+.cta-acts{display:flex;justify-content:center;gap:14px;flex-wrap:wrap;}
+
+/* AVATAR + SHARE ROW */
+.bonus-row{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:52px;}
+.bonus-card{background:var(--card2);border:1px solid var(--border);border-radius:18px;padding:32px;display:flex;align-items:flex-start;gap:20px;transition:all .3s;}
+.bonus-card:hover{border-color:rgba(123,47,255,.3);transform:translateY(-2px);}
+.bonus-ico{width:56px;height:56px;border-radius:16px;background:linear-gradient(135deg,rgba(123,47,255,.2),rgba(155,79,255,.1));border:1px solid rgba(123,47,255,.25);display:flex;align-items:center;justify-content:center;font-size:26px;flex-shrink:0;}
+.bonus-t{font-size:16px;font-weight:800;letter-spacing:-.3px;margin-bottom:8px;}
+.bonus-d{font-size:13px;color:var(--dim);line-height:1.7;font-weight:300;}
+
+@media(max-width:1100px){.hero-inner{grid-template-columns:1fr;gap:48px;}}
+@media(max-width:900px){.feat-grid{grid-template-columns:1fr 1fr;}.part-flow{grid-template-columns:1fr 1fr;}.security-grid{grid-template-columns:1fr 1fr;}.compare-banner{grid-template-columns:1fr;}.bonus-row{grid-template-columns:1fr;}.statband-in{grid-template-columns:1fr 1fr;}}
+@media(max-width:600px){.sec{padding:60px 20px;}.hero-inner{padding:0 20px 40px;}.feat-grid{grid-template-columns:1fr;}.part-flow{grid-template-columns:1fr;}.security-grid{grid-template-columns:1fr;}.part-flow::after{display:none;}.compare-banner{padding:36px 28px;}}
 </style>
 </head>
 <body>
 <nav id="snav">
-  <a href="synaps-v10-toggle.html" class="nav-logo">
-    <div class="orb-sm">
-      <div class="ob ob-base"></div>
-      <div class="ob ob-swirl"></div>
-      <div class="ob-hl"></div>
-      <div class="ob-gleam"></div>
-    </div>
+  <a href="synaps-v11-toggle.html" class="nav-logo" style="display:flex;align-items:center;gap:10px;text-decoration:none;">
+    <div class="orb-sm"><div class="ob ob-base"></div><div class="ob ob-swirl"></div><div class="ob-hl"></div></div>
     <span class="nav-wordmark">Synaps<span class="nw-hi">AI</span></span>
   </a>
   <div class="nav-bc">
-    <a href="synaps-v10-toggle.html" class="bc-home">Ana Sayfa</a>
+    <a href="synaps-v11-toggle.html" class="bc-home">Ana Sayfa</a>
     <span class="bc-sep">›</span>
     <span class="bc-cur">AI Interviewer</span>
   </div>
   <div class="nav-right">
-    <a href="synaps-v10-toggle.html" class="nav-back">← Ekosisteme Dön</a>
+    <a href="synaps-v11-toggle.html" class="nav-back">← Ekosisteme Dön</a>
     <label class="ts-wrap">
       <input type="checkbox" id="themeToggle">
       <div class="ts-track"><div class="ts-thumb"></div><span class="ts-m">🌙</span><span class="ts-s">☀️</span></div>
     </label>
-    <a href="https://synapsai.io" class="nav-cta">Ücretsiz Dene</a>
+    <a href="https://synapsai.io" class="nav-cta">Demo İste</a>
   </div>
 </nav>
 
-<section class="ai-hero">
-  <div class="ai-hero-bg"></div>
-  <div class="ai-hero-inner">
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-grid"></div>
+  <div class="hero-inner" style="padding-top:20px;padding-bottom:60px;">
     <div>
-      <div class="ai-badge-row">
-        <div style="font-family:'JetBrains Mono',monospace;font-size:9px;font-weight:700;letter-spacing:2px;color:var(--dim2);background:var(--gbg);border:1px solid rgba(123,47,255,.2);padding:4px 10px;border-radius:20px;">2. ADIM</div>
-        <div class="ai-badge"><span class="dot"></span>Otonom Mülakat · 7/24</div>
+      <div class="hero-eyebrow">
+        <span class="tag-step">2. Adım</span>
+        <span class="tag-live"><span class="live-dot"></span>Otonom Mülakat · 7/24</span>
       </div>
-      <h1 class="ai-h1">
+      <h1 class="h-main">
         <span>7/24</span>
         <span class="grad">Kesintisiz</span>
         <span>Otonom Mülakat</span>
       </h1>
-      <p class="ai-sub">Yapay zeka adaylarla doğal dilde mülakat yapar, ses ve içerik analiziyle kapsamlı değerlendirme raporu oluşturur. İK ekibiniz stratejik işlere odaklanırken sistem büyür.</p>
-      <div class="ai-actions">
-        <a href="https://synapsai.io" class="btn-pu">Ücretsiz Dene →</a>
-        <a href="synaps-v10-toggle.html" class="btn-gh">Ekosistemi Keşfet</a>
+      <p class="hero-sub">Yapay zeka, 9 farklı dilde adaylarla doğal konuşma yürütür. Duygu durum analizi, güvenlik katmanı ve anlık raporlama — tüm süreç otomatik.</p>
+      <div class="hero-acts">
+        <a href="https://synapsai.io" class="btn-pu">Demo İste →</a>
+        <a href="synaps-v11-toggle.html" class="btn-ghost">Ekosistemi Keşfet</a>
       </div>
     </div>
 
-    <div class="ai-chat-wrap">
-      <div class="ai-chat">
-        <div class="ai-chat-header">
-          <div class="ai-ch-dots"><span></span><span></span><span></span></div>
-          <span class="ai-ch-title">AI Interviewer — Oturum #4821</span>
-          <span class="ai-ch-live">● CANLI</span>
+    <!-- VIDEO CALL MOCKUP -->
+    <div class="vc-wrap">
+      <div class="vc-card">
+        <div class="vc-titlebar">
+          <div class="vc-dots"><span></span><span></span><span></span></div>
+          <span class="vc-meeting-name">AI Interviewer — Mülakat #4821</span>
+          <span class="vc-time">11:48 AM</span>
         </div>
-        <div class="ai-chat-body">
-          <div class="ai-session-bar">
-            <span class="sdot"></span>
-            Mülakat devam ediyor · 06:42 · Aday #3
+        <div class="vc-grid">
+          <!-- AI pane -->
+          <div class="vc-pane vc-pane-ai">
+            <div class="ai-ripple"></div>
+            <div class="ai-ripple"></div>
+            <div class="ai-ripple"></div>
+            <div class="ai-orb-large">
+              <div class="ao-base"></div>
+              <div class="ao-spin"></div>
+              <div class="ao-hl"></div>
+            </div>
+            <div class="vc-ai-label">SynapsAI</div>
+            <div class="vc-pane-name">AI Mülakatçı · TR 🇹🇷</div>
           </div>
-          <div class="ai-msgs" style="display:flex;flex-direction:column;">
-            <div class="ai-msg-ai">"Bu pozisyona başvurmanızın temel nedeni nedir? Önceki deneyimlerinizle bağlantısını anlatır mısınız?"</div>
-            <div class="ai-msg-user">"5 yıllık B2B SaaS deneyimimle bu rol tam bana uygun. Özellikle ürün geliştirme süreçlerinde..."</div>
-            <div class="ai-msg-ai">"Harika başlangıç. Yönettiğiniz en büyük ürün lansmanından bahseder misiniz?"</div>
-            <div class="ai-typing"><span></span><span></span><span></span></div>
+          <!-- Human pane -->
+          <div class="vc-pane vc-pane-human">
+            <div class="human-avatar">👤</div>
+            <div class="vc-pane-name">Mehmet A. · Aday #3</div>
           </div>
         </div>
-        <div class="ai-analysis">
-          <div class="ai-an-title">CANLI ANALİZ</div>
-          <div class="ai-an-row"><span style="width:65px;flex-shrink:0;">İletişim</span><div class="ai-an-bar-t"><div class="ai-an-bar-f" style="width:88%"></div></div><b>88%</b></div>
-          <div class="ai-an-row"><span style="width:65px;flex-shrink:0;">İçerik</span><div class="ai-an-bar-t"><div class="ai-an-bar-f" style="width:92%"></div></div><b>92%</b></div>
-          <div class="ai-an-row" style="margin-bottom:0;"><span style="width:65px;flex-shrink:0;">Özgüven</span><div class="ai-an-bar-t"><div class="ai-an-bar-f" style="width:76%"></div></div><b>76%</b></div>
+        <div class="vc-bar">
+          <div class="vc-bar-pill">
+            <div class="vc-wave"><span></span><span></span><span></span><span></span><span></span><span></span></div>
+            Duygu Durum Analizi · Aktif
+          </div>
+          <div style="font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--dim2);">06:42 geçti</div>
+          <div style="display:flex;gap:8px;align-items:center;">
+            <div style="width:8px;height:8px;border-radius:50%;background:#9B4FFF;animation:pulse 1.5s infinite;"></div>
+            <span style="font-family:'JetBrains Mono',monospace;font-size:9px;color:#9B4FFF;font-weight:700;">CANLI</span>
+          </div>
         </div>
       </div>
-      <div class="ai-float" style="top:-20px;right:-20px;animation:floatY 5s ease-in-out infinite;">
-        <div class="ai-float-icon">♾️</div><div class="ai-float-val">∞</div><div class="ai-float-lbl">Eş zamanlı kapasite</div>
+      <!-- Float badge -->
+      <div class="f-badge" style="top:-18px;right:-18px;animation-delay:0s;">
+        <div class="fb-icon">🌐</div>
+        <div class="fb-val">9 Dil</div>
+        <div class="fb-lbl">Aktif dil desteği</div>
       </div>
-      <div class="ai-float" style="bottom:-14px;left:-20px;animation:floatY 6s 1.5s ease-in-out infinite;">
-        <div class="ai-float-icon">🎙️</div><div class="ai-float-val">7/24</div><div class="ai-float-lbl">Kesintisiz mülakat</div>
+      <div class="f-badge" style="bottom:-16px;left:-18px;animation-delay:1.5s;">
+        <div class="fb-icon">♾️</div>
+        <div class="fb-val">∞</div>
+        <div class="fb-lbl">Eş zamanlı kapasite</div>
       </div>
     </div>
   </div>
 </section>
 
 <!-- STAT BAND -->
-<div class="ai-statband">
-  <div class="ai-statband-in">
-    <div class="ai-stat"><div class="ai-stat-n">7/24</div><div class="ai-stat-l">Kesintisiz mülakat</div></div>
-    <div class="ai-stat"><div class="ai-stat-n">∞</div><div class="ai-stat-l">Eş zamanlı kapasite</div></div>
-    <div class="ai-stat"><div class="ai-stat-n">40dk</div><div class="ai-stat-l">Başına tasarruf</div></div>
-    <div class="ai-stat"><div class="ai-stat-n">98%</div><div class="ai-stat-l">Aday memnuniyeti</div></div>
+<div class="statband">
+  <div class="statband-in">
+    <div class="s-stat"><div class="s-n">9</div><div class="s-l">Desteklenen mülakat dili</div></div>
+    <div class="s-stat"><div class="s-n">7/24</div><div class="s-l">Kesintisiz otonom mülakat</div></div>
+    <div class="s-stat"><div class="s-n">40dk</div><div class="s-l">Mülakatçı başı tasarruf</div></div>
+    <div class="s-stat"><div class="s-n">98%</div><div class="s-l">Aday memnuniyet oranı</div></div>
   </div>
 </div>
 
-<!-- FEATURES -->
-<section class="ai-feats">
-  <div class="ai-feats-in">
-    <div class="section-tag">Temel Özellikler</div>
-    <h2 class="section-h2">Ne İşe <em>Yarıyor?</em></h2>
-    <p class="section-sub">İnsan mülakatçının tüm sürecini yapay zekaya devreden kapsamlı otomasyon platformu.</p>
-    <div class="ai-feat-cards">
-      <div class="ai-fc"><span class="ai-fc-icon">🤖</span><div class="ai-fc-t">Doğal Dil Mülakatı</div><p class="ai-fc-d">GPT tabanlı motor adaylarla insan gibi konuşur, bağlama uygun takip soruları üretir.</p></div>
-      <div class="ai-fc"><span class="ai-fc-icon">🎙️</span><div class="ai-fc-t">Ses & Duygu Analizi</div><p class="ai-fc-d">Konuşma tonu, güven seviyesi, tereddüt ve tutarsızlıkları gerçek zamanlı analiz eder.</p></div>
-      <div class="ai-fc"><span class="ai-fc-icon">📋</span><div class="ai-fc-t">Yapılandırılmış Raporlama</div><p class="ai-fc-d">Her mülakat sonrası yetkinlik bazlı rapor, skor kartı ve işe alım önerisi otomatik oluşturulur.</p></div>
-      <div class="ai-fc"><span class="ai-fc-icon">♾️</span><div class="ai-fc-t">Sınırsız Kapasite</div><p class="ai-fc-d">Aynı anda binlerce adayla eş zamanlı mülakat. Hiçbir aday beklemez, fırsat kaçmaz.</p></div>
+<!-- FEATURES — NE İŞE YARIYOR -->
+<section class="sec">
+  <div class="sec-in">
+    <div class="sec-tag">Temel Özellikler</div>
+    <h2 class="sec-h">Ne İşe <em>Yarıyor?</em></h2>
+    <p class="sec-sub">İnsan mülakatçının tüm sürecini otomasyona devreden kapsamlı AI platformu.</p>
+    <div class="feat-grid">
+      <div class="fc">
+        <div class="fc-ico">🌐</div>
+        <div class="fc-t">9 Dilde Mülakat</div>
+        <p class="fc-d">Türkçe, İngilizce, Almanca, Fransızca, Arapça ve daha fazlasında doğal dil mülakatı. Aday kendi dilinde rahat eder.</p>
+      </div>
+      <div class="fc">
+        <div class="fc-ico">🧠</div>
+        <div class="fc-t">Duygu Durum Analizi</div>
+        <p class="fc-d">Konuşma boyunca adayın duygu durumu, güven seviyesi ve tutarsızlıklar gerçek zamanlı analiz edilir. Derinlemesine psikolojik profil.</p>
+      </div>
+      <div class="fc">
+        <div class="fc-ico">📋</div>
+        <div class="fc-t">Yapılandırılmış Raporlama</div>
+        <p class="fc-d">Her mülakat sonrası yetkinlik bazlı rapor, skor kartı ve işe alım önerisi otomatik oluşturulur. ATS'e tek tıkla aktarım.</p>
+      </div>
+      <div class="fc">
+        <div class="fc-ico">♾️</div>
+        <div class="fc-t">Sınırsız Kapasite</div>
+        <p class="fc-d">Aynı anda binlerce adayla eş zamanlı mülakat. Hiçbir aday beklemiyor, fırsat kaçmıyor, skalabilite sınırsız.</p>
+      </div>
+    </div>
+
+    <!-- BONUS: Avatar + Share -->
+    <div class="bonus-row">
+      <div class="bonus-card">
+        <div class="bonus-ico">🧑‍💼</div>
+        <div>
+          <div class="bonus-t">Avatar ile Mülakat</div>
+          <p class="bonus-d">İnsan gibi görünen AI avatar ile video mülakat deneyimi. Aday karşısında gerçek bir mülakatçı hissi — hem aday deneyimi hem de marka prestiji için tasarlandı.</p>
+        </div>
+      </div>
+      <div class="bonus-card">
+        <div class="bonus-ico">🤝</div>
+        <div>
+          <div class="bonus-t">Aday Paylaşma</div>
+          <p class="bonus-d">Mülakat raporlarını ve aday profillerini tek tıkla yöneticiler veya iş ortakları ile paylaşın. Onay akışı, yorum ve karar notları eklenebilir.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PARTICIPATION FLOW -->
+<section class="sec" style="padding-top:0;background:var(--bg2);">
+  <div class="sec-in" style="padding-top:88px;">
+    <div class="sec-tag">Katılım Oranı</div>
+    <h2 class="sec-h">Mükemmel Mülakat <em>Katılım Oranı</em></h2>
+    <p class="sec-sub">Synaps AI ile mülakat katılım oranı sektörün hep üstünde — çünkü sistematik ve otomatik hatırlatma zinciri çalışır.</p>
+    <div class="part-flow">
+      <div class="pf-step">
+        <div class="pf-circle">01</div>
+        <div class="pf-t">E-posta ile İlk Hatırlatma</div>
+        <p class="pf-d">Mülakat atandığında aday anında bilgilendirilir, link ve saat iletilir.</p>
+      </div>
+      <div class="pf-step">
+        <div class="pf-circle">02</div>
+        <div class="pf-t">SMS ile İkinci Hatırlatma</div>
+        <p class="pf-d">Mülakat tamamlanmadıysa ertesi gün aday SMS ile otomatik hatırlatılır.</p>
+      </div>
+      <div class="pf-step">
+        <div class="pf-circle">03</div>
+        <div class="pf-t">AI Call ile Bağlantı</div>
+        <p class="pf-d">Katılım sağlanmazsa adaya AI Call ile sesli iletişim kurulur.</p>
+      </div>
+      <div class="pf-step">
+        <div class="pf-circle">04</div>
+        <div class="pf-t">WhatsApp Business</div>
+        <p class="pf-d">Son adımda WhatsApp Business mesajıyla iletişim tamamlanır.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- COMPARE BANNER — Yetenekleri Karşılaştırın -->
+<section class="sec" style="padding-top:0;">
+  <div class="sec-in" style="padding-top:88px;">
+    <div class="compare-banner">
+      <div style="position:relative;z-index:1;">
+        <div class="cb-label">Zahmetsizce Karar Verin</div>
+        <h3 class="cb-h">Yetenekleri Karşılaştırın</h3>
+        <p class="cb-sub">Tüm adayları yetkinliklerine göre hızlıca inceleyin, güçlü oldukları alanlara odaklanın — en uygun adayı kolayca seçin.</p>
+      </div>
+      <div class="cb-checks" style="position:relative;z-index:1;">
+        <div class="cb-check"><div class="cb-chk-ico">✓</div>Yetkinlik bazlı otomatik sıralama</div>
+        <div class="cb-check"><div class="cb-chk-ico">✓</div>Duygu durum ve iletişim skoru</div>
+        <div class="cb-check"><div class="cb-chk-ico">✓</div>Aday videosu + transkript</div>
+        <div class="cb-check"><div class="cb-chk-ico">✓</div>Tek tıkla yönetici paylaşımı</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SECURITY -->
+<section class="sec" style="padding-top:0;background:var(--bg2);">
+  <div class="sec-in" style="padding-top:88px;">
+    <div class="sec-tag">Güvenlik</div>
+    <h2 class="sec-h">Kurumsal Düzeyde <em>Güvenlik</em></h2>
+    <p class="sec-sub">Aday verilerinin ve mülakat içeriklerinin korunması için çok katmanlı güvenlik altyapısı.</p>
+    <div class="security-grid">
+      <div class="sec-card">
+        <div class="sec-card-ico">🔒</div>
+        <div class="sec-card-t">Uçtan Uca Şifreleme</div>
+        <p class="sec-card-d">Tüm mülakat verileri AES-256 ile şifreli iletilir ve saklanır. Hiçbir üçüncü taraf erişimi olmaz.</p>
+      </div>
+      <div class="sec-card">
+        <div class="sec-card-ico">🛡️</div>
+        <div class="sec-card-t">KVKK & GDPR Uyumu</div>
+        <p class="sec-card-d">Türkiye ve AB veri koruma mevzuatına tam uyumlu. Aday onayları dijital olarak kayıt altına alınır.</p>
+      </div>
+      <div class="sec-card">
+        <div class="sec-card-ico">🏢</div>
+        <div class="sec-card-t">SSO & Rol Bazlı Erişim</div>
+        <p class="sec-card-d">Kurumsal SSO entegrasyonu, iki faktörlü kimlik doğrulama, departman bazlı veri erişim yönetimi.</p>
+      </div>
     </div>
   </div>
 </section>
 
 <!-- CTA -->
-<section class="ai-cta">
-  <div class="ai-cta-g"></div>
-  <div class="ai-cta-in">
-    <div class="section-tag" style="text-align:center;">2. ADIM · AI Interviewer</div>
-    <h2 class="ai-cta-h">AI Interviewer'ı<br><em>Bugün Başlatın</em></h2>
-    <p class="ai-cta-sub">Kurulum 5 dakika. İlk mülakatınızı bu gün yapın.</p>
-    <div class="ai-cta-btns">
-      <a href="https://synapsai.io" class="btn-pu">Ücretsiz Dene →</a>
-      <a href="synaps-v10-toggle.html" class="btn-gh">← Ana Sayfaya Dön</a>
+<section class="cta-sec">
+  <div class="cta-glow"></div>
+  <div class="cta-in">
+    <div class="sec-tag" style="text-align:center;">2. Adım · AI Interviewer</div>
+    <h2 class="cta-h">AI Interviewer'ı<br><em>Bugün Başlatın</em></h2>
+    <p class="cta-sub">Kurulum 5 dakika. İlk mülakatınızı bugün yapın.</p>
+    <div class="cta-acts">
+      <a href="https://synapsai.io" class="btn-pu">Demo İste →</a>
+      <a href="synaps-v11-toggle.html" class="btn-ghost">← Ana Sayfaya Dön</a>
     </div>
   </div>
 </section>
-<style>@keyframes floatY{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}</style>
+
 <footer class="lp-footer">
   <div class="lp-footer-in">
     <div class="lf-brand">
@@ -298,22 +474,24 @@ background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/sv
       <div><div class="lf-name">Synaps<b>AI</b></div><div class="lf-prod">AI Interviewer</div></div>
     </div>
     <nav class="lf-links">
-      <a href="synaps-v10-toggle.html">Ana Sayfa</a>
+      <a href="synaps-v11-toggle.html">Ana Sayfa</a>
       <a href="#">Gizlilik</a>
       <a href="#">Şartlar</a>
-      <a href="mailto:destek@synapsai.ai">Destek</a>
+      <a href="#">Destek</a>
     </nav>
     <p class="lf-copy">© 2025 Synaps Yapay Zeka Teknolojileri A.Ş.</p>
   </div>
 </footer>
+
 <script>
 (function(){
   var t=document.getElementById('themeToggle'),h=document.documentElement;
   var s=localStorage.getItem('synaps-theme')||'dark';
   if(s==='light'){h.setAttribute('data-theme','light');if(t)t.checked=true;}
   if(t)t.addEventListener('change',function(){
-    var v=t.checked?'light':'dark';
-    h.setAttribute('data-theme',v);localStorage.setItem('synaps-theme',v);
+    var m=t.checked?'light':'dark';
+    h.setAttribute('data-theme',m);
+    localStorage.setItem('synaps-theme',m);
   });
 })();
 </script>

@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="tr" data-theme="dark">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>AI Yetenek Bulma — Synaps AI</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link href="https://fonts.googleapis.com/css2?family=Lexend:wght@200;300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+
+:root{
+  --bg:#06040F;--bg2:#0C0818;--bg3:#120E20;
+  --card:rgba(255,255,255,.04);--card2:rgba(255,255,255,.07);--card3:rgba(255,255,255,.1);
+  --border:rgba(255,255,255,.08);--border2:rgba(255,255,255,.05);
+  --text:#F0EEFF;--dim:rgba(240,238,255,.55);--dim2:rgba(240,238,255,.28);
+  --pu:#7B2FFF;--vi:#9B4FFF;--lav:#C4A4FF;--pk:#E040FB;
+  --nav-bg:rgba(6,4,15,.9);
+  --glow:rgba(123,47,255,.3);--gbg:rgba(123,47,255,.1);
+  --sh:0 32px 80px rgba(0,0,0,.55);
+}
+[data-theme="light"]{
+  --bg:#F0EEF9;--bg2:#E8E4F5;--bg3:#DDD8EF;
+  --card:rgba(255,255,255,.85);--card2:rgba(255,255,255,.95);--card3:rgba(255,255,255,.98);
+  --border:rgba(123,47,255,.11);--border2:rgba(123,47,255,.07);
+  --text:#1A0A3C;--dim:rgba(26,10,60,.58);--dim2:rgba(26,10,60,.3);
+  --nav-bg:rgba(240,238,249,.92);
+  --glow:rgba(123,47,255,.15);--gbg:rgba(123,47,255,.07);
+  --sh:0 20px 60px rgba(123,47,255,.12);
+}
+
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{background:var(--bg);color:var(--text);font-family:'Lexend',sans-serif;overflow-x:hidden;transition:background .4s,color .4s;line-height:1.6;}
+body::before{content:'';position:fixed;inset:0;pointer-events:none;z-index:0;
+background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='.025'/%3E%3C/svg%3E");}
+
+/* ─── NAV ──────────────────────────────────────── */
+#snav{position:fixed;top:0;left:0;right:0;z-index:900;height:62px;
+  display:flex;align-items:center;padding:0 32px;gap:20px;
+  background:var(--nav-bg);backdrop-filter:blur(28px) saturate(200%);
+  border-bottom:1px solid var(--border);transition:background .4s;}
+.orb-sm{width:28px;height:28px;border-radius:50%;position:relative;overflow:hidden;flex-shrink:0;}
+.ob{position:absolute;inset:0;border-radius:50%;}
+.ob-base{background:radial-gradient(ellipse at 36% 28%,rgba(255,255,255,.88) 0%,rgba(200,175,255,.55) 16%,transparent 36%),radial-gradient(ellipse at 68% 66%,rgba(70,20,170,.55) 0%,transparent 48%),radial-gradient(circle,#AA80FF 0%,#6E38CC 32%,#481898 60%,#1A0850 82%,#0C0330 100%);
+  box-shadow:inset -4px -3px 8px rgba(0,0,0,.55),inset 3px 2px 6px rgba(200,165,255,.25),0 0 14px rgba(123,47,255,.65);}
+.ob-swirl{background:conic-gradient(from 105deg at 44% 56%,transparent 0deg,rgba(255,255,255,.13) 20deg,transparent 38deg,rgba(180,140,255,.08) 78deg,transparent 118deg,rgba(255,255,255,.06) 198deg,transparent 235deg);animation:orbSpin 8s linear infinite;}
+.ob-hl{position:absolute;top:8%;left:14%;width:36%;height:26%;background:radial-gradient(ellipse,rgba(255,255,255,.72) 0%,rgba(255,255,255,.08) 60%,transparent 100%);border-radius:50%;transform:rotate(-28deg);}
+.ob-gleam{position:absolute;bottom:14%;right:11%;width:18%;height:13%;background:radial-gradient(ellipse,rgba(200,160,255,.42) 0%,transparent 100%);border-radius:50%;}
+@keyframes orbSpin{to{transform:rotate(360deg);}}
+.nav-wordmark{font-size:15px;font-weight:700;color:var(--text);letter-spacing:-.3px;}
+.nw-hi{color:#9B4FFF;}
+.nav-bc{flex:1;display:flex;align-items:center;gap:8px;}
+.bc-home{font-size:12px;color:var(--dim);text-decoration:none;transition:color .2s;}
+.bc-home:hover{color:#9B4FFF;}
+.bc-sep{color:var(--dim2);font-size:12px;}
+.bc-cur{font-size:12px;font-weight:600;color:#C4A4FF;}
+.nav-right{display:flex;align-items:center;gap:14px;flex-shrink:0;}
+.nav-back{font-size:12px;color:var(--dim);text-decoration:none;font-weight:500;transition:color .2s;}
+.nav-back:hover{color:#9B4FFF;}
+/* toggle */
+.ts-wrap{position:relative;width:44px;height:23px;cursor:pointer;}
+.ts-wrap input{opacity:0;position:absolute;width:0;height:0;}
+.ts-track{position:absolute;inset:0;border-radius:12px;background:rgba(255,255,255,.07);border:1px solid var(--border);transition:all .3s;}
+.ts-wrap input:checked~.ts-track{background:rgba(123,47,255,.2);border-color:rgba(155,79,255,.4);}
+.ts-thumb{position:absolute;top:3px;left:3px;width:15px;height:15px;border-radius:50%;background:var(--dim2);transition:all .3s;}
+.ts-wrap input:checked~.ts-track .ts-thumb{transform:translateX(21px);background:#9B4FFF;}
+.ts-m,.ts-s{position:absolute;top:50%;transform:translateY(-50%);font-size:9px;}
+.ts-m{right:5px;}.ts-s{left:5px;opacity:0;}
+.ts-wrap input:checked~.ts-track .ts-m{opacity:0;}
+.ts-wrap input:checked~.ts-track .ts-s{opacity:1;}
+.nav-cta{background:linear-gradient(135deg,#7B2FFF,#5A1ECC);color:#fff;font-size:12px;font-weight:700;padding:8px 18px;border-radius:8px;text-decoration:none;transition:all .2s;box-shadow:0 4px 14px rgba(123,47,255,.4);}
+.nav-cta:hover{transform:translateY(-1px);box-shadow:0 7px 20px rgba(123,47,255,.5);}
+@media(max-width:768px){.nav-bc{display:none;}.nav-back{display:none;}}
+
+
+.lp-footer{border-top:1px solid var(--border);padding:32px 40px;position:relative;z-index:1;}
+.lp-footer-in{max-width:1280px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;gap:20px;flex-wrap:wrap;}
+.lf-brand{display:flex;align-items:center;gap:10px;}
+.lf-name{font-size:14px;font-weight:700;color:var(--text);}.lf-name b{color:#9B4FFF;}
+.lf-prod{font-size:10px;color:var(--dim2);letter-spacing:1.5px;text-transform:uppercase;font-family:'JetBrains Mono',monospace;}
+.lf-links{display:flex;gap:20px;}.lf-links a{font-size:12px;color:var(--dim2);text-decoration:none;transition:color .2s;}.lf-links a:hover{color:#9B4FFF;}
+.lf-copy{font-size:11px;color:var(--dim2);}
+@media(max-width:600px){.lp-footer-in{flex-direction:column;gap:14px;text-align:center;}.lf-links{justify-content:center;}}
+
+
+/* ── BENTO editorial, dark luxury ─────── */
+@keyframes slideUp{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:translateY(0)}}
+@keyframes puls{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.5;transform:scale(.7)}}
+@keyframes flow{0%{background-position:0% 50%}100%{background-position:200% 50%}}
+@keyframes countUp{from{opacity:0;transform:scale(.8)}to{opacity:1;transform:scale(1)}}
+
+.yb-hero{min-height:100vh;padding:90px 40px 60px;display:flex;align-items:center;position:relative;overflow:hidden;}
+.yb-hero-bg{position:absolute;inset:0;
+  background:radial-gradient(ellipse 90% 70% at 20% 30%,rgba(123,47,255,.08) 0%,transparent 60%),
+             radial-gradient(ellipse 60% 50% at 80% 70%,rgba(224,64,251,.06) 0%,transparent 55%);}
+.yb-grid-bg{position:absolute;inset:0;
+  background-image:linear-gradient(rgba(123,47,255,.03) 1px,transparent 1px),linear-gradient(90deg,rgba(123,47,255,.03) 1px,transparent 1px);
+  background-size:44px 44px;mask-image:radial-gradient(ellipse 70% 60% at 50% 40%,black,transparent);}
+.yb-inner{position:relative;z-index:1;max-width:1280px;margin:0 auto;width:100%;}
+
+/* bento layout */
+.yb-bento{display:grid;grid-template-columns:1fr 1fr 1fr;grid-template-rows:auto auto;gap:16px;margin-top:60px;}
+.yb-cell{background:var(--card2);border:1px solid var(--border);border-radius:20px;overflow:hidden;padding:28px;position:relative;transition:border-color .3s;}
+.yb-cell:hover{border-color:rgba(123,47,255,.35);}
+.yb-cell.span2{grid-column:span 2;}
+.yb-cell.span3{grid-column:span 3;}
+.yb-cell.tall{grid-row:span 2;}
+.yb-cell-tag{font-family:'JetBrains Mono',monospace;font-size:9px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:#9B4FFF;margin-bottom:12px;}
+
+/* hero text */
+.yb-h1{font-size:clamp(40px,4.5vw,68px);font-weight:900;letter-spacing:-3px;line-height:1.02;margin-bottom:20px;}
+.yb-h1 mark{background:none;color:transparent;background-image:linear-gradient(135deg,#9B4FFF,#C4A4FF,#E040FB);-webkit-background-clip:text;background-clip:text;background-size:200%;animation:flow 4s linear infinite;}
+.yb-sub{font-size:17px;color:var(--dim);font-weight:300;line-height:1.75;max-width:580px;margin-bottom:36px;}
+.yb-actions{display:flex;gap:12px;flex-wrap:wrap;}
+.btn-pu{background:linear-gradient(135deg,#7B2FFF,#5A1ECC);color:#fff;font-size:14px;font-weight:700;padding:14px 32px;border-radius:10px;text-decoration:none;transition:all .25s;box-shadow:0 6px 22px rgba(123,47,255,.4);}
+.btn-pu:hover{transform:translateY(-2px);box-shadow:0 12px 32px rgba(123,47,255,.5);}
+.btn-gh{font-size:14px;font-weight:500;color:var(--dim);padding:13px 22px;border-radius:10px;border:1px solid var(--border);text-decoration:none;transition:all .25s;}
+.btn-gh:hover{border-color:rgba(123,47,255,.4);color:#9B4FFF;}
+
+/* bento cell contents */
+/* cell: live feed */
+.yb-feed{display:flex;flex-direction:column;gap:8px;}
+.yb-feed-item{display:flex;align-items:center;gap:10px;padding:10px 12px;border-radius:10px;background:var(--card);border:1px solid var(--border);}
+.yb-feed-item.top{background:rgba(123,47,255,.12);border-color:rgba(123,47,255,.3);}
+.yb-av{width:36px;height:36px;border-radius:50%;background:linear-gradient(135deg,#7B2FFF,#C4A4FF);display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;color:#fff;flex-shrink:0;}
+.yb-info{flex:1;}
+.yb-name{font-size:13px;font-weight:700;}
+.yb-role{font-size:10px;color:var(--dim2);}
+.yb-score{font-family:'JetBrains Mono',monospace;font-size:24px;font-weight:900;color:#9B4FFF;}
+.yb-score span{font-size:11px;color:var(--dim2);}
+
+/* cell: big stat */
+.yb-bigstat{display:flex;flex-direction:column;justify-content:flex-end;height:100%;min-height:160px;}
+.yb-bignum{font-family:'JetBrains Mono',monospace;font-size:64px;font-weight:900;letter-spacing:-4px;background:linear-gradient(135deg,#9B4FFF,#C4A4FF);-webkit-background-clip:text;-webkit-text-fill-color:transparent;line-height:1;}
+.yb-biglbl{font-size:13px;color:var(--dim);margin-top:8px;line-height:1.5;}
+
+/* cell: bar chart */
+.yb-bars{display:flex;flex-direction:column;gap:10px;}
+.yb-bar-row{display:flex;align-items:center;gap:10px;font-size:12px;color:var(--dim);}
+.yb-bar-label{width:100px;flex-shrink:0;}
+.yb-bar-track{flex:1;height:8px;background:var(--border);border-radius:4px;overflow:hidden;}
+.yb-bar-fill{height:100%;background:linear-gradient(90deg,#7B2FFF,#C4A4FF);border-radius:4px;transition:width 1s ease;}
+.yb-bar-val{font-family:'JetBrains Mono',monospace;font-size:11px;color:#9B4FFF;width:30px;text-align:right;}
+
+/* cell: source map */
+.yb-sources{display:grid;grid-template-columns:1fr 1fr;gap:8px;}
+.yb-src{padding:10px 12px;border-radius:10px;border:1px solid var(--border);font-size:12px;}
+.yb-src-name{font-weight:700;margin-bottom:3px;}
+.yb-src-n{font-family:'JetBrains Mono',monospace;font-size:18px;font-weight:900;color:#9B4FFF;}
+
+/* features */
+.yb-features{padding:80px 40px;position:relative;z-index:1;background:var(--bg2);}
+.yb-feats-in{max-width:1280px;margin:0 auto;}
+.section-tag{font-family:'JetBrains Mono',monospace;font-size:10px;font-weight:700;letter-spacing:4px;text-transform:uppercase;color:#9B4FFF;margin-bottom:14px;}
+.section-h2{font-size:clamp(28px,3.5vw,46px);font-weight:900;letter-spacing:-1.5px;line-height:1.08;margin-bottom:14px;}
+.section-h2 em{font-style:normal;background:linear-gradient(135deg,#9B4FFF,#C4A4FF);-webkit-background-clip:text;-webkit-text-fill-color:transparent;}
+.section-sub{font-size:15px;color:var(--dim);font-weight:300;line-height:1.75;max-width:540px;}
+.yb-feat-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1px;margin-top:56px;border:1px solid var(--border);border-radius:18px;overflow:hidden;}
+.yb-feat-item{background:var(--card);padding:36px 32px;position:relative;cursor:default;transition:background .3s;}
+.yb-feat-item:hover{background:var(--card2);}
+.yb-feat-item::after{content:'';position:absolute;top:0;left:36px;right:36px;height:1px;background:linear-gradient(90deg,transparent,rgba(123,47,255,.5),transparent);transform:scaleX(0);transition:transform .4s;}
+.yb-feat-item:hover::after{transform:scaleX(1);}
+.yfi-n{font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--dim2);letter-spacing:2px;margin-bottom:18px;}
+.yfi-icon{font-size:28px;margin-bottom:14px;display:block;}
+.yfi-t{font-size:17px;font-weight:800;letter-spacing:-.5px;margin-bottom:10px;}
+.yfi-d{font-size:13px;color:var(--dim);line-height:1.75;font-weight:300;}
+
+/* metrics */
+.yb-metrics{padding:80px 40px;position:relative;z-index:1;}
+.yb-met-in{max-width:1280px;margin:0 auto;}
+.yb-met-strip{display:grid;grid-template-columns:repeat(4,1fr);border:1px solid var(--border);border-radius:18px;overflow:hidden;margin-top:56px;}
+.yb-met-item{padding:48px 24px;text-align:center;border-right:1px solid var(--border);transition:background .3s;}
+.yb-met-item:last-child{border-right:none;}
+.yb-met-item:hover{background:var(--gbg);}
+.ymi-n{font-family:'JetBrains Mono',monospace;font-size:52px;font-weight:900;letter-spacing:-3px;background:linear-gradient(135deg,#9B4FFF,#C4A4FF);-webkit-background-clip:text;-webkit-text-fill-color:transparent;line-height:1;}
+.ymi-l{font-size:13px;color:var(--dim);margin-top:10px;line-height:1.5;}
+
+/* CTA */
+.yb-cta{padding:110px 40px;text-align:center;position:relative;overflow:hidden;}
+.yb-cta-glow{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:700px;height:400px;pointer-events:none;background:radial-gradient(ellipse,rgba(123,47,255,.1),transparent 60%);}
+.yb-cta-in{position:relative;z-index:1;max-width:580px;margin:0 auto;}
+.yb-cta-h{font-size:clamp(32px,4vw,52px);font-weight:900;letter-spacing:-2px;line-height:1.05;margin-bottom:18px;}
+.yb-cta-h em{font-style:normal;background:linear-gradient(135deg,#9B4FFF,#C4A4FF);-webkit-background-clip:text;-webkit-text-fill-color:transparent;}
+.yb-cta-sub{font-size:16px;color:var(--dim);margin-bottom:40px;font-weight:300;line-height:1.72;}
+.yb-cta-btns{display:flex;justify-content:center;gap:14px;flex-wrap:wrap;}
+@media(max-width:960px){.yb-bento{grid-template-columns:1fr 1fr;}.yb-cell.span2{grid-column:span 2;}.yb-cell.span3{grid-column:span 2;}.yb-feat-grid{grid-template-columns:1fr;}.yb-met-strip{grid-template-columns:1fr 1fr;}}
+@media(max-width:600px){.yb-hero{padding:80px 20px 40px;}.yb-bento{grid-template-columns:1fr;}.yb-cell.span2,.yb-cell.span3{grid-column:span 1;}.yb-features,.yb-metrics,.yb-cta{padding-left:20px;padding-right:20px;}.yb-met-strip{grid-template-columns:1fr;}}
+
+</style>
+</head>
+<body>
+<nav id="snav">
+  <a href="synaps-v10-toggle.html" class="nav-logo">
+    <div class="orb-sm">
+      <div class="ob ob-base"></div>
+      <div class="ob ob-swirl"></div>
+      <div class="ob-hl"></div>
+      <div class="ob-gleam"></div>
+    </div>
+    <span class="nav-wordmark">Synaps<span class="nw-hi">AI</span></span>
+  </a>
+  <div class="nav-bc">
+    <a href="synaps-v10-toggle.html" class="bc-home">Ana Sayfa</a>
+    <span class="bc-sep">›</span>
+    <span class="bc-cur">AI Yetenek Bulma</span>
+  </div>
+  <div class="nav-right">
+    <a href="synaps-v10-toggle.html" class="nav-back">← Ekosisteme Dön</a>
+    <label class="ts-wrap">
+      <input type="checkbox" id="themeToggle">
+      <div class="ts-track"><div class="ts-thumb"></div><span class="ts-m">🌙</span><span class="ts-s">☀️</span></div>
+    </label>
+    <a href="https://synapsai.io" class="nav-cta">Demo İste</a>
+  </div>
+</nav>
+
+<section class="yb-hero">
+  <div class="yb-hero-bg"></div>
+  <div class="yb-grid-bg"></div>
+  <div class="yb-inner">
+    <div style="display:flex;align-items:center;gap:10px;margin-bottom:28px;">
+      <span style="font-family:'JetBrains Mono',monospace;font-size:9px;font-weight:700;letter-spacing:2px;color:var(--dim2);background:var(--gbg);border:1px solid rgba(123,47,255,.2);padding:4px 10px;border-radius:20px;">1. ADIM</span>
+      <span style="display:flex;align-items:center;gap:7px;background:var(--gbg);border:1px solid rgba(123,47,255,.25);border-radius:30px;padding:5px 14px;font-family:'JetBrains Mono',monospace;font-size:10px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:#C4A4FF;"><span style="width:6px;height:6px;border-radius:50%;background:#9B4FFF;display:inline-block;animation:puls 2s infinite;"></span>İşe Alım · B2B</span>
+    </div>
+    <h1 class="yb-h1">En İyi Yeteneği<br><mark>Saniyeler İçinde</mark> Bul</h1>
+    <p class="yb-sub">Yapay zeka destekli eşleştirme motoruyla yüzlerce başvuru arasından pozisyonunuza en uygun adayları otomatik tespit eder, skorlar ve önünüze getirir. İK saatlerini dakikalara indirir.</p>
+    <div class="yb-actions">
+      <a href="https://synapsai.io" class="btn-pu">Demo İste →</a>
+      <a href="synaps-v10-toggle.html" class="btn-gh">Ekosistemi Keşfet</a>
+    </div>
+
+    <!-- BENTO GRID -->
+    <div class="yb-bento">
+
+      <!-- Cell 1: Live candidate feed -->
+      <div class="yb-cell tall">
+        <div class="yb-cell-tag">● Canlı Aday Havuzu</div>
+        <div style="font-size:13px;color:var(--dim2);margin-bottom:14px;font-family:'JetBrains Mono',monospace;">247 başvurudan • 3 eşleşme</div>
+        <div class="yb-feed">
+          <div class="yb-feed-item top">
+            <div class="yb-av">AY</div>
+            <div class="yb-info"><div class="yb-name">Ahmet Yılmaz</div><div class="yb-role">Senior PM · 8 yıl · İstanbul</div></div>
+            <div class="yb-score">96<span>%</span></div>
+          </div>
+          <div class="yb-feed-item">
+            <div class="yb-av" style="background:linear-gradient(135deg,#5A1ECC,#9B4FFF);">EK</div>
+            <div class="yb-info"><div class="yb-name">Elif Kaya</div><div class="yb-role">Product Manager · 5 yıl · Ankara</div></div>
+            <div class="yb-score">89<span>%</span></div>
+          </div>
+          <div class="yb-feed-item">
+            <div class="yb-av" style="background:linear-gradient(135deg,#3A0FA0,#7B2FFF);">MD</div>
+            <div class="yb-info"><div class="yb-name">Mert Demir</div><div class="yb-role">Assoc. PM · 3 yıl · İzmir</div></div>
+            <div class="yb-score">82<span>%</span></div>
+          </div>
+        </div>
+        <div style="margin-top:16px;padding-top:14px;border-top:1px solid var(--border);">
+          <div style="font-family:'JetBrains Mono',monospace;font-size:9px;color:var(--dim2);letter-spacing:2px;margin-bottom:10px;">EŞLEŞTİRME KRİTERLERİ</div>
+          <div class="yb-bars">
+            <div class="yb-bar-row"><span class="yb-bar-label">Teknik Uyum</span><div class="yb-bar-track"><div class="yb-bar-fill" style="width:94%"></div></div><span class="yb-bar-val">94%</span></div>
+            <div class="yb-bar-row"><span class="yb-bar-label">Liderlik</span><div class="yb-bar-track"><div class="yb-bar-fill" style="width:87%"></div></div><span class="yb-bar-val">87%</span></div>
+            <div class="yb-bar-row"><span class="yb-bar-label">Kültür Uyumu</span><div class="yb-bar-track"><div class="yb-bar-fill" style="width:96%"></div></div><span class="yb-bar-val">96%</span></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Cell 2: Big stat -->
+      <div class="yb-cell">
+        <div class="yb-cell-tag">İşe Alım Süresi</div>
+        <div class="yb-bigstat">
+          <div class="yb-bignum">85%</div>
+          <div class="yb-biglbl">Daha hızlı işe alım<br>ortalama müşteri sonucu</div>
+        </div>
+      </div>
+
+      <!-- Cell 3: Source channels -->
+      <div class="yb-cell">
+        <div class="yb-cell-tag">Kaynak Kanallar</div>
+        <div class="yb-sources">
+          <div class="yb-src"><div class="yb-src-name">LinkedIn</div><div class="yb-src-n">142</div></div>
+          <div class="yb-src"><div class="yb-src-name">Indeed</div><div class="yb-src-n">68</div></div>
+          <div class="yb-src"><div class="yb-src-name">Kariyer.net</div><div class="yb-src-n">24</div></div>
+          <div class="yb-src"><div class="yb-src-name">Direkt</div><div class="yb-src-n">13</div></div>
+        </div>
+      </div>
+
+      <!-- Cell 4: Accuracy -->
+      <div class="yb-cell span2" style="display:flex;align-items:center;gap:32px;">
+        <div>
+          <div class="yb-cell-tag">Eşleştirme Doğruluğu</div>
+          <div class="yb-bignum" style="font-size:48px;">92%</div>
+        </div>
+        <div style="flex:1;">
+          <div style="font-size:13px;color:var(--dim);line-height:1.7;">Algoritmamız iş tanımını analiz ederek 150'den fazla parametreye göre her adayı otomatik skorlar. Önyargısız, yalnızca yetkinlik bazlı değerlendirme.</div>
+          <div style="margin-top:12px;display:flex;gap:8px;flex-wrap:wrap;">
+            <span style="font-family:'JetBrains Mono',monospace;font-size:10px;background:var(--gbg);border:1px solid rgba(123,47,255,.2);border-radius:6px;padding:4px 10px;color:#C4A4FF;">LinkedIn</span>
+            <span style="font-family:'JetBrains Mono',monospace;font-size:10px;background:var(--gbg);border:1px solid rgba(123,47,255,.2);border-radius:6px;padding:4px 10px;color:#C4A4FF;">Indeed</span>
+            <span style="font-family:'JetBrains Mono',monospace;font-size:10px;background:var(--gbg);border:1px solid rgba(123,47,255,.2);border-radius:6px;padding:4px 10px;color:#C4A4FF;">ATS Entegrasyon</span>
+            <span style="font-family:'JetBrains Mono',monospace;font-size:10px;background:var(--gbg);border:1px solid rgba(123,47,255,.2);border-radius:6px;padding:4px 10px;color:#C4A4FF;">API</span>
+          </div>
+        </div>
+      </div>
+
+    </div><!-- /bento -->
+  </div>
+</section>
+
+<!-- FEATURES -->
+<section class="yb-features">
+  <div class="yb-feats-in">
+    <div class="section-tag">Temel Özellikler</div>
+    <h2 class="section-h2">Neler <em>Yapıyor?</em></h2>
+    <p class="section-sub">Her özellik, İK sürecinizi daha akıllı ve yeteneği daha doğru bulmak için tasarlandı.</p>
+    <div class="yb-feat-grid">
+      <div class="yb-feat-item"><div class="yfi-n">01</div><span class="yfi-icon">🎯</span><div class="yfi-t">Akıllı Eşleştirme</div><p class="yfi-d">İş tanımını analiz ederek 150+ parametreye göre her adayı otomatik skorlar. Yalnızca en uygun adaylar listenize girer.</p></div>
+      <div class="yb-feat-item"><div class="yfi-n">02</div><span class="yfi-icon">⚖️</span><div class="yfi-t">Önyargısız Değerlendirme</div><p class="yfi-d">Demografik verilerden tamamen bağımsız, yalnızca yetkinlik ve uyuma dayalı nesnel değerlendirme sistemi.</p></div>
+      <div class="yb-feat-item"><div class="yfi-n">03</div><span class="yfi-icon">🔗</span><div class="yfi-t">Çoklu Kaynak Entegrasyonu</div><p class="yfi-d">LinkedIn, Indeed, kariyer sayfanız ve tüm başvuru kanallarındaki adayları tek ekranda yönetin.</p></div>
+      <div class="yb-feat-item"><div class="yfi-n">04</div><span class="yfi-icon">⚡</span><div class="yfi-t">Gerçek Zamanlı Havuz</div><p class="yfi-d">Aday havuzunu canlı takip edin, yeni başvuruları anında filtreleyin ve önceliklendirin.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- METRICS -->
+<section class="yb-metrics">
+  <div class="yb-met-in">
+    <div class="section-tag">Kanıtlanmış Sonuçlar</div>
+    <h2 class="section-h2">Rakamlar <em>Konuşuyor</em></h2>
+    <div class="yb-met-strip">
+      <div class="yb-met-item"><div class="ymi-n">85%</div><div class="ymi-l">İşe alım süresi azalması</div></div>
+      <div class="yb-met-item"><div class="ymi-n">3×</div><div class="ymi-l">Daha fazla nitelikli aday</div></div>
+      <div class="yb-met-item"><div class="ymi-n">92%</div><div class="ymi-l">Eşleştirme doğruluğu</div></div>
+      <div class="yb-met-item"><div class="ymi-n">60%</div><div class="ymi-l">Maliyet tasarrufu</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="yb-cta">
+  <div class="yb-cta-glow"></div>
+  <div class="yb-cta-in">
+    <div class="section-tag" style="text-align:center;">1. ADIM · AI Yetenek Bulma</div>
+    <h2 class="yb-cta-h">AI Yetenek Bulma'yı<br><em>Bugün Deneyin</em></h2>
+    <p class="yb-cta-sub">Demo almak veya ücretsiz başlamak için bizimle iletişime geçin. Kurulum 5 dakika.</p>
+    <div class="yb-cta-btns">
+      <a href="https://synapsai.io" class="btn-pu">Demo İste →</a>
+      <a href="synaps-v10-toggle.html" class="btn-gh">← Ana Sayfaya Dön</a>
+    </div>
+  </div>
+</section>
+<footer class="lp-footer">
+  <div class="lp-footer-in">
+    <div class="lf-brand">
+      <div class="orb-sm"><div class="ob ob-base"></div><div class="ob ob-swirl"></div><div class="ob-hl"></div></div>
+      <div><div class="lf-name">Synaps<b>AI</b></div><div class="lf-prod">AI Yetenek Bulma</div></div>
+    </div>
+    <nav class="lf-links">
+      <a href="synaps-v10-toggle.html">Ana Sayfa</a>
+      <a href="#">Gizlilik</a>
+      <a href="#">Şartlar</a>
+      <a href="mailto:destek@synapsai.ai">Destek</a>
+    </nav>
+    <p class="lf-copy">© 2025 Synaps Yapay Zeka Teknolojileri A.Ş.</p>
+  </div>
+</footer>
+<script>
+(function(){
+  var t=document.getElementById('themeToggle'),h=document.documentElement;
+  var s=localStorage.getItem('synaps-theme')||'dark';
+  if(s==='light'){h.setAttribute('data-theme','light');if(t)t.checked=true;}
+  if(t)t.addEventListener('change',function(){
+    var v=t.checked?'light':'dark';
+    h.setAttribute('data-theme',v);localStorage.setItem('synaps-theme',v);
+  });
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="tr" data-theme="dark">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>AI Telefonla Mülakat — Synaps AI</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link href="https://fonts.googleapis.com/css2?family=Lexend:wght@200;300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+
+:root{
+  --bg:#06040F;--bg2:#0C0818;--bg3:#120E20;
+  --card:rgba(255,255,255,.04);--card2:rgba(255,255,255,.07);--card3:rgba(255,255,255,.1);
+  --border:rgba(255,255,255,.08);--border2:rgba(255,255,255,.05);
+  --text:#F0EEFF;--dim:rgba(240,238,255,.55);--dim2:rgba(240,238,255,.28);
+  --pu:#7B2FFF;--vi:#9B4FFF;--lav:#C4A4FF;--pk:#E040FB;
+  --nav-bg:rgba(6,4,15,.9);
+  --glow:rgba(123,47,255,.3);--gbg:rgba(123,47,255,.1);
+  --sh:0 32px 80px rgba(0,0,0,.55);
+}
+[data-theme="light"]{
+  --bg:#F0EEF9;--bg2:#E8E4F5;--bg3:#DDD8EF;
+  --card:rgba(255,255,255,.85);--card2:rgba(255,255,255,.95);--card3:rgba(255,255,255,.98);
+  --border:rgba(123,47,255,.11);--border2:rgba(123,47,255,.07);
+  --text:#1A0A3C;--dim:rgba(26,10,60,.58);--dim2:rgba(26,10,60,.3);
+  --nav-bg:rgba(240,238,249,.92);
+  --glow:rgba(123,47,255,.15);--gbg:rgba(123,47,255,.07);
+  --sh:0 20px 60px rgba(123,47,255,.12);
+}
+
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{background:var(--bg);color:var(--text);font-family:'Lexend',sans-serif;overflow-x:hidden;transition:background .4s,color .4s;line-height:1.6;}
+body::before{content:'';position:fixed;inset:0;pointer-events:none;z-index:0;
+background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='.025'/%3E%3C/svg%3E");}
+
+/* ─── NAV ──────────────────────────────────────── */
+#snav{position:fixed;top:0;left:0;right:0;z-index:900;height:62px;
+  display:flex;align-items:center;padding:0 32px;gap:20px;
+  background:var(--nav-bg);backdrop-filter:blur(28px) saturate(200%);
+  border-bottom:1px solid var(--border);transition:background .4s;}
+.orb-sm{width:28px;height:28px;border-radius:50%;position:relative;overflow:hidden;flex-shrink:0;}
+.ob{position:absolute;inset:0;border-radius:50%;}
+.ob-base{background:radial-gradient(ellipse at 36% 28%,rgba(255,255,255,.88) 0%,rgba(200,175,255,.55) 16%,transparent 36%),radial-gradient(ellipse at 68% 66%,rgba(70,20,170,.55) 0%,transparent 48%),radial-gradient(circle,#AA80FF 0%,#6E38CC 32%,#481898 60%,#1A0850 82%,#0C0330 100%);
+  box-shadow:inset -4px -3px 8px rgba(0,0,0,.55),inset 3px 2px 6px rgba(200,165,255,.25),0 0 14px rgba(123,47,255,.65);}
+.ob-swirl{background:conic-gradient(from 105deg at 44% 56%,transparent 0deg,rgba(255,255,255,.13) 20deg,transparent 38deg,rgba(180,140,255,.08) 78deg,transparent 118deg,rgba(255,255,255,.06) 198deg,transparent 235deg);animation:orbSpin 8s linear infinite;}
+.ob-hl{position:absolute;top:8%;left:14%;width:36%;height:26%;background:radial-gradient(ellipse,rgba(255,255,255,.72) 0%,rgba(255,255,255,.08) 60%,transparent 100%);border-radius:50%;transform:rotate(-28deg);}
+.ob-gleam{position:absolute;bottom:14%;right:11%;width:18%;height:13%;background:radial-gradient(ellipse,rgba(200,160,255,.42) 0%,transparent 100%);border-radius:50%;}
+@keyframes orbSpin{to{transform:rotate(360deg);}}
+.nav-wordmark{font-size:15px;font-weight:700;color:var(--text);letter-spacing:-.3px;}
+.nw-hi{color:#9B4FFF;}
+.nav-bc{flex:1;display:flex;align-items:center;gap:8px;}
+.bc-home{font-size:12px;color:var(--dim);text-decoration:none;transition:color .2s;}
+.bc-home:hover{color:#9B4FFF;}
+.bc-sep{color:var(--dim2);font-size:12px;}
+.bc-cur{font-size:12px;font-weight:600;color:#C4A4FF;}
+.nav-right{display:flex;align-items:center;gap:14px;flex-shrink:0;}
+.nav-back{font-size:12px;color:var(--dim);text-decoration:none;font-weight:500;transition:color .2s;}
+.nav-back:hover{color:#9B4FFF;}
+/* toggle */
+.ts-wrap{position:relative;width:44px;height:23px;cursor:pointer;}
+.ts-wrap input{opacity:0;position:absolute;width:0;height:0;}
+.ts-track{position:absolute;inset:0;border-radius:12px;background:rgba(255,255,255,.07);border:1px solid var(--border);transition:all .3s;}
+.ts-wrap input:checked~.ts-track{background:rgba(123,47,255,.2);border-color:rgba(155,79,255,.4);}
+.ts-thumb{position:absolute;top:3px;left:3px;width:15px;height:15px;border-radius:50%;background:var(--dim2);transition:all .3s;}
+.ts-wrap input:checked~.ts-track .ts-thumb{transform:translateX(21px);background:#9B4FFF;}
+.ts-m,.ts-s{position:absolute;top:50%;transform:translateY(-50%);font-size:9px;}
+.ts-m{right:5px;}.ts-s{left:5px;opacity:0;}
+.ts-wrap input:checked~.ts-track .ts-m{opacity:0;}
+.ts-wrap input:checked~.ts-track .ts-s{opacity:1;}
+.nav-cta{background:linear-gradient(135deg,#7B2FFF,#5A1ECC);color:#fff;font-size:12px;font-weight:700;padding:8px 18px;border-radius:8px;text-decoration:none;transition:all .2s;box-shadow:0 4px 14px rgba(123,47,255,.4);}
+.nav-cta:hover{transform:translateY(-1px);box-shadow:0 7px 20px rgba(123,47,255,.5);}
+@media(max-width:768px){.nav-bc{display:none;}.nav-back{display:none;}}
+
+
+.lp-footer{border-top:1px solid var(--border);padding:32px 40px;position:relative;z-index:1;}
+.lp-footer-in{max-width:1280px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;gap:20px;flex-wrap:wrap;}
+.lf-brand{display:flex;align-items:center;gap:10px;}
+.lf-name{font-size:14px;font-weight:700;color:var(--text);}.lf-name b{color:#9B4FFF;}
+.lf-prod{font-size:10px;color:var(--dim2);letter-spacing:1.5px;text-transform:uppercase;font-family:'JetBrains Mono',monospace;}
+.lf-links{display:flex;gap:20px;}.lf-links a{font-size:12px;color:var(--dim2);text-decoration:none;transition:color .2s;}.lf-links a:hover{color:#9B4FFF;}
+.lf-copy{font-size:11px;color:var(--dim2);}
+@media(max-width:600px){.lp-footer-in{flex-direction:column;gap:14px;text-align:center;}.lf-links{justify-content:center;}}
+
+
+@keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.4;transform:scale(.65)}}
+@keyframes wave{0%,100%{transform:scaleY(.3);opacity:.4}50%{transform:scaleY(1);opacity:1}}
+@keyframes floatY{0%,100%{transform:translateY(0)}50%{transform:translateY(-12px)}}
+@keyframes slideUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
+@keyframes flowGrad{0%{background-position:0% 50%}100%{background-position:200% 50%}}
+
+:root{--teal:#7B2FFF;--teal2:#9B4FFF;--teal-g:rgba(123,47,255,.12);--teal-b:rgba(123,47,255,.25);}
+[data-theme="light"]{--teal:#6818CC;--teal2:#7B2FFF;--teal-g:rgba(123,47,255,.07);--teal-b:rgba(123,47,255,.2);}
+
+.tel-page{overflow:hidden;}
+.tel-hero{min-height:100vh;display:grid;grid-template-columns:1fr 1fr;align-items:center;padding:100px 64px 60px;gap:64px;position:relative;}
+.tel-bg{position:absolute;inset:0;background:radial-gradient(ellipse 80% 70% at 70% 40%,rgba(0,201,167,.07) 0%,transparent 55%),radial-gradient(ellipse 60% 50% at 10% 80%,rgba(123,47,255,.06) 0%,transparent 50%);}
+
+.tel-eyebrow{display:flex;align-items:center;gap:10px;margin-bottom:24px;}
+.tel-step{font-family:'JetBrains Mono',monospace;font-size:9px;font-weight:700;letter-spacing:2px;color:var(--dim2);background:var(--gbg);border:1px solid rgba(123,47,255,.2);padding:4px 10px;border-radius:20px;}
+.tel-live{display:flex;align-items:center;gap:7px;background:var(--teal-g);border:1px solid var(--teal-b);border-radius:20px;padding:5px 14px;font-family:'JetBrains Mono',monospace;font-size:10px;font-weight:700;color:var(--teal);letter-spacing:1px;}
+.tel-live-dot{width:6px;height:6px;border-radius:50%;background:var(--teal);animation:pulse 1.8s infinite;}
+
+.tel-h1{font-size:clamp(40px,4.5vw,66px);font-weight:900;letter-spacing:-3px;line-height:1.0;margin-bottom:22px;}
+.tel-h1 em{font-style:normal;background:linear-gradient(135deg,var(--teal),var(--teal2),#9B4FFF);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-size:200%;animation:flowGrad 4s linear infinite;}
+.tel-sub{font-size:16px;color:var(--dim);font-weight:300;line-height:1.78;max-width:500px;margin-bottom:34px;}
+.tel-perks{display:flex;flex-direction:column;gap:9px;margin-bottom:34px;}
+.tel-perk{display:flex;align-items:center;gap:11px;font-size:13px;color:var(--dim);font-weight:400;}
+.tel-perk::before{content:'✓';width:20px;height:20px;border-radius:50%;background:var(--teal-g);border:1px solid var(--teal-b);display:flex;align-items:center;justify-content:center;font-size:10px;color:var(--teal);flex-shrink:0;}
+.tel-btns{display:flex;gap:12px;flex-wrap:wrap;}
+.btn-teal{background:linear-gradient(135deg,#7B2FFF,#9B4FFF);color:#fff;font-size:14px;font-weight:700;padding:14px 32px;border-radius:10px;text-decoration:none;transition:all .25s;box-shadow:0 6px 22px rgba(123,47,255,.3);}
+.btn-teal:hover{transform:translateY(-2px);box-shadow:0 12px 32px rgba(123,47,255,.4);}
+.btn-gh{font-size:14px;font-weight:500;color:var(--dim);padding:13px 22px;border-radius:10px;border:1px solid var(--border);text-decoration:none;transition:all .25s;}
+.btn-gh:hover{border-color:var(--teal-b);color:var(--teal);}
+
+/* phone mockup */
+.tel-phone-wrap{position:relative;display:flex;justify-content:center;}
+.tel-phone{width:280px;background:var(--bg3);border:1px solid var(--border);border-radius:36px;overflow:hidden;box-shadow:0 40px 100px rgba(0,0,0,.6);position:relative;z-index:1;}
+.tel-phone-top{background:var(--bg2);padding:14px 20px 12px;display:flex;align-items:center;gap:10px;border-bottom:1px solid var(--border);}
+.tel-phone-notch{width:80px;height:6px;background:var(--bg);border-radius:3px;margin:0 auto;}
+.tel-phone-screen{padding:20px;}
+.tel-call-info{text-align:center;padding:20px 0;border-bottom:1px solid var(--border);margin-bottom:16px;}
+.tel-caller{font-size:18px;font-weight:800;margin-bottom:4px;}
+.tel-call-status{font-size:11px;color:var(--teal);font-family:'JetBrains Mono',monospace;letter-spacing:1px;display:flex;align-items:center;justify-content:center;gap:6px;}
+.tel-call-time{font-family:'JetBrains Mono',monospace;font-size:28px;font-weight:900;color:var(--teal);text-align:center;margin:14px 0;}
+/* waveform */
+.tel-waveform{display:flex;align-items:center;justify-content:center;gap:3px;height:48px;margin:16px 0;}
+.tel-waveform span{width:4px;border-radius:2px;background:linear-gradient(180deg,var(--teal),rgba(123,47,255,.3));animation:wave 1.2s ease-in-out infinite;}
+.tel-waveform span:nth-child(odd){animation-delay:.15s;}
+.tel-waveform span:nth-child(3n){animation-delay:.3s;}
+.tel-transcript{background:var(--card);border-radius:10px;padding:12px;font-size:10px;line-height:1.7;color:var(--dim);}
+.tel-transcript-label{font-family:'JetBrains Mono',monospace;font-size:8px;color:var(--teal);letter-spacing:2px;margin-bottom:6px;}
+.tel-phone-footer{padding:16px 20px;display:flex;justify-content:space-around;align-items:center;border-top:1px solid var(--border);}
+.tel-btn-end{width:52px;height:52px;border-radius:50%;background:#FF4040;display:flex;align-items:center;justify-content:center;font-size:20px;cursor:pointer;}
+.tel-btn-mute{width:42px;height:42px;border-radius:50%;background:var(--card2);display:flex;align-items:center;justify-content:center;font-size:16px;cursor:pointer;}
+
+/* floater cards */
+.tel-float{position:absolute;background:var(--card3);border:1px solid var(--teal-b);border-radius:12px;padding:10px 14px;box-shadow:0 8px 24px rgba(0,0,0,.35);z-index:2;}
+.tf-label{font-size:9px;color:var(--dim2);font-family:'JetBrains Mono',monospace;letter-spacing:1.5px;margin-bottom:4px;}
+.tf-val{font-family:'JetBrains Mono',monospace;font-size:16px;font-weight:900;color:var(--teal);}
+
+/* features timeline */
+.tel-feats{padding:80px 64px;position:relative;z-index:1;}
+.tel-feats-in{max-width:1280px;margin:0 auto;}
+.section-tag{font-family:'JetBrains Mono',monospace;font-size:10px;font-weight:700;letter-spacing:4px;text-transform:uppercase;color:#9B4FFF;margin-bottom:14px;}
+.section-h2{font-size:clamp(28px,3.5vw,46px);font-weight:900;letter-spacing:-1.5px;line-height:1.08;margin-bottom:14px;}
+.section-h2 em{font-style:normal;background:linear-gradient(135deg,var(--teal),#9B4FFF);-webkit-background-clip:text;-webkit-text-fill-color:transparent;}
+.section-sub{font-size:15px;color:var(--dim);font-weight:300;line-height:1.75;max-width:540px;}
+.tel-timeline{margin-top:56px;display:grid;grid-template-columns:repeat(2,1fr);gap:16px;}
+.tel-tl-item{background:var(--card2);border:1px solid var(--border);border-radius:16px;padding:28px;position:relative;overflow:hidden;transition:border-color .3s;}
+.tel-tl-item:hover{border-color:var(--teal-b);}
+.tel-tl-item::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--teal),#9B4FFF);transform:scaleX(0);transform-origin:left;transition:transform .4s;}
+.tel-tl-item:hover::before{transform:scaleX(1);}
+.tl-n{font-family:'JetBrains Mono',monospace;font-size:28px;font-weight:900;color:var(--teal);opacity:.3;margin-bottom:14px;}
+.tl-t{font-size:16px;font-weight:800;margin-bottom:8px;}
+.tl-d{font-size:13px;color:var(--dim);line-height:1.72;font-weight:300;}
+
+/* metrics */
+.tel-metrics{padding:60px 64px;background:var(--bg2);border-top:1px solid var(--border);border-bottom:1px solid var(--border);position:relative;z-index:1;}
+.tel-met-in{max-width:1280px;margin:0 auto;display:grid;grid-template-columns:repeat(4,1fr);gap:32px;}
+.tel-m{text-align:center;padding:24px 0;}
+.tel-m-n{font-family:'JetBrains Mono',monospace;font-size:46px;font-weight:900;background:linear-gradient(135deg,var(--teal),var(--teal2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;line-height:1;}
+.tel-m-l{font-size:12px;color:var(--dim);margin-top:8px;}
+
+/* cta */
+.tel-cta{padding:100px 40px;text-align:center;position:relative;overflow:hidden;}
+.tel-cta-g{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:600px;height:350px;background:radial-gradient(ellipse,rgba(0,201,167,.08),transparent 60%);pointer-events:none;}
+.tel-cta-in{position:relative;z-index:1;max-width:560px;margin:0 auto;}
+.tel-cta-h{font-size:clamp(30px,4vw,50px);font-weight:900;letter-spacing:-2px;line-height:1.06;margin-bottom:16px;}
+.tel-cta-h em{font-style:normal;background:linear-gradient(135deg,var(--teal),#9B4FFF);-webkit-background-clip:text;-webkit-text-fill-color:transparent;}
+.tel-cta-sub{font-size:15px;color:var(--dim);margin-bottom:38px;font-weight:300;line-height:1.72;}
+.tel-cta-btns{display:flex;justify-content:center;gap:14px;flex-wrap:wrap;}
+@media(max-width:960px){.tel-hero{grid-template-columns:1fr;padding:80px 28px 40px;}.tel-timeline{grid-template-columns:1fr;}.tel-met-in{grid-template-columns:1fr 1fr;}.tel-feats{padding:60px 28px;}.tel-metrics{padding:40px 28px;}}
+@media(max-width:600px){.tel-met-in{grid-template-columns:1fr;}.tel-cta{padding:60px 20px;}}
+
+</style>
+</head>
+<body>
+<nav id="snav">
+  <a href="synaps-v10-toggle.html" class="nav-logo">
+    <div class="orb-sm">
+      <div class="ob ob-base"></div>
+      <div class="ob ob-swirl"></div>
+      <div class="ob-hl"></div>
+      <div class="ob-gleam"></div>
+    </div>
+    <span class="nav-wordmark">Synaps<span class="nw-hi">AI</span></span>
+  </a>
+  <div class="nav-bc">
+    <a href="synaps-v10-toggle.html" class="bc-home">Ana Sayfa</a>
+    <span class="bc-sep">›</span>
+    <span class="bc-cur">AI Telefonla Mülakat</span>
+  </div>
+  <div class="nav-right">
+    <a href="synaps-v10-toggle.html" class="nav-back">← Ekosisteme Dön</a>
+    <label class="ts-wrap">
+      <input type="checkbox" id="themeToggle">
+      <div class="ts-track"><div class="ts-thumb"></div><span class="ts-m">🌙</span><span class="ts-s">☀️</span></div>
+    </label>
+    <a href="https://synapsai.io" class="nav-cta">Demo İste</a>
+  </div>
+</nav>
+
+<div class="tel-page">
+<section class="tel-hero">
+  <div class="tel-bg"></div>
+  <div style="position:relative;z-index:1;">
+    <div class="tel-eyebrow">
+      <span class="tel-step">2. ADIM</span>
+      <span class="tel-live"><span class="tel-live-dot"></span>Sesli AI · 7/24</span>
+    </div>
+    <h1 class="tel-h1">Sesli AI ile<br><em>Hızlı Ön Eleme</em></h1>
+    <p class="tel-sub">Yapay zeka telefon görüşmesi yaparak adayları önceden değerlendirir. İK ekibinize yalnızca shortlist ulaşır — zaman ve kaynak israfı sıfır.</p>
+    <div class="tel-perks">
+      <div class="tel-perk">Saatler içinde yüzlerce ön mülakat tamamlanır</div>
+      <div class="tel-perk">Ses analizi ile duygu ve güven tespiti</div>
+      <div class="tel-perk">Gerçek zamanlı transkript ve özet rapor</div>
+      <div class="tel-perk">ATS ile iki yönlü entegrasyon</div>
+    </div>
+    <div class="tel-btns">
+      <a href="https://synapsai.io" class="btn-teal">Demo İste →</a>
+      <a href="synaps-v10-toggle.html" class="btn-gh">Tüm Ürünler</a>
+    </div>
+  </div>
+  <div class="tel-phone-wrap">
+    <div class="tel-phone">
+      <div class="tel-phone-top">
+        <div class="tel-phone-notch"></div>
+      </div>
+      <div class="tel-phone-screen">
+        <div class="tel-call-info">
+          <div class="tel-caller">Synaps AI Interviewer</div>
+          <div class="tel-call-status"><span style="width:6px;height:6px;border-radius:50%;background:var(--teal);display:inline-block;animation:pulse 1.5s infinite;"></span>BAĞLANDI · Güvenli Hat</div>
+        </div>
+        <div class="tel-call-time">04:17</div>
+        <div class="tel-waveform"><span style="height:20px;"></span><span style="height:23px;"></span><span style="height:26px;"></span><span style="height:29px;"></span><span style="height:32px;"></span><span style="height:35px;"></span><span style="height:38px;"></span><span style="height:41px;"></span><span style="height:44px;"></span><span style="height:47px;"></span><span style="height:44px;"></span><span style="height:41px;"></span><span style="height:38px;"></span><span style="height:35px;"></span><span style="height:32px;"></span><span style="height:29px;"></span><span style="height:26px;"></span><span style="height:23px;"></span><span style="height:20px;"></span><span style="height:23px;"></span></div>
+        <div class="tel-transcript">
+          <div class="tel-transcript-label">CANLI TRANSKRİPT</div>
+          "...yazılım geliştirme alanında 4 yıllık deneyimim var. Özellikle React ve Node.js konularında..."
+        </div>
+      </div>
+      <div class="tel-phone-footer">
+        <div class="tel-btn-mute">🔇</div>
+        <div class="tel-btn-end">📵</div>
+        <div class="tel-btn-mute">📊</div>
+      </div>
+    </div>
+    <div class="tel-float" style="top:-16px;right:-48px;animation:floatY 4s ease-in-out infinite;">
+      <div class="tf-label">GÜVEN SKORU</div>
+      <div class="tf-val">87<span style="font-size:11px;">/100</span></div>
+    </div>
+    <div class="tel-float" style="bottom:30px;left:-54px;animation:floatY 5s 1s ease-in-out infinite;">
+      <div class="tf-label">TAMAMLANDI</div>
+      <div class="tf-val">142</div>
+    </div>
+  </div>
+</section>
+
+<!-- METRICS -->
+<div class="tel-metrics">
+  <div class="tel-met-in">
+    <div class="tel-m"><div class="tel-m-n">95%</div><div class="tel-m-l">Mülakat tamamlama oranı</div></div>
+    <div class="tel-m"><div class="tel-m-n">8dk</div><div class="tel-m-l">Ortalama görüşme süresi</div></div>
+    <div class="tel-m"><div class="tel-m-n">70%</div><div class="tel-m-l">İşe alım süresi azalması</div></div>
+    <div class="tel-m"><div class="tel-m-n">24/7</div><div class="tel-m-l">Aday uygunluk saatleri</div></div>
+  </div>
+</div>
+
+<!-- FEATURES -->
+<section class="tel-feats">
+  <div class="tel-feats-in">
+    <div class="section-tag">Nasıl Çalışır?</div>
+    <h2 class="section-h2">Sesli AI'ın <em>Gücü</em></h2>
+    <p class="section-sub">Telefon görüşmesi yoluyla yürütülen ön eleme süreci, İK süreçlerinizi dönüştürür.</p>
+    <div class="tel-timeline">
+      <div class="tel-tl-item"><div class="tl-n">01</div><div class="tl-t">🔔 Otomatik Çağrı Başlatma</div><p class="tl-d">Aday başvurduğu anda sistem otomatik çağrı planlar. İK müdahalesi gerekmez.</p></div>
+      <div class="tel-tl-item"><div class="tl-n">02</div><div class="tl-t">🎙️ Doğal Dil Görüşmesi</div><p class="tl-d">AI adayla 8–12 dakika konuşur. Bağlama uygun sorular, takip soruları ve değerlendirme.</p></div>
+      <div class="tel-tl-item"><div class="tl-n">03</div><div class="tl-t">📊 Ses Analizi & Puanlama</div><p class="tl-d">Konuşma tonu, güven, tutarlılık ve içerik analizi ile nesnel puan kartı oluşturulur.</p></div>
+      <div class="tel-tl-item"><div class="tl-n">04</div><div class="tl-t">✅ Shortlist & Raporlama</div><p class="tl-d">Eşik skoru geçen adaylar otomatik shortlist'e alınır. Raporlar ATS'e aktarılır.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="tel-cta">
+  <div class="tel-cta-g"></div>
+  <div class="tel-cta-in">
+    <div class="section-tag" style="text-align:center;">2. ADIM · AI Telefonla Mülakat</div>
+    <h2 class="tel-cta-h">Sesli AI ile Ön Elemeyi<br><em>Otomatikleştirin</em></h2>
+    <p class="tel-cta-sub">Demo alın, ilk gün çalışmaya başlasın.</p>
+    <div class="tel-cta-btns">
+      <a href="https://synapsai.io" class="btn-teal">Demo İste →</a>
+      <a href="synaps-v10-toggle.html" class="btn-gh">← Ana Sayfaya Dön</a>
+    </div>
+  </div>
+</section>
+</div>
+<footer class="lp-footer">
+  <div class="lp-footer-in">
+    <div class="lf-brand">
+      <div class="orb-sm"><div class="ob ob-base"></div><div class="ob ob-swirl"></div><div class="ob-hl"></div></div>
+      <div><div class="lf-name">Synaps<b>AI</b></div><div class="lf-prod">AI Telefonla Mülakat</div></div>
+    </div>
+    <nav class="lf-links">
+      <a href="synaps-v10-toggle.html">Ana Sayfa</a>
+      <a href="#">Gizlilik</a>
+      <a href="#">Şartlar</a>
+      <a href="mailto:destek@synapsai.ai">Destek</a>
+    </nav>
+    <p class="lf-copy">© 2025 Synaps Yapay Zeka Teknolojileri A.Ş.</p>
+  </div>
+</footer>
+<script>
+(function(){
+  var t=document.getElementById('themeToggle'),h=document.documentElement;
+  var s=localStorage.getItem('synaps-theme')||'dark';
+  if(s==='light'){h.setAttribute('data-theme','light');if(t)t.checked=true;}
+  if(t)t.addEventListener('change',function(){
+    var v=t.checked?'light':'dark';
+    h.setAttribute('data-theme',v);localStorage.setItem('synaps-theme',v);
+  });
+})();
+</script>
+</body>
+</html>

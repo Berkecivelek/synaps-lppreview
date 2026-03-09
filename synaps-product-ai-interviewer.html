@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="tr" data-theme="dark">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>AI Interviewer — Synaps AI</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link href="https://fonts.googleapis.com/css2?family=Lexend:wght@200;300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+
+:root{
+  --bg:#06040F;--bg2:#0C0818;--bg3:#120E20;
+  --card:rgba(255,255,255,.04);--card2:rgba(255,255,255,.07);--card3:rgba(255,255,255,.1);
+  --border:rgba(255,255,255,.08);--border2:rgba(255,255,255,.05);
+  --text:#F0EEFF;--dim:rgba(240,238,255,.55);--dim2:rgba(240,238,255,.28);
+  --pu:#7B2FFF;--vi:#9B4FFF;--lav:#C4A4FF;--pk:#E040FB;
+  --nav-bg:rgba(6,4,15,.9);
+  --glow:rgba(123,47,255,.3);--gbg:rgba(123,47,255,.1);
+  --sh:0 32px 80px rgba(0,0,0,.55);
+}
+[data-theme="light"]{
+  --bg:#F0EEF9;--bg2:#E8E4F5;--bg3:#DDD8EF;
+  --card:rgba(255,255,255,.85);--card2:rgba(255,255,255,.95);--card3:rgba(255,255,255,.98);
+  --border:rgba(123,47,255,.11);--border2:rgba(123,47,255,.07);
+  --text:#1A0A3C;--dim:rgba(26,10,60,.58);--dim2:rgba(26,10,60,.3);
+  --nav-bg:rgba(240,238,249,.92);
+  --glow:rgba(123,47,255,.15);--gbg:rgba(123,47,255,.07);
+  --sh:0 20px 60px rgba(123,47,255,.12);
+}
+
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{background:var(--bg);color:var(--text);font-family:'Lexend',sans-serif;overflow-x:hidden;transition:background .4s,color .4s;line-height:1.6;}
+body::before{content:'';position:fixed;inset:0;pointer-events:none;z-index:0;
+background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='.025'/%3E%3C/svg%3E");}
+
+/* ─── NAV ──────────────────────────────────────── */
+#snav{position:fixed;top:0;left:0;right:0;z-index:900;height:62px;
+  display:flex;align-items:center;padding:0 32px;gap:20px;
+  background:var(--nav-bg);backdrop-filter:blur(28px) saturate(200%);
+  border-bottom:1px solid var(--border);transition:background .4s;}
+.orb-sm{width:28px;height:28px;border-radius:50%;position:relative;overflow:hidden;flex-shrink:0;}
+.ob{position:absolute;inset:0;border-radius:50%;}
+.ob-base{background:radial-gradient(ellipse at 36% 28%,rgba(255,255,255,.88) 0%,rgba(200,175,255,.55) 16%,transparent 36%),radial-gradient(ellipse at 68% 66%,rgba(70,20,170,.55) 0%,transparent 48%),radial-gradient(circle,#AA80FF 0%,#6E38CC 32%,#481898 60%,#1A0850 82%,#0C0330 100%);
+  box-shadow:inset -4px -3px 8px rgba(0,0,0,.55),inset 3px 2px 6px rgba(200,165,255,.25),0 0 14px rgba(123,47,255,.65);}
+.ob-swirl{background:conic-gradient(from 105deg at 44% 56%,transparent 0deg,rgba(255,255,255,.13) 20deg,transparent 38deg,rgba(180,140,255,.08) 78deg,transparent 118deg,rgba(255,255,255,.06) 198deg,transparent 235deg);animation:orbSpin 8s linear infinite;}
+.ob-hl{position:absolute;top:8%;left:14%;width:36%;height:26%;background:radial-gradient(ellipse,rgba(255,255,255,.72) 0%,rgba(255,255,255,.08) 60%,transparent 100%);border-radius:50%;transform:rotate(-28deg);}
+.ob-gleam{position:absolute;bottom:14%;right:11%;width:18%;height:13%;background:radial-gradient(ellipse,rgba(200,160,255,.42) 0%,transparent 100%);border-radius:50%;}
+@keyframes orbSpin{to{transform:rotate(360deg);}}
+.nav-wordmark{font-size:15px;font-weight:700;color:var(--text);letter-spacing:-.3px;}
+.nw-hi{color:#9B4FFF;}
+.nav-bc{flex:1;display:flex;align-items:center;gap:8px;}
+.bc-home{font-size:12px;color:var(--dim);text-decoration:none;transition:color .2s;}
+.bc-home:hover{color:#9B4FFF;}
+.bc-sep{color:var(--dim2);font-size:12px;}
+.bc-cur{font-size:12px;font-weight:600;color:#C4A4FF;}
+.nav-right{display:flex;align-items:center;gap:14px;flex-shrink:0;}
+.nav-back{font-size:12px;color:var(--dim);text-decoration:none;font-weight:500;transition:color .2s;}
+.nav-back:hover{color:#9B4FFF;}
+/* toggle */
+.ts-wrap{position:relative;width:44px;height:23px;cursor:pointer;}
+.ts-wrap input{opacity:0;position:absolute;width:0;height:0;}
+.ts-track{position:absolute;inset:0;border-radius:12px;background:rgba(255,255,255,.07);border:1px solid var(--border);transition:all .3s;}
+.ts-wrap input:checked~.ts-track{background:rgba(123,47,255,.2);border-color:rgba(155,79,255,.4);}
+.ts-thumb{position:absolute;top:3px;left:3px;width:15px;height:15px;border-radius:50%;background:var(--dim2);transition:all .3s;}
+.ts-wrap input:checked~.ts-track .ts-thumb{transform:translateX(21px);background:#9B4FFF;}
+.ts-m,.ts-s{position:absolute;top:50%;transform:translateY(-50%);font-size:9px;}
+.ts-m{right:5px;}.ts-s{left:5px;opacity:0;}
+.ts-wrap input:checked~.ts-track .ts-m{opacity:0;}
+.ts-wrap input:checked~.ts-track .ts-s{opacity:1;}
+.nav-cta{background:linear-gradient(135deg,#7B2FFF,#5A1ECC);color:#fff;font-size:12px;font-weight:700;padding:8px 18px;border-radius:8px;text-decoration:none;transition:all .2s;box-shadow:0 4px 14px rgba(123,47,255,.4);}
+.nav-cta:hover{transform:translateY(-1px);box-shadow:0 7px 20px rgba(123,47,255,.5);}
+@media(max-width:768px){.nav-bc{display:none;}.nav-back{display:none;}}
+
+
+.lp-footer{border-top:1px solid var(--border);padding:32px 40px;position:relative;z-index:1;}
+.lp-footer-in{max-width:1280px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;gap:20px;flex-wrap:wrap;}
+.lf-brand{display:flex;align-items:center;gap:10px;}
+.lf-name{font-size:14px;font-weight:700;color:var(--text);}.lf-name b{color:#9B4FFF;}
+.lf-prod{font-size:10px;color:var(--dim2);letter-spacing:1.5px;text-transform:uppercase;font-family:'JetBrains Mono',monospace;}
+.lf-links{display:flex;gap:20px;}.lf-links a{font-size:12px;color:var(--dim2);text-decoration:none;transition:color .2s;}.lf-links a:hover{color:#9B4FFF;}
+.lf-copy{font-size:11px;color:var(--dim2);}
+@media(max-width:600px){.lp-footer-in{flex-direction:column;gap:14px;text-align:center;}.lf-links{justify-content:center;}}
+
+
+@keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.4;transform:scale(.65)}}
+@keyframes slide{from{opacity:0;transform:translateX(-16px)}to{opacity:1;transform:translateX(0)}}
+@keyframes typing{0%,100%{opacity:1}50%{opacity:0}}
+@keyframes flowGrad{0%{background-position:0% 50%}100%{background-position:200% 50%}}
+@keyframes waveBar{0%,100%{transform:scaleY(.4);opacity:.5}50%{transform:scaleY(1);opacity:1}}
+
+.ai-hero{min-height:100vh;padding:90px 0 0;display:flex;flex-direction:column;position:relative;overflow:hidden;}
+.ai-hero-bg{position:absolute;inset:0;background:radial-gradient(ellipse 100% 80% at 50% 0%,rgba(123,47,255,.1) 0%,transparent 60%);}
+.ai-hero-inner{position:relative;z-index:1;max-width:1280px;margin:0 auto;width:100%;padding:0 40px;display:grid;grid-template-columns:1fr 480px;gap:64px;align-items:center;padding-bottom:60px;}
+
+.ai-h1{font-size:clamp(44px,5.5vw,78px);font-weight:900;letter-spacing:-3.5px;line-height:.98;margin-bottom:24px;}
+.ai-h1 span{display:block;}
+.ai-h1 .grad{background:linear-gradient(135deg,#9B4FFF,#C4A4FF,#E040FB);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-size:200%;animation:flowGrad 5s linear infinite;}
+.ai-sub{font-size:17px;color:var(--dim);font-weight:300;line-height:1.78;max-width:520px;margin-bottom:36px;}
+.ai-badge-row{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:32px;}
+.ai-badge{display:flex;align-items:center;gap:6px;background:var(--card2);border:1px solid var(--border);border-radius:8px;padding:8px 14px;font-size:12px;font-weight:600;color:var(--dim);}
+.ai-badge .dot{width:6px;height:6px;border-radius:50%;background:#9B4FFF;animation:pulse 2s infinite;}
+.ai-actions{display:flex;gap:12px;flex-wrap:wrap;}
+.btn-pu{background:linear-gradient(135deg,#7B2FFF,#5A1ECC);color:#fff;font-size:14px;font-weight:700;padding:14px 32px;border-radius:10px;text-decoration:none;transition:all .25s;box-shadow:0 6px 22px rgba(123,47,255,.4);}
+.btn-pu:hover{transform:translateY(-2px);box-shadow:0 12px 32px rgba(123,47,255,.5);}
+.btn-gh{font-size:14px;font-weight:500;color:var(--dim);padding:13px 22px;border-radius:10px;border:1px solid var(--border);text-decoration:none;transition:all .25s;}
+.btn-gh:hover{border-color:rgba(123,47,255,.4);color:#9B4FFF;}
+
+/* chat window */
+.ai-chat-wrap{position:relative;}
+.ai-chat{background:var(--card2);border:1px solid var(--border);border-radius:20px;overflow:hidden;box-shadow:0 32px 80px rgba(0,0,0,.5);}
+.ai-chat-header{background:var(--bg2);border-bottom:1px solid var(--border);padding:14px 18px;display:flex;align-items:center;gap:10px;}
+.ai-ch-dots{display:flex;gap:5px;}.ai-ch-dots span{width:10px;height:10px;border-radius:50%;}
+.ai-ch-dots span:nth-child(1){background:#FF5F57;}.ai-ch-dots span:nth-child(2){background:#FEBC2E;}.ai-ch-dots span:nth-child(3){background:#28C840;}
+.ai-ch-title{font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--dim2);flex:1;text-align:center;}
+.ai-ch-live{font-family:'JetBrains Mono',monospace;font-size:9px;color:#9B4FFF;background:rgba(123,47,255,.12);padding:3px 8px;border-radius:6px;font-weight:700;letter-spacing:1px;}
+.ai-chat-body{padding:18px;}
+.ai-session-bar{display:flex;align-items:center;gap:8px;padding:8px 12px;background:rgba(123,47,255,.1);border:1px solid rgba(123,47,255,.2);border-radius:8px;margin-bottom:14px;font-size:11px;color:var(--dim);}
+.ai-session-bar .sdot{width:5px;height:5px;border-radius:50%;background:#9B4FFF;animation:pulse 1.5s infinite;}
+.ai-msgs{display:flex;flex-direction:column;gap:9px;margin-bottom:14px;}
+.ai-msg-ai,.ai-msg-user{padding:10px 14px;border-radius:12px;font-size:12px;line-height:1.65;color:var(--dim);}
+.ai-msg-ai{background:rgba(123,47,255,.1);border:1px solid rgba(123,47,255,.2);border-bottom-left-radius:3px;max-width:90%;align-self:flex-start;}
+.ai-msg-user{background:rgba(155,79,255,.1);border:1px solid rgba(155,79,255,.2);border-bottom-right-radius:3px;max-width:90%;align-self:flex-end;}
+.ai-typing{display:flex;align-items:center;gap:4px;padding:8px 14px;}
+.ai-typing span{width:6px;height:6px;border-radius:50%;background:#9B4FFF;animation:pulse 1.2s infinite;}
+.ai-typing span:nth-child(2){animation-delay:.2s;}.ai-typing span:nth-child(3){animation-delay:.4s;}
+.ai-analysis{background:var(--bg2);border-top:1px solid var(--border);padding:14px 18px;}
+.ai-an-title{font-family:'JetBrains Mono',monospace;font-size:9px;color:#9B4FFF;letter-spacing:2px;margin-bottom:10px;}
+.ai-an-row{display:flex;align-items:center;gap:8px;font-size:11px;color:var(--dim);margin-bottom:6px;}
+.ai-an-bar-t{flex:1;height:4px;background:var(--border);border-radius:2px;overflow:hidden;}
+.ai-an-bar-f{height:100%;background:linear-gradient(90deg,#7B2FFF,#C4A4FF);border-radius:2px;}
+.ai-an-row b{font-family:'JetBrains Mono',monospace;font-size:10px;color:#9B4FFF;width:28px;text-align:right;}
+
+/* floating badges */
+.ai-float{position:absolute;background:var(--card2);border:1px solid rgba(123,47,255,.3);border-radius:12px;padding:10px 14px;box-shadow:0 8px 28px rgba(0,0,0,.4);}
+.ai-float-icon{font-size:16px;}.ai-float-val{font-family:'JetBrains Mono',monospace;font-size:14px;font-weight:700;color:#9B4FFF;margin:2px 0;}.ai-float-lbl{font-size:10px;color:var(--dim2);}
+
+/* stat band */
+.ai-statband{background:var(--bg2);border-top:1px solid var(--border);border-bottom:1px solid var(--border);padding:32px 40px;position:relative;z-index:1;}
+.ai-statband-in{max-width:1280px;margin:0 auto;display:grid;grid-template-columns:repeat(4,1fr);gap:0;border:1px solid var(--border);border-radius:14px;overflow:hidden;}
+.ai-stat{padding:28px 20px;text-align:center;border-right:1px solid var(--border);transition:background .3s;}
+.ai-stat:last-child{border-right:none;}
+.ai-stat:hover{background:var(--gbg);}
+.ai-stat-n{font-family:'JetBrains Mono',monospace;font-size:38px;font-weight:900;letter-spacing:-2px;background:linear-gradient(135deg,#9B4FFF,#C4A4FF);-webkit-background-clip:text;-webkit-text-fill-color:transparent;line-height:1;}
+.ai-stat-l{font-size:12px;color:var(--dim);margin-top:6px;}
+
+/* features */
+.ai-feats{padding:80px 40px;position:relative;z-index:1;}
+.ai-feats-in{max-width:1280px;margin:0 auto;}
+.section-tag{font-family:'JetBrains Mono',monospace;font-size:10px;font-weight:700;letter-spacing:4px;text-transform:uppercase;color:#9B4FFF;margin-bottom:14px;}
+.section-h2{font-size:clamp(28px,3.5vw,46px);font-weight:900;letter-spacing:-1.5px;line-height:1.08;margin-bottom:14px;}
+.section-h2 em{font-style:normal;background:linear-gradient(135deg,#9B4FFF,#C4A4FF);-webkit-background-clip:text;-webkit-text-fill-color:transparent;}
+.section-sub{font-size:15px;color:var(--dim);font-weight:300;line-height:1.75;max-width:540px;}
+.ai-feat-cards{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-top:52px;}
+.ai-fc{background:var(--card2);border:1px solid var(--border);border-radius:16px;padding:28px 22px;transition:all .3s;}
+.ai-fc:hover{border-color:rgba(123,47,255,.35);transform:translateY(-4px);box-shadow:0 14px 40px rgba(123,47,255,.1);}
+.ai-fc-icon{font-size:24px;margin-bottom:14px;display:block;}
+.ai-fc-t{font-size:15px;font-weight:800;letter-spacing:-.3px;margin-bottom:8px;}
+.ai-fc-d{font-size:12px;color:var(--dim);line-height:1.7;font-weight:300;}
+
+/* cta */
+.ai-cta{padding:100px 40px;text-align:center;position:relative;overflow:hidden;}
+.ai-cta-g{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:600px;height:350px;background:radial-gradient(ellipse,rgba(123,47,255,.12),transparent 60%);pointer-events:none;}
+.ai-cta-in{position:relative;z-index:1;max-width:560px;margin:0 auto;}
+.ai-cta-h{font-size:clamp(30px,4vw,50px);font-weight:900;letter-spacing:-2px;line-height:1.06;margin-bottom:16px;}
+.ai-cta-h em{font-style:normal;background:linear-gradient(135deg,#9B4FFF,#C4A4FF);-webkit-background-clip:text;-webkit-text-fill-color:transparent;}
+.ai-cta-sub{font-size:15px;color:var(--dim);margin-bottom:38px;font-weight:300;line-height:1.72;}
+.ai-cta-btns{display:flex;justify-content:center;gap:14px;flex-wrap:wrap;}
+
+@media(max-width:960px){.ai-hero-inner{grid-template-columns:1fr;gap:40px;}.ai-feat-cards{grid-template-columns:1fr 1fr;}.ai-statband-in{grid-template-columns:1fr 1fr;}}
+@media(max-width:600px){.ai-hero-inner{padding:0 20px 40px;}.ai-feats,.ai-cta{padding-left:20px;padding-right:20px;}.ai-statband{padding-left:20px;padding-right:20px;}.ai-feat-cards{grid-template-columns:1fr;}}
+
+</style>
+</head>
+<body>
+<nav id="snav">
+  <a href="synaps-v10-toggle.html" class="nav-logo">
+    <div class="orb-sm">
+      <div class="ob ob-base"></div>
+      <div class="ob ob-swirl"></div>
+      <div class="ob-hl"></div>
+      <div class="ob-gleam"></div>
+    </div>
+    <span class="nav-wordmark">Synaps<span class="nw-hi">AI</span></span>
+  </a>
+  <div class="nav-bc">
+    <a href="synaps-v10-toggle.html" class="bc-home">Ana Sayfa</a>
+    <span class="bc-sep">›</span>
+    <span class="bc-cur">AI Interviewer</span>
+  </div>
+  <div class="nav-right">
+    <a href="synaps-v10-toggle.html" class="nav-back">← Ekosisteme Dön</a>
+    <label class="ts-wrap">
+      <input type="checkbox" id="themeToggle">
+      <div class="ts-track"><div class="ts-thumb"></div><span class="ts-m">🌙</span><span class="ts-s">☀️</span></div>
+    </label>
+    <a href="https://synapsai.io" class="nav-cta">Ücretsiz Dene</a>
+  </div>
+</nav>
+
+<section class="ai-hero">
+  <div class="ai-hero-bg"></div>
+  <div class="ai-hero-inner">
+    <div>
+      <div class="ai-badge-row">
+        <div style="font-family:'JetBrains Mono',monospace;font-size:9px;font-weight:700;letter-spacing:2px;color:var(--dim2);background:var(--gbg);border:1px solid rgba(123,47,255,.2);padding:4px 10px;border-radius:20px;">2. ADIM</div>
+        <div class="ai-badge"><span class="dot"></span>Otonom Mülakat · 7/24</div>
+      </div>
+      <h1 class="ai-h1">
+        <span>7/24</span>
+        <span class="grad">Kesintisiz</span>
+        <span>Otonom Mülakat</span>
+      </h1>
+      <p class="ai-sub">Yapay zeka adaylarla doğal dilde mülakat yapar, ses ve içerik analiziyle kapsamlı değerlendirme raporu oluşturur. İK ekibiniz stratejik işlere odaklanırken sistem büyür.</p>
+      <div class="ai-actions">
+        <a href="https://synapsai.io" class="btn-pu">Ücretsiz Dene →</a>
+        <a href="synaps-v10-toggle.html" class="btn-gh">Ekosistemi Keşfet</a>
+      </div>
+    </div>
+
+    <div class="ai-chat-wrap">
+      <div class="ai-chat">
+        <div class="ai-chat-header">
+          <div class="ai-ch-dots"><span></span><span></span><span></span></div>
+          <span class="ai-ch-title">AI Interviewer — Oturum #4821</span>
+          <span class="ai-ch-live">● CANLI</span>
+        </div>
+        <div class="ai-chat-body">
+          <div class="ai-session-bar">
+            <span class="sdot"></span>
+            Mülakat devam ediyor · 06:42 · Aday #3
+          </div>
+          <div class="ai-msgs" style="display:flex;flex-direction:column;">
+            <div class="ai-msg-ai">"Bu pozisyona başvurmanızın temel nedeni nedir? Önceki deneyimlerinizle bağlantısını anlatır mısınız?"</div>
+            <div class="ai-msg-user">"5 yıllık B2B SaaS deneyimimle bu rol tam bana uygun. Özellikle ürün geliştirme süreçlerinde..."</div>
+            <div class="ai-msg-ai">"Harika başlangıç. Yönettiğiniz en büyük ürün lansmanından bahseder misiniz?"</div>
+            <div class="ai-typing"><span></span><span></span><span></span></div>
+          </div>
+        </div>
+        <div class="ai-analysis">
+          <div class="ai-an-title">CANLI ANALİZ</div>
+          <div class="ai-an-row"><span style="width:65px;flex-shrink:0;">İletişim</span><div class="ai-an-bar-t"><div class="ai-an-bar-f" style="width:88%"></div></div><b>88%</b></div>
+          <div class="ai-an-row"><span style="width:65px;flex-shrink:0;">İçerik</span><div class="ai-an-bar-t"><div class="ai-an-bar-f" style="width:92%"></div></div><b>92%</b></div>
+          <div class="ai-an-row" style="margin-bottom:0;"><span style="width:65px;flex-shrink:0;">Özgüven</span><div class="ai-an-bar-t"><div class="ai-an-bar-f" style="width:76%"></div></div><b>76%</b></div>
+        </div>
+      </div>
+      <div class="ai-float" style="top:-20px;right:-20px;animation:floatY 5s ease-in-out infinite;">
+        <div class="ai-float-icon">♾️</div><div class="ai-float-val">∞</div><div class="ai-float-lbl">Eş zamanlı kapasite</div>
+      </div>
+      <div class="ai-float" style="bottom:-14px;left:-20px;animation:floatY 6s 1.5s ease-in-out infinite;">
+        <div class="ai-float-icon">🎙️</div><div class="ai-float-val">7/24</div><div class="ai-float-lbl">Kesintisiz mülakat</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- STAT BAND -->
+<div class="ai-statband">
+  <div class="ai-statband-in">
+    <div class="ai-stat"><div class="ai-stat-n">7/24</div><div class="ai-stat-l">Kesintisiz mülakat</div></div>
+    <div class="ai-stat"><div class="ai-stat-n">∞</div><div class="ai-stat-l">Eş zamanlı kapasite</div></div>
+    <div class="ai-stat"><div class="ai-stat-n">40dk</div><div class="ai-stat-l">Başına tasarruf</div></div>
+    <div class="ai-stat"><div class="ai-stat-n">98%</div><div class="ai-stat-l">Aday memnuniyeti</div></div>
+  </div>
+</div>
+
+<!-- FEATURES -->
+<section class="ai-feats">
+  <div class="ai-feats-in">
+    <div class="section-tag">Temel Özellikler</div>
+    <h2 class="section-h2">Ne İşe <em>Yarıyor?</em></h2>
+    <p class="section-sub">İnsan mülakatçının tüm sürecini yapay zekaya devreden kapsamlı otomasyon platformu.</p>
+    <div class="ai-feat-cards">
+      <div class="ai-fc"><span class="ai-fc-icon">🤖</span><div class="ai-fc-t">Doğal Dil Mülakatı</div><p class="ai-fc-d">GPT tabanlı motor adaylarla insan gibi konuşur, bağlama uygun takip soruları üretir.</p></div>
+      <div class="ai-fc"><span class="ai-fc-icon">🎙️</span><div class="ai-fc-t">Ses & Duygu Analizi</div><p class="ai-fc-d">Konuşma tonu, güven seviyesi, tereddüt ve tutarsızlıkları gerçek zamanlı analiz eder.</p></div>
+      <div class="ai-fc"><span class="ai-fc-icon">📋</span><div class="ai-fc-t">Yapılandırılmış Raporlama</div><p class="ai-fc-d">Her mülakat sonrası yetkinlik bazlı rapor, skor kartı ve işe alım önerisi otomatik oluşturulur.</p></div>
+      <div class="ai-fc"><span class="ai-fc-icon">♾️</span><div class="ai-fc-t">Sınırsız Kapasite</div><p class="ai-fc-d">Aynı anda binlerce adayla eş zamanlı mülakat. Hiçbir aday beklemez, fırsat kaçmaz.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="ai-cta">
+  <div class="ai-cta-g"></div>
+  <div class="ai-cta-in">
+    <div class="section-tag" style="text-align:center;">2. ADIM · AI Interviewer</div>
+    <h2 class="ai-cta-h">AI Interviewer'ı<br><em>Bugün Başlatın</em></h2>
+    <p class="ai-cta-sub">Kurulum 5 dakika. İlk mülakatınızı bu gün yapın.</p>
+    <div class="ai-cta-btns">
+      <a href="https://synapsai.io" class="btn-pu">Ücretsiz Dene →</a>
+      <a href="synaps-v10-toggle.html" class="btn-gh">← Ana Sayfaya Dön</a>
+    </div>
+  </div>
+</section>
+<style>@keyframes floatY{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}</style>
+<footer class="lp-footer">
+  <div class="lp-footer-in">
+    <div class="lf-brand">
+      <div class="orb-sm"><div class="ob ob-base"></div><div class="ob ob-swirl"></div><div class="ob-hl"></div></div>
+      <div><div class="lf-name">Synaps<b>AI</b></div><div class="lf-prod">AI Interviewer</div></div>
+    </div>
+    <nav class="lf-links">
+      <a href="synaps-v10-toggle.html">Ana Sayfa</a>
+      <a href="#">Gizlilik</a>
+      <a href="#">Şartlar</a>
+      <a href="mailto:destek@synapsai.ai">Destek</a>
+    </nav>
+    <p class="lf-copy">© 2025 Synaps Yapay Zeka Teknolojileri A.Ş.</p>
+  </div>
+</footer>
+<script>
+(function(){
+  var t=document.getElementById('themeToggle'),h=document.documentElement;
+  var s=localStorage.getItem('synaps-theme')||'dark';
+  if(s==='light'){h.setAttribute('data-theme','light');if(t)t.checked=true;}
+  if(t)t.addEventListener('change',function(){
+    var v=t.checked?'light':'dark';
+    h.setAttribute('data-theme',v);localStorage.setItem('synaps-theme',v);
+  });
+})();
+</script>
+</body>
+</html>

@@ -36,12 +36,12 @@ body::before{content:'';position:fixed;inset:0;pointer-events:none;z-index:0;bac
 .nav-cta:hover{transform:translateY(-1px);}
 @media(max-width:768px){.nav-bc{display:none;}.nav-back{display:none;}}
 /* FOOTER */
-.lp-footer{border-top:1px solid var(--border);padding:32px 40px;position:relative;z-index:1;}
-.lp-footer-in{max-width:1280px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;gap:20px;flex-wrap:wrap;}
-.lf-brand{display:flex;align-items:center;gap:10px;}.lf-name{font-size:14px;font-weight:700;color:var(--text);}.lf-name b{color:#9B4FFF;}
-.lf-prod{font-size:10px;color:var(--dim2);letter-spacing:1.5px;text-transform:uppercase;font-family:'JetBrains Mono',monospace;}
-.lf-links{display:flex;gap:20px;}.lf-links a{font-size:12px;color:var(--dim2);text-decoration:none;transition:color .2s;}.lf-links a:hover{color:#9B4FFF;}
-.lf-copy{font-size:11px;color:var(--dim2);}
+
+
+.lf-name b{color:#9B4FFF;}
+
+.lf-links a{font-size:12px;color:var(--dim2);text-decoration:none;transition:color .2s;}.lf-links a:hover{color:#9B4FFF;}
+
 /* ANIMS */
 @keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.4;transform:scale(.65)}}
 @keyframes floatY{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
@@ -108,7 +108,7 @@ h1 .gr{background:linear-gradient(135deg,#9B4FFF,#C4A4FF,#E040FB);-webkit-backgr
 .step-card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,#7B2FFF,#C4A4FF);transform:scaleX(0);transform-origin:left;transition:transform .35s;}
 .step-card:hover::before{transform:scaleX(1);}
 .step-n{font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--dim2);letter-spacing:2px;margin-bottom:16px;}
-.step-ico{width:52px;height:52px;border-radius:14px;background:linear-gradient(135deg,rgba(123,47,255,.22),rgba(155,79,255,.1));border:1px solid rgba(123,47,255,.25);display:flex;align-items:center;justify-content:center;font-size:24px;margin-bottom:16px;}
+.step-ico{margin-bottom:10px;}
 .step-t{font-size:17px;font-weight:800;margin-bottom:10px;}
 .step-d{font-size:13px;color:var(--dim);line-height:1.72;font-weight:300;}
 
@@ -164,6 +164,77 @@ h1 .gr{background:linear-gradient(135deg,#9B4FFF,#C4A4FF,#E040FB);-webkit-backgr
 @media(max-width:1100px){.hero{grid-template-columns:1fr;max-width:700px;}.report-in{grid-template-columns:1fr;}}
 @media(max-width:900px){.steps-grid{grid-template-columns:1fr;}.feat-g{grid-template-columns:1fr;}.statband-in{grid-template-columns:1fr 1fr;}.lang-grid{grid-template-columns:repeat(2,1fr);}}
 @media(max-width:600px){.hero,.hiw,.feats-sec,.report-sec,.cta-sec{padding-left:20px;padding-right:20px;}.statband-in{grid-template-columns:1fr;}}
+
+/* ── Legal Footer ── */
+
+
+
+.lf-brand-info strong{font-size:14px;font-weight:700;display:block;margin-bottom:10px;}
+.lf-brand-info p{font-size:12px;color:rgba(255,255,255,0.7);line-height:1.7;margin:0;}
+
+.lf-legal-links a{font-size:12px;color:rgba(255,255,255,0.85);text-decoration:none;cursor:pointer;transition:color 0.2s;white-space:nowrap;}
+.lf-legal-links a:hover{color:#C4A4FF;}
+
+
+
+.lf-back-top:hover{background:rgba(255,255,255,0.22);}
+.modal-overlay{position:fixed;inset:0;background:rgba(0,0,0,0.72);z-index:9000;display:none;align-items:center;justify-content:center;padding:20px;backdrop-filter:blur(4px);}
+.modal-overlay.active{display:flex;}
+.modal-box{background:#1A0E2E;border:1px solid rgba(123,47,255,0.3);border-radius:18px;max-width:720px;width:100%;max-height:88vh;display:flex;flex-direction:column;overflow:hidden;}
+.modal-head{display:flex;align-items:center;justify-content:space-between;padding:24px 28px 18px;border-bottom:1px solid rgba(255,255,255,0.08);flex-shrink:0;}
+.modal-title{font-size:17px;font-weight:700;color:#fff;}
+.modal-close{width:32px;height:32px;border-radius:50%;background:rgba(255,255,255,0.08);border:none;cursor:pointer;color:#C4A4FF;font-size:18px;display:flex;align-items:center;justify-content:center;transition:background 0.2s;}
+.modal-close:hover{background:rgba(255,255,255,0.15);}
+.modal-body{overflow-y:auto;padding:24px 28px;flex:1;}
+.modal-body h3{font-size:14px;font-weight:700;color:#C4A4FF;margin:20px 0 8px;}
+.modal-body h3:first-child{margin-top:0;}
+.modal-body p,.modal-body li{font-size:13px;color:rgba(255,255,255,0.7);line-height:1.75;margin-bottom:8px;}
+.modal-body ul{padding-left:20px;margin-bottom:10px;}
+.sss-item{border-bottom:1px solid rgba(255,255,255,0.08);padding:14px 0;}
+.sss-item:last-child{border-bottom:none;}
+.sss-q{font-size:14px;font-weight:600;color:#C4A4FF;cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:12px;margin:0;}
+.sss-q .sss-arrow{font-size:12px;color:rgba(255,255,255,0.4);transition:transform 0.25s;flex-shrink:0;}
+.sss-item.open .sss-arrow{transform:rotate(180deg);}
+.sss-a{font-size:13px;color:rgba(255,255,255,0.65);line-height:1.75;margin-top:10px;display:none;}
+.sss-item.open .sss-a{display:block;}
+@media(max-width:700px){}
+
+
+
+
+
+.sss-item{border-bottom:1px solid rgba(255,255,255,0.08);padding:14px 0;}
+.sss-item:last-child{border-bottom:none;}
+.sss-q{font-size:14px;font-weight:600;color:#C4A4FF;cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:12px;margin:0;}
+.sss-q .sss-arrow{font-size:12px;color:rgba(255,255,255,0.4);transition:transform 0.25s;flex-shrink:0;}
+.sss-item.open .sss-arrow{transform:rotate(180deg);}
+.sss-a{font-size:13px;color:rgba(255,255,255,0.65);line-height:1.75;margin-top:10px;display:none;}
+.sss-item.open .sss-a{display:block;}
+@media(max-width:700px){}
+
+
+/* ── Unified Footer ── */
+.uf-footer{background:linear-gradient(180deg,#080614 0%,#06040F 100%);border-top:1px solid rgba(123,47,255,0.12);position:relative;z-index:1;}
+.uf-inner{max-width:1280px;margin:0 auto;padding:48px 60px 36px;display:grid;grid-template-columns:1.4fr 0.8fr 1.8fr;gap:40px;}
+.uf-col{display:flex;flex-direction:column;gap:10px;}
+.uf-col-title{font-size:10px;font-weight:700;letter-spacing:3px;color:rgba(196,164,255,0.55);text-transform:uppercase;font-family:'JetBrains Mono',monospace;margin-bottom:4px;}
+.uf-col a{font-size:13px;color:rgba(255,255,255,0.4);text-decoration:none;transition:color 0.2s;}
+.uf-col a:hover{color:rgba(196,164,255,0.9);}
+.uf-legal-grid{display:flex;flex-direction:column;gap:8px;}
+.uf-bottom{max-width:1280px;margin:0 auto;padding:18px 60px 26px;display:flex;justify-content:space-between;align-items:center;border-top:1px solid rgba(255,255,255,0.05);font-size:12px;color:rgba(255,255,255,0.22);}
+@media(max-width:900px){.uf-inner{grid-template-columns:1fr 1fr;}.uf-col[style*="span 2"]{grid-column:span 2;}.uf-bottom{padding:14px 32px 22px;flex-direction:column;gap:8px;text-align:center;}}
+@media(max-width:580px){.uf-inner{grid-template-columns:1fr;padding:28px 20px 24px;}.uf-col[style*="span 2"]{grid-column:span 1;}.uf-bottom{padding:12px 20px 18px;}}
+
+.uf-legal-btn{background:rgba(123,47,255,0.08);border:1px solid rgba(123,47,255,0.2);color:rgba(255,255,255,0.6);padding:6px 12px;border-radius:7px;font-size:11.5px;cursor:pointer;font-family:inherit;transition:all 0.2s;white-space:nowrap;}
+.uf-legal-btn:hover{background:rgba(123,47,255,0.2);border-color:rgba(196,164,255,0.4);color:white;}
+.sss-item{border-bottom:1px solid rgba(255,255,255,0.08);padding:14px 0;}
+.sss-item:last-child{border-bottom:none;}
+.sss-q{font-size:14px;font-weight:600;color:#C4A4FF;cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:12px;margin:0;}
+.sss-arrow{font-size:12px;color:rgba(255,255,255,0.4);transition:transform 0.25s;flex-shrink:0;}
+.sss-item.open .sss-arrow{transform:rotate(180deg);}
+.sss-a{font-size:13px;color:rgba(255,255,255,0.65);line-height:1.75;margin-top:10px;display:none;}
+.sss-item.open .sss-a{display:block;}
+
 </style>
 </head>
 <body>
@@ -208,15 +279,15 @@ h1 .gr{background:linear-gradient(135deg,#9B4FFF,#C4A4FF,#E040FB);-webkit-backgr
         <span class="lc-badge">CEFR A1 → C2</span>
       </div>
       <div class="lang-grid">
-        <div class="lg-cell"><span class="lg-flag">🇬🇧</span><span class="lg-name">İngilizce</span><span class="lg-cefr">A1 → C2</span></div>
-        <div class="lg-cell"><span class="lg-flag">🇩🇪</span><span class="lg-name">Almanca</span><span class="lg-cefr">A1 → C2</span></div>
-        <div class="lg-cell"><span class="lg-flag">🇫🇷</span><span class="lg-name">Fransızca</span><span class="lg-cefr">A1 → C2</span></div>
-        <div class="lg-cell"><span class="lg-flag">🇪🇸</span><span class="lg-name">İspanyolca</span><span class="lg-cefr">A1 → C2</span></div>
-        <div class="lg-cell"><span class="lg-flag">🇮🇹</span><span class="lg-name">İtalyanca</span><span class="lg-cefr">A1 → C2</span></div>
-        <div class="lg-cell"><span class="lg-flag">🇯🇵</span><span class="lg-name">Japonca</span><span class="lg-cefr">JLPT N5-N1</span></div>
-        <div class="lg-cell"><span class="lg-flag">🇸🇦</span><span class="lg-name">Arapça</span><span class="lg-cefr">A1 → C2</span></div>
-        <div class="lg-cell"><span class="lg-flag">🇷🇺</span><span class="lg-name">Rusça</span><span class="lg-cefr">A1 → C2</span></div>
-        <div class="lg-cell"><span class="lg-flag">🇨🇳</span><span class="lg-name">Çince</span><span class="lg-cefr">HSK 1–6</span></div>
+        <div class="lg-cell"><span class="lg-flag" style="font-size:11px;font-weight:700;color:white;background:rgba(0,60,150,0.7);padding:2px 5px;border-radius:4px;">EN</span><span class="lg-name">İngilizce</span><span class="lg-cefr">A1 → C2</span></div>
+        <div class="lg-cell"><span class="lg-flag" style="font-size:11px;font-weight:700;color:white;background:rgba(150,0,0,0.7);padding:2px 5px;border-radius:4px;">DE</span><span class="lg-name">Almanca</span><span class="lg-cefr">A1 → C2</span></div>
+        <div class="lg-cell"><span class="lg-flag" style="font-size:11px;font-weight:700;color:white;background:rgba(0,50,120,0.7);padding:2px 5px;border-radius:4px;">FR</span><span class="lg-name">Fransızca</span><span class="lg-cefr">A1 → C2</span></div>
+        <div class="lg-cell"><span class="lg-flag" style="font-size:11px;font-weight:700;color:white;background:rgba(180,0,0,0.7);padding:2px 5px;border-radius:4px;">ES</span><span class="lg-name">İspanyolca</span><span class="lg-cefr">A1 → C2</span></div>
+        <div class="lg-cell"><span class="lg-flag" style="font-size:11px;font-weight:700;color:white;background:rgba(100,60,200,0.7);padding:2px 5px;border-radius:4px;">LNG</span><span class="lg-name">İtalyanca</span><span class="lg-cefr">A1 → C2</span></div>
+        <div class="lg-cell"><span class="lg-flag" style="font-size:11px;font-weight:700;color:white;background:rgba(180,0,0,0.7);padding:2px 5px;border-radius:4px;">JP</span><span class="lg-name">Japonca</span><span class="lg-cefr">JLPT N5-N1</span></div>
+        <div class="lg-cell"><span class="lg-flag" style="font-size:11px;font-weight:700;color:white;background:rgba(100,60,200,0.7);padding:2px 5px;border-radius:4px;">LNG</span><span class="lg-name">Arapça</span><span class="lg-cefr">A1 → C2</span></div>
+        <div class="lg-cell"><span class="lg-flag" style="font-size:11px;font-weight:700;color:white;background:rgba(100,60,200,0.7);padding:2px 5px;border-radius:4px;">LNG</span><span class="lg-name">Rusça</span><span class="lg-cefr">A1 → C2</span></div>
+        <div class="lg-cell"><span class="lg-flag" style="font-size:11px;font-weight:700;color:white;background:rgba(150,0,0,0.7);padding:2px 5px;border-radius:4px;">ZH</span><span class="lg-name">Çince</span><span class="lg-cefr">HSK 1–6</span></div>
       </div>
       <div class="lc-cefr-strip">
         <div class="cefr-label">CEFR SEVİYELERİ</div>
@@ -231,10 +302,10 @@ h1 .gr{background:linear-gradient(135deg,#9B4FFF,#C4A4FF,#E040FB);-webkit-backgr
       </div>
     </div>
     <div class="fl-b" style="top:-16px;right:-16px;animation-delay:0s;">
-      <div class="fb-icon">🌐</div><div class="fb-val">9</div><div class="fb-lbl">Desteklenen dil</div>
+      <div style="width:44px;height:44px;border-radius:12px;background:linear-gradient(135deg,#065F46,#059669);display:flex;align-items:center;justify-content:center;margin-bottom:0;flex-shrink:0;"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg></div><div class="fb-val">9</div><div class="fb-lbl">Desteklenen dil</div>
     </div>
     <div class="fl-b" style="bottom:-14px;left:-14px;animation-delay:1.8s;">
-      <div class="fb-icon">📜</div><div class="fb-val">CEFR</div><div class="fb-lbl">Uyumlu sertifika</div>
+      <div style="width:44px;height:44px;border-radius:12px;background:linear-gradient(135deg,#92400E,#F59E0B);display:flex;align-items:center;justify-content:center;margin-bottom:0;flex-shrink:0;"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="6"/><path d="M15.477 12.89 17 22l-5-3-5 3 1.523-9.11"/></svg></div><div class="fb-val">CEFR</div><div class="fb-lbl">Uyumlu sertifika</div>
     </div>
   </div>
 </section>
@@ -258,19 +329,19 @@ h1 .gr{background:linear-gradient(135deg,#9B4FFF,#C4A4FF,#E040FB);-webkit-backgr
     <div class="steps-grid">
       <div class="step-card">
         <div class="step-n">01</div>
-        <div class="step-ico">📨</div>
+        <div style="width:40px;height:40px;border-radius:11px;background:linear-gradient(135deg,#7B2FFF,#9B4FFF);display:flex;align-items:center;justify-content:center;margin-bottom:10px;flex-shrink:0;"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 2L11 13"/><path d="M22 2 15 22 11 13 2 9l20-7z"/></svg></div>
         <div class="step-t">Davet Gönder</div>
         <p class="step-d">Adaya değerlendirileceği dil ve seviye belirtilerek davet bağlantısı gönderilir. Aday istediği zaman katılır, 7/24 aktif.</p>
       </div>
       <div class="step-card">
         <div class="step-n">02</div>
-        <div class="step-ico">✍️</div>
+        <div style="width:40px;height:40px;border-radius:11px;background:linear-gradient(135deg,#1D4ED8,#3B82F6);display:flex;align-items:center;justify-content:center;margin-bottom:10px;flex-shrink:0;"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4 12.5-12.5z"/></svg></div>
         <div class="step-t">AI Mülakatı Yönet</div>
         <p class="step-d">AI konuşma, yazma ve dinleme testlerini yönetir. Otomatik yönlendirme ve anlık geri bildirim ile adayı dengeli değerlendirir.</p>
       </div>
       <div class="step-card">
         <div class="step-n">03</div>
-        <div class="step-ico">📋</div>
+        <div style="width:40px;height:40px;border-radius:11px;background:linear-gradient(135deg,#065F46,#10B981);display:flex;align-items:center;justify-content:center;margin-bottom:10px;flex-shrink:0;"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 5H7a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2h-2M9 5a2 2 0 0 1 2-2h2a2 2 0 0 1 2 2M9 5h6M9 12h6M9 16h4"/></svg></div>
         <div class="step-t">Rapor Al & ATS'e Aktar</div>
         <p class="step-d">Anlık CEFR sertifikası ve yetkinlik raporu üretilir. ATS'e otomatik aktarım, ekip paylaşımı ve tek tıkla arşivleme.</p>
       </div>
@@ -301,7 +372,7 @@ h1 .gr{background:linear-gradient(135deg,#9B4FFF,#C4A4FF,#E040FB);-webkit-backgr
       <div class="rm-body">
         <div class="rm-cand">
           <div class="rm-av">👤</div>
-          <div><div class="rm-nm">Zeynep Arslan</div><div class="rm-em">zeynep.arslan@gmail.com · İngilizce</div></div>
+          <div><div class="rm-nm">Zeynep Arslan</div><div class="rm-em"><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="4f352a36212a3f612e3d3c232e210f28222e2623612c2022">[email&#160;protected]</a> · İngilizce</div></div>
         </div>
         <div class="rm-score-row">
           <div><div style="font-size:10px;color:var(--dim2);margin-bottom:2px;">GENEL SKOR</div><div class="rm-big-score">B2</div><div style="font-size:9px;color:var(--dim2);">Upper-Intermediate</div></div>
@@ -330,10 +401,10 @@ h1 .gr{background:linear-gradient(135deg,#9B4FFF,#C4A4FF,#E040FB);-webkit-backgr
     <h2 class="sh">Ne İşe <em>Yarıyor?</em></h2>
     <p class="ssub">Küresel işe alımda dil engelini kaldıran, CEFR tabanlı tam otomatik değerlendirme altyapısı.</p>
     <div class="feat-g">
-      <div class="fc"><div class="fc-ico">🌐</div><div class="fc-t">9 Dil, Tam CEFR Uyumu</div><p class="fc-d">İngilizce'den Japonca'ya, Arapça'dan Çince'ye. Her dil için özel soru bankası ve A1–C2 seviye kalibrasyonu.</p></div>
-      <div class="fc"><div class="fc-ico">🧑‍💼</div><div class="fc-t">4 Beceri Ayrı Skorlanır</div><p class="fc-d">Konuşma, yazma, dinleme ve okuma becerileri ayrı ayrı ölçülür. İş pozisyonuna göre ağırlık ayarlanabilir.</p></div>
-      <div class="fc"><div class="fc-ico">📤</div><div class="fc-t">ATS Otomatik Aktarım</div><p class="fc-d">Mülakat tamamlanır tamamlanmaz rapor ATS'e iletilir. Manuel veri girişi sıfır. Ekip anında bilgilendirilir.</p></div>
-      <div class="fc"><div class="fc-ico">🏆</div><div class="fc-t">CEFR Sertifikası</div><p class="fc-d">Her mülakat sonunda aday ve kurum için CEFR uyumlu sertifika üretilir. Arşivleme ve tekrar kullanım desteklenir.</p></div>
+      <div class="fc" style="display:flex;flex-direction:column;padding:26px 24px 22px;background:var(--card);border:1px solid var(--border);border-radius:18px;transition:border-color 0.3s;"><div style="display:flex;align-items:flex-start;justify-content:space-between;gap:12px;margin-bottom:14px;"><div style="font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--dim2);letter-spacing:2px;padding-top:6px;">01</div><div style="width:44px;height:44px;border-radius:12px;background:linear-gradient(135deg,#065F46,#059669);display:flex;align-items:center;justify-content:center;flex-shrink:0;"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg></div></div><div style="font-size:17px;font-weight:800;letter-spacing:-.4px;margin-bottom:8px;line-height:1.2;">9 Dil, Tam CEFR Uyumu</div><p style="font-size:13px;color:var(--dim);line-height:1.75;font-weight:300;margin:0;">İngilizce'den Japonca'ya, Arapça'dan Çince'ye. Her dil için özel soru bankası ve A1–C2 seviye kalibrasyonu.</p></div>
+      <div class="fc" style="display:flex;flex-direction:column;padding:26px 24px 22px;background:var(--card);border:1px solid var(--border);border-radius:18px;transition:border-color 0.3s;"><div style="display:flex;align-items:flex-start;justify-content:space-between;gap:12px;margin-bottom:14px;"><div style="font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--dim2);letter-spacing:2px;padding-top:6px;">01</div><div style="width:44px;height:44px;border-radius:12px;background:linear-gradient(135deg,#1D4ED8,#3B82F6);display:flex;align-items:center;justify-content:center;flex-shrink:0;"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/></svg></div></div><div style="font-size:17px;font-weight:800;letter-spacing:-.4px;margin-bottom:8px;line-height:1.2;">4 Beceri Ayrı Skorlanır</div><p style="font-size:13px;color:var(--dim);line-height:1.75;font-weight:300;margin:0;">Konuşma, yazma, dinleme ve okuma becerileri ayrı ayrı ölçülür. İş pozisyonuna göre ağırlık ayarlanabilir.</p></div>
+      <div class="fc" style="display:flex;flex-direction:column;padding:26px 24px 22px;background:var(--card);border:1px solid var(--border);border-radius:18px;transition:border-color 0.3s;"><div style="display:flex;align-items:flex-start;justify-content:space-between;gap:12px;margin-bottom:14px;"><div style="font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--dim2);letter-spacing:2px;padding-top:6px;">01</div><div style="width:44px;height:44px;border-radius:12px;background:linear-gradient(135deg,#7B2FFF,#9B4FFF);display:flex;align-items:center;justify-content:center;flex-shrink:0;"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg></div></div><div style="font-size:17px;font-weight:800;letter-spacing:-.4px;margin-bottom:8px;line-height:1.2;">ATS Otomatik Aktarım</div><p style="font-size:13px;color:var(--dim);line-height:1.75;font-weight:300;margin:0;">Mülakat tamamlanır tamamlanmaz rapor ATS'e iletilir. Manuel veri girişi sıfır. Ekip anında bilgilendirilir.</p></div>
+      <div class="fc" style="display:flex;flex-direction:column;padding:26px 24px 22px;background:var(--card);border:1px solid var(--border);border-radius:18px;transition:border-color 0.3s;"><div style="display:flex;align-items:flex-start;justify-content:space-between;gap:12px;margin-bottom:14px;"><div style="font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--dim2);letter-spacing:2px;padding-top:6px;">01</div><div style="width:44px;height:44px;border-radius:12px;background:linear-gradient(135deg,#92400E,#F59E0B);display:flex;align-items:center;justify-content:center;flex-shrink:0;"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="6"/><path d="M15.477 12.89 17 22l-5-3-5 3 1.523-9.11"/></svg></div></div><div style="font-size:17px;font-weight:800;letter-spacing:-.4px;margin-bottom:8px;line-height:1.2;">CEFR Sertifikası</div><p style="font-size:13px;color:var(--dim);line-height:1.75;font-weight:300;margin:0;">Her mülakat sonunda aday ve kurum için CEFR uyumlu sertifika üretilir. Arşivleme ve tekrar kullanım desteklenir.</p></div>
     </div>
   </div>
 </section>
@@ -352,13 +423,83 @@ h1 .gr{background:linear-gradient(135deg,#9B4FFF,#C4A4FF,#E040FB);-webkit-backgr
   </div>
 </section>
 
-<footer class="lp-footer">
-  <div class="lp-footer-in">
-    <div class="lf-brand"><div class="orb-sm"><div class="ob ob-base"></div><div class="ob ob-swirl"></div><div class="ob-hl"></div></div><div><div class="lf-name">Synaps<b>AI</b></div><div class="lf-prod">AI Dil Mülakatı</div></div></div>
-    <nav class="lf-links"><a href="synaps-v11-toggle.html">Ana Sayfa</a><a href="#">Gizlilik</a><a href="#">Şartlar</a><a href="#">Destek</a></nav>
-    <p class="lf-copy">© 2025 Synaps Yapay Zeka Teknolojileri A.Ş.</p>
+
+<!-- ══════ UNIFIED FOOTER ══════ -->
+<footer class="uf-footer">
+  <div class="uf-inner">
+    <!-- Col 1: Brand + Address + Socials -->
+    <div class="uf-col uf-brand-col">
+      <div style="display:flex;align-items:center;gap:8px;margin-bottom:12px;">
+        <div class="orb-sm" style="width:20px;height:20px;"><div class="ob ob-base"></div><div class="ob ob-swirl"></div><div class="ob-hl"></div></div>
+        <span style="font-size:15px;font-weight:800;letter-spacing:-.4px;">Synaps<b style="color:#9B4FFF">AI</b></span>
+        <span style="font-size:10px;font-family:'JetBrains Mono',monospace;color:rgba(196,164,255,0.5);margin-left:4px;">AI Dil Mülakatı</span>
+      </div>
+      <div style="font-size:12px;color:rgba(255,255,255,0.35);line-height:1.8;">
+        Synaps Yapay Zeka Teknolojileri A.Ş.<br>
+        Göztepe Mah. Pınar Sok. No.4/13<br>
+        Kadıköy / İstanbul<br>
+        <a href="mailto:destek@synapsai.ai" style="color:rgba(196,164,255,0.6);text-decoration:none;">destek@synapsai.ai</a>
+      </div>
+<div class="footer-socials" style="display:flex;gap:10px;margin-top:16px;">
+  <a href="https://x.com/synapsai" target="_blank" rel="noopener" style="width:32px;height:32px;border-radius:8px;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.1);display:flex;align-items:center;justify-content:center;color:rgba(255,255,255,0.5);transition:all 0.2s;text-decoration:none;" onmouseover="this.style.background='rgba(123,47,255,0.2)';this.style.color='white';this.style.borderColor='rgba(123,47,255,0.4)'" onmouseout="this.style.background='rgba(255,255,255,0.06)';this.style.color='rgba(255,255,255,0.5)';this.style.borderColor='rgba(255,255,255,0.1)'">
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.747l7.73-8.835L1.254 2.25H8.08l4.259 5.631 5.905-5.631zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+  </a>
+  <a href="https://www.linkedin.com/company/synaps-artificial-intelligence/" target="_blank" rel="noopener" style="width:32px;height:32px;border-radius:8px;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.1);display:flex;align-items:center;justify-content:center;color:rgba(255,255,255,0.5);transition:all 0.2s;text-decoration:none;" onmouseover="this.style.background='rgba(10,102,194,0.3)';this.style.color='white';this.style.borderColor='rgba(10,102,194,0.5)'" onmouseout="this.style.background='rgba(255,255,255,0.06)';this.style.color='rgba(255,255,255,0.5)';this.style.borderColor='rgba(255,255,255,0.1)'">
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+  </a>
+  <a href="https://www.instagram.com/synapsaiofficial" target="_blank" rel="noopener" style="width:32px;height:32px;border-radius:8px;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.1);display:flex;align-items:center;justify-content:center;color:rgba(255,255,255,0.5);transition:all 0.2s;text-decoration:none;" onmouseover="this.style.background='rgba(193,53,132,0.25)';this.style.color='white';this.style.borderColor='rgba(193,53,132,0.4)'" onmouseout="this.style.background='rgba(255,255,255,0.06)';this.style.color='rgba(255,255,255,0.5)';this.style.borderColor='rgba(255,255,255,0.1)'">
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+  </a>
+  <a href="https://www.youtube.com/@SynapsAI" target="_blank" rel="noopener" style="width:32px;height:32px;border-radius:8px;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.1);display:flex;align-items:center;justify-content:center;color:rgba(255,255,255,0.5);transition:all 0.2s;text-decoration:none;" onmouseover="this.style.background='rgba(255,0,0,0.2)';this.style.color='white';this.style.borderColor='rgba(255,0,0,0.35)'" onmouseout="this.style.background='rgba(255,255,255,0.06)';this.style.color='rgba(255,255,255,0.5)';this.style.borderColor='rgba(255,255,255,0.1)'">
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M23.498 6.186a3.016 3.016 0 00-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 00.502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 002.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 002.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+  </a>
+</div>
+    </div>
+    <!-- Col 2: Navigation -->
+    <div class="uf-col">
+      <div class="uf-col-title">Gezinti</div>
+      <a href="synaps-v11-toggle.html">Ana Sayfa</a>
+      <a href="synaps-product-ai-interviewer.html">AI Interviewer</a>
+      <a href="synaps-product-ai-ats.html">AI ATS</a>
+      <a href="synaps-product-ai-mulakat-kocu.html">AI Mülakat Koçu</a>
+    </div>
+    <!-- Col 3: Legal -->
+    <div class="uf-col uf-legal-col" style="grid-column:span 2;">
+      <div class="uf-col-title">Yasal</div>
+      <div class="uf-legal-grid" style="flex-direction:row;flex-wrap:wrap;gap:8px;">
+        <button class="uf-legal-btn" onclick="openLegal('kullanim')">Kullanım Koşulları</button>
+        <button class="uf-legal-btn" onclick="openLegal('gizlilik')">Gizlilik Politikası</button>
+        <button class="uf-legal-btn" onclick="openLegal('cerez')">Çerez Politikası</button>
+        <button class="uf-legal-btn" onclick="openLegal('aydinlatma')">Aydınlatma Metni</button>
+        <button class="uf-legal-btn" onclick="openLegal('mesafeli')">Mesafeli Satış Sözleşmesi</button>
+        <button class="uf-legal-btn" onclick="openLegal('sss')">SSS</button>
+      </div>
+    </div>
+  </div>
+  <div class="uf-bottom">
+    <span>© 2026 Synaps Yapay Zeka Teknolojileri A.Ş. — Tüm Hakları Saklıdır</span>
+    <span style="font-family:'JetBrains Mono',monospace;font-size:11px;color:rgba(196,164,255,0.3);">synapsai.ai</span>
   </div>
 </footer>
-<script>(function(){var t=document.getElementById('themeToggle'),h=document.documentElement;var s=localStorage.getItem('synaps-theme')||'dark';if(s==='light'){h.setAttribute('data-theme','light');if(t)t.checked=true;}if(t)t.addEventListener('change',function(){var m=t.checked?'light':'dark';h.setAttribute('data-theme',m);localStorage.setItem('synaps-theme',m);});})();</script>
-</body>
+
+<!-- ══════ LEGAL MODAL ══════ -->
+<div id="legalModal" style="display:none;position:fixed;inset:0;z-index:9999;background:rgba(6,4,15,0.92);backdrop-filter:blur(12px);overflow-y:auto;padding:40px 20px;">
+  <div style="max-width:780px;margin:0 auto;background:#120E20;border:1px solid rgba(123,47,255,0.2);border-radius:20px;padding:48px;position:relative;">
+    <button onclick="closeLegal()" style="position:absolute;top:20px;right:20px;background:rgba(255,255,255,0.08);border:none;color:white;width:36px;height:36px;border-radius:50%;cursor:pointer;font-size:18px;display:flex;align-items:center;justify-content:center;line-height:1;">×</button>
+    <div id="legalContent" style="color:rgba(255,255,255,0.8);font-size:13.5px;line-height:1.85;"></div>
+  </div>
+</div>
+<script>
+var legalTexts = {
+  kullanim: {title:"Video Mülakat Hizmeti Sözleşmesi", body:`<h3 style="color:#C4A4FF;margin-bottom:8px">1. Taraflar</h3><p>Synaps Yapay Zeka Firması Anonim Şirketi<br>Adres: Göztepe Mah. Pınar Sok. No.4/13 Kadıköy<br>Vergi Dairesi: Göztepe Vergi Dairesi | Vergi No: 6421040257<br>Ticaret Sicil No: 11322 | E-posta: info@synapsai.ai</p><h3 style="color:#C4A4FF;margin:20px 0 8px">2. Sözleşmenin Konusu</h3><p>Synaps tarafından Aday'a sunulan one-way video mülakat hizmetinin kullanımına ilişkin şartları ve koşulları düzenlemektedir.</p><h3 style="color:#C4A4FF;margin:20px 0 8px">3. Hizmetin Kapsamı</h3><p>Synaps, Aday'a şu hizmetleri sunar: video mülakat kaydı, verilen cevapların kaydedilmesi ve değerlendirilmesi, mülakat kayıtlarının işverenlere iletilmesi.</p><h3 style="color:#C4A4FF;margin:20px 0 8px">4. Aday'ın Yükümlülükleri</h3><p>Hizmet'i yalnızca kişisel ve profesyonel amaçlarla kullanmak, doğru ve güncel bilgiler sağlamak, tüm yerel ve ulusal yasalara uymak.</p><h3 style="color:#C4A4FF;margin:20px 0 8px">5. Kişisel Verilerin Korunması</h3><p>Synaps, kişisel verileri 6698 sayılı KVKK ve ilgili mevzuata uygun olarak işleyecektir.</p><h3 style="color:#C4A4FF;margin:20px 0 8px">6. Fikri Mülkiyet Hakları</h3><p>Hizmet kapsamında sunulan tüm yazılım, içerik ve materyallerin fikri mülkiyet hakları Synaps'a aittir.</p><h3 style="color:#C4A4FF;margin:20px 0 8px">7. Sözleşmenin Süresi ve Feshi</h3><p>Sözleşme, Aday'ın hizmeti kullanmaya başladığı tarihte yürürlüğe girer. Synaps, sözleşmeye aykırı davranış durumunda hizmeti durdurma hakkına sahiptir.</p><h3 style="color:#C4A4FF;margin:20px 0 8px">8–10. Sorumluluk, Uyuşmazlıklar & Yürürlük</h3><p>Synaps, hizmetin kesintisiz olacağını garanti etmez. Uyuşmazlıklarda İstanbul Mahkemeleri yetkilidir. Sözleşme elektronik ortamda onaylandığı tarihte yürürlüğe girer.</p>`},
+  gizlilik: {title:"Gizlilik Politikası", body:`<h3 style="color:#C4A4FF;margin-bottom:8px">1. Taraflar</h3><p>Synaps Yapay Zeka Firması Anonim Şirketi — Adres: Göztepe Mah. Pınar Sok. No.4/13 Kadıköy/Göztepe — Vergi No: 6421040257</p><h3 style="color:#C4A4FF;margin:20px 0 8px">2–3. Konu & Gizli Bilgiler</h3><p>Bu Sözleşme, Taraflar arasındaki iş ilişkisi kapsamında edinilen gizli bilgilerin korunmasını düzenler. Ticari, finansal, teknik her türlü bilgi; kişisel veriler, iş planları, veritabanları ve fikri mülkiyet hakları gizli bilgi kapsamındadır.</p><h3 style="color:#C4A4FF;margin:20px 0 8px">4–5. Gizli Olmayan Bilgiler & Mülkiyet</h3><p>Kamuya açık bilgiler veya resmi makam talepleriyle açıklanması gereken bilgiler gizli kabul edilmez. Taraflar kendi gizli bilgileri üzerindeki tüm haklarını saklı tutar.</p><h3 style="color:#C4A4FF;margin:20px 0 8px">6. Koruma Yükümlülükleri</h3><p>Alıcı Taraf; gizli bilgileri en yüksek düzeyde korumayı, üçüncü taraflara açıklamamayı ve yalnızca iş ilişkisi kapsamında kullanmayı taahhüt eder.</p><h3 style="color:#C4A4FF;margin:20px 0 8px">7–11. Veri Güvenliği</h3><p>Kişisel veriler KVKK'ya uygun işlenir. Güvenlik ihlallerinde 24 saat içinde bildirim yapılır. Başvuru: <a href="mailto:destek@synapsai.ai" style="color:#C4A4FF">destek@synapsai.ai</a></p>`},
+  cerez: {title:"Çerez Politikası", body:`<h3 style="color:#C4A4FF;margin-bottom:8px">1. Çerez Nedir?</h3><p>Çerezler, web siteleri tarafından tarayıcınıza gönderilen ve cihazınızda saklanan küçük veri dosyalarıdır.</p><h3 style="color:#C4A4FF;margin:20px 0 8px">2. Kullandığımız Çerezler</h3><p><strong style="color:#C4A4FF">Zorunlu:</strong> Sitenin temel işlevleri için.<br><strong style="color:#C4A4FF">Performans:</strong> Google Analytics — kullanım analizi.<br><strong style="color:#C4A4FF">Fonksiyonel:</strong> Kullanıcı tercihlerini hatırlar.<br><strong style="color:#C4A4FF">Reklam:</strong> Hedeflenmiş reklamlar için.</p><h3 style="color:#C4A4FF;margin:20px 0 8px">3. Çerez Yönetimi</h3><p>Chrome: Kilit işareti → Çerezler. Firefox: Menü → Seçenekler → Gizlilik. Safari: Ayarlar → Safari → Gizlilik.</p><h3 style="color:#C4A4FF;margin:20px 0 8px">4–5. Üçüncü Taraf & İletişim</h3><p>Google Analytics ve Hotjar çerezleri kullanılabilir. İletişim: <a href="mailto:destek@synapsai.ai" style="color:#C4A4FF">destek@synapsai.ai</a> — Geçerlilik: 10/10/2024</p>`},
+  aydinlatma: {title:"Aydınlatma Metni", body:`<p>Synaps Yapay Zekâ Firması Anonim Şirketi olarak KVKK'nın 10. maddesi kapsamında aydınlatma yükümlülüğümüzü yerine getiriyoruz.</p><h3 style="color:#C4A4FF;margin:20px 0 8px">İşlenen Veriler</h3><p><strong style="color:#C4A4FF">Zorunlu Çerezler:</strong> KVKK md. 5/2(c)/(f) — site işleyişi için.<br><strong style="color:#C4A4FF">Performans:</strong> Açık rızanızla — Google Analytics (400 gün), Hotjar (30 gün).<br><strong style="color:#C4A4FF">Pazarlama:</strong> Açık rızanızla — dönüşüm takibi.</p><h3 style="color:#C4A4FF;margin:20px 0 8px">Veri Aktarımı & Haklarınız</h3><p>Veriler KVKK md. 8-9 kapsamında tedarikçilere ve yetkili kurumlara aktarılabilir. Başvuru: <a href="mailto:destek@synapsai.ai" style="color:#C4A4FF">destek@synapsai.ai</a></p>`},
+  mesafeli: {title:"Mesafeli Satış Sözleşmesi", body:`<h3 style="color:#C4A4FF;margin-bottom:8px">1. Taraflar</h3><p>Satıcı: SYNAPS YAPAY ZEKA TEKNOLOJİLERİ ANONİM ŞİRKETİ — Göztepe Mah. Pınar Sok. No.4/13 Kadıköy — destek@synapsai.ai</p><h3 style="color:#C4A4FF;margin:20px 0 8px">2–6. Konu, Hizmet & Beyanlar</h3><p>Alıcı'nın Synaps'tan elektronik ortamda sipariş ettiği dijital hizmetin satış ve teslimine ilişkin hak ve yükümlülükleri düzenler. Satıcı hizmeti Tüketici Mevzuatı'na uygun sunar.</p><h3 style="color:#C4A4FF;margin:20px 0 8px">10. Siber Güvenlik</h3><p>Satıcı güncel güvenlik yazılımları kullanır. Güvenlik ihlallerinde Alıcı derhal bilgilendirilir.</p><h3 style="color:#C4A4FF;margin:20px 0 8px">14–17. Ödeme, Teslimat & Cayma</h3><p>Fiyata vergiler dahildir. Kredi kartı bilgileri Synaps sunucularında saklanmaz. Hizmet ifasına başlanmamışsa 14 gün cayma hakkı mevcuttur. İfaya başlandıktan sonra Yönetmelik md.15/ğ kapsamında cayma hakkı bulunmaz.</p><h3 style="color:#C4A4FF;margin:20px 0 8px">18. Uyuşmazlıklar</h3><p>Uyuşmazlıklarda Tüketici Hakem Heyetleri ve Tüketici Mahkemeleri yetkilidir.</p>`},
+  sss: {title:"Sıkça Sorulan Sorular", body:`<div class="sss-item open"><p class="sss-q">Synaps'ı neden kullanmalıyım? <span class="sss-arrow">▾</span></p><p class="sss-a">Synaps, mülakat sürecini hızlandırır, esneklik sağlar ve adayları adil ve nesnel biçimde değerlendirmenize yardımcı olur. Zaman ve maliyet tasarrufu sağlar.</p></div><div class="sss-item"><p class="sss-q">Synaps hangi cihazlarla uyumludur? <span class="sss-arrow">▾</span></p><p class="sss-a">Synaps, bilgisayar ve tablet gibi tüm modern cihazlarla uyumludur.</p></div><div class="sss-item"><p class="sss-q">Mülakat kayıtları ne kadar süre saklanır? <span class="sss-arrow">▾</span></p><p class="sss-a">Mülakat kayıtlarınız abonelik planınıza göre belirlenen süre boyunca güvenli şekilde saklanır.</p></div><div class="sss-item"><p class="sss-q">Yapay zeka değerlendirmesi nasıl çalışır? <span class="sss-arrow">▾</span></p><p class="sss-a">Yapay zeka, adayların video yanıtlarını metin ve kelime bulutları olarak analiz eder, puanlar ve yorumlar.</p></div><div class="sss-item"><p class="sss-q">Gizlilik ve güvenlik nasıl sağlanır? <span class="sss-arrow">▾</span></p><p class="sss-a">Tüm veriler şifrelenerek güvenli sunucularda saklanır, yalnızca yetkili kişilerin erişimine açılır.</p></div><div class="sss-item"><p class="sss-q">Fiyatlandırma ve deneme süresi hakkında bilgi alabilir miyim? <span class="sss-arrow">▾</span></p><p class="sss-a">Fiyatlandırma için <a href="mailto:destek@synapsai.ai" style="color:#C4A4FF">destek@synapsai.ai</a> adresimizden bize ulaşabilirsiniz.</p></div>`}
+};
+function openLegal(key){var m=document.getElementById('legalModal'),c=document.getElementById('legalContent'),t=legalTexts[key];if(!t)return;c.innerHTML='<h2 style="font-size:22px;font-weight:900;color:white;margin-bottom:28px;letter-spacing:-0.5px;">'+t.title+'</h2>'+t.body;m.style.display='block';document.body.style.overflow='hidden';c.querySelectorAll('.sss-q').forEach(function(q){q.addEventListener('click',function(){this.parentElement.classList.toggle('open');});});}
+function closeLegal(){document.getElementById('legalModal').style.display='none';document.body.style.overflow='';}
+document.addEventListener('DOMContentLoaded',function(){var m=document.getElementById('legalModal');if(m)m.addEventListener('click',function(e){if(e.target===this)closeLegal();});});
+</script>
 </html>

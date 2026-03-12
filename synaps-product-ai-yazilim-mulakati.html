@@ -185,15 +185,15 @@ h1 .gr{background:linear-gradient(135deg,#9B4FFF,#C4A4FF,#E040FB);-webkit-backgr
 
 /* ── Unified Footer ── */
 .uf-footer{background:linear-gradient(180deg,#080614 0%,#06040F 100%);border-top:1px solid rgba(123,47,255,0.12);position:relative;z-index:1;}
-.uf-inner{max-width:1280px;margin:0 auto;padding:48px 60px 36px;display:grid;grid-template-columns:1.4fr 0.8fr 1.8fr;gap:40px;}
+.uf-inner{max-width:1280px;margin:0 auto;padding:56px 60px 40px;display:grid;grid-template-columns:1.6fr 1fr 1fr 1.4fr;gap:48px;}
 .uf-col{display:flex;flex-direction:column;gap:10px;}
-.uf-col-title{font-size:10px;font-weight:700;letter-spacing:3px;color:rgba(196,164,255,0.55);text-transform:uppercase;font-family:'JetBrains Mono',monospace;margin-bottom:4px;}
-.uf-col a{font-size:13px;color:rgba(255,255,255,0.4);text-decoration:none;transition:color 0.2s;}
+.uf-col-title{font-size:11px;font-weight:700;letter-spacing:3px;color:rgba(196,164,255,0.6);text-transform:uppercase;font-family:'JetBrains Mono',monospace;margin-bottom:4px;}
+.uf-col a{font-size:13px;color:var(--dim2);text-decoration:none;transition:color 0.2s;line-height:1.4;}
 .uf-col a:hover{color:rgba(196,164,255,0.9);}
 .uf-legal-grid{display:flex;flex-direction:column;gap:8px;}
-.uf-bottom{max-width:1280px;margin:0 auto;padding:18px 60px 26px;display:flex;justify-content:space-between;align-items:center;border-top:1px solid rgba(255,255,255,0.05);font-size:12px;color:rgba(255,255,255,0.22);}
-@media(max-width:900px){.uf-inner{grid-template-columns:1fr 1fr;}.uf-col[style*="span 2"]{grid-column:span 2;}.uf-bottom{padding:14px 32px 22px;flex-direction:column;gap:8px;text-align:center;}}
-@media(max-width:580px){.uf-inner{grid-template-columns:1fr;padding:28px 20px 24px;}.uf-col[style*="span 2"]{grid-column:span 1;}.uf-bottom{padding:12px 20px 18px;}}
+.uf-bottom{max-width:1280px;margin:0 auto;padding:20px 60px 28px;display:flex;justify-content:space-between;align-items:center;border-top:1px solid rgba(255,255,255,0.06);font-size:12px;color:rgba(255,255,255,0.25);}
+@media(max-width:1000px){.uf-inner{grid-template-columns:1fr 1fr;gap:36px;padding:40px 32px 32px;}.uf-bottom{padding:16px 32px 24px;flex-direction:column;gap:8px;text-align:center;}}
+@media(max-width:600px){.uf-inner{grid-template-columns:1fr;padding:32px 20px 28px;}.uf-bottom{padding:14px 20px 20px;}}
 
 .uf-legal-btn{background:rgba(123,47,255,0.08);border:1px solid rgba(123,47,255,0.2);color:rgba(255,255,255,0.6);padding:6px 12px;border-radius:7px;font-size:11.5px;cursor:pointer;font-family:inherit;transition:all 0.2s;white-space:nowrap;}
 .uf-legal-btn:hover{background:rgba(123,47,255,0.2);border-color:rgba(196,164,255,0.4);color:white;}
@@ -273,12 +273,7 @@ h1 .gr{background:linear-gradient(135deg,#9B4FFF,#C4A4FF,#E040FB);-webkit-backgr
         <span class="test-score">AI Skor: 94/100</span>
       </div>
     </div>
-    <!-- float badges -->
-    <div class="fl-b" style="top:-16px;right:-16px;animation-delay:0s;">
-      <div style="width:44px;height:44px;border-radius:12px;background:linear-gradient(135deg,#92400E,#D97706);display:flex;align-items:center;justify-content:center;margin-bottom:0;flex-shrink:0;"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg></div><div class="fb-val">50+</div><div class="fb-lbl">Desteklenen dil</div>
-    </div>
-    <div class="fl-b" style="bottom:-14px;left:-16px;animation-delay:1.8s;">
-      <div style="width:44px;height:44px;border-radius:12px;background:linear-gradient(135deg,#7B2FFF,#9B4FFF);display:flex;align-items:center;justify-content:center;margin-bottom:0;flex-shrink:0;"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M12 1v4M12 19v4M4.22 4.22l2.83 2.83M16.95 16.95l2.83 2.83M1 12h4M19 12h4M4.22 19.78l2.83-2.83M16.95 7.05l2.83-2.83"/></svg></div><div class="fb-val">3x</div><div class="fb-lbl">Daha az yanlış işe alım</div>
+    
     </div>
   </div>
 </section>
@@ -338,16 +333,16 @@ h1 .gr{background:linear-gradient(135deg,#9B4FFF,#C4A4FF,#E040FB);-webkit-backgr
   <div class="uf-inner">
     <!-- Col 1: Brand + Address + Socials -->
     <div class="uf-col uf-brand-col">
-      <div style="display:flex;align-items:center;gap:8px;margin-bottom:12px;">
-        <div class="orb-sm" style="width:20px;height:20px;"><div class="ob ob-base"></div><div class="ob ob-swirl"></div><div class="ob-hl"></div></div>
-        <span style="font-size:15px;font-weight:800;letter-spacing:-.4px;">Synaps<b style="color:#9B4FFF">AI</b></span>
-        <span style="font-size:10px;font-family:'JetBrains Mono',monospace;color:rgba(196,164,255,0.5);margin-left:4px;">AI Yazılım Mülakatı</span>
+      <div class="footer-logo" style="margin-bottom:14px;">
+        <div class="orb-sm" style="width:22px;height:22px;"><div class="ob ob-base"></div><div class="ob ob-swirl"></div><div class="ob-hl"></div></div>
+        <span style="font-size:17px;font-weight:800;letter-spacing:-.5px;">Synaps<b style="color:#9B4FFF">AI</b></span>
       </div>
-      <div style="font-size:12px;color:rgba(255,255,255,0.35);line-height:1.8;">
+      <p style="font-size:12.5px;color:var(--dim2);line-height:1.7;margin:0 0 14px;max-width:220px;">İşe alım süreçlerini ve çalışan deneyimini yapay zeka ile dönüştüren yeni nesil İK platformu.</p>
+      <div style="font-size:12px;color:rgba(255,255,255,0.38);line-height:1.8;">
         Synaps Yapay Zeka Teknolojileri A.Ş.<br>
         Göztepe Mah. Pınar Sok. No.4/13<br>
         Kadıköy / İstanbul<br>
-        <a href="mailto:destek@synapsai.ai" style="color:rgba(196,164,255,0.6);text-decoration:none;">destek@synapsai.ai</a>
+        <a href="/cdn-cgi/l/email-protection#4024253334252b0033392e21303321296e2129" style="color:rgba(196,164,255,0.65);text-decoration:none;"><span class="__cf_email__" data-cfemail="5f3b3a2c2b3a341f2c26313e2f2c3e36713e36">[email&#160;protected]</span></a>
       </div>
 <div class="footer-socials" style="display:flex;gap:10px;margin-top:16px;">
   <a href="https://x.com/synapsai" target="_blank" rel="noopener" style="width:32px;height:32px;border-radius:8px;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.1);display:flex;align-items:center;justify-content:center;color:rgba(255,255,255,0.5);transition:all 0.2s;text-decoration:none;" onmouseover="this.style.background='rgba(123,47,255,0.2)';this.style.color='white';this.style.borderColor='rgba(123,47,255,0.4)'" onmouseout="this.style.background='rgba(255,255,255,0.06)';this.style.color='rgba(255,255,255,0.5)';this.style.borderColor='rgba(255,255,255,0.1)'">
@@ -364,25 +359,32 @@ h1 .gr{background:linear-gradient(135deg,#9B4FFF,#C4A4FF,#E040FB);-webkit-backgr
   </a>
 </div>
     </div>
-    <!-- Col 2: Navigation -->
+    <!-- Col 2: Solutions -->
     <div class="uf-col">
-      <div class="uf-col-title">Gezinti</div>
-      <a href="synaps-v11-toggle.html">Ana Sayfa</a>
+      <div class="uf-col-title">Çözümler</div>
       <a href="synaps-product-ai-interviewer.html">AI Interviewer</a>
+      <a href="synaps-product-ai-mulakat-kocu.html">AI Interview Coach</a>
+      <a href="synaps-product-ai-rol-bazli-mulakat.html">AI Rol Bazlı Mülakat</a>
+      <a href="synaps-product-ai-role-play.html">AI Role Play</a>
+      <a href="synaps-product-ai-cikis-mulakati.html">AI Çıkış Mülakatı</a>
       <a href="synaps-product-ai-ats.html">AI ATS</a>
-      <a href="synaps-product-ai-mulakat-kocu.html">AI Mülakat Koçu</a>
     </div>
-    <!-- Col 3: Legal -->
-    <div class="uf-col uf-legal-col" style="grid-column:span 2;">
+    <!-- Col 3: Company -->
+    <div class="uf-col">
+      <div class="uf-col-title">Şirket</div>
+      <a href="#">Kariyer</a>
+      <a href="#">Hakkımızda</a>
+      <a href="#">İletişim</a>
+    </div>
+    <!-- Col 4: Legal -->
+    <div class="uf-col uf-legal-col">
       <div class="uf-col-title">Yasal</div>
-      <div class="uf-legal-grid" style="flex-direction:row;flex-wrap:wrap;gap:8px;">
-        <button class="uf-legal-btn" onclick="openLegal('kullanim')">Kullanım Koşulları</button>
-        <button class="uf-legal-btn" onclick="openLegal('gizlilik')">Gizlilik Politikası</button>
-        <button class="uf-legal-btn" onclick="openLegal('cerez')">Çerez Politikası</button>
-        <button class="uf-legal-btn" onclick="openLegal('aydinlatma')">Aydınlatma Metni</button>
-        <button class="uf-legal-btn" onclick="openLegal('mesafeli')">Mesafeli Satış Sözleşmesi</button>
-        <button class="uf-legal-btn" onclick="openLegal('sss')">SSS</button>
-      </div>
+      <a href="#" onclick="openLegal('kullanim');return false;">Kullanım Koşulları</a>
+      <a href="#" onclick="openLegal('gizlilik');return false;">Gizlilik Politikası</a>
+      <a href="#" onclick="openLegal('cerez');return false;">Çerez Politikası</a>
+      <a href="#" onclick="openLegal('aydinlatma');return false;">Aydınlatma Metni</a>
+      <a href="#" onclick="openLegal('mesafeli');return false;">Mesafeli Satış Sözleşmesi</a>
+      <a href="#" onclick="openLegal('sss');return false;">SSS</a>
     </div>
   </div>
   <div class="uf-bottom">
@@ -398,7 +400,7 @@ h1 .gr{background:linear-gradient(135deg,#9B4FFF,#C4A4FF,#E040FB);-webkit-backgr
     <div id="legalContent" style="color:rgba(255,255,255,0.8);font-size:13.5px;line-height:1.85;"></div>
   </div>
 </div>
-<script>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
 var legalTexts = {
   kullanim: {title:"Video Mülakat Hizmeti Sözleşmesi", body:`<h3 style="color:#C4A4FF;margin-bottom:8px">1. Taraflar</h3><p>Synaps Yapay Zeka Firması Anonim Şirketi<br>Adres: Göztepe Mah. Pınar Sok. No.4/13 Kadıköy<br>Vergi Dairesi: Göztepe Vergi Dairesi | Vergi No: 6421040257<br>Ticaret Sicil No: 11322 | E-posta: info@synapsai.ai</p><h3 style="color:#C4A4FF;margin:20px 0 8px">2. Sözleşmenin Konusu</h3><p>Synaps tarafından Aday'a sunulan one-way video mülakat hizmetinin kullanımına ilişkin şartları ve koşulları düzenlemektedir.</p><h3 style="color:#C4A4FF;margin:20px 0 8px">3. Hizmetin Kapsamı</h3><p>Synaps, Aday'a şu hizmetleri sunar: video mülakat kaydı, verilen cevapların kaydedilmesi ve değerlendirilmesi, mülakat kayıtlarının işverenlere iletilmesi.</p><h3 style="color:#C4A4FF;margin:20px 0 8px">4. Aday'ın Yükümlülükleri</h3><p>Hizmet'i yalnızca kişisel ve profesyonel amaçlarla kullanmak, doğru ve güncel bilgiler sağlamak, tüm yerel ve ulusal yasalara uymak.</p><h3 style="color:#C4A4FF;margin:20px 0 8px">5. Kişisel Verilerin Korunması</h3><p>Synaps, kişisel verileri 6698 sayılı KVKK ve ilgili mevzuata uygun olarak işleyecektir.</p><h3 style="color:#C4A4FF;margin:20px 0 8px">6. Fikri Mülkiyet Hakları</h3><p>Hizmet kapsamında sunulan tüm yazılım, içerik ve materyallerin fikri mülkiyet hakları Synaps'a aittir.</p><h3 style="color:#C4A4FF;margin:20px 0 8px">7. Sözleşmenin Süresi ve Feshi</h3><p>Sözleşme, Aday'ın hizmeti kullanmaya başladığı tarihte yürürlüğe girer. Synaps, sözleşmeye aykırı davranış durumunda hizmeti durdurma hakkına sahiptir.</p><h3 style="color:#C4A4FF;margin:20px 0 8px">8–10. Sorumluluk, Uyuşmazlıklar & Yürürlük</h3><p>Synaps, hizmetin kesintisiz olacağını garanti etmez. Uyuşmazlıklarda İstanbul Mahkemeleri yetkilidir. Sözleşme elektronik ortamda onaylandığı tarihte yürürlüğe girer.</p>`},
   gizlilik: {title:"Gizlilik Politikası", body:`<h3 style="color:#C4A4FF;margin-bottom:8px">1. Taraflar</h3><p>Synaps Yapay Zeka Firması Anonim Şirketi — Adres: Göztepe Mah. Pınar Sok. No.4/13 Kadıköy/Göztepe — Vergi No: 6421040257</p><h3 style="color:#C4A4FF;margin:20px 0 8px">2–3. Konu & Gizli Bilgiler</h3><p>Bu Sözleşme, Taraflar arasındaki iş ilişkisi kapsamında edinilen gizli bilgilerin korunmasını düzenler. Ticari, finansal, teknik her türlü bilgi; kişisel veriler, iş planları, veritabanları ve fikri mülkiyet hakları gizli bilgi kapsamındadır.</p><h3 style="color:#C4A4FF;margin:20px 0 8px">4–5. Gizli Olmayan Bilgiler & Mülkiyet</h3><p>Kamuya açık bilgiler veya resmi makam talepleriyle açıklanması gereken bilgiler gizli kabul edilmez. Taraflar kendi gizli bilgileri üzerindeki tüm haklarını saklı tutar.</p><h3 style="color:#C4A4FF;margin:20px 0 8px">6. Koruma Yükümlülükleri</h3><p>Alıcı Taraf; gizli bilgileri en yüksek düzeyde korumayı, üçüncü taraflara açıklamamayı ve yalnızca iş ilişkisi kapsamında kullanmayı taahhüt eder.</p><h3 style="color:#C4A4FF;margin:20px 0 8px">7–11. Veri Güvenliği</h3><p>Kişisel veriler KVKK'ya uygun işlenir. Güvenlik ihlallerinde 24 saat içinde bildirim yapılır. Başvuru: <a href="mailto:destek@synapsai.ai" style="color:#C4A4FF">destek@synapsai.ai</a></p>`},
@@ -411,5 +413,4 @@ function openLegal(key){var m=document.getElementById('legalModal'),c=document.g
 function closeLegal(){document.getElementById('legalModal').style.display='none';document.body.style.overflow='';}
 document.addEventListener('DOMContentLoaded',function(){var m=document.getElementById('legalModal');if(m)m.addEventListener('click',function(e){if(e.target===this)closeLegal();});});
 </script>
-<script>(function(){var t=document.getElementById('themeToggle'),h=document.documentElement;var s=localStorage.getItem('synaps-theme')||'dark';if(s==='light'){h.setAttribute('data-theme','light');if(t)t.checked=true;}if(t)t.addEventListener('change',function(){var m=t.checked?'light':'dark';h.setAttribute('data-theme',m);localStorage.setItem('synaps-theme',m);});})();</script>
-</html>
+<script>(function(){var t=document.getElementById('themeToggle'),h=document.documentElement;var s=localStorage.getItem('synaps-theme')||'dark';if(

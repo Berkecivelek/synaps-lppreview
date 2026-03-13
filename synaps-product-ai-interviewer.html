@@ -302,6 +302,34 @@ h1.h-main .grad{background:linear-gradient(135deg,#9B4FFF,#C4A4FF,#E040FB);-webk
 .sss-item.open .sss-a{display:block;}
 @media(max-width:1000px){.uf-inner{grid-template-columns:1fr 1fr;gap:36px;padding:40px 32px 32px;}.uf-bottom{padding:16px 32px 24px;flex-direction:column;gap:8px;text-align:center;}}
 @media(max-width:600px){.uf-inner{grid-template-columns:1fr;padding:32px 20px 28px;}.uf-bottom{padding:14px 20px 20px;}}
+
+.legal-section{margin-bottom:20px;}
+.legal-section h3{color:#C4A4FF;font-size:13px;font-weight:700;margin-bottom:8px;padding-bottom:6px;border-bottom:1px solid rgba(123,47,255,0.2);}
+.legal-section p,.legal-section ul,.legal-section li{font-size:13px;line-height:1.75;color:rgba(240,238,255,0.75);}
+.legal-section ul{padding-left:18px;margin-top:6px;}
+.legal-section li{margin-bottom:4px;}
+.legal-section a{color:#C4A4FF;}
+.legal-section table{color:rgba(240,238,255,0.75);}
+
+/* ── UPGRADED HERO VC SCENE ── */
+.human-bg2{position:absolute;inset:0;background:radial-gradient(ellipse at 50% 30%,rgba(100,60,180,.2),transparent 60%);}
+.human-nm{position:absolute;bottom:8px;left:10px;font-family:'JetBrains Mono',monospace;font-size:9px;color:rgba(255,255,255,.7);background:rgba(0,0,0,.55);padding:2px 8px;border-radius:4px;}
+.vc-pane-ai-main{background:linear-gradient(135deg,#0A0420,#14086E);}
+.ai-pane-inner{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;}
+.rp{position:absolute;border-radius:50%;border:1.5px solid rgba(155,79,255,.3);animation:ripple 2.4s ease-out infinite;}
+.rp:nth-child(1){width:100px;height:100px;animation-delay:0s;}
+.rp:nth-child(2){width:140px;height:140px;animation-delay:.8s;}
+.rp:nth-child(3){width:180px;height:180px;animation-delay:1.6s;}
+.ai-orb-hero{width:70px;height:70px;border-radius:50%;position:relative;overflow:hidden;z-index:1;}
+.ai-brand-name{font-size:11px;font-weight:700;color:rgba(196,164,255,.9);letter-spacing:1px;z-index:1;}
+.ai-sub-label{font-family:'JetBrains Mono',monospace;font-size:8px;color:rgba(155,79,255,.6);letter-spacing:1.5px;z-index:1;}
+.ai-nm{position:absolute;bottom:8px;left:10px;font-family:'JetBrains Mono',monospace;font-size:9px;color:rgba(255,255,255,.7);background:rgba(0,0,0,.55);padding:2px 8px;border-radius:4px;}
+.vc-bot2{background:#0D0920;border-top:1px solid rgba(255,255,255,.06);padding:12px 24px;display:flex;align-items:center;justify-content:space-between;}
+.vc-controls{display:flex;gap:10px;align-items:center;}
+.vc-ctrl{width:34px;height:34px;border-radius:50%;background:rgba(255,255,255,.07);display:flex;align-items:center;justify-content:center;}
+.vc-ctrl-end{background:#EF4444;width:40px;}
+.vc-assist2{background:rgba(123,47,255,.15);border:1px solid rgba(123,47,255,.3);border-radius:8px;padding:6px 14px;font-family:'JetBrains Mono',monospace;font-size:10px;color:#9B4FFF;font-weight:700;display:flex;align-items:center;gap:6px;}
+.vc-assist2-dot{width:6px;height:6px;border-radius:50%;background:#9B4FFF;animation:pulse 1.5s infinite;}
 </style>
 </head>
 <body>
@@ -348,44 +376,84 @@ h1.h-main .grad{background:linear-gradient(135deg,#9B4FFF,#C4A4FF,#E040FB);-webk
     </div>
 
     <!-- VIDEO CALL MOCKUP -->
-    <div class="vc-wrap">
-      <div class="vc-card">
-        <div class="vc-titlebar">
-          <div class="vc-dots"><span></span><span></span><span></span></div>
-          <span class="vc-meeting-name">AI Interviewer — Mülakat #4821</span>
-          <span class="vc-time">11:48 AM</span>
+    <div class="vc-wrap" style="position:relative;">
+      <div style="background:#0A0616;border-radius:18px;overflow:hidden;border:1px solid rgba(255,255,255,0.08);box-shadow:0 32px 80px rgba(0,0,0,0.6);">
+
+        <!-- Title bar -->
+        <div style="background:#0D0920;padding:10px 16px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid rgba(255,255,255,0.06);">
+          <div style="display:flex;gap:6px;">
+            <span style="width:10px;height:10px;border-radius:50%;background:#EF4444;display:block;"></span>
+            <span style="width:10px;height:10px;border-radius:50%;background:#F59E0B;display:block;"></span>
+            <span style="width:10px;height:10px;border-radius:50%;background:#10B981;display:block;"></span>
+          </div>
+          <span style="font-family:'JetBrains Mono',monospace;font-size:10px;color:rgba(255,255,255,0.5);">AI Interviewer — Mülakat #4821</span>
+          <span style="font-family:'JetBrains Mono',monospace;font-size:10px;color:rgba(255,255,255,0.4);">11:48 AM</span>
         </div>
-        <div class="vc-grid">
-          <!-- AI pane -->
-          <div class="vc-pane vc-pane-ai">
-            <div class="ai-ripple"></div>
-            <div class="ai-ripple"></div>
-            <div class="ai-ripple"></div>
-            <div class="ai-orb-large">
-              <div class="ao-base"></div>
-              <div class="ao-spin"></div>
-              <div class="ao-hl"></div>
+
+        <!-- 2-pane grid: AI orb (sol) + Aday karakter (sağ) -->
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:2px;background:rgba(255,255,255,0.04);">
+
+          <!-- Pane 1: SynapsAI Orb -->
+          <div style="aspect-ratio:4/3;position:relative;overflow:hidden;background:linear-gradient(135deg,#0A0420,#14086E);">
+            <div class="ai-pane-inner">
+              <div class="rp"></div><div class="rp"></div><div class="rp"></div>
+              <div class="ai-orb-hero">
+                <div class="ao-base"></div><div class="ao-spin"></div><div class="ao-hl"></div>
+              </div>
+              <div class="ai-brand-name">SynapsAI</div>
+              <div class="ai-sub-label">AI MÜLAKATÇı</div>
             </div>
-            <div class="vc-ai-label">SynapsAI</div>
-            <div class="vc-pane-name">AI Mülakatçı · TR 🇹🇷</div>
+            <div class="ai-nm">AI Mülakatçı · TR 🇹🇷</div>
           </div>
-          <!-- Human pane -->
-          <div class="vc-pane vc-pane-human">
-            <div class="human-avatar"><div style="width:44px;height:44px;border-radius:12px;background:linear-gradient(135deg,#2A0866,#5B2ACC);display:flex;align-items:center;justify-content:center;flex-shrink:0;"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/></svg></div></div>
-            <div class="vc-pane-name">Mehmet A. · Aday #3</div>
+
+          <!-- Pane 2: Mehmet A. — Gerçekçi erkek aday karakteri -->
+          <div style="aspect-ratio:4/3;position:relative;overflow:hidden;background:linear-gradient(160deg,#0C1E30 0%,#162840 55%,#0E1A2C 100%);">
+            <div style="position:absolute;inset:0;background:radial-gradient(ellipse at 50% 25%,rgba(30,80,150,.18),transparent 65%);"></div>
+            <!-- Body / takım elbise -->
+            <div style="position:absolute;bottom:0;left:50%;transform:translateX(-50%);width:140px;height:72px;background:linear-gradient(180deg,#1A2738,#243040);border-radius:70px 70px 0 0;"></div>
+            <!-- Yaka / gömlek -->
+            <div style="position:absolute;bottom:46px;left:50%;transform:translateX(-50%);width:22px;height:30px;background:linear-gradient(180deg,#ECECEC,#D4D4D4);border-radius:2px;"></div>
+            <!-- Kravat -->
+            <div style="position:absolute;bottom:46px;left:50%;transform:translateX(-50%) translateX(-1px);width:8px;height:22px;background:linear-gradient(180deg,#5B21B6,#7B2FFF);border-radius:1px 1px 3px 3px;"></div>
+            <!-- Boyun -->
+            <div style="position:absolute;bottom:70px;left:50%;transform:translateX(-50%);width:26px;height:22px;background:#8B6B4A;"></div>
+            <!-- Kafa -->
+            <div style="position:absolute;bottom:82px;left:50%;transform:translateX(-50%);width:58px;height:64px;background:linear-gradient(180deg,#9B7355,#8B6345);border-radius:50% 50% 44% 44%;overflow:hidden;">
+              <!-- Gözler -->
+              <div style="position:absolute;top:22px;left:12px;width:10px;height:5px;background:#5A3E28;border-radius:50%;"></div>
+              <div style="position:absolute;top:22px;right:12px;width:10px;height:5px;background:#5A3E28;border-radius:50%;"></div>
+              <!-- Kaşlar -->
+              <div style="position:absolute;top:16px;left:11px;width:12px;height:3px;background:#3A2010;border-radius:2px;transform:rotate(-3deg);"></div>
+              <div style="position:absolute;top:16px;right:11px;width:12px;height:3px;background:#3A2010;border-radius:2px;transform:rotate(3deg);"></div>
+              <!-- Ağız -->
+              <div style="position:absolute;top:40px;left:50%;transform:translateX(-50%);width:18px;height:5px;background:rgba(150,70,70,0.55);border-radius:0 0 9px 9px;"></div>
+            </div>
+            <!-- Kısa saç -->
+            <div style="position:absolute;bottom:136px;left:50%;transform:translateX(-50%);width:62px;height:22px;background:linear-gradient(180deg,#2A1A0A,#1E1408);border-radius:50% 50% 0 0;"></div>
+            <!-- Saç yan -->
+            <div style="position:absolute;bottom:126px;left:calc(50% - 35px);width:10px;height:20px;background:#1E1408;border-radius:0 0 6px 6px;"></div>
+            <div style="position:absolute;bottom:126px;right:calc(50% - 35px);width:10px;height:20px;background:#1E1408;border-radius:0 0 6px 6px;"></div>
+            <!-- Gözlük çerçevesi (detay) -->
+            <div style="position:absolute;bottom:105px;left:50%;transform:translateX(-50%);width:46px;height:14px;border:1.5px solid rgba(180,180,200,0.3);border-radius:4px;pointer-events:none;"></div>
+            <!-- Aktif göstergesi -->
+            <div style="position:absolute;top:8px;left:8px;width:7px;height:7px;border-radius:50%;background:#22C55E;box-shadow:0 0 6px #22C55E;animation:pulse 1.5s infinite;"></div>
+            <div class="human-nm">Mehmet A. · Aday #4821</div>
           </div>
+
+        </div><!-- /2-pane grid -->
+
+        <!-- Bottom bar -->
+        <div class="vc-bot2">
+          <div style="font-family:'JetBrains Mono',monospace;font-size:11px;color:rgba(255,255,255,0.35);">11:48 AM · AI Interviewer · Mülakat Oturumu</div>
+          <div class="vc-controls">
+            <div class="vc-ctrl"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.8)" stroke-width="2" stroke-linecap="round"><path d="M12 2a3 3 0 0 1 3 3v7a3 3 0 0 1-6 0V5a3 3 0 0 1 3-3z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2"/><line x1="12" y1="19" x2="12" y2="23"/></svg></div>
+            <div class="vc-ctrl"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.8)" stroke-width="2" stroke-linecap="round"><path d="M23 7l-7 5 7 5V7z"/><rect x="1" y="5" width="15" height="14" rx="2"/></svg></div>
+            <div class="vc-ctrl"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.8)" stroke-width="2" stroke-linecap="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg></div>
+            <div class="vc-ctrl vc-ctrl-end"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round"><path d="M10.68 13.31a16 16 0 0 0 3.41 2.6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7 2 2 0 0 1 1.72 2v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07C9.44 16.29 8.76 15.58 8.1 14.84A19.79 19.79 0 0 1 5 6.19 2 2 0 0 1 6.99 4h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L10.68 11.68"/><line x1="23" y1="1" x2="1" y2="23"/></svg></div>
+          </div>
+          <div class="vc-assist2"><div class="vc-assist2-dot"></div>Duygu Durum Analizi · Aktif</div>
         </div>
-        <div class="vc-bar">
-          <div class="vc-bar-pill">
-            <div class="vc-wave"><span></span><span></span><span></span><span></span><span></span><span></span></div>
-            Duygu Durum Analizi · Aktif
-          </div>
-          <div style="font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--dim2);">06:42 geçti</div>
-          <div style="display:flex;gap:8px;align-items:center;">
-            <div style="width:8px;height:8px;border-radius:50%;background:#9B4FFF;animation:pulse 1.5s infinite;"></div>
-            <span style="font-family:'JetBrains Mono',monospace;font-size:9px;color:#9B4FFF;font-weight:700;">CANLI</span>
-          </div>
-        </div>
+
       </div>
       <!-- Float badge -->
     </div>
@@ -408,59 +476,163 @@ h1.h-main .grad{background:linear-gradient(135deg,#9B4FFF,#C4A4FF,#E040FB);-webk
     <div class="sec-tag">Temel Özellikler</div>
     <h2 class="sec-h">Ne İşe <em>Yarıyor?</em></h2>
     <p class="sec-sub">İnsan mülakatçının tüm sürecini otomasyona devreden kapsamlı AI platformu.</p>
-    <div class="feat-grid">
-      <div class="fc" style="display:flex;flex-direction:column;padding:26px 24px 22px;background:var(--card);border:1px solid var(--border);border-radius:18px;transition:border-color 0.3s;"><div style="display:flex;align-items:flex-start;justify-content:space-between;gap:12px;margin-bottom:14px;"><div style="font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--dim2);letter-spacing:2px;padding-top:6px;">01</div><div style="width:44px;height:44px;border-radius:12px;background:linear-gradient(135deg,#1E3A5F,#2563EB);display:flex;align-items:center;justify-content:center;flex-shrink:0;"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg></div></div><div style="font-size:17px;font-weight:800;letter-spacing:-.4px;margin-bottom:8px;line-height:1.2;">9 Dilde Mülakat</div><p style="font-size:13px;color:var(--dim);line-height:1.75;font-weight:300;margin:0;">Türkçe, İngilizce, Almanca, Fransızca, Arapça ve daha fazlasında doğal dil mülakatı. Aday kendi dilinde rahat eder.</p></div>
-      <div class="fc" style="display:flex;flex-direction:column;padding:26px 24px 22px;background:var(--card);border:1px solid var(--border);border-radius:18px;transition:border-color 0.3s;"><div style="display:flex;align-items:flex-start;justify-content:space-between;gap:12px;margin-bottom:14px;"><div style="font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--dim2);letter-spacing:2px;padding-top:6px;">01</div><div style="width:44px;height:44px;border-radius:12px;background:linear-gradient(135deg,#9D174D,#DB2777);display:flex;align-items:center;justify-content:center;flex-shrink:0;"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9.5 2A2.5 2.5 0 0 1 12 4.5v15a2.5 2.5 0 0 1-4.96-.46 2.5 2.5 0 0 1-1.04-4.9 3 3 0 1 1 3.5-5.64"/><path d="M14.5 2A2.5 2.5 0 0 0 12 4.5v15a2.5 2.5 0 0 0 4.96-.46 2.5 2.5 0 0 0 1.04-4.9 3 3 0 1 0-3.5-5.64"/></svg></div></div><div style="font-size:17px;font-weight:800;letter-spacing:-.4px;margin-bottom:8px;line-height:1.2;">Duygu Durum Analizi</div><p style="font-size:13px;color:var(--dim);line-height:1.75;font-weight:300;margin:0;">Konuşma boyunca adayın duygu durumu, güven seviyesi ve tutarsızlıklar gerçek zamanlı analiz edilir. Derinlemesine psikolojik profil.</p></div>
-      <div class="fc" style="display:flex;flex-direction:column;padding:26px 24px 22px;background:var(--card);border:1px solid var(--border);border-radius:18px;transition:border-color 0.3s;"><div style="display:flex;align-items:flex-start;justify-content:space-between;gap:12px;margin-bottom:14px;"><div style="font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--dim2);letter-spacing:2px;padding-top:6px;">01</div><div style="width:44px;height:44px;border-radius:12px;background:linear-gradient(135deg,#1E3A5F,#1D4ED8);display:flex;align-items:center;justify-content:center;flex-shrink:0;"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 5H7a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2h-2M9 5a2 2 0 0 1 2-2h2a2 2 0 0 1 2 2M9 5h6M9 12h6M9 16h4"/></svg></div></div><div style="font-size:17px;font-weight:800;letter-spacing:-.4px;margin-bottom:8px;line-height:1.2;">Yapılandırılmış Raporlama</div><p style="font-size:13px;color:var(--dim);line-height:1.75;font-weight:300;margin:0;">Her mülakat sonrası yetkinlik bazlı rapor, skor kartı ve işe alım önerisi otomatik oluşturulur. ATS'e tek tıkla aktarım.</p></div>
+    <div class="feat-grid" style="grid-template-columns:repeat(3,1fr);">
+      <div class="fc" style="display:flex;flex-direction:column;padding:26px 24px 22px;background:var(--card);border:1px solid var(--border);border-radius:18px;transition:border-color 0.3s;"><div style="display:flex;align-items:flex-start;justify-content:space-between;gap:12px;margin-bottom:14px;"><div style="font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--dim2);letter-spacing:2px;padding-top:6px;">02</div><div style="width:44px;height:44px;border-radius:12px;background:linear-gradient(135deg,#1E3A5F,#2563EB);display:flex;align-items:center;justify-content:center;flex-shrink:0;"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg></div></div><div style="font-size:17px;font-weight:800;letter-spacing:-.4px;margin-bottom:8px;line-height:1.2;">9 Dilde Mülakat</div><p style="font-size:13px;color:var(--dim);line-height:1.75;font-weight:300;margin:0;">Türkçe, İngilizce, Almanca, Fransızca, Arapça ve daha fazlasında doğal dil mülakatı. Aday kendi dilinde rahat eder.</p></div>
+      <div class="fc" style="display:flex;flex-direction:column;padding:26px 24px 22px;background:var(--card);border:1px solid var(--border);border-radius:18px;transition:border-color 0.3s;"><div style="display:flex;align-items:flex-start;justify-content:space-between;gap:12px;margin-bottom:14px;"><div style="font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--dim2);letter-spacing:2px;padding-top:6px;">03</div><div style="width:44px;height:44px;border-radius:12px;background:linear-gradient(135deg,#9D174D,#DB2777);display:flex;align-items:center;justify-content:center;flex-shrink:0;"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9.5 2A2.5 2.5 0 0 1 12 4.5v15a2.5 2.5 0 0 1-4.96-.46 2.5 2.5 0 0 1-1.04-4.9 3 3 0 1 1 3.5-5.64"/><path d="M14.5 2A2.5 2.5 0 0 0 12 4.5v15a2.5 2.5 0 0 0 4.96-.46 2.5 2.5 0 0 0 1.04-4.9 3 3 0 1 0-3.5-5.64"/></svg></div></div><div style="font-size:17px;font-weight:800;letter-spacing:-.4px;margin-bottom:8px;line-height:1.2;">Duygu Durum Analizi</div><p style="font-size:13px;color:var(--dim);line-height:1.75;font-weight:300;margin:0;">Konuşma boyunca adayın duygu durumu, güven seviyesi ve tutarsızlıklar gerçek zamanlı analiz edilir. Derinlemesine psikolojik profil.</p></div>
+      <div class="fc" style="display:flex;flex-direction:column;padding:26px 24px 22px;background:var(--card);border:1px solid var(--border);border-radius:18px;transition:border-color 0.3s;"><div style="display:flex;align-items:flex-start;justify-content:space-between;gap:12px;margin-bottom:14px;"><div style="font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--dim2);letter-spacing:2px;padding-top:6px;">04</div><div style="width:44px;height:44px;border-radius:12px;background:linear-gradient(135deg,#1E3A5F,#1D4ED8);display:flex;align-items:center;justify-content:center;flex-shrink:0;"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 5H7a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2h-2M9 5a2 2 0 0 1 2-2h2a2 2 0 0 1 2 2M9 5h6M9 12h6M9 16h4"/></svg></div></div><div style="font-size:17px;font-weight:800;letter-spacing:-.4px;margin-bottom:8px;line-height:1.2;">Yapılandırılmış Raporlama</div><p style="font-size:13px;color:var(--dim);line-height:1.75;font-weight:300;margin:0;">Her mülakat sonrası yetkinlik bazlı rapor, skor kartı ve işe alım önerisi otomatik oluşturulur. ATS'e tek tıkla aktarım.</p></div>
       <div class="fc" style="display:flex;flex-direction:column;padding:26px 24px 22px;background:var(--card);border:1px solid var(--border);border-radius:18px;transition:border-color 0.3s;"><div style="display:flex;align-items:flex-start;justify-content:space-between;gap:12px;margin-bottom:14px;"><div style="font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--dim2);letter-spacing:2px;padding-top:6px;">01</div><div style="width:44px;height:44px;border-radius:12px;background:linear-gradient(135deg,#7B2FFF,#C4A4FF);display:flex;align-items:center;justify-content:center;flex-shrink:0;"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 12c-2-2.5-4-4-6-4a4 4 0 0 0 0 8c2 0 4-1.5 6-4z"/><path d="M12 12c2 2.5 4 4 6 4a4 4 0 0 0 0-8c-2 0-4 1.5-6 4z"/></svg></div></div><div style="font-size:17px;font-weight:800;letter-spacing:-.4px;margin-bottom:8px;line-height:1.2;">Sınırsız Kapasite</div><p style="font-size:13px;color:var(--dim);line-height:1.75;font-weight:300;margin:0;">Aynı anda binlerce adayla eş zamanlı mülakat. Hiçbir aday beklemiyor, fırsat kaçmıyor, skalabilite sınırsız.</p></div>
+      <div class="fc" style="display:flex;flex-direction:column;padding:26px 24px 22px;background:var(--card);border:1px solid var(--border);border-radius:18px;transition:border-color 0.3s;"><div style="display:flex;align-items:flex-start;justify-content:space-between;gap:12px;margin-bottom:14px;"><div style="font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--dim2);letter-spacing:2px;padding-top:6px;">05</div><div style="width:44px;height:44px;border-radius:12px;display:flex;align-items:center;justify-content:center;flex-shrink:0;background:linear-gradient(135deg,#5B21B6,#7B2FFF);"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/><path d="M15 5.5c.5-.5 1.5-.5 2 0s.5 1.5 0 2"/></svg></div></div><div style="font-size:17px;font-weight:800;letter-spacing:-.4px;margin-bottom:8px;line-height:1.2;">Avatar ile Mülakat</div><p style="font-size:13px;color:var(--dim);line-height:1.75;font-weight:300;margin:0;">İnsan gibi görünen AI avatar ile video mülakat deneyimi. Aday karşısında gerçek bir mülakatçı hissi — hem aday deneyimi hem de marka prestiji için tasarlandı.</p></div>
+      <div class="fc" style="display:flex;flex-direction:column;padding:26px 24px 22px;background:var(--card);border:1px solid var(--border);border-radius:18px;transition:border-color 0.3s;"><div style="display:flex;align-items:flex-start;justify-content:space-between;gap:12px;margin-bottom:14px;"><div style="font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--dim2);letter-spacing:2px;padding-top:6px;">06</div><div style="width:44px;height:44px;border-radius:12px;display:flex;align-items:center;justify-content:center;flex-shrink:0;background:linear-gradient(135deg,#065F46,#059669);"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg></div></div><div style="font-size:17px;font-weight:800;letter-spacing:-.4px;margin-bottom:8px;line-height:1.2;">Aday Paylaşma</div><p style="font-size:13px;color:var(--dim);line-height:1.75;font-weight:300;margin:0;">Mülakat raporlarını ve aday profillerini tek tıkla yöneticiler veya iş ortakları ile paylaşın. Onay akışı, yorum ve karar notları eklenebilir.</p></div>
     </div>
-
-    <!-- BONUS: Avatar + Share -->
-    <div class="bonus-row">
-      <div class="bonus-card">
-        <div style="width:44px;height:44px;border-radius:12px;background:linear-gradient(135deg,#5B21B6,#7B2FFF);display:flex;align-items:center;justify-content:center;margin-bottom:10px;flex-shrink:0;"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/><path d="M15 5.5c.5-.5 1.5-.5 2 0s.5 1.5 0 2"/></svg></div>
-        <div>
-          <div class="bonus-t">Avatar ile Mülakat</div>
-          <p class="bonus-d">İnsan gibi görünen AI avatar ile video mülakat deneyimi. Aday karşısında gerçek bir mülakatçı hissi — hem aday deneyimi hem de marka prestiji için tasarlandı.</p>
-        </div>
-      </div>
-      <div class="bonus-card">
-        <div style="width:44px;height:44px;border-radius:12px;background:linear-gradient(135deg,#065F46,#059669);display:flex;align-items:center;justify-content:center;margin-bottom:10px;flex-shrink:0;"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg></div>
-        <div>
-          <div class="bonus-t">Aday Paylaşma</div>
-          <p class="bonus-d">Mülakat raporlarını ve aday profillerini tek tıkla yöneticiler veya iş ortakları ile paylaşın. Onay akışı, yorum ve karar notları eklenebilir.</p>
-        </div>
-      </div>
     </div>
   </div>
 </section>
 
-<!-- PARTICIPATION FLOW -->
+
+<!-- KATILIM ORANI — timeline + metric design -->
 <section class="sec" style="padding-top:0;background:var(--bg2);">
   <div class="sec-in" style="padding-top:88px;">
     <div class="sec-tag">Katılım Oranı</div>
     <h2 class="sec-h">Mükemmel Mülakat <em>Katılım Oranı</em></h2>
     <p class="sec-sub">Synaps AI ile mülakat katılım oranı sektörün hep üstünde — çünkü sistematik ve otomatik hatırlatma zinciri çalışır.</p>
-    <div class="part-flow">
-      <div class="pf-step">
-        <div class="pf-circle">01</div>
-        <div class="pf-t">E-posta ile İlk Hatırlatma</div>
-        <p class="pf-d">Mülakat atandığında aday anında bilgilendirilir, link ve saat iletilir.</p>
+
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:48px;margin-top:52px;align-items:center;">
+
+      <!-- Sol: büyük metrik + funnel bars -->
+      <div>
+        <div style="background:var(--card);border:1px solid rgba(123,47,255,0.25);border-radius:20px;padding:36px 32px;position:relative;overflow:hidden;">
+          <div style="position:absolute;top:-40px;right:-40px;width:160px;height:160px;border-radius:50%;background:radial-gradient(circle,rgba(123,47,255,0.15),transparent 70%);pointer-events:none;"></div>
+          <div style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:3px;color:#9B4FFF;margin-bottom:16px;">SEKTÖR ORTALAMASININ ÜSTÜNDEKİ KATILIM</div>
+          <div style="font-size:72px;font-weight:900;letter-spacing:-4px;line-height:1;background:linear-gradient(135deg,#9B4FFF,#C4A4FF,#E040FB);-webkit-background-clip:text;-webkit-text-fill-color:transparent;margin-bottom:6px;">%94</div>
+          <div style="font-size:14px;color:var(--dim);font-weight:300;margin-bottom:32px;">ortalama mülakat katılım oranı</div>
+
+          <!-- Funnel: her kanal için katkı barı -->
+          <div style="display:flex;flex-direction:column;gap:12px;">
+            <div>
+              <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:5px;">
+                <span style="font-size:12px;font-weight:600;">E-posta Bildirimi</span>
+                <span style="font-family:'JetBrains Mono',monospace;font-size:11px;color:#9B4FFF;">+48%</span>
+              </div>
+              <div style="height:6px;border-radius:99px;background:var(--border);overflow:hidden;">
+                <div style="width:48%;height:100%;border-radius:99px;background:linear-gradient(90deg,#7B2FFF,#C4A4FF);"></div>
+              </div>
+            </div>
+            <div>
+              <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:5px;">
+                <span style="font-size:12px;font-weight:600;">SMS Hatırlatma</span>
+                <span style="font-family:'JetBrains Mono',monospace;font-size:11px;color:#9B4FFF;">+28%</span>
+              </div>
+              <div style="height:6px;border-radius:99px;background:var(--border);overflow:hidden;">
+                <div style="width:28%;height:100%;border-radius:99px;background:linear-gradient(90deg,#C4A4FF,#E040FB);"></div>
+              </div>
+            </div>
+            <div>
+              <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:5px;">
+                <span style="font-size:12px;font-weight:600;">AI Call</span>
+                <span style="font-family:'JetBrains Mono',monospace;font-size:11px;color:#9B4FFF;">+12%</span>
+              </div>
+              <div style="height:6px;border-radius:99px;background:var(--border);overflow:hidden;">
+                <div style="width:12%;height:100%;border-radius:99px;background:linear-gradient(90deg,#E040FB,#FF80AB);"></div>
+              </div>
+            </div>
+            <div>
+              <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:5px;">
+                <span style="font-size:12px;font-weight:600;">WhatsApp Business</span>
+                <span style="font-family:'JetBrains Mono',monospace;font-size:11px;color:#9B4FFF;">+6%</span>
+              </div>
+              <div style="height:6px;border-radius:99px;background:var(--border);overflow:hidden;">
+                <div style="width:6%;height:100%;border-radius:99px;background:linear-gradient(90deg,#059669,#34D399);"></div>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
-      <div class="pf-step">
-        <div class="pf-circle">02</div>
-        <div class="pf-t">SMS ile İkinci Hatırlatma</div>
-        <p class="pf-d">Mülakat tamamlanmadıysa ertesi gün aday SMS ile otomatik hatırlatılır.</p>
+
+      <!-- Sağ: dikey zincir timeline -->
+      <div style="position:relative;padding-left:20px;">
+        <!-- Dikey çizgi -->
+        <div style="position:absolute;left:36px;top:20px;bottom:20px;width:2px;background:linear-gradient(180deg,#7B2FFF,#C4A4FF,#E040FB,#059669);border-radius:2px;"></div>
+
+        <!-- Step 1 -->
+        <div style="display:flex;gap:24px;align-items:flex-start;margin-bottom:32px;position:relative;">
+          <div style="width:52px;height:52px;border-radius:50%;background:linear-gradient(135deg,#3B0764,#7B2FFF);display:flex;align-items:center;justify-content:center;flex-shrink:0;border:3px solid var(--bg2);z-index:1;">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#C4A4FF" stroke-width="2" stroke-linecap="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+          </div>
+          <div style="padding-top:8px;">
+            <div style="font-family:'JetBrains Mono',monospace;font-size:10px;color:#9B4FFF;letter-spacing:2px;margin-bottom:4px;">ADIM 01 — ANINDA</div>
+            <div style="font-size:15px;font-weight:800;letter-spacing:-.3px;margin-bottom:4px;">E-posta ile İlk Bildirimi</div>
+            <p style="font-size:13px;color:var(--dim);line-height:1.65;margin:0;font-weight:300;">Mülakat atandığında aday anında bilgilendirilir, link ve saat iletilir.</p>
+          </div>
+        </div>
+
+        <!-- Step 2 -->
+        <div style="display:flex;gap:24px;align-items:flex-start;margin-bottom:32px;position:relative;">
+          <div style="width:52px;height:52px;border-radius:50%;background:linear-gradient(135deg,#5B21B6,#9B4FFF);display:flex;align-items:center;justify-content:center;flex-shrink:0;border:3px solid var(--bg2);z-index:1;">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#E0C4FF" stroke-width="2" stroke-linecap="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+          </div>
+          <div style="padding-top:8px;">
+            <div style="font-family:'JetBrains Mono',monospace;font-size:10px;color:#9B4FFF;letter-spacing:2px;margin-bottom:4px;">ADIM 02 — ERTESI GÜN</div>
+            <div style="font-size:15px;font-weight:800;letter-spacing:-.3px;margin-bottom:4px;">SMS ile Hatırlatma</div>
+            <p style="font-size:13px;color:var(--dim);line-height:1.65;margin:0;font-weight:300;">Mülakat tamamlanmadıysa ertesi gün aday SMS ile otomatik hatırlatılır.</p>
+          </div>
+        </div>
+
+        <!-- Step 3 -->
+        <div style="display:flex;gap:24px;align-items:flex-start;margin-bottom:32px;position:relative;">
+          <div style="width:52px;height:52px;border-radius:50%;background:linear-gradient(135deg,#831843,#E040FB);display:flex;align-items:center;justify-content:center;flex-shrink:0;border:3px solid var(--bg2);z-index:1;">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#FFB3D9" stroke-width="2" stroke-linecap="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.4 2 2 0 0 1 3.58 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 9.91a16 16 0 0 0 6.16 6.16l.91-.91a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+          </div>
+          <div style="padding-top:8px;">
+            <div style="font-family:'JetBrains Mono',monospace;font-size:10px;color:#9B4FFF;letter-spacing:2px;margin-bottom:4px;">ADIM 03 — 48 SAAT</div>
+            <div style="font-size:15px;font-weight:800;letter-spacing:-.3px;margin-bottom:4px;">AI Call ile Sesli Bağlantı</div>
+            <p style="font-size:13px;color:var(--dim);line-height:1.65;margin:0;font-weight:300;">Katılım sağlanmazsa adaya AI Call ile otomatik sesli iletişim kurulur.</p>
+          </div>
+        </div>
+
+        <!-- Step 4 -->
+        <div style="display:flex;gap:24px;align-items:flex-start;position:relative;">
+          <div style="width:52px;height:52px;border-radius:50%;background:linear-gradient(135deg,#065F46,#059669);display:flex;align-items:center;justify-content:center;flex-shrink:0;border:3px solid var(--bg2);z-index:1;">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#6EE7B7" stroke-width="2" stroke-linecap="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
+          </div>
+          <div style="padding-top:8px;">
+            <div style="font-family:'JetBrains Mono',monospace;font-size:10px;color:#9B4FFF;letter-spacing:2px;margin-bottom:4px;">ADIM 04 — SON ADIM</div>
+            <div style="font-size:15px;font-weight:800;letter-spacing:-.3px;margin-bottom:4px;">WhatsApp Business</div>
+            <p style="font-size:13px;color:var(--dim);line-height:1.65;margin:0;font-weight:300;">Son adımda WhatsApp Business mesajıyla iletişim tamamlanır ve katılım sağlanır.</p>
+          </div>
+        </div>
+
       </div>
-      <div class="pf-step">
-        <div class="pf-circle">03</div>
-        <div class="pf-t">AI Call ile Bağlantı</div>
-        <p class="pf-d">Katılım sağlanmazsa adaya AI Call ile sesli iletişim kurulur.</p>
+    </div>
+  </div>
+</section>
+
+<!-- NASIL ÇALIŞIR -->
+<section class="sec" style="background:var(--bg);">
+  <div class="sec-in">
+    <div class="sec-tag">Süreç</div>
+    <h2 class="sec-h">Nasıl <em>Çalışır?</em></h2>
+    <p class="sec-sub">Başvurudan işe alıma kadar tüm süreç otomatik ve izlenebilir.</p>
+    <div class="journey-steps" style="display:flex;align-items:flex-start;justify-content:center;margin-top:56px;position:relative;">
+      <div style="position:absolute;top:32px;left:10%;right:10%;height:2px;background:linear-gradient(90deg,#7B2FFF,#C4A4FF,#E040FB);z-index:0;"></div>
+      <div class="j-step" style="flex:1;display:flex;flex-direction:column;align-items:center;text-align:center;position:relative;z-index:1;">
+        <div style="width:64px;height:64px;border-radius:50%;background:linear-gradient(135deg,#7B2FFF,#5A1ECC);display:flex;align-items:center;justify-content:center;font-family:'JetBrains Mono',monospace;font-size:18px;font-weight:700;color:#fff;margin-bottom:20px;box-shadow:0 0 0 6px var(--bg),0 0 0 8px rgba(123,47,255,0.2);">01</div>
+        <div style="font-size:15px;font-weight:800;letter-spacing:-.3px;margin-bottom:8px;">Pozisyon Aç</div>
+        <p style="font-size:13px;color:var(--dim);line-height:1.7;max-width:160px;margin:0;font-weight:300;">İş tanımı girin, kriterlerinizi belirleyin. AI otomatik aday profili oluşturur.</p>
       </div>
-      <div class="pf-step">
-        <div class="pf-circle">04</div>
-        <div class="pf-t">WhatsApp Business</div>
-        <p class="pf-d">Son adımda WhatsApp Business mesajıyla iletişim tamamlanır.</p>
+      <div class="j-step" style="flex:1;display:flex;flex-direction:column;align-items:center;text-align:center;position:relative;z-index:1;">
+        <div style="width:64px;height:64px;border-radius:50%;background:linear-gradient(135deg,#7B2FFF,#5A1ECC);display:flex;align-items:center;justify-content:center;font-family:'JetBrains Mono',monospace;font-size:18px;font-weight:700;color:#fff;margin-bottom:20px;box-shadow:0 0 0 6px var(--bg),0 0 0 8px rgba(123,47,255,0.2);">02</div>
+        <div style="font-size:15px;font-weight:800;letter-spacing:-.3px;margin-bottom:8px;">Başvuruları Topla</div>
+        <p style="font-size:13px;color:var(--dim);line-height:1.7;max-width:160px;margin:0;font-weight:300;">Tüm kanallardan gelen başvurular otomatik toplanır, AI eşleşme skoru hesaplar.</p>
+      </div>
+      <div class="j-step" style="flex:1;display:flex;flex-direction:column;align-items:center;text-align:center;position:relative;z-index:1;">
+        <div style="width:64px;height:64px;border-radius:50%;background:linear-gradient(135deg,#7B2FFF,#5A1ECC);display:flex;align-items:center;justify-content:center;font-family:'JetBrains Mono',monospace;font-size:18px;font-weight:700;color:#fff;margin-bottom:20px;box-shadow:0 0 0 6px var(--bg),0 0 0 8px rgba(123,47,255,0.2);">03</div>
+        <div style="font-size:15px;font-weight:800;letter-spacing:-.3px;margin-bottom:8px;">AI ile Değerlendir</div>
+        <p style="font-size:13px;color:var(--dim);line-height:1.7;max-width:160px;margin:0;font-weight:300;">Synaps mülakat araçları devreye girer. Sonuçlar otomatik ATS'e aktarılır.</p>
+      </div>
+      <div class="j-step" style="flex:1;display:flex;flex-direction:column;align-items:center;text-align:center;position:relative;z-index:1;">
+        <div style="width:64px;height:64px;border-radius:50%;background:linear-gradient(135deg,#7B2FFF,#5A1ECC);display:flex;align-items:center;justify-content:center;font-family:'JetBrains Mono',monospace;font-size:18px;font-weight:700;color:#fff;margin-bottom:20px;box-shadow:0 0 0 6px var(--bg),0 0 0 8px rgba(123,47,255,0.2);">04</div>
+        <div style="font-size:15px;font-weight:800;letter-spacing:-.3px;margin-bottom:8px;">Teklif Gönder</div>
+        <p style="font-size:13px;color:var(--dim);line-height:1.7;max-width:160px;margin:0;font-weight:300;">En iyi aday shortlist'ten teklif aşamasına geçer. Dijital sözleşme ve onboarding başlar.</p>
       </div>
     </div>
   </div>
@@ -492,24 +664,44 @@ h1.h-main .grad{background:linear-gradient(135deg,#9B4FFF,#C4A4FF,#E040FB);-webk
     <h2 class="sec-h">Kurumsal Düzeyde <em>Güvenlik</em></h2>
     <p class="sec-sub">Aday verilerinin ve mülakat içeriklerinin korunması için çok katmanlı güvenlik altyapısı.</p>
     <div class="security-grid">
+
       <div class="sec-card">
-        <div style="width:36px;height:36px;border-radius:10px;background:linear-gradient(135deg,#7B2FFF,#9B4FFF);display:flex;align-items:center;justify-content:center;margin-bottom:10px;flex-shrink:0;"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg></div>
+        <div style="display:flex;align-items:flex-start;justify-content:space-between;gap:12px;margin-bottom:14px;">
+          <div style="font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--dim2);letter-spacing:2px;padding-top:6px;">01</div>
+          <div style="width:44px;height:44px;border-radius:12px;background:linear-gradient(135deg,#7B2FFF,#9B4FFF);display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+          </div>
+        </div>
         <div class="sec-card-t">Uçtan Uca Şifreleme</div>
         <p class="sec-card-d">Tüm mülakat verileri AES-256 ile şifreli iletilir ve saklanır. Hiçbir üçüncü taraf erişimi olmaz.</p>
       </div>
+
       <div class="sec-card">
-        <div style="width:36px;height:36px;border-radius:10px;background:linear-gradient(135deg,#1E3A5F,#1D4ED8);display:flex;align-items:center;justify-content:center;margin-bottom:10px;flex-shrink:0;"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><polyline points="9 12 11 14 15 10"/></svg></div>
+        <div style="display:flex;align-items:flex-start;justify-content:space-between;gap:12px;margin-bottom:14px;">
+          <div style="font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--dim2);letter-spacing:2px;padding-top:6px;">02</div>
+          <div style="width:44px;height:44px;border-radius:12px;background:linear-gradient(135deg,#1E3A5F,#1D4ED8);display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><polyline points="9 12 11 14 15 10"/></svg>
+          </div>
+        </div>
         <div class="sec-card-t">KVKK & GDPR Uyumu</div>
         <p class="sec-card-d">Türkiye ve AB veri koruma mevzuatına tam uyumlu. Aday onayları dijital olarak kayıt altına alınır.</p>
       </div>
+
       <div class="sec-card">
-        <div style="width:36px;height:36px;border-radius:10px;background:linear-gradient(135deg,#065F46,#059669);display:flex;align-items:center;justify-content:center;margin-bottom:10px;flex-shrink:0;"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg></div>
+        <div style="display:flex;align-items:flex-start;justify-content:space-between;gap:12px;margin-bottom:14px;">
+          <div style="font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--dim2);letter-spacing:2px;padding-top:6px;">03</div>
+          <div style="width:44px;height:44px;border-radius:12px;background:linear-gradient(135deg,#065F46,#059669);display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+          </div>
+        </div>
         <div class="sec-card-t">SSO & Rol Bazlı Erişim</div>
         <p class="sec-card-d">Kurumsal SSO entegrasyonu, iki faktörlü kimlik doğrulama, departman bazlı veri erişim yönetimi.</p>
       </div>
+
     </div>
   </div>
 </section>
+
 
 <!-- CTA -->
 
@@ -574,7 +766,7 @@ h1.h-main .grad{background:linear-gradient(135deg,#9B4FFF,#C4A4FF,#E040FB);-webk
         Synaps Yapay Zeka Teknolojileri A.Ş.<br>
         Barbaros Mah. Şebboy Sok. No:4/1<br>
         İç Kapı No:2 Ataşehir/İstanbul<br>
-        <a href="/cdn-cgi/l/email-protection#5337362027363813202a3d322320323a7d323a" style="color:rgba(196,164,255,0.6);text-decoration:none;"><span class="__cf_email__" data-cfemail="80e4e5f3f4e5ebc0f3f9eee1f0f3e1e9aee1e9">[email&#160;protected]</span></a>
+        <a href="mailto:destek@synapsai.ai" style="color:rgba(196,164,255,0.6);text-decoration:none;">destek@synapsai.ai</a>
       </div>
       <div class="footer-socials" style="display:flex;gap:10px;margin-top:16px;">
   <a href="https://x.com/synapsai" target="_blank" rel="noopener" style="width:32px;height:32px;border-radius:8px;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.1);display:flex;align-items:center;justify-content:center;color:rgba(255,255,255,0.5);transition:all 0.2s;" onmouseover="this.style.background='rgba(123,47,255,0.2)';this.style.color='white'" onmouseout="this.style.background='rgba(255,255,255,0.06)';this.style.color='rgba(255,255,255,0.5)'">
@@ -634,16 +826,18 @@ h1.h-main .grad{background:linear-gradient(135deg,#9B4FFF,#C4A4FF,#E040FB);-webk
     <button onclick="closeLegal()" style="position:absolute;top:20px;right:20px;background:rgba(255,255,255,0.08);border:none;color:white;width:36px;height:36px;border-radius:50%;cursor:pointer;font-size:18px;display:flex;align-items:center;justify-content:center;line-height:1;">×</button>
     <div id="legalContent" style="color:rgba(255,255,255,0.8);font-size:13.5px;line-height:1.85;"></div>
   </div>
-</div>
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+</div><script>
 var legalTexts = {
-  kullanim: {title:"Video Mülakat Hizmeti Sözleşmesi", body:`<h3 style="color:#C4A4FF;margin-bottom:8px">1. Taraflar</h3><p>Synaps Yapay Zeka Firması Anonim Şirketi<br>Adres: Barbaros Mah. Şebboy Sok. No:4/1 İç Kapı No:2 Ataşehir/İstanbul<br>Vergi Dairesi: Göztepe Vergi Dairesi | Vergi No: 6421040257<br>Ticaret Sicil No: 11322 | E-posta: destek@synapsai.ai</p><h3 style="color:#C4A4FF;margin:20px 0 8px">2. Sözleşmenin Konusu</h3><p>Synaps tarafından Aday'a sunulan one-way video mülakat hizmetinin kullanımına ilişkin şartları düzenlemektedir.</p><h3 style="color:#C4A4FF;margin:20px 0 8px">3. Hizmetin Kapsamı</h3><p>Synaps, Aday'a şu hizmetleri sunar: video mülakat kaydı, cevapların değerlendirilmesi, kayıtların işverenlere iletilmesi.</p><h3 style="color:#C4A4FF;margin:20px 0 8px">4–10. Yükümlülükler, Gizlilik & Yürürlük</h3><p>Hizmet yalnızca profesyonel amaçlarla kullanılabilir. Kişisel veriler KVKK kapsamında işlenir. Uyuşmazlıklarda İstanbul Mahkemeleri yetkilidir.</p>`},
-  gizlilik: {title:"Gizlilik Politikası", body:`<h3 style="color:#C4A4FF;margin-bottom:8px">Veri Sorumlusu</h3><p>Synaps Yapay Zeka Firması Anonim Şirketi — Barbaros Mah. Şebboy Sok. No:4/1 İç Kapı No:2 Ataşehir/İstanbul — Vergi No: 6421040257</p><h3 style="color:#C4A4FF;margin:20px 0 8px">Gizli Bilgilerin Kapsamı</h3><p>Ticari, finansal, teknik her türlü bilgi; kişisel veriler, iş planları, veritabanları ve fikri mülkiyet hakları gizli bilgi kapsamındadır.</p><h3 style="color:#C4A4FF;margin:20px 0 8px">Koruma Yükümlülükleri</h3><p>Gizli bilgiler en yüksek düzeyde korunur, üçüncü taraflara açıklanmaz. Güvenlik ihlallerinde 24 saat içinde bildirim yapılır. Başvuru: <a href="mailto:destek@synapsai.ai" style="color:#C4A4FF">destek@synapsai.ai</a></p>`},
-  cerez: {title:"Çerez Politikası", body:`<h3 style="color:#C4A4FF;margin-bottom:8px">Çerez Nedir?</h3><p>Çerezler, web siteleri tarafından tarayıcınıza gönderilen küçük veri dosyalarıdır.</p><h3 style="color:#C4A4FF;margin:20px 0 8px">Kullandığımız Çerezler</h3><p><strong style="color:#C4A4FF">Zorunlu:</strong> Sitenin temel işlevleri için.<br><strong style="color:#C4A4FF">Performans:</strong> Google Analytics — kullanım analizi.<br><strong style="color:#C4A4FF">Fonksiyonel:</strong> Kullanıcı tercihlerini hatırlar.<br><strong style="color:#C4A4FF">Reklam:</strong> Hedeflenmiş reklamlar için.</p><h3 style="color:#C4A4FF;margin:20px 0 8px">Yönetim & İletişim</h3><p>Tarayıcı ayarlarınızdan çerezleri yönetebilirsiniz. İletişim: <a href="mailto:destek@synapsai.ai" style="color:#C4A4FF">destek@synapsai.ai</a></p>`},
-  aydinlatma: {title:"Aydınlatma Metni", body:`<p>Synaps Yapay Zekâ Firması A.Ş. olarak KVKK'nın 10. maddesi kapsamında aydınlatma yükümlülüğümüzü yerine getiriyoruz.</p><h3 style="color:#C4A4FF;margin:20px 0 8px">İşlenen Veriler</h3><p><strong style="color:#C4A4FF">Zorunlu Çerezler:</strong> KVKK md. 5/2(c)/(f) kapsamında.<br><strong style="color:#C4A4FF">Performans:</strong> Açık rızanızla — Google Analytics (400 gün), Hotjar (30 gün).<br><strong style="color:#C4A4FF">Pazarlama:</strong> Açık rızanızla — dönüşüm takibi.</p><h3 style="color:#C4A4FF;margin:20px 0 8px">Haklarınız</h3><p>Verilerinize erişme, düzeltme, silme ve itiraz hakları. Başvuru: <a href="mailto:destek@synapsai.ai" style="color:#C4A4FF">destek@synapsai.ai</a></p>`},
-  mesafeli: {title:"Mesafeli Satış Sözleşmesi", body:`<h3 style="color:#C4A4FF;margin-bottom:8px">1. Taraflar</h3><p>Satıcı: SYNAPS YAPAY ZEKA TEKNOLOJİLERİ ANONİM ŞİRKETİ<br>Barbaros Mah. Şebboy Sok. No:4/1 İç Kapı No:2 Ataşehir/İstanbul<br>E-posta: destek@synapsai.ai</p><h3 style="color:#C4A4FF;margin:20px 0 8px">2–13. Konu, Hizmet & Beyanlar</h3><p>Alıcı'nın elektronik ortamda sipariş ettiği dijital hizmetin satış ve teslimine ilişkin şartları düzenler. Satıcı hizmeti Tüketici Mevzuatı'na uygun sunar.</p><h3 style="color:#C4A4FF;margin:20px 0 8px">14–18. Ödeme, Cayma & Uyuşmazlıklar</h3><p>Fiyata vergiler dahildir. Hizmet ifasına başlanmamışsa 14 gün cayma hakkı mevcuttur. Uyuşmazlıklarda Tüketici Hakem Heyetleri yetkilidir.</p>`},
-  sss: {title:"Sıkça Sorulan Sorular", body:`<div class="sss-item open"><p class="sss-q">Synaps'ı neden kullanmalıyım? <span class="sss-arrow">▾</span></p><p class="sss-a">Synaps, mülakat sürecini hızlandırır, esneklik sağlar ve adayları adil biçimde değerlendirmenize yardımcı olur. Zaman ve maliyet tasarrufu sağlar.</p></div><div class="sss-item"><p class="sss-q">Synaps hangi cihazlarla uyumludur? <span class="sss-arrow">▾</span></p><p class="sss-a">Synaps, bilgisayar ve tablet gibi tüm modern cihazlarla uyumludur.</p></div><div class="sss-item"><p class="sss-q">Mülakat kayıtları ne kadar süre saklanır? <span class="sss-arrow">▾</span></p><p class="sss-a">Mülakat kayıtlarınız abonelik planınıza göre belirlenen süre boyunca güvenli şekilde saklanır.</p></div><div class="sss-item"><p class="sss-q">Yapay zeka değerlendirmesi nasıl çalışır? <span class="sss-arrow">▾</span></p><p class="sss-a">Yapay zeka, adayların video yanıtlarını analiz eder, puanlar ve yorumlar.</p></div><div class="sss-item"><p class="sss-q">Gizlilik nasıl sağlanır? <span class="sss-arrow">▾</span></p><p class="sss-a">Tüm veriler şifrelenerek güvenli sunucularda saklanır, yalnızca yetkili kişilerin erişimine açılır.</p></div><div class="sss-item"><p class="sss-q">Fiyatlandırma hakkında bilgi alabilir miyim? <span class="sss-arrow">▾</span></p><p class="sss-a">Fiyatlandırma için <a href="mailto:destek@synapsai.ai" style="color:#C4A4FF">destek@synapsai.ai</a> adresimizden ulaşabilirsiniz.</p></div>`}
+  kullanim: {title:'Video Mülakat Hizmeti Sözleşmesi', body:'<div class="legal-section"><h3>1. Taraflar</h3><p>İşbu Hizmet Sözleşmesi aşağıdaki taraflar arasında akdedilmiştir:</p><p><strong>Synaps Yapay Zeka Firması Anonim Şirketi</strong><br>Adres: Göztepe Mah. Pınar Sok. No.4/13 Kadıköy<br>Vergi Dairesi: Göztepe Vergi Dairesi | Vergi Numarası: 6421040257<br>Ticaret Sicil Numarası: 11322 | E-posta: info@synapsai.ai<br>(Bundan sonra "Synaps" olarak anılacaktır.)</p><p>Aday — (Bundan sonra "Aday" olarak anılacaktır.)</p></div><div class="legal-section"><h3>2. Sözleşmenin Konusu</h3><p>İşbu Sözleşme, Synaps tarafından Aday\'a sunulan one-way video mülakat hizmetinin ("Hizmet") kullanımına ilişkin şartları ve koşulları düzenlemektedir.</p></div><div class="legal-section"><h3>3. Hizmetin Kapsamı</h3><ul><li>Aday\'ın belirlenen platform üzerinden video mülakat kaydı yapabilmesi</li><li>Aday\'ın mülakat sürecinde verdiği cevapların kaydedilmesi ve değerlendirilmesi</li><li>Aday\'ın mülakat kayıtlarının işverenlere iletilmesi</li></ul></div><div class="legal-section"><h3>4. Aday\'ın Yükümlülükleri</h3><ul><li>Hizmet\'i yalnızca kişisel ve profesyonel amaçlarla kullanmak</li><li>Hizmet\'i kullanırken doğru ve güncel bilgiler sağlamak</li><li>Hizmet\'in kullanımına ilişkin tüm yerel ve ulusal yasalara uymak</li></ul></div><div class="legal-section"><h3>5. Kişisel Verilerin Korunması</h3><p>Synaps, Aday\'ın kişisel verilerini 6698 sayılı KVKK ve ilgili mevzuata uygun olarak işleyecektir.</p></div><div class="legal-section"><h3>6. Fikri Mülkiyet Hakları</h3><p>Hizmet kapsamında sunulan tüm yazılım, içerik ve materyallerin fikri mülkiyet hakları Synaps\'a aittir. Aday, bu hakları ihlal etmeyeceğini kabul eder.</p></div><div class="legal-section"><h3>7. Sözleşmenin Süresi ve Feshi</h3><p>İşbu Sözleşme, Aday\'ın Hizmet\'i kullanmaya başladığı tarihte yürürlüğe girer. Synaps, Aday\'ın Sözleşme\'ye aykırı davranması durumunda Hizmet\'i derhal durdurma hakkına sahiptir.</p></div><div class="legal-section"><h3>8. Sorumluluğun Sınırlandırılması</h3><p>Synaps, Hizmet\'in kesintisiz veya hatasız olacağını garanti etmez.</p></div><div class="legal-section"><h3>9. Uyuşmazlıkların Çözümü</h3><p>İşbu Sözleşme\'den doğabilecek uyuşmazlıklarda İstanbul Mahkemeleri yetkilidir. Türk Hukuku uygulanır.</p></div><div class="legal-section"><h3>10. Muhtelif Hükümler</h3><p>İşbu Sözleşme tarafların yazılı onayı olmadan değiştirilemez.</p></div><div class="legal-section"><h3>11. İletişim</h3><p>E-posta: info@synapsai.ai</p></div><div class="legal-section"><h3>12. Yürürlük</h3><p>İşbu Sözleşme, taraflarca elektronik ortamda onaylandığı tarihte yürürlüğe girer.</p></div>'},
+  gizlilik: {title:'Gizlilik Politikası', body:'<div class="legal-section"><h3>1. Taraflar</h3><p><strong>1.1. Synaps Yapay Zeka Firması Anonim Şirketi</strong><br>Adres: Göztepe Mah. Pınar Sok. No.4/13 Kadıköy/Göztepe<br>Vergi Dairesi / No: Göztepe Vergi Dairesi / 6421040257<br>Ticaret Sicil No: 11322</p><p><strong>1.2.</strong> Kullanıcı taraf "KULLANICI" olarak anılacaktır.</p></div><div class="legal-section"><h3>2. Sözleşmenin Konusu</h3><p>Tarafların gizli bilgilerini koruma, üçüncü taraflara ifşa etmeme yükümlülüklerini ve kişisel veri işleme ile paylaşımına ilişkin düzenlemeleri kapsamaktadır.</p></div><div class="legal-section"><h3>3. Gizli Bilgilerin Kapsamı</h3><p>Ticari, finansal ve teknik her türlü bilgi; kişisel bilgiler, finansal veriler, iş planları, veritabanları, ticari sırlar, bilgisayar programları, know-how, 6698 sayılı KVKK kapsamındaki kişisel veriler ve taraflara ait tüm bilgi ve stratejiler gizli bilgi kapsamındadır.</p></div><div class="legal-section"><h3>4. Gizli Sayılmayan Bilgiler</h3><p>Gizlilik yükümlülüğü ihlal edilmeksizin kamuya açık hale gelen bilgiler gizli sayılmaz.</p></div><div class="legal-section"><h3>5–6. Gizli Bilgilerin Sahipliği ve Korunması</h3><p>Her taraf kendi gizli bilgileri üzerindeki tüm haklarını saklı tutar. Alıcı taraf, gizli bilgileri en yüksek düzeyde gizli tutmayı ve üçüncü taraflara açıklamamayı taahhüt eder. Güvenlik ihlali halinde 24 saat içinde yazılı bildirim yapılır.</p></div><div class="legal-section"><h3>7–10. Veri Aktarımı ve Saklama</h3><p>Kişisel veriler açık yazılı izin olmaksızın üçüncü kişilere aktarılamaz. KVKK ve ilgili mevzuat çerçevesinde işlenir. Yurt dışına veri aktarımı için yazılı izin şarttır.</p></div><div class="legal-section"><h3>11–14. Denetim ve Kişisel Verilerin Korunması</h3><p>Güvenlik ihlali halinde 24 saat içinde bildirim zorunludur. İlgili kişilerin başvuruları 72 saat içinde iletilir.<br>Başvuru: <a href="mailto:destek@synapsai.ai" style="color:#C4A4FF">destek@synapsai.ai</a></p></div>'},
+  cerez: {title:'Çerez Politikası', body:'<div class="legal-section"><p>Synaps Yapay Zekâ Firması Anonim Şirketi olarak kullanıcılarımızın gizliliğine önem veriyoruz.</p></div><div class="legal-section"><h3>1. Çerez Nedir?</h3><p>Çerezler, web siteleri tarafından tarayıcınıza gönderilen ve cihazınızda saklanan küçük veri dosyalarıdır.</p></div><div class="legal-section"><h3>2. Kullandığımız Çerez Türleri</h3><ul><li><strong>Zorunlu Çerezler:</strong> Web sitemizin temel işlevleri için gereklidir.</li><li><strong>Performans Çerezleri:</strong> Sitemizin nasıl kullanıldığını anlamamıza yardımcı olur.</li><li><strong>Fonksiyonel Çerezler:</strong> Kullanıcı tercihlerini hatırlayarak kişiselleştirilmiş deneyim sunar.</li><li><strong>Hedefleme/Reklam Çerezleri:</strong> İlgi alanlarınıza uygun reklamlar için kullanılır.</li></ul></div><div class="legal-section"><h3>3. Çerez Tablosu</h3><div style="overflow-x:auto"><table style="width:100%;border-collapse:collapse;font-size:12px;margin-top:8px;"><thead><tr style="background:rgba(123,47,255,0.2);"><th style="padding:7px 8px;text-align:left;border:1px solid rgba(255,255,255,0.1)">Çerez Adı</th><th style="padding:7px 8px;text-align:left;border:1px solid rgba(255,255,255,0.1)">Tür</th><th style="padding:7px 8px;text-align:left;border:1px solid rgba(255,255,255,0.1)">Süre</th><th style="padding:7px 8px;text-align:left;border:1px solid rgba(255,255,255,0.1)">Açıklama</th></tr></thead><tbody><tr><td style="padding:6px 8px;border:1px solid rgba(255,255,255,0.08)">…. Y..i</td><td style="padding:6px 8px;border:1px solid rgba(255,255,255,0.08)">Zorunlu</td><td style="padding:6px 8px;border:1px solid rgba(255,255,255,0.08)">6 ay</td><td style="padding:6px 8px;border:1px solid rgba(255,255,255,0.08)">Risk analizini sağlamak için gerekli çerezi ayarlar.</td></tr><tr style="background:rgba(255,255,255,0.02)"><td style="padding:6px 8px;border:1px solid rgba(255,255,255,0.08)">…. Y..i</td><td style="padding:6px 8px;border:1px solid rgba(255,255,255,0.08)">Zorunlu</td><td style="padding:6px 8px;border:1px solid rgba(255,255,255,0.08)">6 ay</td><td style="padding:6px 8px;border:1px solid rgba(255,255,255,0.08)">Açık rıza seçimlerini saklar.</td></tr><tr><td style="padding:6px 8px;border:1px solid rgba(255,255,255,0.08)">g.a</td><td style="padding:6px 8px;border:1px solid rgba(255,255,255,0.08)">Performans</td><td style="padding:6px 8px;border:1px solid rgba(255,255,255,0.08)">400 gün</td><td style="padding:6px 8px;border:1px solid rgba(255,255,255,0.08)">Google Analytics — kullanıcıları ayırt eder.</td></tr><tr style="background:rgba(255,255,255,0.02)"><td style="padding:6px 8px;border:1px solid rgba(255,255,255,0.08)">…. H.j</td><td style="padding:6px 8px;border:1px solid rgba(255,255,255,0.08)">Performans</td><td style="padding:6px 8px;border:1px solid rgba(255,255,255,0.08)">30 gün</td><td style="padding:6px 8px;border:1px solid rgba(255,255,255,0.08)">Hotjar — kullanıcı davranışlarını analiz eder.</td></tr><tr><td style="padding:6px 8px;border:1px solid rgba(255,255,255,0.08)">Test cookie</td><td style="padding:6px 8px;border:1px solid rgba(255,255,255,0.08)">Pazarlama</td><td style="padding:6px 8px;border:1px solid rgba(255,255,255,0.08)">1 yıl</td><td style="padding:6px 8px;border:1px solid rgba(255,255,255,0.08)">DoubleClick — çerez desteğini test eder.</td></tr><tr style="background:rgba(255,255,255,0.02)"><td style="padding:6px 8px;border:1px solid rgba(255,255,255,0.08)">…. Y..i</td><td style="padding:6px 8px;border:1px solid rgba(255,255,255,0.08)">Pazarlama</td><td style="padding:6px 8px;border:1px solid rgba(255,255,255,0.08)">6 ay</td><td style="padding:6px 8px;border:1px solid rgba(255,255,255,0.08)">Dönüşümleri depolar ve izler.</td></tr></tbody></table></div></div><div class="legal-section"><h3>4. Çerez Yönetimi</h3><div style="overflow-x:auto"><table style="width:100%;border-collapse:collapse;font-size:12px;margin-top:8px;"><tbody><tr><td style="padding:8px 10px;border:1px solid rgba(255,255,255,0.1);font-weight:600;white-space:nowrap;width:130px">Google Chrome</td><td style="padding:8px 10px;border:1px solid rgba(255,255,255,0.1)">Adres çubuğundaki kilit işaretini tıklayarak "çerezler" sekmesinden yönetin.</td></tr><tr style="background:rgba(255,255,255,0.02)"><td style="padding:8px 10px;border:1px solid rgba(255,255,255,0.1);font-weight:600">Internet Explorer</td><td style="padding:8px 10px;border:1px solid rgba(255,255,255,0.1)">Araçlar &gt; Güvenlik sekmesinden yönetin.</td></tr><tr><td style="padding:8px 10px;border:1px solid rgba(255,255,255,0.1);font-weight:600">Mozilla Firefox</td><td style="padding:8px 10px;border:1px solid rgba(255,255,255,0.1)">Menüyü Aç &gt; Seçenekler &gt; Gizlilik ve Güvenlik\'ten yönetin.</td></tr><tr style="background:rgba(255,255,255,0.02)"><td style="padding:8px 10px;border:1px solid rgba(255,255,255,0.1);font-weight:600">Opera</td><td style="padding:8px 10px;border:1px solid rgba(255,255,255,0.1)">Tercihler &gt; Gelişmiş &gt; Çerezler\'den yönetin.</td></tr><tr><td style="padding:8px 10px;border:1px solid rgba(255,255,255,0.1);font-weight:600">Safari</td><td style="padding:8px 10px;border:1px solid rgba(255,255,255,0.1)">Ayarlar &gt; Safari &gt; Gizlilik ve Güvenlik\'ten yönetin.</td></tr></tbody></table></div></div><div class="legal-section"><h3>5. İletişim</h3><p>Synaps Yapay Zekâ Firması Anonim Şirketi<br>E-posta: <a href="mailto:destek@synapsai.ai" style="color:#C4A4FF">destek@synapsai.ai</a><br>Bu çerez politikası 10/10/2024 tarihinden itibaren geçerlidir.</p></div>'},
+  aydinlatma: {title:'Çerezler Vasıtasıyla İşlenen Verilere İlişkin Aydınlatma Metni', body:'<div class="legal-section"><p>Synaps Yapay Zekâ Firması Anonim Şirketi olarak kişisel verilerinizin gizliliği ve güvenliği en önemli önceliklerimiz arasındadır. 6698 sayılı KVKK\'nın 10. maddesinden doğan aydınlatma yükümlülüğümüzü yerine getirmek amacıyla bu metni hazırladık.</p></div><div class="legal-section"><h3>Hukuki Dayanak Tablosu</h3><div style="overflow-x:auto"><table style="width:100%;border-collapse:collapse;font-size:12px;margin-top:8px;"><thead><tr style="background:rgba(123,47,255,0.2);"><th style="padding:7px 8px;text-align:left;border:1px solid rgba(255,255,255,0.1)">Çerez Türü</th><th style="padding:7px 8px;text-align:left;border:1px solid rgba(255,255,255,0.1)">Hukuki Dayanak</th></tr></thead><tbody><tr><td style="padding:6px 8px;border:1px solid rgba(255,255,255,0.08)">Zorunlu Çerezler</td><td style="padding:6px 8px;border:1px solid rgba(255,255,255,0.08)">KVKK md. 5/2(c) — sözleşme ifası veya md. 5/2(f) — meşru menfaat</td></tr><tr style="background:rgba(255,255,255,0.02)"><td style="padding:6px 8px;border:1px solid rgba(255,255,255,0.08)">Performans Çerezleri</td><td style="padding:6px 8px;border:1px solid rgba(255,255,255,0.08)">KVKK md. 5/1 — açık rıza</td></tr><tr><td style="padding:6px 8px;border:1px solid rgba(255,255,255,0.08)">Fonksiyonel Çerezler</td><td style="padding:6px 8px;border:1px solid rgba(255,255,255,0.08)">KVKK md. 5/1 — açık rıza</td></tr><tr style="background:rgba(255,255,255,0.02)"><td style="padding:6px 8px;border:1px solid rgba(255,255,255,0.08)">Pazarlama Çerezleri</td><td style="padding:6px 8px;border:1px solid rgba(255,255,255,0.08)">KVKK md. 5/1 — açık rıza</td></tr></tbody></table></div></div><div class="legal-section"><h3>İlgili Kişilerin Hakları (KVKK md. 11)</h3><ul><li>Kişisel veri işlenip işlenmediğini öğrenme</li><li>İşlenmişse buna ilişkin bilgi talep etme</li><li>İşlenme amacını öğrenme</li><li>Yurt içinde/dışında aktarıldığı üçüncü kişileri bilme</li><li>Eksik/yanlış işlenmiş verilerin düzeltilmesini isteme</li><li>Silinmesini veya yok edilmesini isteme</li><li>Otomatik sisteme itiraz etme</li><li>Zararın giderilmesini talep etme</li></ul><p>Başvuru: <a href="mailto:destek@synapsai.ai" style="color:#C4A4FF">destek@synapsai.ai</a> — En geç 30 gün içinde ücretsiz yanıtlanır.</p></div>'},
+  mesafeli: {title:'Mesafeli Satış Sözleşmesi', body:'<div class="legal-section"><h3>1. Taraflar</h3><p><strong>Satıcı:</strong> SYNAPS YAPAY ZEKA TEKNOLOJİLERİ ANONİM ŞİRKETİ<br>Adres: Göztepe Mah. Pınar Sok. No.4/13 Kadıköy<br>E-posta: destek@synapsai.ai</p><p><strong>Alıcı:</strong> İşbu sözleşmeyi elektronik ortamda onaylayan gerçek kişi.</p></div><div class="legal-section"><h3>2–3. Konu ve Hizmetin Temel Özellikleri</h3><p>Alıcı\'nın Satıcı\'ya ait Synaps internet sitesinden elektronik ortamda siparişini yaptığı hizmetin satışı ve teslimi ile ilgili tarafların hak ve yükümlülüklerinin belirlenmesidir.</p></div><div class="legal-section"><h3>4. Satıcının Beyan ve Taahhütleri</h3><p>Satıcı, sözleşme konusu hizmetin Tüketici Mevzuatı\'na uygun olarak sunulmasından sorumludur. Mücbir sebep halinde 3 gün içinde bildirim yapar.</p></div><div class="legal-section"><h3>10. Siber Güvenlik</h3><p>Satıcı, kişisel verilerin korunması için gerekli teknik ve idari tedbirleri alır. Güvenlik ihlali tespit edilirse Alıcı derhal bilgilendirilir.</p></div><div class="legal-section"><h3>11. Fikri ve Sınai Haklar</h3><p>Satıcı, hizmet kapsamındaki tüm içeriklerin fikri ve sınai haklarının sahibidir. Alıcı yalnızca kişisel kullanım amacıyla sınırlı bir lisansa sahiptir.</p></div><div class="legal-section"><h3>14. Fiyatlandırma ve Ödeme</h3><p>Hizmetin satış fiyatı, siparişin verildiği tarihte geçerli fiyat olup tüm vergiler dahildir. Kredi kartı bilgileri Synaps tarafından saklanmaz.</p></div><div class="legal-section"><h3>16. Cayma Hakkı ve Fesih</h3><p>Alıcı, hizmetin ifasına başlanmamış olması koşuluyla <strong>14 gün</strong> içinde cayma hakkına sahiptir. Hizmet ifasına başlandıktan sonra Mesafeli Sözleşmeler Yönetmeliği\'nin 15/ğ maddesi uyarınca cayma hakkı kullanılamaz.</p></div><div class="legal-section"><h3>17–18. İade, İptal ve Uyuşmazlık</h3><p>Dijital hizmetlerin doğası gereği iade mümkün değildir. Uyuşmazlıklarda Tüketici Hakem Heyetleri ve Tüketici Mahkemeleri yetkilidir.</p></div><div class="legal-section"><h3>19. Yürürlük</h3><p>İşbu Sözleşme, Alıcı tarafından elektronik ortamda onaylandığı tarihten itibaren yürürlüğe girer.</p></div>'},
+  sss: {title:'Sıkça Sorulan Sorular', body:'<style> .sss-item{border:1px solid rgba(255,255,255,0.08);border-radius:10px;margin-bottom:8px;overflow:hidden;} .sss-q{padding:14px 16px;font-weight:600;cursor:pointer;display:flex;justify-content:space-between;align-items:center;font-size:13px;color:var(--text,#F0EEFF);} .sss-q:hover{background:rgba(123,47,255,0.1);} .sss-arrow{transition:transform 0.25s;font-size:16px;color:#9B4FFF;} .sss-item.open .sss-arrow{transform:rotate(180deg);} .sss-a{display:none;padding:0 16px 14px;font-size:13px;line-height:1.7;color:rgba(240,238,255,0.65);} .sss-item.open .sss-a{display:block;} </style> <div class="sss-list"> <div class="sss-item open"> <div class="sss-q" onclick="this.parentElement.classList.toggle(\\\'open\\\')">Synaps\\\'ı neden kullanmalıyım? <span class="sss-arrow">▾</span></div> <div class="sss-a">Synaps, mülakat sürecini hızlandırır, esneklik sağlar ve adayları adil ve tarafsız biçimde değerlendirmenize yardımcı olur. Aynı zamanda zaman ve maliyet tasarrufu sağlar.</div> </div> <div class="sss-item"> <div class="sss-q" onclick="this.parentElement.classList.toggle(\\\'open\\\')">Synaps hangi cihazlarla uyumludur? <span class="sss-arrow">▾</span></div> <div class="sss-a">Synaps, bilgisayar ve tablet gibi tüm modern cihazlarla uyumludur.</div> </div> <div class="sss-item"> <div class="sss-q" onclick="this.parentElement.classList.toggle(\\\'open\\\')">Synaps\\\'ta kaydedilen mülakatları ne kadar süre saklayabilirim? <span class="sss-arrow">▾</span></div> <div class="sss-a">Synaps, mülakat kayıtlarınızı belirli bir süre boyunca güvenli şekilde saklar. Bu süre abonelik planınıza göre değişebilir.</div> </div> <div class="sss-item"> <div class="sss-q" onclick="this.parentElement.classList.toggle(\\\'open\\\')">Yapay zeka ile değerlendirme nasıl yapılıyor? <span class="sss-arrow">▾</span></div> <div class="sss-a">Yapay zeka, adayların video yanıtlarını metin ve kelime bulutları olarak analiz eder. Aynı zamanda adayın yanıtını puanlar ve yorumlar.</div> </div> <div class="sss-item"> <div class="sss-q" onclick="this.parentElement.classList.toggle(\\\'open\\\')">Gizlilik ve güvenlik nasıl sağlanıyor? <span class="sss-arrow">▾</span></div> <div class="sss-a">Synaps, adayların yanıtlarını güvenli sunucularda saklar ve yalnızca yetkili kişilerin erişimine açar. Tüm veriler şifrelenerek korunur.</div> </div> <div class="sss-item"> <div class="sss-q" onclick="this.parentElement.classList.toggle(\\\'open\\\')">Ücretlendirme ve deneme süresi hakkında bilgi alabilir miyim? <span class="sss-arrow">▾</span></div> <div class="sss-a">Ücretlendirme ve demo için <a href="mailto:destek@synapsai.ai" style="color:#C4A4FF">destek@synapsai.ai</a> adresimizden bize ulaşabilirsiniz.</div> </div> </div>'}
 };
+</script>
+<script>
+
 function openLegal(key){var m=document.getElementById('legalModal'),c=document.getElementById('legalContent'),t=legalTexts[key];if(!t)return;c.innerHTML='<h2 style="font-size:22px;font-weight:900;color:white;margin-bottom:28px;letter-spacing:-0.5px;">'+t.title+'</h2>'+t.body;m.style.display='block';document.body.style.overflow='hidden';c.querySelectorAll('.sss-q').forEach(function(q){q.addEventListener('click',function(){this.parentElement.classList.toggle('open');});});}
 function closeLegal(){document.getElementById('legalModal').style.display='none';document.body.style.overflow='';}
 document.addEventListener('DOMContentLoaded',function(){var m=document.getElementById('legalModal');if(m)m.addEventListener('click',function(e){if(e.target===this)closeLegal();});});

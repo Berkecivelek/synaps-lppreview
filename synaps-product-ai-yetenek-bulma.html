@@ -258,7 +258,25 @@ background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/sv
 .legal-section ul{padding-left:18px;margin-top:6px;}
 .legal-section li{margin-bottom:4px;}
 .legal-section a{color:#C4A4FF;}
-.legal-section table{color:rgba(240,238,255,0.75);}</style>
+.legal-section table{color:rgba(240,238,255,0.75);}
+/* ── Footer light mode fixes ── */
+[data-theme="light"] .uf-footer {
+  background: linear-gradient(180deg,#E8E4F5 0%,#F0EEF9 100%) !important;
+  border-top-color: rgba(123,47,255,0.15) !important;
+}
+[data-theme="light"] .uf-col a { color: rgba(26,10,60,0.55) !important; }
+[data-theme="light"] .uf-col a:hover { color: #7B2FFF !important; }
+[data-theme="light"] .uf-col-title { color: rgba(123,47,255,0.7) !important; }
+[data-theme="light"] .uf-bottom {
+  color: rgba(26,10,60,0.35) !important;
+  border-top-color: rgba(123,47,255,0.1) !important;
+}
+[data-theme="light"] .footer-socials a {
+  background: rgba(123,47,255,0.08) !important;
+  border-color: rgba(123,47,255,0.2) !important;
+  color: rgba(26,10,60,0.5) !important;
+}
+</style>
 </head>
 <body>
 <nav id="snav">
@@ -286,11 +304,14 @@ background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/sv
   </div>
 </nav>
 
-<section class="yb-hero">
+<section class="yb-hero" style="min-height:auto;padding:100px 40px 70px;">
   <div class="yb-hero-bg"></div>
   <div class="yb-grid-bg"></div>
-  <div class="yb-inner">
-    <div style="display:flex;align-items:center;gap:10px;margin-bottom:28px;">
+  <div style="position:relative;z-index:1;max-width:1280px;margin:0 auto;width:100%;display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:start;">
+
+    <!-- LEFT: Text + CTAs -->
+    <div style="padding-top:20px;">
+      <div style="display:flex;align-items:center;gap:10px;margin-bottom:28px;">
       <span style="font-family:'JetBrains Mono',monospace;font-size:9px;font-weight:700;letter-spacing:2px;color:var(--dim2);background:var(--gbg);border:1px solid rgba(123,47,255,.2);padding:4px 10px;border-radius:20px;">1. ADIM</span>
       <span style="display:flex;align-items:center;gap:7px;background:var(--gbg);border:1px solid rgba(123,47,255,.25);border-radius:30px;padding:5px 14px;font-family:'JetBrains Mono',monospace;font-size:10px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:#C4A4FF;"><span style="width:6px;height:6px;border-radius:50%;background:#9B4FFF;display:inline-block;animation:puls 2s infinite;"></span>İşe Alım · B2B</span>
     </div>
@@ -300,7 +321,144 @@ background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/sv
       <a href="https://synapsai.io" class="btn-pu">Demo İste →</a>
       <a href="synaps-v11-toggle.html" class="btn-gh">Ekosistemi Keşfet</a>
     </div>
+    </div>
 
+    <!-- RIGHT: ATS Panel UI -->
+    <div style="position:relative;z-index:1;">
+    <div style="background:var(--card2,#120E20);border:1px solid var(--border,rgba(255,255,255,.08));border-radius:20px;overflow:hidden;box-shadow:0 24px 64px rgba(0,0,0,.5);font-size:13px;">
+
+      <!-- ATS Panel top bar -->
+      <div style="background:var(--bg2,#0C0818);border-bottom:1px solid var(--border,rgba(255,255,255,.07));padding:12px 16px;display:flex;align-items:center;justify-content:space-between;">
+        <div style="display:flex;align-items:center;gap:8px;">
+          <div style="width:22px;height:22px;border-radius:6px;background:linear-gradient(135deg,#7B2FFF,#9B4FFF);display:flex;align-items:center;justify-content:center;">
+            <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+          </div>
+          <span style="font-family:'JetBrains Mono',monospace;font-size:10px;font-weight:700;color:var(--fg,#F0EEF9);">Senior Product Manager <span style="color:var(--dim2,rgba(240,238,255,.4));">(İstanbul)</span></span>
+        </div>
+        <div style="display:flex;align-items:center;gap:6px;background:rgba(123,47,255,.1);border:1px solid rgba(123,47,255,.2);border-radius:6px;padding:3px 10px;">
+          <span style="font-family:'JetBrains Mono',monospace;font-size:9px;color:#C4A4FF;font-weight:600;">1 - 48</span>
+          <svg width="8" height="8" viewBox="0 0 10 10" fill="none" stroke="#C4A4FF" stroke-width="1.5"><path d="M2 4l3 3 3-3"/></svg>
+        </div>
+      </div>
+
+      <!-- Tab bar -->
+      <div style="background:var(--bg2,#0C0818);border-bottom:1px solid var(--border,rgba(255,255,255,.07));padding:0 16px;display:flex;gap:0;">
+        <div style="padding:10px 14px;font-size:11px;font-weight:700;color:#7B2FFF;border-bottom:2px solid #7B2FFF;cursor:pointer;">Özgeçmiş Bilgileri</div>
+        <div style="padding:10px 14px;font-size:11px;color:var(--dim2,rgba(240,238,255,.4));cursor:pointer;">Mülakat bilgileri</div>
+        <div style="padding:10px 14px;font-size:11px;color:var(--dim2,rgba(240,238,255,.4));cursor:pointer;">İleti Geçmişi</div>
+        <div style="padding:10px 14px;font-size:11px;color:var(--dim2,rgba(240,238,255,.4));cursor:pointer;">Ek Bilgiler</div>
+      </div>
+
+      <!-- Candidate header -->
+      <div style="padding:14px 16px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--border,rgba(255,255,255,.07));">
+        <div style="display:flex;align-items:center;gap:10px;">
+          <div style="width:36px;height:36px;border-radius:50%;background:linear-gradient(135deg,#7B2FFF,#5A1ECC);display:flex;align-items:center;justify-content:center;font-family:'JetBrains Mono',monospace;font-size:11px;font-weight:700;color:white;">TŞ</div>
+          <div>
+            <div style="font-size:13px;font-weight:700;color:var(--fg,#F0EEF9);">Tuğçe Şen</div>
+            <div style="font-size:10px;color:var(--dim2,rgba(240,238,255,.4));">Product Manager</div>
+          </div>
+        </div>
+        
+      </div>
+
+      <!-- CV match score -->
+      <div style="padding:14px 16px;border-bottom:1px solid var(--border,rgba(255,255,255,.07));">
+        <div style="background:var(--card,rgba(255,255,255,.04));border:1px solid var(--border,rgba(255,255,255,.07));border-radius:12px;padding:18px 20px;">
+          <div style="display:flex;align-items:center;gap:20px;">
+            <!-- Big gauge -->
+            <div style="flex-shrink:0;">
+              <svg width="90" height="90" viewBox="0 0 90 90">
+                <circle cx="45" cy="45" r="36" fill="none" stroke="rgba(123,47,255,.12)" stroke-width="7"/>
+                <circle cx="45" cy="45" r="36" fill="none" stroke="url(#scoreGradBig)" stroke-width="7"
+                  stroke-dasharray="147 79" stroke-dashoffset="58" stroke-linecap="round"
+                  transform="rotate(-90 45 45)"/>
+                <defs><linearGradient id="scoreGradBig" x1="0%" y1="0%" x2="100%" y2="0%">
+                  <stop offset="0%" stop-color="#7B2FFF"/>
+                  <stop offset="100%" stop-color="#C4A4FF"/>
+                </linearGradient></defs>
+                <text x="45" y="41" text-anchor="middle" font-size="18" font-weight="900" fill="#C4A4FF" font-family="JetBrains Mono,monospace">65.0</text>
+                <text x="45" y="56" text-anchor="middle" font-size="9" fill="rgba(196,164,255,0.6)" font-family="monospace">%</text>
+              </svg>
+            </div>
+            <!-- Right side -->
+            <div style="flex:1;">
+              <div style="font-size:14px;font-weight:800;color:var(--fg,#F0EEF9);margin-bottom:5px;">CV ve Pozisyon Uyumu</div>
+              <div style="font-size:11px;color:var(--dim2,rgba(240,238,255,.4));line-height:1.6;margin-bottom:12px;">CV'deki bilgilerle ilan kriterlerinin karşılaştırması.</div>
+              <!-- Match bars -->
+              <div style="display:flex;flex-direction:column;gap:6px;margin-bottom:12px;">
+                <div style="display:flex;align-items:center;gap:8px;">
+                  <span style="font-size:10px;color:var(--dim2,rgba(240,238,255,.45));min-width:90px;">Teknik Uyum</span>
+                  <div style="flex:1;height:5px;background:rgba(255,255,255,.07);border-radius:3px;overflow:hidden;">
+                    <div style="width:78%;height:100%;background:linear-gradient(90deg,#7B2FFF,#C4A4FF);border-radius:3px;"></div>
+                  </div>
+                  <span style="font-family:'JetBrains Mono',monospace;font-size:9px;color:#C4A4FF;">78%</span>
+                </div>
+                <div style="display:flex;align-items:center;gap:8px;">
+                  <span style="font-size:10px;color:var(--dim2,rgba(240,238,255,.45));min-width:90px;">İş Deneyimi</span>
+                  <div style="flex:1;height:5px;background:rgba(255,255,255,.07);border-radius:3px;overflow:hidden;">
+                    <div style="width:62%;height:100%;background:linear-gradient(90deg,#7B2FFF,#C4A4FF);border-radius:3px;"></div>
+                  </div>
+                  <span style="font-family:'JetBrains Mono',monospace;font-size:9px;color:#C4A4FF;">62%</span>
+                </div>
+                <div style="display:flex;align-items:center;gap:8px;">
+                  <span style="font-size:10px;color:var(--dim2,rgba(240,238,255,.45));min-width:90px;">Eğitim</span>
+                  <div style="flex:1;height:5px;background:rgba(255,255,255,.07);border-radius:3px;overflow:hidden;">
+                    <div style="width:55%;height:100%;background:linear-gradient(90deg,#7B2FFF,#C4A4FF);border-radius:3px;"></div>
+                  </div>
+                  <span style="font-family:'JetBrains Mono',monospace;font-size:9px;color:#C4A4FF;">55%</span>
+                </div>
+              </div>
+              <div style="display:flex;gap:6px;">
+                <div style="background:rgba(123,47,255,.1);border:1px solid rgba(123,47,255,.3);border-radius:6px;padding:5px 12px;font-size:10px;font-weight:600;color:#C4A4FF;cursor:pointer;">CV'yi incele</div>
+                <div style="background:rgba(123,47,255,.1);border:1px solid rgba(123,47,255,.3);border-radius:6px;padding:5px 12px;font-size:10px;font-weight:600;color:#9B4FFF;cursor:pointer;">Detayları gör ›</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Personal info grid -->
+      <div style="padding:10px 16px;border-bottom:1px solid var(--border,rgba(255,255,255,.07));">
+        <div style="display:flex;align-items:center;justify-content:space-between;cursor:pointer;padding:4px 0;">
+          <div style="display:flex;align-items:center;gap:6px;">
+            <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="var(--dim2,rgba(240,238,255,.4))" stroke-width="2"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/></svg>
+            <span style="font-size:11px;font-weight:700;color:var(--fg,#F0EEF9);">Kişisel bilgiler</span>
+          </div>
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="var(--dim2,rgba(240,238,255,.4))" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+        </div>
+      </div>
+
+      <!-- Work experience -->
+      <div style="padding:10px 16px 14px;">
+        <div style="display:flex;align-items:center;justify-content:space-between;cursor:pointer;padding:4px 0;">
+          <div style="display:flex;align-items:center;gap:6px;">
+            <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="var(--dim2,rgba(240,238,255,.4))" stroke-width="2"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2"/></svg>
+            <span style="font-size:11px;font-weight:700;color:var(--fg,#F0EEF9);">İş Deneyimleri</span>
+          </div>
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="var(--dim2,rgba(240,238,255,.4))" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+        </div>
+      </div>
+  </div>
+
+  </div>
+</section>
+
+<!-- FEATURES -->
+<section class="yb-metrics">
+  <div class="yb-met-in">
+    <div class="section-tag">Kanıtlanmış Sonuçlar</div>
+    <h2 class="section-h2">Rakamlar <em>Konuşuyor</em></h2>
+    <div class="yb-met-strip">
+      <div class="yb-met-item"><div class="ymi-n">85%</div><div class="ymi-l">İşe alım süresi azalması</div></div>
+      <div class="yb-met-item"><div class="ymi-n">3×</div><div class="ymi-l">Daha fazla nitelikli aday</div></div>
+      <div class="yb-met-item"><div class="ymi-n">92%</div><div class="ymi-l">Eşleştirme doğruluğu</div></div>
+      <div class="yb-met-item"><div class="ymi-n">60%</div><div class="ymi-l">Maliyet tasarrufu</div></div>
+    </div>
+  </div>
+</section>
+<section style="padding:60px 40px;background:var(--bg2,#0C0818);">
+  <div style="max-width:1280px;margin:0 auto;">
+    <div style="font-family:'JetBrains Mono',monospace;font-size:10px;font-weight:700;letter-spacing:3px;color:#9B4FFF;text-transform:uppercase;margin-bottom:20px;">Canlı Aday Analizi</div>
     <!-- BENTO GRID -->
     <div class="yb-bento">
 
@@ -330,7 +488,7 @@ background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/sv
           <div class="yb-bars">
             <div class="yb-bar-row"><span class="yb-bar-label">Teknik Uyum</span><div class="yb-bar-track"><div class="yb-bar-fill" style="width:94%"></div></div><span class="yb-bar-val">94%</span></div>
             <div class="yb-bar-row"><span class="yb-bar-label">Liderlik</span><div class="yb-bar-track"><div class="yb-bar-fill" style="width:87%"></div></div><span class="yb-bar-val">87%</span></div>
-            <div class="yb-bar-row"><span class="yb-bar-label">Kültür Uyumu</span><div class="yb-bar-track"><div class="yb-bar-fill" style="width:96%"></div></div><span class="yb-bar-val">96%</span></div>
+            <div class="yb-bar-row"><span class="yb-bar-label">Eğitim</span><div class="yb-bar-track"><div class="yb-bar-fill" style="width:96%"></div></div><span class="yb-bar-val">96%</span></div>
           </div>
         </div>
       </div>
@@ -375,21 +533,6 @@ background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/sv
     </div><!-- /bento -->
   </div>
 </section>
-
-<!-- FEATURES -->
-<section class="yb-metrics">
-  <div class="yb-met-in">
-    <div class="section-tag">Kanıtlanmış Sonuçlar</div>
-    <h2 class="section-h2">Rakamlar <em>Konuşuyor</em></h2>
-    <div class="yb-met-strip">
-      <div class="yb-met-item"><div class="ymi-n">85%</div><div class="ymi-l">İşe alım süresi azalması</div></div>
-      <div class="yb-met-item"><div class="ymi-n">3×</div><div class="ymi-l">Daha fazla nitelikli aday</div></div>
-      <div class="yb-met-item"><div class="ymi-n">92%</div><div class="ymi-l">Eşleştirme doğruluğu</div></div>
-      <div class="yb-met-item"><div class="ymi-n">60%</div><div class="ymi-l">Maliyet tasarrufu</div></div>
-    </div>
-  </div>
-</section>
-
 <section class="yb-features">
   <div class="yb-feats-in">
     <div class="section-tag">Temel Özellikler</div>
@@ -457,26 +600,26 @@ background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/sv
     <div class="uf-col">
       <div class="footer-logo" style="display:flex;align-items:center;gap:8px;margin-bottom:12px;">
         <div class="orb-sm" style="width:22px;height:22px;"><div class="ob ob-base"></div><div class="ob ob-swirl"></div><div class="ob-hl"></div></div>
-        <span style="font-size:17px;font-weight:800;letter-spacing:-.5px;">Synaps<b style="color:#9B4FFF">AI</b></span>
+        <span style="font-size:17px;font-weight:800;letter-spacing:-.5px;color:var(--text,#F0EEF9);">Synaps<b style="color:#9B4FFF">AI</b></span>
       </div>
-      <p style="font-size:12.5px;color:rgba(255,255,255,0.4);line-height:1.7;margin:0 0 12px;max-width:220px;">İşe alım ve çalışan deneyimini yapay zeka ile dönüştüren İK platformu.</p>
-      <div style="font-size:12px;color:rgba(255,255,255,0.32);line-height:1.9;">
+      <p style="font-size:12.5px;color:var(--dim,rgba(240,238,255,.55));line-height:1.7;margin:0 0 12px;max-width:220px;">İşe alım ve çalışan deneyimini yapay zeka ile dönüştüren İK platformu.</p>
+      <div style="font-size:12px;color:var(--dim2,rgba(240,238,255,.4));line-height:1.9;">
         Synaps Yapay Zeka Teknolojileri A.Ş.<br>
         Barbaros Mah. Şebboy Sok. No:4/1<br>
         İç Kapı No:2 Ataşehir/İstanbul<br>
-        <a href="/cdn-cgi/l/email-protection#caaeafb9beafa18ab9b3a4abbab9aba3e4aba3" style="color:rgba(196,164,255,0.6);text-decoration:none;"><span class="__cf_email__" data-cfemail="5a3e3f292e3f311a2923343b2a293b33743b33">[email&#160;protected]</span></a>
+        <a href="mailto:destek@synapsai.ai" style="color:rgba(196,164,255,0.6);text-decoration:none;">destek@synapsai.ai</a>
       </div>
       <div class="footer-socials" style="display:flex;gap:10px;margin-top:16px;">
-  <a href="https://x.com/synapsai" target="_blank" rel="noopener" style="width:32px;height:32px;border-radius:8px;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.1);display:flex;align-items:center;justify-content:center;color:rgba(255,255,255,0.5);transition:all 0.2s;" onmouseover="this.style.background='rgba(123,47,255,0.2)';this.style.color='white'" onmouseout="this.style.background='rgba(255,255,255,0.06)';this.style.color='rgba(255,255,255,0.5)'">
+  <a href="https://x.com/synapsai" target="_blank" rel="noopener" class="footer-social-icon" style="width:32px;height:32px;border-radius:8px;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.1);display:flex;align-items:center;justify-content:center;color:rgba(255,255,255,0.5);transition:all 0.2s;" onmouseover="this.style.background='rgba(123,47,255,0.2)';this.style.color='white'" onmouseout="this.style.background='rgba(255,255,255,0.06)';this.style.color='rgba(255,255,255,0.5)'">
     <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.747l7.73-8.835L1.254 2.25H8.08l4.259 5.631 5.905-5.631zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
   </a>
-  <a href="https://www.linkedin.com/company/synaps-artificial-intelligence/" target="_blank" rel="noopener" style="width:32px;height:32px;border-radius:8px;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.1);display:flex;align-items:center;justify-content:center;color:rgba(255,255,255,0.5);transition:all 0.2s;" onmouseover="this.style.background='rgba(10,102,194,0.3)';this.style.color='white'" onmouseout="this.style.background='rgba(255,255,255,0.06)';this.style.color='rgba(255,255,255,0.5)'">
+  <a href="https://www.linkedin.com/company/synaps-artificial-intelligence/" target="_blank" rel="noopener" class="footer-social-icon" style="width:32px;height:32px;border-radius:8px;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.1);display:flex;align-items:center;justify-content:center;color:rgba(255,255,255,0.5);transition:all 0.2s;" onmouseover="this.style.background='rgba(10,102,194,0.3)';this.style.color='white'" onmouseout="this.style.background='rgba(255,255,255,0.06)';this.style.color='rgba(255,255,255,0.5)'">
     <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
   </a>
-  <a href="https://www.instagram.com/synapsaiofficial" target="_blank" rel="noopener" style="width:32px;height:32px;border-radius:8px;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.1);display:flex;align-items:center;justify-content:center;color:rgba(255,255,255,0.5);transition:all 0.2s;" onmouseover="this.style.background='rgba(193,53,132,0.25)';this.style.color='white'" onmouseout="this.style.background='rgba(255,255,255,0.06)';this.style.color='rgba(255,255,255,0.5)'">
+  <a href="https://www.instagram.com/synapsaiofficial" target="_blank" rel="noopener" class="footer-social-icon" style="width:32px;height:32px;border-radius:8px;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.1);display:flex;align-items:center;justify-content:center;color:rgba(255,255,255,0.5);transition:all 0.2s;" onmouseover="this.style.background='rgba(193,53,132,0.25)';this.style.color='white'" onmouseout="this.style.background='rgba(255,255,255,0.06)';this.style.color='rgba(255,255,255,0.5)'">
     <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
   </a>
-  <a href="https://www.youtube.com/@SynapsAI" target="_blank" rel="noopener" style="width:32px;height:32px;border-radius:8px;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.1);display:flex;align-items:center;justify-content:center;color:rgba(255,255,255,0.5);transition:all 0.2s;" onmouseover="this.style.background='rgba(255,0,0,0.2)';this.style.color='white'" onmouseout="this.style.background='rgba(255,255,255,0.06)';this.style.color='rgba(255,255,255,0.5)'">
+  <a href="https://www.youtube.com/@SynapsAI" target="_blank" rel="noopener" class="footer-social-icon" style="width:32px;height:32px;border-radius:8px;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.1);display:flex;align-items:center;justify-content:center;color:rgba(255,255,255,0.5);transition:all 0.2s;" onmouseover="this.style.background='rgba(255,0,0,0.2)';this.style.color='white'" onmouseout="this.style.background='rgba(255,255,255,0.06)';this.style.color='rgba(255,255,255,0.5)'">
     <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M23.498 6.186a3.016 3.016 0 00-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 00.502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 002.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 002.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
   </a>
 </div>
@@ -525,7 +668,7 @@ background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/sv
     <div id="legalContent" style="color:rgba(255,255,255,0.8);font-size:13.5px;line-height:1.85;"></div>
   </div>
 </div>
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+<script>
 var legalTexts = {
   kullanim: {title:'Video Mülakat Hizmeti Sözleşmesi', body:'<div class="legal-section"><h3>1. Taraflar</h3><p>İşbu Hizmet Sözleşmesi aşağıdaki taraflar arasında akdedilmiştir:</p><p><strong>Synaps Yapay Zeka Firması Anonim Şirketi</strong><br>Adres: Göztepe Mah. Pınar Sok. No.4/13 Kadıköy<br>Vergi Dairesi: Göztepe Vergi Dairesi | Vergi Numarası: 6421040257<br>Ticaret Sicil Numarası: 11322 | E-posta: info@synapsai.ai<br>(Bundan sonra "Synaps" olarak anılacaktır.)</p><p>Aday — (Bundan sonra "Aday" olarak anılacaktır.)</p></div><div class="legal-section"><h3>2. Sözleşmenin Konusu</h3><p>İşbu Sözleşme, Synaps tarafından Aday\'a sunulan one-way video mülakat hizmetinin ("Hizmet") kullanımına ilişkin şartları ve koşulları düzenlemektedir.</p></div><div class="legal-section"><h3>3. Hizmetin Kapsamı</h3><ul><li>Aday\'ın belirlenen platform üzerinden video mülakat kaydı yapabilmesi</li><li>Aday\'ın mülakat sürecinde verdiği cevapların kaydedilmesi ve değerlendirilmesi</li><li>Aday\'ın mülakat kayıtlarının işverenlere iletilmesi</li></ul></div><div class="legal-section"><h3>4. Aday\'ın Yükümlülükleri</h3><ul><li>Hizmet\'i yalnızca kişisel ve profesyonel amaçlarla kullanmak</li><li>Hizmet\'i kullanırken doğru ve güncel bilgiler sağlamak</li><li>Hizmet\'in kullanımına ilişkin tüm yerel ve ulusal yasalara uymak</li></ul></div><div class="legal-section"><h3>5. Kişisel Verilerin Korunması</h3><p>Synaps, Aday\'ın kişisel verilerini 6698 sayılı KVKK ve ilgili mevzuata uygun olarak işleyecektir.</p></div><div class="legal-section"><h3>6. Fikri Mülkiyet Hakları</h3><p>Hizmet kapsamında sunulan tüm yazılım, içerik ve materyallerin fikri mülkiyet hakları Synaps\'a aittir. Aday, bu hakları ihlal etmeyeceğini kabul eder.</p></div><div class="legal-section"><h3>7. Sözleşmenin Süresi ve Feshi</h3><p>İşbu Sözleşme, Aday\'ın Hizmet\'i kullanmaya başladığı tarihte yürürlüğe girer. Synaps, Aday\'ın Sözleşme\'ye aykırı davranması durumunda Hizmet\'i derhal durdurma hakkına sahiptir.</p></div><div class="legal-section"><h3>8. Sorumluluğun Sınırlandırılması</h3><p>Synaps, Hizmet\'in kesintisiz veya hatasız olacağını garanti etmez.</p></div><div class="legal-section"><h3>9. Uyuşmazlıkların Çözümü</h3><p>İşbu Sözleşme\'den doğabilecek uyuşmazlıklarda İstanbul Mahkemeleri yetkilidir. Türk Hukuku uygulanır.</p></div><div class="legal-section"><h3>10. Muhtelif Hükümler</h3><p>İşbu Sözleşme tarafların yazılı onayı olmadan değiştirilemez.</p></div><div class="legal-section"><h3>11. İletişim</h3><p>E-posta: info@synapsai.ai</p></div><div class="legal-section"><h3>12. Yürürlük</h3><p>İşbu Sözleşme, taraflarca elektronik ortamda onaylandığı tarihte yürürlüğe girer.</p></div>'},
   gizlilik: {title:'Gizlilik Politikası', body:'<div class="legal-section"><h3>1. Taraflar</h3><p><strong>1.1. Synaps Yapay Zeka Firması Anonim Şirketi</strong><br>Adres: Göztepe Mah. Pınar Sok. No.4/13 Kadıköy/Göztepe<br>Vergi Dairesi / No: Göztepe Vergi Dairesi / 6421040257<br>Ticaret Sicil No: 11322</p><p><strong>1.2.</strong> Kullanıcı taraf "KULLANICI" olarak anılacaktır.</p></div><div class="legal-section"><h3>2. Sözleşmenin Konusu</h3><p>Tarafların gizli bilgilerini koruma, üçüncü taraflara ifşa etmeme yükümlülüklerini ve kişisel veri işleme ile paylaşımına ilişkin düzenlemeleri kapsamaktadır.</p></div><div class="legal-section"><h3>3. Gizli Bilgilerin Kapsamı</h3><p>Ticari, finansal ve teknik her türlü bilgi; kişisel bilgiler, finansal veriler, iş planları, veritabanları, ticari sırlar, bilgisayar programları, know-how, 6698 sayılı KVKK kapsamındaki kişisel veriler ve taraflara ait tüm bilgi ve stratejiler gizli bilgi kapsamındadır.</p></div><div class="legal-section"><h3>4. Gizli Sayılmayan Bilgiler</h3><p>Gizlilik yükümlülüğü ihlal edilmeksizin kamuya açık hale gelen bilgiler gizli sayılmaz.</p></div><div class="legal-section"><h3>5–6. Gizli Bilgilerin Sahipliği ve Korunması</h3><p>Her taraf kendi gizli bilgileri üzerindeki tüm haklarını saklı tutar. Alıcı taraf, gizli bilgileri en yüksek düzeyde gizli tutmayı ve üçüncü taraflara açıklamamayı taahhüt eder. Güvenlik ihlali halinde 24 saat içinde yazılı bildirim yapılır.</p></div><div class="legal-section"><h3>7–10. Veri Aktarımı ve Saklama</h3><p>Kişisel veriler açık yazılı izin olmaksızın üçüncü kişilere aktarılamaz. KVKK ve ilgili mevzuat çerçevesinde işlenir. Yurt dışına veri aktarımı için yazılı izin şarttır.</p></div><div class="legal-section"><h3>11–14. Denetim ve Kişisel Verilerin Korunması</h3><p>Güvenlik ihlali halinde 24 saat içinde bildirim zorunludur. İlgili kişilerin başvuruları 72 saat içinde iletilir.<br>Başvuru: <a href="mailto:destek@synapsai.ai" style="color:#C4A4FF">destek@synapsai.ai</a></p></div>'},
@@ -546,4 +689,15 @@ document.addEventListener('DOMContentLoaded',function(){var m=document.getElemen
   else{h.setAttribute('data-theme','dark');if(t)t.checked=false;}
   if(t){t.addEventListener('change',function(){
       if(this.checked){
-        h.setAttribute('
+        h.setAttribute('data-theme','light');
+        localStorage.setItem('synaps-theme','light');
+      } else {
+        h.setAttribute('data-theme','dark');
+        localStorage.setItem('synaps-theme','dark');
+      }
+    });
+  }
+})();
+</script>
+</body>
+</html>

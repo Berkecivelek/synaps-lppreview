@@ -238,7 +238,41 @@ h1 .gr{background:linear-gradient(135deg,#9B4FFF,#C4A4FF,#E040FB);-webkit-backgr
 .legal-section ul{padding-left:18px;margin-top:6px;}
 .legal-section li{margin-bottom:4px;}
 .legal-section a{color:#C4A4FF;}
-.legal-section table{color:rgba(240,238,255,0.75);}</style>
+.legal-section table{color:rgba(240,238,255,0.75);}
+/* CEFR level buttons — visible in light mode */
+[data-theme="light"] .cefr-lvl {
+  color: var(--text, #1A0A3C) !important;
+  background: rgba(123,47,255,.12) !important;
+}
+[data-theme="light"] .cefr-lvl.active {
+  background: #7B2FFF !important;
+  color: white !important;
+}
+[data-theme="light"] .cefr-label {
+  color: var(--dim2, rgba(26,10,60,.4)) !important;
+}
+[data-theme="light"] .lc-cefr-strip {
+  border-top-color: rgba(123,47,255,.15) !important;
+}
+
+/* ── Footer light mode fixes ── */
+[data-theme="light"] .uf-footer {
+  background: linear-gradient(180deg,#E8E4F5 0%,#F0EEF9 100%) !important;
+  border-top-color: rgba(123,47,255,0.15) !important;
+}
+[data-theme="light"] .uf-col a { color: rgba(26,10,60,0.55) !important; }
+[data-theme="light"] .uf-col a:hover { color: #7B2FFF !important; }
+[data-theme="light"] .uf-col-title { color: rgba(123,47,255,0.7) !important; }
+[data-theme="light"] .uf-bottom {
+  color: rgba(26,10,60,0.35) !important;
+  border-top-color: rgba(123,47,255,0.1) !important;
+}
+[data-theme="light"] .footer-socials a {
+  background: rgba(123,47,255,0.08) !important;
+  border-color: rgba(123,47,255,0.2) !important;
+  color: rgba(26,10,60,0.5) !important;
+}
+</style>
 </head>
 <body>
 <nav id="snav">
@@ -295,8 +329,8 @@ h1 .gr{background:linear-gradient(135deg,#9B4FFF,#C4A4FF,#E040FB);-webkit-backgr
       <div class="lc-cefr-strip">
         <div class="cefr-label">CEFR SEVİYELERİ</div>
         <div class="cefr-row">
-          <div class="cefr-lvl" style="background:rgba(107,114,128,.15);color:#9CA3AF;">A1</div>
-          <div class="cefr-lvl" style="background:rgba(107,114,128,.15);color:#9CA3AF;">A2</div>
+          <div class="cefr-lvl" class="cefr-lvl-item" style="background:rgba(123,47,255,.08);color:var(--dim,rgba(26,10,60,.58));">A1</div>
+          <div class="cefr-lvl" class="cefr-lvl-item" style="background:rgba(123,47,255,.08);color:var(--dim,rgba(26,10,60,.58));">A2</div>
           <div class="cefr-lvl" style="background:rgba(123,47,255,.18);color:#9B4FFF;">B1</div>
           <div class="cefr-lvl" style="background:rgba(123,47,255,.28);color:#C4A4FF;">B2</div>
           <div class="cefr-lvl" style="background:rgba(123,47,255,.38);color:#C4A4FF;">C1</div>
@@ -369,7 +403,7 @@ h1 .gr{background:linear-gradient(135deg,#9B4FFF,#C4A4FF,#E040FB);-webkit-backgr
       <div class="rm-body">
         <div class="rm-cand">
           <div class="rm-av">👤</div>
-          <div><div class="rm-nm">Berke Cenk Civelek</div><div class="rm-em"><a href="mailto:berkecenkcivelek@gmail.com" style="color:rgba(196,164,255,0.6);text-decoration:none;">berkecenkcivelek@gmail.com</a> · İngilizce</div></div>
+          <div><div class="rm-nm">Berke Cenk Civelek</div><div class="rm-em"><a href="mailto:destek@synapsai.ai" style="color:rgba(196,164,255,0.6);text-decoration:none;">destek@synapsai.ai</a> · İngilizce</div></div>
         </div>
         <div class="rm-score-row">
           <div><div style="font-size:10px;color:var(--dim2);margin-bottom:2px;">GENEL SKOR</div><div class="rm-big-score">B2</div><div style="font-size:9px;color:var(--dim2);">Upper-Intermediate</div></div>
@@ -427,26 +461,26 @@ h1 .gr{background:linear-gradient(135deg,#9B4FFF,#C4A4FF,#E040FB);-webkit-backgr
     <div class="uf-col">
       <div class="footer-logo" style="display:flex;align-items:center;gap:8px;margin-bottom:12px;">
         <div class="orb-sm" style="width:22px;height:22px;"><div class="ob ob-base"></div><div class="ob ob-swirl"></div><div class="ob-hl"></div></div>
-        <span style="font-size:17px;font-weight:800;letter-spacing:-.5px;">Synaps<b style="color:#9B4FFF">AI</b></span>
+        <span style="font-size:17px;font-weight:800;letter-spacing:-.5px;color:var(--text,#F0EEF9);">Synaps<b style="color:#9B4FFF">AI</b></span>
       </div>
-      <p style="font-size:12.5px;color:rgba(255,255,255,0.4);line-height:1.7;margin:0 0 12px;max-width:220px;">İşe alım ve çalışan deneyimini yapay zeka ile dönüştüren İK platformu.</p>
-      <div style="font-size:12px;color:rgba(255,255,255,0.32);line-height:1.9;">
+      <p style="font-size:12.5px;color:var(--dim,rgba(240,238,255,.55));line-height:1.7;margin:0 0 12px;max-width:220px;">İşe alım ve çalışan deneyimini yapay zeka ile dönüştüren İK platformu.</p>
+      <div style="font-size:12px;color:var(--dim2,rgba(240,238,255,.4));line-height:1.9;">
         Synaps Yapay Zeka Teknolojileri A.Ş.<br>
         Barbaros Mah. Şebboy Sok. No:4/1<br>
         İç Kapı No:2 Ataşehir/İstanbul<br>
         <a href="mailto:destek@synapsai.ai" style="color:rgba(196,164,255,0.6);text-decoration:none;">destek@synapsai.ai</a>
       </div>
       <div class="footer-socials" style="display:flex;gap:10px;margin-top:16px;">
-  <a href="https://x.com/synapsai" target="_blank" rel="noopener" style="width:32px;height:32px;border-radius:8px;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.1);display:flex;align-items:center;justify-content:center;color:rgba(255,255,255,0.5);transition:all 0.2s;" onmouseover="this.style.background='rgba(123,47,255,0.2)';this.style.color='white'" onmouseout="this.style.background='rgba(255,255,255,0.06)';this.style.color='rgba(255,255,255,0.5)'">
+  <a href="https://x.com/synapsai" target="_blank" rel="noopener" class="footer-social-icon" style="width:32px;height:32px;border-radius:8px;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.1);display:flex;align-items:center;justify-content:center;color:rgba(255,255,255,0.5);transition:all 0.2s;" onmouseover="this.style.background='rgba(123,47,255,0.2)';this.style.color='white'" onmouseout="this.style.background='rgba(255,255,255,0.06)';this.style.color='rgba(255,255,255,0.5)'">
     <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.747l7.73-8.835L1.254 2.25H8.08l4.259 5.631 5.905-5.631zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
   </a>
-  <a href="https://www.linkedin.com/company/synaps-artificial-intelligence/" target="_blank" rel="noopener" style="width:32px;height:32px;border-radius:8px;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.1);display:flex;align-items:center;justify-content:center;color:rgba(255,255,255,0.5);transition:all 0.2s;" onmouseover="this.style.background='rgba(10,102,194,0.3)';this.style.color='white'" onmouseout="this.style.background='rgba(255,255,255,0.06)';this.style.color='rgba(255,255,255,0.5)'">
+  <a href="https://www.linkedin.com/company/synaps-artificial-intelligence/" target="_blank" rel="noopener" class="footer-social-icon" style="width:32px;height:32px;border-radius:8px;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.1);display:flex;align-items:center;justify-content:center;color:rgba(255,255,255,0.5);transition:all 0.2s;" onmouseover="this.style.background='rgba(10,102,194,0.3)';this.style.color='white'" onmouseout="this.style.background='rgba(255,255,255,0.06)';this.style.color='rgba(255,255,255,0.5)'">
     <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
   </a>
-  <a href="https://www.instagram.com/synapsaiofficial" target="_blank" rel="noopener" style="width:32px;height:32px;border-radius:8px;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.1);display:flex;align-items:center;justify-content:center;color:rgba(255,255,255,0.5);transition:all 0.2s;" onmouseover="this.style.background='rgba(193,53,132,0.25)';this.style.color='white'" onmouseout="this.style.background='rgba(255,255,255,0.06)';this.style.color='rgba(255,255,255,0.5)'">
+  <a href="https://www.instagram.com/synapsaiofficial" target="_blank" rel="noopener" class="footer-social-icon" style="width:32px;height:32px;border-radius:8px;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.1);display:flex;align-items:center;justify-content:center;color:rgba(255,255,255,0.5);transition:all 0.2s;" onmouseover="this.style.background='rgba(193,53,132,0.25)';this.style.color='white'" onmouseout="this.style.background='rgba(255,255,255,0.06)';this.style.color='rgba(255,255,255,0.5)'">
     <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
   </a>
-  <a href="https://www.youtube.com/@SynapsAI" target="_blank" rel="noopener" style="width:32px;height:32px;border-radius:8px;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.1);display:flex;align-items:center;justify-content:center;color:rgba(255,255,255,0.5);transition:all 0.2s;" onmouseover="this.style.background='rgba(255,0,0,0.2)';this.style.color='white'" onmouseout="this.style.background='rgba(255,255,255,0.06)';this.style.color='rgba(255,255,255,0.5)'">
+  <a href="https://www.youtube.com/@SynapsAI" target="_blank" rel="noopener" class="footer-social-icon" style="width:32px;height:32px;border-radius:8px;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.1);display:flex;align-items:center;justify-content:center;color:rgba(255,255,255,0.5);transition:all 0.2s;" onmouseover="this.style.background='rgba(255,0,0,0.2)';this.style.color='white'" onmouseout="this.style.background='rgba(255,255,255,0.06)';this.style.color='rgba(255,255,255,0.5)'">
     <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M23.498 6.186a3.016 3.016 0 00-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 00.502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 002.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 002.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
   </a>
 </div>

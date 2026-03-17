@@ -642,6 +642,21 @@ footer{position:relative;z-index:1;background:#02010A;border-top:1px solid var(-
   border-color: rgba(123,47,255,0.2) !important;
   color: rgba(26,10,60,0.5) !important;
 }
+
+/* ── Footer theme-aware classes ── */
+.footer-link{font-size:13px;color:rgba(255,255,255,0.45);text-decoration:none;line-height:1.4;transition:color 0.2s;}
+.footer-link:hover{color:rgba(196,164,255,0.9);}
+.footer-col-title{font-size:11px;font-weight:700;letter-spacing:3px;color:rgba(196,164,255,0.6);text-transform:uppercase;font-family:'JetBrains Mono',monospace;margin-bottom:4px;}
+.footer-bottom-bar{font-size:12px;color:rgba(255,255,255,0.25);border-top:1px solid rgba(255,255,255,0.06);}
+.footer-bottom-bar span:last-child{font-family:'JetBrains Mono',monospace;font-size:11px;color:rgba(196,164,255,0.3);}
+
+[data-theme="light"] #site-footer{background:linear-gradient(180deg,#E8E4F5 0%,#F0EEF9 100%) !important;border-top-color:rgba(123,47,255,0.15) !important;}
+[data-theme="light"] .footer-link{color:rgba(26,10,60,0.55) !important;}
+[data-theme="light"] .footer-link:hover{color:#7B2FFF !important;}
+[data-theme="light"] .footer-col-title{color:rgba(123,47,255,0.7) !important;}
+[data-theme="light"] .footer-bottom-bar{color:rgba(26,10,60,0.35) !important;border-top-color:rgba(123,47,255,0.1) !important;}
+[data-theme="light"] .footer-social-icon{background:rgba(123,47,255,0.08) !important;border-color:rgba(123,47,255,0.2) !important;color:rgba(26,10,60,0.5) !important;}
+[data-theme="light"] .footer-email-link{color:rgba(123,47,255,0.8) !important;}
 </style>
 </head>
 <body>
@@ -1199,7 +1214,7 @@ window.toggleTheme = function() { _origToggle(); setTimeout(drawAtsBracket, 80);
 <!-- ══════ LEGAL FOOTER ══════ -->
 
 <!-- ══════ UNIFIED FOOTER ══════ -->
-<footer style="background:linear-gradient(180deg,#080614 0%,#06040F 100%);border-top:1px solid rgba(123,47,255,0.12);">
+<footer id="site-footer" style="background:linear-gradient(180deg,#080614 0%,#06040F 100%);border-top:1px solid rgba(123,47,255,0.12);">
   <div style="max-width:1280px;margin:0 auto;padding:56px 60px 40px;display:grid;grid-template-columns:1.6fr 1fr 1fr 1.4fr;gap:48px;">
     <div style="display:flex;flex-direction:column;gap:10px;">
       <div style="display:flex;align-items:center;gap:8px;margin-bottom:12px;">
@@ -1211,7 +1226,7 @@ window.toggleTheme = function() { _origToggle(); setTimeout(drawAtsBracket, 80);
         Synaps Yapay Zeka Teknolojileri A.Ş.<br>
         Barbaros Mah. Şebboy Sok. No:4/1<br>
         İç Kapı No:2 Ataşehir/İstanbul<br>
-        <a href="mailto:destek@synapsai.ai" style="color:rgba(196,164,255,0.6);text-decoration:none;">destek@synapsai.ai</a>
+        <a href="mailto:destek@synapsai.ai" style="color:rgba(196,164,255,0.6);text-decoration:none;" class="footer-email-link">destek@synapsai.ai</a>
       </div>
       <div class="footer-socials" style="display:flex;gap:10px;margin-top:16px;">
   <a href="https://x.com/synapsai" target="_blank" rel="noopener" class="footer-social-icon" style="width:32px;height:32px;border-radius:8px;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.1);display:flex;align-items:center;justify-content:center;color:rgba(255,255,255,0.5);transition:all 0.2s;" onmouseover="this.style.background='rgba(123,47,255,0.2)';this.style.color='white'" onmouseout="this.style.background='rgba(255,255,255,0.06)';this.style.color='rgba(255,255,255,0.5)'"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.747l7.73-8.835L1.254 2.25H8.08l4.259 5.631 5.905-5.631zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg></a>
@@ -1221,37 +1236,37 @@ window.toggleTheme = function() { _origToggle(); setTimeout(drawAtsBracket, 80);
 </div>
     </div>
     <div style="display:flex;flex-direction:column;gap:10px;">
-      <div style="font-size:11px;font-weight:700;letter-spacing:3px;color:rgba(196,164,255,0.6);text-transform:uppercase;font-family:'JetBrains Mono',monospace;margin-bottom:4px;">Çözümler</div>
-      <a href="synaps-product-ai-yetenek-bulma.html" style="font-size:13px;color:rgba(255,255,255,0.45);text-decoration:none;line-height:1.4;transition:color 0.2s;" onmouseover="this.style.color='rgba(196,164,255,0.9)'" onmouseout="this.style.color='rgba(255,255,255,0.45)'">AI Yetenek Bulma</a>
-      <a href="synaps-product-ai-interviewer.html" style="font-size:13px;color:rgba(255,255,255,0.45);text-decoration:none;line-height:1.4;transition:color 0.2s;" onmouseover="this.style.color='rgba(196,164,255,0.9)'" onmouseout="this.style.color='rgba(255,255,255,0.45)'">AI Interviewer</a>
-      <a href="synaps-product-ai-telefonla-mulakat.html" style="font-size:13px;color:rgba(255,255,255,0.45);text-decoration:none;line-height:1.4;transition:color 0.2s;" onmouseover="this.style.color='rgba(196,164,255,0.9)'" onmouseout="this.style.color='rgba(255,255,255,0.45)'">AI Telefonla Mülakat</a>
-      <a href="synaps-product-ai-dil-mulakati.html" style="font-size:13px;color:rgba(255,255,255,0.45);text-decoration:none;line-height:1.4;transition:color 0.2s;" onmouseover="this.style.color='rgba(196,164,255,0.9)'" onmouseout="this.style.color='rgba(255,255,255,0.45)'">AI Dil Mülakatı</a>
-      <a href="synaps-product-ai-yazilim-mulakati.html" style="font-size:13px;color:rgba(255,255,255,0.45);text-decoration:none;line-height:1.4;transition:color 0.2s;" onmouseover="this.style.color='rgba(196,164,255,0.9)'" onmouseout="this.style.color='rgba(255,255,255,0.45)'">AI Yazılım Mülakatı</a>
-      <a href="synaps-product-ai-rol-bazli-mulakat.html" style="font-size:13px;color:rgba(255,255,255,0.45);text-decoration:none;line-height:1.4;transition:color 0.2s;" onmouseover="this.style.color='rgba(196,164,255,0.9)'" onmouseout="this.style.color='rgba(255,255,255,0.45)'">AI Rol Bazlı Mülakat</a>
-      <a href="synaps-product-ai-mulakat-asistani.html" style="font-size:13px;color:rgba(255,255,255,0.45);text-decoration:none;line-height:1.4;transition:color 0.2s;" onmouseover="this.style.color='rgba(196,164,255,0.9)'" onmouseout="this.style.color='rgba(255,255,255,0.45)'">AI Mülakat Asistanı</a>
-      <a href="synaps-product-ai-referans-aramasi.html" style="font-size:13px;color:rgba(255,255,255,0.45);text-decoration:none;line-height:1.4;transition:color 0.2s;" onmouseover="this.style.color='rgba(196,164,255,0.9)'" onmouseout="this.style.color='rgba(255,255,255,0.45)'">AI Referans Araması</a>
-      <a href="synaps-product-ai-calisan-deneyimi.html" style="font-size:13px;color:rgba(255,255,255,0.45);text-decoration:none;line-height:1.4;transition:color 0.2s;" onmouseover="this.style.color='rgba(196,164,255,0.9)'" onmouseout="this.style.color='rgba(255,255,255,0.45)'">AI Çalışan Deneyimi</a>
-      <a href="synaps-product-ai-role-play.html" style="font-size:13px;color:rgba(255,255,255,0.45);text-decoration:none;line-height:1.4;transition:color 0.2s;" onmouseover="this.style.color='rgba(196,164,255,0.9)'" onmouseout="this.style.color='rgba(255,255,255,0.45)'">AI Role Play</a>
-      <a href="synaps-product-ai-cikis-mulakati.html" style="font-size:13px;color:rgba(255,255,255,0.45);text-decoration:none;line-height:1.4;transition:color 0.2s;" onmouseover="this.style.color='rgba(196,164,255,0.9)'" onmouseout="this.style.color='rgba(255,255,255,0.45)'">AI Çıkış Mülakatı</a>
-      <a href="synaps-product-ai-ats.html" style="font-size:13px;color:rgba(255,255,255,0.45);text-decoration:none;line-height:1.4;transition:color 0.2s;" onmouseover="this.style.color='rgba(196,164,255,0.9)'" onmouseout="this.style.color='rgba(255,255,255,0.45)'">AI ATS</a>
+      <div class="footer-col-title">Çözümler</div>
+      <a href="synaps-product-ai-yetenek-bulma.html" class="footer-link">AI Yetenek Bulma</a>
+      <a href="synaps-product-ai-interviewer.html" class="footer-link">AI Interviewer</a>
+      <a href="synaps-product-ai-telefonla-mulakat.html" class="footer-link">AI Telefonla Mülakat</a>
+      <a href="synaps-product-ai-dil-mulakati.html" class="footer-link">AI Dil Mülakatı</a>
+      <a href="synaps-product-ai-yazilim-mulakati.html" class="footer-link">AI Yazılım Mülakatı</a>
+      <a href="synaps-product-ai-rol-bazli-mulakat.html" class="footer-link">AI Rol Bazlı Mülakat</a>
+      <a href="synaps-product-ai-mulakat-asistani.html" class="footer-link">AI Mülakat Asistanı</a>
+      <a href="synaps-product-ai-referans-aramasi.html" class="footer-link">AI Referans Araması</a>
+      <a href="synaps-product-ai-calisan-deneyimi.html" class="footer-link">AI Çalışan Deneyimi</a>
+      <a href="synaps-product-ai-role-play.html" class="footer-link">AI Role Play</a>
+      <a href="synaps-product-ai-cikis-mulakati.html" class="footer-link">AI Çıkış Mülakatı</a>
+      <a href="synaps-product-ai-ats.html" class="footer-link">AI ATS</a>
     </div>
     <div style="display:flex;flex-direction:column;gap:10px;">
-      <div style="font-size:11px;font-weight:700;letter-spacing:3px;color:rgba(196,164,255,0.6);text-transform:uppercase;font-family:'JetBrains Mono',monospace;margin-bottom:4px;">Şirket</div>
-      <a href="#" style="font-size:13px;color:rgba(255,255,255,0.45);text-decoration:none;line-height:1.4;" onmouseover="this.style.color='rgba(196,164,255,0.9)'" onmouseout="this.style.color='rgba(255,255,255,0.45)'">Kariyer</a>
-      <a href="#" style="font-size:13px;color:rgba(255,255,255,0.45);text-decoration:none;line-height:1.4;" onmouseover="this.style.color='rgba(196,164,255,0.9)'" onmouseout="this.style.color='rgba(255,255,255,0.45)'">Hakkımızda</a>
-      <a href="#" style="font-size:13px;color:rgba(255,255,255,0.45);text-decoration:none;line-height:1.4;" onmouseover="this.style.color='rgba(196,164,255,0.9)'" onmouseout="this.style.color='rgba(255,255,255,0.45)'">İletişim</a>
+      <div class="footer-col-title">Şirket</div>
+      <a href="#" class="footer-link">Kariyer</a>
+      <a href="#" class="footer-link">Hakkımızda</a>
+      <a href="#" class="footer-link">İletişim</a>
     </div>
     <div style="display:flex;flex-direction:column;gap:10px;">
-      <div style="font-size:11px;font-weight:700;letter-spacing:3px;color:rgba(196,164,255,0.6);text-transform:uppercase;font-family:'JetBrains Mono',monospace;margin-bottom:4px;">Yasal</div>
-      <a href="#" onclick="openLegal('kullanim');return false;" style="font-size:13px;color:rgba(255,255,255,0.45);text-decoration:none;line-height:1.4;" onmouseover="this.style.color='rgba(196,164,255,0.9)'" onmouseout="this.style.color='rgba(255,255,255,0.45)'">Kullanım Koşulları</a>
-      <a href="#" onclick="openLegal('gizlilik');return false;" style="font-size:13px;color:rgba(255,255,255,0.45);text-decoration:none;line-height:1.4;" onmouseover="this.style.color='rgba(196,164,255,0.9)'" onmouseout="this.style.color='rgba(255,255,255,0.45)'">Gizlilik Politikası</a>
-      <a href="#" onclick="openLegal('cerez');return false;" style="font-size:13px;color:rgba(255,255,255,0.45);text-decoration:none;line-height:1.4;" onmouseover="this.style.color='rgba(196,164,255,0.9)'" onmouseout="this.style.color='rgba(255,255,255,0.45)'">Çerez Politikası</a>
-      <a href="#" onclick="openLegal('aydinlatma');return false;" style="font-size:13px;color:rgba(255,255,255,0.45);text-decoration:none;line-height:1.4;" onmouseover="this.style.color='rgba(196,164,255,0.9)'" onmouseout="this.style.color='rgba(255,255,255,0.45)'">Aydınlatma Metni</a>
-      <a href="#" onclick="openLegal('mesafeli');return false;" style="font-size:13px;color:rgba(255,255,255,0.45);text-decoration:none;line-height:1.4;" onmouseover="this.style.color='rgba(196,164,255,0.9)'" onmouseout="this.style.color='rgba(255,255,255,0.45)'">Mesafeli Satış Sözleşmesi</a>
-      <a href="#" onclick="openLegal('sss');return false;" style="font-size:13px;color:rgba(255,255,255,0.45);text-decoration:none;line-height:1.4;" onmouseover="this.style.color='rgba(196,164,255,0.9)'" onmouseout="this.style.color='rgba(255,255,255,0.45)'">SSS</a>
+      <div class="footer-col-title">Yasal</div>
+      <a href="#" onclick="openLegal('kullanim');return false;" class="footer-link">Kullanım Koşulları</a>
+      <a href="#" onclick="openLegal('gizlilik');return false;" class="footer-link">Gizlilik Politikası</a>
+      <a href="#" onclick="openLegal('cerez');return false;" class="footer-link">Çerez Politikası</a>
+      <a href="#" onclick="openLegal('aydinlatma');return false;" class="footer-link">Aydınlatma Metni</a>
+      <a href="#" onclick="openLegal('mesafeli');return false;" class="footer-link">Mesafeli Satış Sözleşmesi</a>
+      <a href="#" onclick="openLegal('sss');return false;" class="footer-link">SSS</a>
     </div>
   </div>
-  <div style="max-width:1280px;margin:0 auto;padding:20px 60px 28px;display:flex;justify-content:space-between;align-items:center;border-top:1px solid rgba(255,255,255,0.06);font-size:12px;color:rgba(255,255,255,0.25);">
+  <div class="footer-bottom-bar" style="max-width:1280px;margin:0 auto;padding:20px 60px 28px;display:flex;justify-content:space-between;align-items:center;">
     <span>© 2026 Synaps Yapay Zeka Teknolojileri A.Ş. — Tüm Hakları Saklıdır</span>
     <span style="font-family:'JetBrains Mono',monospace;font-size:11px;color:rgba(196,164,255,0.3);">synapsai.ai</span>
   </div>
@@ -1275,7 +1290,6 @@ var legalTexts = {
 function openLegal(key){var m=document.getElementById('legalModal'),c=document.getElementById('legalContent'),t=legalTexts[key];if(!t)return;c.innerHTML='<h2 style="font-size:22px;font-weight:900;color:white;margin-bottom:28px;letter-spacing:-0.5px;">'+t.title+'</h2>'+t.body;m.style.display='block';document.body.style.overflow='hidden';c.querySelectorAll('.sss-q').forEach(function(q){q.addEventListener('click',function(){this.parentElement.classList.toggle('open');});});}
 function closeLegal(){document.getElementById('legalModal').style.display='none';document.body.style.overflow='';}
 document.querySelectorAll('.faq-q').forEach(function(q){q.addEventListener('click',function(){this.parentElement.classList.toggle('open');});});
-}
 </script>
 <script>
 (function(){

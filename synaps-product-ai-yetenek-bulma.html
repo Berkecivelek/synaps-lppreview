@@ -276,6 +276,24 @@ background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/sv
   border-color: rgba(123,47,255,0.2) !important;
   color: rgba(26,10,60,0.5) !important;
 }
+
+/* ── ATS Panel light mode ── */
+[data-theme="light"] #ats-panel-right .tab-active-indicator,
+[data-theme="light"] #ats-panel-right [style*="border-bottom:2px solid #7B2FFF"] {
+  color: #7B2FFF !important;
+}
+[data-theme="light"] #ats-panel-right [style*="background:rgba(255,255,255,.07)"] {
+  background: rgba(123,47,255,.1) !important;
+}
+[data-theme="light"] #ats-panel-right [style*="color:var(--dim2"] {
+  color: rgba(26,10,60,.55) !important;
+}
+[data-theme="light"] #ats-panel-right [style*="color:var(--fg"] {
+  color: #1A0A3C !important;
+}
+[data-theme="light"] #ats-panel-right [style*="color:var(--dim)"] {
+  color: rgba(26,10,60,.6) !important;
+}
 </style>
 </head>
 <body>
@@ -324,7 +342,7 @@ background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/sv
     </div>
 
     <!-- RIGHT: ATS Panel UI -->
-    <div style="position:relative;z-index:1;">
+    <div id="ats-panel-right" style="position:relative;z-index:1;">
     <div style="background:var(--card2,#120E20);border:1px solid var(--border,rgba(255,255,255,.08));border-radius:20px;overflow:hidden;box-shadow:0 24px 64px rgba(0,0,0,.5);font-size:13px;">
 
       <!-- ATS Panel top bar -->
@@ -354,7 +372,7 @@ background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/sv
         <div style="display:flex;align-items:center;gap:10px;">
           <div style="width:36px;height:36px;border-radius:50%;background:linear-gradient(135deg,#7B2FFF,#5A1ECC);display:flex;align-items:center;justify-content:center;font-family:'JetBrains Mono',monospace;font-size:11px;font-weight:700;color:white;">TŞ</div>
           <div>
-            <div style="font-size:13px;font-weight:700;color:var(--fg,#F0EEF9);">Tuğçe Şen</div>
+            <div style="font-size:13px;font-weight:700;color:var(--text,#F0EEF9);">Tuğçe Şen</div>
             <div style="font-size:10px;color:var(--dim2,rgba(240,238,255,.4));">Product Manager</div>
           </div>
         </div>

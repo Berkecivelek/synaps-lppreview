@@ -1,27 +1,25 @@
 <!DOCTYPE html>
 <html lang="tr">
 <head>
-<meta charset="UTF-8">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="google-site-verification" content="xUPsG0KluyFmsKMAEPgRaSDlQ1o1vS0JHZkRvB5n9P8" />
   <title>Synaps AI — Yapay Zeka Destekli İK Platformu</title>
   <meta name="description" content="İşe alım ve çalışan deneyimini yapay zeka ile dönüştürün. AI Interviewer, ATS, Dil Mülakatı ve daha fazlası.">
   <meta name="robots" content="index, follow">
-  <link rel="canonical" href="https://synapsai.ai">
+  <link rel="canonical" href="https://www.synapsai.ai">
   <link rel="icon" type="image/png" href="favicon.png">
   <link rel="apple-touch-icon" href="favicon.png">
-  <!-- Open Graph -->
   <meta property="og:type" content="website">
-  <meta property="og:url" content="https://synapsai.ai">
+  <meta property="og:url" content="https://www.synapsai.ai">
   <meta property="og:title" content="Synaps AI — Yapay Zeka Destekli İK Platformu">
   <meta property="og:description" content="İşe alım ve çalışan deneyimini yapay zeka ile dönüştürün. AI Interviewer, ATS, Dil Mülakatı ve daha fazlası.">
-  <meta property="og:image" content="https://synapsai.ai/favicon.png">
+  <meta property="og:image" content="https://www.synapsai.ai/favicon.png">
   <meta property="og:locale" content="tr_TR">
-  <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Synaps AI — Yapay Zeka Destekli İK Platformu">
   <meta name="twitter:description" content="İşe alım ve çalışan deneyimini yapay zeka ile dönüştürün. AI Interviewer, ATS, Dil Mülakatı ve daha fazlası.">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Synaps AI — Geleceğin Yetenek Yönetimi</title>
-<style>
+  <style>
 @import url('https://fonts.googleapis.com/css2?family=Lexend:wght@200;300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;700&display=swap');
 
 :root {
@@ -641,6 +639,139 @@ footer{position:relative;z-index:1;background:#02010A;border-top:1px solid var(-
 .legal-section a{color:#C4A4FF;}
 .legal-section table{color:rgba(240,238,255,0.75);}
 
+/* ══════════════════════════════════════════
+   MOBILE RESPONSIVE — Synaps v11
+   ══════════════════════════════════════════ */
+
+/* ── Hamburger menu ── */
+.mob-menu-btn{display:none;background:none;border:1px solid var(--border);border-radius:8px;padding:7px 10px;cursor:pointer;color:var(--dim);font-size:18px;line-height:1;}
+.mob-nav-overlay{display:none;position:fixed;inset:64px 0 0 0;background:rgba(5,5,16,0.97);backdrop-filter:blur(24px);z-index:299;overflow-y:auto;padding:24px 20px 40px;}
+[data-theme="light"] .mob-nav-overlay{background:rgba(240,238,249,0.98);}
+.mob-nav-overlay.open{display:block;}
+.mob-nav-link{display:block;padding:14px 4px;font-size:16px;font-weight:500;color:var(--dim);text-decoration:none;border-bottom:1px solid var(--border);}
+.mob-nav-link:last-child{border-bottom:none;}
+.mob-nav-link:hover{color:var(--text);}
+.mob-nav-section{font-size:10px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:rgba(155,79,255,0.6);padding:20px 4px 8px;}
+.mob-prod-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px;padding-bottom:16px;}
+.mob-prod-item{background:rgba(255,255,255,0.04);border:1px solid var(--border);border-radius:10px;padding:10px 12px;font-size:12px;font-weight:600;color:var(--dim);text-decoration:none;}
+.mob-prod-item:hover{background:rgba(123,47,255,0.1);color:var(--lavender,#C4A4FF);}
+.mob-nav-btns{display:flex;flex-direction:column;gap:10px;margin-top:20px;}
+.mob-nav-btns .nav-cta,.mob-nav-btns .nav-ghost{width:100%;text-align:center;padding:13px;font-size:14px;}
+
+@media(max-width:900px){
+  /* Nav */
+  nav{padding:0 20px;}
+  .nav-center{display:none;}
+  .nav-right .nav-ghost,.nav-right .nav-cta{display:none;}
+  .mob-menu-btn{display:flex;align-items:center;justify-content:center;}
+
+  /* Hero */
+  .hero{grid-template-columns:1fr;padding:100px 24px 60px;gap:40px;min-height:auto;text-align:center;}
+  .hero-right{display:none;}
+  .hero-btns{justify-content:center;flex-wrap:wrap;}
+  .hero h1{font-size:clamp(32px,8vw,48px);}
+  .hero-desc{margin:16px auto 28px;max-width:100%;}
+
+  /* Journey/steps */
+  .journey-section{padding:48px 24px;}
+  .journey-steps{flex-wrap:wrap;gap:20px;}
+  .j-conn{display:none;}
+  .j-step{flex:0 0 calc(50% - 10px);}
+
+  /* Ecosystem */
+  .eco-section{overflow-x:auto;}
+  .eco-inner{padding:48px 20px;}
+  .eco-flow{min-width:700px;}
+
+  /* Stats bar */
+  .stats-bar{grid-template-columns:1fr 1fr;gap:16px;padding:32px 24px;}
+
+  /* Promo */
+  .promo-section{padding:0 20px 60px;}
+  .promo-card{grid-template-columns:1fr;gap:40px;padding:40px 28px;}
+
+  /* Product showcase */
+  .ps-grid{grid-template-columns:1fr 1fr;}
+
+  /* B2C grid */
+  .b2c-grid{grid-template-columns:1fr 1fr;gap:14px;padding:0 20px;}
+
+  /* Video */
+  .video-section{padding:60px 20px;}
+  .video-top{grid-template-columns:1fr;gap:16px;}
+
+  /* Testimonials */
+  .testi-section{padding:60px 20px 80px;}
+  .testi-grid-v1{grid-template-columns:1fr;}
+
+  /* CTA */
+  .cta-section{padding:40px 20px 80px;}
+  .cta-card{padding:48px 28px;}
+  .cta-btns{flex-direction:column;align-items:stretch;}
+  .cta-btns button{text-align:center;}
+
+  /* Footer */
+  footer{padding:48px 20px 32px;}
+  .footer-grid{grid-template-columns:1fr 1fr;gap:32px;}
+
+  /* Lang + theme in nav */
+  .lang-switch{display:none;}
+  .theme-toggle{display:none;}
+}
+
+@media(max-width:600px){
+  /* Nav */
+  nav{padding:0 16px;}
+
+  /* Hero */
+  .hero{padding:90px 16px 50px;}
+  .hero h1{font-size:clamp(28px,9vw,40px);letter-spacing:-1.5px;}
+  .hero-btns{flex-direction:column;gap:10px;}
+  .btn-primary,.btn-ghost-hero{width:100%;text-align:center;}
+
+  /* Stats */
+  .stats-bar{grid-template-columns:1fr 1fr;padding:24px 16px;gap:12px;}
+  .stat-num{font-size:clamp(28px,7vw,40px);}
+
+  /* Promo */
+  .promo-card{padding:32px 20px;}
+  .ps-grid{grid-template-columns:1fr;}
+
+  /* B2C */
+  .b2c-grid{grid-template-columns:1fr;padding:0 16px;}
+
+  /* Testimonials */
+  .testi-grid-v1{grid-template-columns:1fr;}
+  .testi-section{padding:48px 16px 60px;}
+
+  /* CTA */
+  .cta-card{padding:40px 20px;border-radius:20px;}
+  .cta-card h2{font-size:clamp(24px,7vw,36px);}
+
+  /* Footer */
+  footer{padding:40px 16px 28px;}
+  .footer-grid{grid-template-columns:1fr;gap:28px;}
+  .footer-bottom{flex-direction:column;gap:12px;text-align:center;}
+
+  /* Ecosystem scroll */
+  .eco-section{padding:48px 0;}
+  .eco-inner{padding:0 16px;}
+
+  /* Journey */
+  .j-step{flex:0 0 100%;}
+
+  /* Video */
+  .video-section{padding:48px 16px;}
+
+  /* Section tags */
+  .section-tag{font-size:9px;}
+  .section-title{font-size:clamp(24px,7vw,36px) !important;letter-spacing:-1px !important;}
+}
+
+/* Hamburger icon lines */
+.mob-menu-btn span{display:block;width:18px;height:2px;background:currentColor;border-radius:2px;transition:all 0.3s;}
+.mob-menu-btn span+span{margin-top:4px;}
+
 /* ── Footer light mode fixes ── */
 [data-theme="light"] .uf-footer {
   background: linear-gradient(180deg,#E8E4F5 0%,#F0EEF9 100%) !important;
@@ -693,28 +824,28 @@ footer{position:relative;z-index:1;background:#02010A;border-top:1px solid var(-
   </a>
 
   <div class="nav-center">
-    <a href="#" class="nav-link">Ana Sayfa</a>
+    <a href="#" class="nav-link" data-i18n="nav-home">Ana Sayfa</a>
 
     <div class="dropdown-wrap">
-      <button class="dropdown-btn">Çözümler <span class="arrow">▾</span></button>
+      <button class="dropdown-btn"><span data-i18n="nav-solutions">Çözümler</span> <span class="arrow">▾</span></button>
       <div class="dropdown-menu">
-        <div class="dm-label">Tüm AI Ürünleri</div>
-        <a class="dm-item" href="synaps-product-ai-yetenek-bulma.html"><div class="dm-icon" style="background:linear-gradient(135deg,#2A0866,#5B2ACC)"><svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M8 12h8M8 8h5M5 3h14a2 2 0 012 2v14a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2z" stroke="#C4A4FF" stroke-width="1.8" stroke-linecap="round"/></svg></div><div><div class="dm-title">AI Yetenek Bulma</div><div class="dm-sub">Aday havuzunu otomatik oluştur</div></div></a>
-        <a class="dm-item" href="synaps-product-ai-interviewer.html"><div class="dm-icon" style="background:linear-gradient(135deg,#0A1A44,#1A3A9A)"><svg width="16" height="16" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="3" stroke="#7AB4FF" stroke-width="1.8"/><circle cx="12" cy="12" r="7" stroke="#7AB4FF" stroke-width="1.2" stroke-dasharray="2 2"/><circle cx="12" cy="12" r="11" stroke="#7AB4FF" stroke-width="0.8" opacity="0.4"/></svg></div><div><div class="dm-title">AI Interviewer</div><div class="dm-sub">Otonom mülakat yönetimi</div></div></a>
-        <a class="dm-item" href="synaps-product-ai-telefonla-mulakat.html"><div class="dm-icon" style="background:linear-gradient(135deg,#1A0A30,#4A1A80)"><svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M3 8h18M3 12h12M3 16h8" stroke="#B48AFF" stroke-width="1.8" stroke-linecap="round"/></svg></div><div><div class="dm-title">AI Telefonla Mülakat</div><div class="dm-sub">Sesli AI mülakat sistemi</div></div></a>
-        <a class="dm-item" href="synaps-product-ai-dil-mulakati.html"><div class="dm-icon" style="background:linear-gradient(135deg,#041A10,#0A5030)"><svg width="16" height="16" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9" stroke="#4AE08A" stroke-width="1.5"/><path d="M8 12l2.5 2.5L16 9" stroke="#4AE08A" stroke-width="1.8" stroke-linecap="round"/></svg></div><div><div class="dm-title">AI Dil Mülakatı</div><div class="dm-sub">Çok dilli yetkinlik değerlendirme</div></div></a>
-        <a class="dm-item" href="synaps-product-ai-yazilim-mulakati.html"><div class="dm-icon" style="background:linear-gradient(135deg,#1A0A04,#5A2A08)"><svg width="16" height="16" viewBox="0 0 24 24" fill="none"><rect x="3" y="3" width="7" height="7" rx="1.5" stroke="#FF9A4A" stroke-width="1.8"/><rect x="14" y="3" width="7" height="7" rx="1.5" stroke="#FF9A4A" stroke-width="1.8" opacity="0.6"/><rect x="3" y="14" width="7" height="7" rx="1.5" stroke="#FF9A4A" stroke-width="1.8" opacity="0.6"/><rect x="14" y="14" width="7" height="7" rx="1.5" stroke="#FF9A4A" stroke-width="1.8" opacity="0.4"/></svg></div><div><div class="dm-title">AI Yazılım Mülakatı</div><div class="dm-sub">Teknik beceri değerlendirme</div></div></a>
-        <a class="dm-item" href="synaps-product-ai-rol-bazli-mulakat.html"><div class="dm-icon" style="background:linear-gradient(135deg,#1A041A,#5A0A5A)"><svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M20 7L12 3L4 7M20 7v10L12 21M20 7L12 11M12 11v10" stroke="#E080FF" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div><div class="dm-title">AI Rol Bazlı Mülakat</div><div class="dm-sub">Pozisyon odaklı değerlendirme</div></div></a>
-        <a class="dm-item" href="synaps-product-ai-mulakat-asistani.html"><div class="dm-icon" style="background:linear-gradient(135deg,#041418,#0A3A50)"><svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M12 2l2 7h7l-5.5 4 2 7L12 16l-5.5 4 2-7L3 9h7z" stroke="#4AC8FF" stroke-width="1.6" stroke-linejoin="round"/></svg></div><div><div class="dm-title">AI Mülakat Asistanı</div><div class="dm-sub">Gerçek zamanlı mülakatçı desteği</div></div></a>
-        <a class="dm-item" href="synaps-product-ai-ats.html"><div class="dm-icon" style="background:linear-gradient(135deg,#0A1E44,#1A4A9A)"><svg width="16" height="16" viewBox="0 0 24 24" fill="none"><rect x="3" y="3" width="18" height="16" rx="2" stroke="#7AB4FF" stroke-width="1.6"/><path d="M3 8h18" stroke="#7AB4FF" stroke-width="1.4"/><path d="M8 13h4M8 16h6" stroke="#7AB4FF" stroke-width="1.5" stroke-linecap="round"/><circle cx="18" cy="17" r="3" fill="#1A4A9A" stroke="#4AF"/><path d="M16.5 17l1 1 2-2" stroke="white" stroke-width="1.2" stroke-linecap="round"/></svg></div><div><div class="dm-title">AI ATS</div><div class="dm-sub">Akıllı aday takip sistemi</div></div></a>
-        <a class="dm-item" href="synaps-product-ai-referans-aramasi.html"><div class="dm-icon" style="background:linear-gradient(135deg,#0A1800,#204800)"><svg width="16" height="16" viewBox="0 0 24 24" fill="none"><circle cx="9" cy="7" r="4" stroke="#80D840" stroke-width="1.6"/><path d="M17 11c1.7.4 3 1.9 3 3.7V20H4v-5.3C4 12.9 5.3 11.4 7 11" stroke="#80D840" stroke-width="1.6" stroke-linecap="round"/></svg></div><div><div class="dm-title">AI Referans Araması</div><div class="dm-sub">Otomatik referans doğrulama</div></div></a>
-        <a class="dm-item" href="synaps-product-ai-calisan-deneyimi.html"><div class="dm-icon" style="background:linear-gradient(135deg,#100420,#380A60)"><svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M12 22c5.52 0 10-4.48 10-10S17.52 2 12 2 2 6.48 2 12s4.48 10 10 10z" stroke="#AA70FF" stroke-width="1.4"/><path d="M12 8v4l3 3" stroke="#AA70FF" stroke-width="1.8" stroke-linecap="round"/></svg></div><div><div class="dm-title">AI Çalışan Deneyimi</div><div class="dm-sub">Çalışan bağlılığı ve gelişim</div></div></a>
-        <a class="dm-item" href="synaps-product-ai-role-play.html"><div class="dm-icon" style="background:linear-gradient(135deg,#0A0418,#280A50)"><svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2" stroke="#C090FF" stroke-width="1.7" stroke-linecap="round"/><circle cx="9" cy="7" r="4" stroke="#C090FF" stroke-width="1.7"/><path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75" stroke="#C090FF" stroke-width="1.4" stroke-linecap="round"/></svg></div><div><div class="dm-title">AI Role Play</div><div class="dm-sub">Simülasyon bazlı eğitim</div></div></a>
-        <a class="dm-item" href="synaps-product-ai-cikis-mulakati.html"><div class="dm-icon" style="background:linear-gradient(135deg,#180A0A,#4A1818)"><svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M9 3H5a2 2 0 00-2 2v4m6-6h10a2 2 0 012 2v4M9 3v18m0 0h10a2 2 0 002-2V9M9 21H5a2 2 0 01-2-2V9m0 0h18" stroke="#FF8080" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div><div class="dm-title">AI Çıkış Mülakatı</div><div class="dm-sub">Ayrılış analizi ve içgörü</div></div></a>
+        <div class="dm-label" data-i18n="nav-all-products">Tüm AI Ürünleri</div>
+        <a class="dm-item" href="synaps-product-ai-yetenek-bulma.html"><div class="dm-icon" style="background:linear-gradient(135deg,#2A0866,#5B2ACC)"><svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M8 12h8M8 8h5M5 3h14a2 2 0 012 2v14a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2z" stroke="#C4A4FF" stroke-width="1.8" stroke-linecap="round"/></svg></div><div><div class="dm-title" data-i18n="dm-yetenek-title">AI Yetenek Bulma</div><div class="dm-sub" data-i18n="dm-yetenek-sub">Aday havuzunu otomatik oluştur</div></div></a>
+        <a class="dm-item" href="synaps-product-ai-interviewer.html"><div class="dm-icon" style="background:linear-gradient(135deg,#0A1A44,#1A3A9A)"><svg width="16" height="16" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="3" stroke="#7AB4FF" stroke-width="1.8"/><circle cx="12" cy="12" r="7" stroke="#7AB4FF" stroke-width="1.2" stroke-dasharray="2 2"/><circle cx="12" cy="12" r="11" stroke="#7AB4FF" stroke-width="0.8" opacity="0.4"/></svg></div><div><div class="dm-title" data-i18n="dm-interviewer-title">AI Interviewer</div><div class="dm-sub" data-i18n="dm-interviewer-sub">Otonom mülakat yönetimi</div></div></a>
+        <a class="dm-item" href="synaps-product-ai-telefonla-mulakat.html"><div class="dm-icon" style="background:linear-gradient(135deg,#1A0A30,#4A1A80)"><svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M3 8h18M3 12h12M3 16h8" stroke="#B48AFF" stroke-width="1.8" stroke-linecap="round"/></svg></div><div><div class="dm-title" data-i18n="dm-telefon-title">AI Telefonla Mülakat</div><div class="dm-sub" data-i18n="dm-telefon-sub">Sesli AI mülakat sistemi</div></div></a>
+        <a class="dm-item" href="synaps-product-ai-dil-mulakati.html"><div class="dm-icon" style="background:linear-gradient(135deg,#041A10,#0A5030)"><svg width="16" height="16" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9" stroke="#4AE08A" stroke-width="1.5"/><path d="M8 12l2.5 2.5L16 9" stroke="#4AE08A" stroke-width="1.8" stroke-linecap="round"/></svg></div><div><div class="dm-title" data-i18n="dm-dil-title">AI Dil Mülakatı</div><div class="dm-sub" data-i18n="dm-dil-sub">Çok dilli yetkinlik değerlendirme</div></div></a>
+        <a class="dm-item" href="synaps-product-ai-yazilim-mulakati.html"><div class="dm-icon" style="background:linear-gradient(135deg,#1A0A04,#5A2A08)"><svg width="16" height="16" viewBox="0 0 24 24" fill="none"><rect x="3" y="3" width="7" height="7" rx="1.5" stroke="#FF9A4A" stroke-width="1.8"/><rect x="14" y="3" width="7" height="7" rx="1.5" stroke="#FF9A4A" stroke-width="1.8" opacity="0.6"/><rect x="3" y="14" width="7" height="7" rx="1.5" stroke="#FF9A4A" stroke-width="1.8" opacity="0.6"/><rect x="14" y="14" width="7" height="7" rx="1.5" stroke="#FF9A4A" stroke-width="1.8" opacity="0.4"/></svg></div><div><div class="dm-title" data-i18n="dm-yazilim-title">AI Yazılım Mülakatı</div><div class="dm-sub" data-i18n="dm-yazilim-sub">Teknik beceri değerlendirme</div></div></a>
+        <a class="dm-item" href="synaps-product-ai-rol-bazli-mulakat.html"><div class="dm-icon" style="background:linear-gradient(135deg,#1A041A,#5A0A5A)"><svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M20 7L12 3L4 7M20 7v10L12 21M20 7L12 11M12 11v10" stroke="#E080FF" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div><div class="dm-title" data-i18n="dm-rol-title">AI Rol Bazlı Mülakat</div><div class="dm-sub" data-i18n="dm-rol-sub">Pozisyon odaklı değerlendirme</div></div></a>
+        <a class="dm-item" href="synaps-product-ai-mulakat-asistani.html"><div class="dm-icon" style="background:linear-gradient(135deg,#041418,#0A3A50)"><svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M12 2l2 7h7l-5.5 4 2 7L12 16l-5.5 4 2-7L3 9h7z" stroke="#4AC8FF" stroke-width="1.6" stroke-linejoin="round"/></svg></div><div><div class="dm-title" data-i18n="dm-asistan-title">AI Mülakat Asistanı</div><div class="dm-sub" data-i18n="dm-asistan-sub">Gerçek zamanlı mülakatçı desteği</div></div></a>
+        <a class="dm-item" href="synaps-product-ai-ats.html"><div class="dm-icon" style="background:linear-gradient(135deg,#0A1E44,#1A4A9A)"><svg width="16" height="16" viewBox="0 0 24 24" fill="none"><rect x="3" y="3" width="18" height="16" rx="2" stroke="#7AB4FF" stroke-width="1.6"/><path d="M3 8h18" stroke="#7AB4FF" stroke-width="1.4"/><path d="M8 13h4M8 16h6" stroke="#7AB4FF" stroke-width="1.5" stroke-linecap="round"/><circle cx="18" cy="17" r="3" fill="#1A4A9A" stroke="#4AF"/><path d="M16.5 17l1 1 2-2" stroke="white" stroke-width="1.2" stroke-linecap="round"/></svg></div><div><div class="dm-title" data-i18n="dm-ats-title">AI ATS</div><div class="dm-sub" data-i18n="dm-ats-sub">Akıllı aday takip sistemi</div></div></a>
+        <a class="dm-item" href="synaps-product-ai-referans-aramasi.html"><div class="dm-icon" style="background:linear-gradient(135deg,#0A1800,#204800)"><svg width="16" height="16" viewBox="0 0 24 24" fill="none"><circle cx="9" cy="7" r="4" stroke="#80D840" stroke-width="1.6"/><path d="M17 11c1.7.4 3 1.9 3 3.7V20H4v-5.3C4 12.9 5.3 11.4 7 11" stroke="#80D840" stroke-width="1.6" stroke-linecap="round"/></svg></div><div><div class="dm-title" data-i18n="dm-referans-title">AI Referans Araması</div><div class="dm-sub" data-i18n="dm-referans-sub">Otomatik referans doğrulama</div></div></a>
+        <a class="dm-item" href="synaps-product-ai-calisan-deneyimi.html"><div class="dm-icon" style="background:linear-gradient(135deg,#100420,#380A60)"><svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M12 22c5.52 0 10-4.48 10-10S17.52 2 12 2 2 6.48 2 12s4.48 10 10 10z" stroke="#AA70FF" stroke-width="1.4"/><path d="M12 8v4l3 3" stroke="#AA70FF" stroke-width="1.8" stroke-linecap="round"/></svg></div><div><div class="dm-title" data-i18n="dm-calisan-title">AI Çalışan Deneyimi</div><div class="dm-sub" data-i18n="dm-calisan-sub">Çalışan bağlılığı ve gelişim</div></div></a>
+        <a class="dm-item" href="synaps-product-ai-role-play.html"><div class="dm-icon" style="background:linear-gradient(135deg,#0A0418,#280A50)"><svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2" stroke="#C090FF" stroke-width="1.7" stroke-linecap="round"/><circle cx="9" cy="7" r="4" stroke="#C090FF" stroke-width="1.7"/><path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75" stroke="#C090FF" stroke-width="1.4" stroke-linecap="round"/></svg></div><div><div class="dm-title" data-i18n="dm-roleplay-title">AI Role Play</div><div class="dm-sub" data-i18n="dm-roleplay-sub">Simülasyon bazlı eğitim</div></div></a>
+        <a class="dm-item" href="synaps-product-ai-cikis-mulakati.html"><div class="dm-icon" style="background:linear-gradient(135deg,#180A0A,#4A1818)"><svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M9 3H5a2 2 0 00-2 2v4m6-6h10a2 2 0 012 2v4M9 3v18m0 0h10a2 2 0 002-2V9M9 21H5a2 2 0 01-2-2V9m0 0h18" stroke="#FF8080" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div><div class="dm-title" data-i18n="dm-cikis-title">AI Çıkış Mülakatı</div><div class="dm-sub" data-i18n="dm-cikis-sub">Ayrılış analizi ve içgörü</div></div></a>
       </div>
     </div>
 
-    <a href="#" class="nav-link">Fiyatlar</a>
+    <a href="#" class="nav-link" data-i18n="nav-pricing">Fiyatlar</a>
   </div>
 
   <div class="nav-right">
@@ -732,19 +863,63 @@ footer{position:relative;z-index:1;background:#02010A;border-top:1px solid var(-
       <div class="lang-sep"></div>
       <button class="lang-btn" onclick="setLang(this)">EN</button>
     </div>
-    <a href="https://app.synapsai.ai/admin/login" class="nav-ghost" style="text-decoration:none;">Giriş Yap</a>
-    <button class="nav-cta">Demo Talep</button>
+    <a href="https://app.synapsai.ai/admin/login" class="nav-ghost" style="text-decoration:none;" data-i18n="nav-login">Giriş Yap</a>
+    <button class="nav-cta" data-i18n="nav-demo">Demo Talep</button>
+    <button class="mob-menu-btn" onclick="toggleMobNav()" id="mobMenuBtn" aria-label="Menü">
+      <span></span><span></span><span></span>
+    </button>
   </div>
 </nav>
+
+<!-- MOBILE NAV OVERLAY -->
+<div class="mob-nav-overlay" id="mobNavOverlay">
+  <a href="#" class="mob-nav-link" data-i18n="nav-home">Ana Sayfa</a>
+  <a href="#" class="mob-nav-link" data-i18n="nav-pricing">Fiyatlar</a>
+  <div class="mob-nav-section" data-i18n="nav-all-products">Tüm AI Ürünleri</div>
+  <div class="mob-prod-grid">
+    <a href="synaps-product-ai-yetenek-bulma.html" class="mob-prod-item" data-i18n="dm-yetenek-title">AI Yetenek Bulma</a>
+    <a href="synaps-product-ai-interviewer.html" class="mob-prod-item" data-i18n="dm-interviewer-title">AI Interviewer</a>
+    <a href="synaps-product-ai-telefonla-mulakat.html" class="mob-prod-item" data-i18n="dm-telefon-title">AI Telefonla Mülakat</a>
+    <a href="synaps-product-ai-dil-mulakati.html" class="mob-prod-item" data-i18n="dm-dil-title">AI Dil Mülakatı</a>
+    <a href="synaps-product-ai-yazilim-mulakati.html" class="mob-prod-item" data-i18n="dm-yazilim-title">AI Yazılım Mülakatı</a>
+    <a href="synaps-product-ai-rol-bazli-mulakat.html" class="mob-prod-item" data-i18n="dm-rol-title">AI Rol Bazlı Mülakat</a>
+    <a href="synaps-product-ai-mulakat-asistani.html" class="mob-prod-item" data-i18n="dm-asistan-title">AI Mülakat Asistanı</a>
+    <a href="synaps-product-ai-ats.html" class="mob-prod-item" data-i18n="dm-ats-title">AI ATS</a>
+    <a href="synaps-product-ai-referans-aramasi.html" class="mob-prod-item" data-i18n="dm-referans-title">AI Referans Araması</a>
+    <a href="synaps-product-ai-calisan-deneyimi.html" class="mob-prod-item" data-i18n="dm-calisan-title">AI Çalışan Deneyimi</a>
+    <a href="synaps-product-ai-role-play.html" class="mob-prod-item" data-i18n="dm-roleplay-title">AI Role Play</a>
+    <a href="synaps-product-ai-cikis-mulakati.html" class="mob-prod-item" data-i18n="dm-cikis-title">AI Çıkış Mülakatı</a>
+  </div>
+  <div style="display:flex;align-items:center;justify-content:space-between;padding:16px 4px;border-bottom:1px solid var(--border);">
+    <div class="lang-switch" style="display:flex;">
+      <button class="lang-btn active" onclick="setLang(this)">TR</button>
+      <div class="lang-sep"></div>
+      <button class="lang-btn" onclick="setLang(this)">EN</button>
+    </div>
+    <div class="theme-toggle" style="display:flex;" onclick="toggleTheme()" title="Tema değiştir">
+      <div class="toggle-track">
+        <div class="toggle-thumb">
+          <span class="ico-moon">🌙</span>
+          <span class="ico-sun">☀️</span>
+        </div>
+      </div>
+      <span class="theme-toggle-label" id="themeLabelMob">Dark</span>
+    </div>
+  </div>
+  <div class="mob-nav-btns">
+    <a href="https://app.synapsai.ai/admin/login" class="nav-ghost" style="text-decoration:none;display:block;" data-i18n="nav-login">Giriş Yap</a>
+    <button class="nav-cta" data-i18n="nav-demo">Demo Talep</button>
+  </div>
+</div>
 
 <!-- ══════ HERO ══════ -->
 <section class="hero">
   <div>
-    <h1>Geleceğin<br>Yetenek Yönetimi:<br><span class="brand">Synaps AI</span></h1>
-    <p class="hero-desc">İşe alım süreçlerinden çalışan deneyimine kadar tüm aşamalarda yapay zeka ile verimliliği artırın, tarafsız kararlar alın.</p>
+    <h1 data-i18n="hero-h1">Geleceğin<br>Yetenek Yönetimi:<br><span class="brand">Synaps AI</span></h1>
+    <p class="hero-desc" data-i18n="hero-desc">İşe alım süreçlerinden çalışan deneyimine kadar tüm aşamalarda yapay zeka ile verimliliği artırın, tarafsız kararlar alın.</p>
     <div class="hero-btns">
-      <button class="btn-primary">Çözümleri Keşfet →</button>
-      <button class="btn-ghost-hero">Demo İzle</button>
+      <button class="btn-primary" data-i18n="hero-btn-primary">Çözümleri Keşfet →</button>
+      <button class="btn-ghost-hero" data-i18n="hero-btn-ghost">Demo İzle</button>
     </div>
   </div>
 
@@ -814,9 +989,9 @@ footer{position:relative;z-index:1;background:#02010A;border-top:1px solid var(-
 <section class="eco-section" id="ecosystemSection">
   <div class="eco-inner">
     <div class="eco-header">
-      <div class="section-tag" style="text-align:center">Ekosistem Akışı</div>
-      <h2 class="section-title" style="text-align:center">Uçtan Uca Yetenek<br>Yönetimi Ekosistemi</h2>
-      <p style="font-size:15px;color:var(--dim);font-weight:300;text-align:center;max-width:480px;margin:0 auto;line-height:1.7;">Her adım birbirine bağlı, her araç bir öncekini tamamlar.</p>
+      <div class="section-tag" style="text-align:center" data-i18n="eco-tag">Ekosistem Akışı</div>
+      <h2 class="section-title" style="text-align:center" data-i18n="eco-h2">Uçtan Uca Yetenek<br>Yönetimi Ekosistemi</h2>
+      <p style="font-size:15px;color:var(--dim);font-weight:300;text-align:center;max-width:480px;margin:0 auto;line-height:1.7;" data-i18n="eco-desc">Her adım birbirine bağlı, her araç bir öncekini tamamlar.</p>
     </div>
 
     <div class="eco-flow" id="ecoFlow">
@@ -961,28 +1136,28 @@ footer{position:relative;z-index:1;background:#02010A;border-top:1px solid var(-
 
 <!-- ══════ STATS ══════ -->
 <div class="stats-bar">
-  <div class="stat-item"><span class="stat-num">%90</span><span class="stat-label">Zaman Tasarrufu</span></div>
-  <div class="stat-item"><span class="stat-num">%95</span><span class="stat-label">Aday Memnuniyeti</span></div>
-  <div class="stat-item"><span class="stat-num">∞</span><span class="stat-label">Mülakat Kapasitesi</span></div>
-  <div class="stat-item"><span class="stat-num">3x</span><span class="stat-label">Daha Hızlı İşe Alım</span></div>
+  <div class="stat-item"><span class="stat-num">%90</span><span class="stat-label" data-i18n="stat-zaman">Zaman Tasarrufu</span></div>
+  <div class="stat-item"><span class="stat-num">%95</span><span class="stat-label" data-i18n="stat-memnuniyet">Aday Memnuniyeti</span></div>
+  <div class="stat-item"><span class="stat-num">∞</span><span class="stat-label" data-i18n="stat-kapasite">Mülakat Kapasitesi</span></div>
+  <div class="stat-item"><span class="stat-num">3x</span><span class="stat-label" data-i18n="stat-hizli">Daha Hızlı İşe Alım</span></div>
 </div>
 <div class="divider"></div>
 <!-- ══════ PROMO CARD ══════ -->
 <section class="promo-section">
   <div class="promo-card">
     <div>
-      <div class="section-tag">Uçtan Uca Platform</div>
-      <h2 class="promo-h">Uçtan Uca Yetenek<br>Yönetimi Ekosistemi</h2>
+      <div class="section-tag" data-i18n="promo-tag">Uçtan Uca Platform</div>
+      <h2 class="promo-h" data-i18n="promo-h">Uçtan Uca Yetenek<br>Yönetimi Ekosistemi</h2>
       <ul class="promo-list">
-        <li>AI Employee Experience — Çalışanlarla gerçek zamanlı etkileşim ve gelişim takibi</li>
-        <li>AI Role Play — Satış, servis ve yönetici rollerine özel simülasyon mülakatları</li>
-        <li>AI Çıkış Mülakatı — Ayrılış nedenlerini analiz et, çalışan kaybını azalt</li>
+        <li data-i18n="promo-li1">AI Employee Experience — Çalışanlarla gerçek zamanlı etkileşim ve gelişim takibi</li>
+        <li data-i18n="promo-li2">AI Role Play — Satış, servis ve yönetici rollerine özel simülasyon mülakatları</li>
+        <li data-i18n="promo-li3">AI Çıkış Mülakatı — Ayrılış nedenlerini analiz et, çalışan kaybını azalt</li>
       </ul>
-      <button class="btn-primary">Ekosistemi Detaylı İncele →</button>
+      <button class="btn-primary" data-i18n="promo-btn">Ekosistemi Detaylı İncele →</button>
     </div>
     <div>
       <div class="product-showcase">
-        <div class="ps-title">12 AI Ürünü</div>
+        <div class="ps-title" data-i18n="ps-title">12 AI Ürünü</div>
         <div class="ps-grid">
           <div class="ps-item"><div class="ps-icon" style="background:linear-gradient(135deg,#2A0866,#5B2ACC)"><svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M8 12h8M8 8h5M5 3h14a2 2 0 012 2v14a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2z" stroke="#C4A4FF" stroke-width="2" stroke-linecap="round"/></svg></div><div><div class="ps-name">AI Yetenek Bulma</div><div class="ps-tag">Akıllı aday eşleştirme</div></div></div>
           <div class="ps-item"><div class="ps-icon" style="background:linear-gradient(135deg,#0A1A44,#1A3A9A)"><svg width="14" height="14" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="3" stroke="#7AB4FF" stroke-width="2"/><circle cx="12" cy="12" r="7" stroke="#7AB4FF" stroke-width="1.3" stroke-dasharray="2 2"/></svg></div><div><div class="ps-name">AI Interviewer</div><div class="ps-tag">Otonom mülakat yönetimi</div></div></div>
@@ -1007,11 +1182,11 @@ footer{position:relative;z-index:1;background:#02010A;border-top:1px solid var(-
 <section class="video-section">
   <div class="video-top">
     <div>
-      <div class="video-eyebrow">Platform Tanıtımı</div>
-      <h2 class="video-h2">Synaps AI Neden<br>Şirketlerin Tercihi?</h2>
+      <div class="video-eyebrow" data-i18n="video-eyebrow">Platform Tanıtımı</div>
+      <h2 class="video-h2" data-i18n="video-h2">Synaps AI Neden<br>Şirketlerin Tercihi?</h2>
     </div>
     <div>
-      <p class="video-sub" style="padding-top:16px;">Şirketlerin işe alım süreçlerini nasıl köklü biçimde dönüştürdüğümüzü gerçek vaka çalışmalarıyla inceleyin.</p>
+      <p class="video-sub" style="padding-top:16px;" data-i18n="video-sub">Şirketlerin işe alım süreçlerini nasıl köklü biçimde dönüştürdüğümüzü gerçek vaka çalışmalarıyla inceleyin.</p>
     </div>
   </div>
   <div style="position:relative;">
@@ -1022,10 +1197,10 @@ footer{position:relative;z-index:1;background:#02010A;border-top:1px solid var(-
     <div class="video-main">
       <div class="video-bg2"></div>
       <div class="video-lines"></div>
-      <div class="video-badge2"><div class="v-badge-dot"></div>Canlı Demo</div>
+      <div class="video-badge2"><div class="v-badge-dot"></div><span data-i18n="video-badge">Canlı Demo</span></div>
       <div class="video-center2">
         <div class="vplay-btn"><svg width="28" height="28" viewBox="0 0 24 24" fill="white"><path d="M8 5l11 7-11 7V5z"/></svg></div>
-        <div class="video-label2">Synaps AI — Gerçek Şirket Vakası</div>
+        <div class="video-label2" data-i18n="video-label">Synaps AI — Gerçek Şirket Vakası</div>
       </div>
       <div class="video-dur">4:12</div>
     </div>
@@ -1037,31 +1212,31 @@ footer{position:relative;z-index:1;background:#02010A;border-top:1px solid var(-
 <!-- ══════ TESTIMONIALS — Kart ══════ -->
 <section class="testi-section">
   <div class="testi-header">
-    <div class="section-tag" style="text-align:center">Başarı Hikayeleri</div>
-    <h2 class="section-title" style="text-align:center;letter-spacing:-1.5px">Ürünümüzü gerçek hikâyelerle<br>deneyimleyin.</h2>
+    <div class="section-tag" style="text-align:center" data-i18n="testi-tag">Başarı Hikayeleri</div>
+    <h2 class="section-title" style="text-align:center;letter-spacing:-1.5px" data-i18n="testi-h2">Ürünümüzü gerçek hikâyelerle<br>deneyimleyin.</h2>
   </div>
   <div class="testi-grid-v1">
     <div class="testi-card-v1">
       <span class="testi-quote-icon">"</span>
-      <p class="testi-body">Synaps AI ile haftada 50+ aday mülakatı yapabilir olduk. Bu süreç eskiden 3 hafta alıyordu, şimdi 4 günde tamamlıyoruz.</p>
+      <p class="testi-body" data-i18n="testi1-body">Synaps AI ile haftada 50+ aday mülakatı yapabilir olduk. Bu süreç eskiden 3 hafta alıyordu, şimdi 4 günde tamamlıyoruz.</p>
       <div class="testi-footer-v1">
-        <div><div class="testi-name-v1">Selin Kaya</div><div class="testi-role-v1">İK Direktörü</div></div>
+        <div><div class="testi-name-v1" data-i18n="testi1-name">Selin Kaya</div><div class="testi-role-v1" data-i18n="testi1-role">İK Direktörü</div></div>
         <div class="testi-co-badge" style="color:rgba(255,115,0,0.75);border-color:rgba(255,115,0,0.2);background:rgba(255,115,0,0.06);">PRONET</div>
       </div>
     </div>
     <div class="testi-card-v1">
       <span class="testi-quote-icon">"</span>
-      <p class="testi-body">Gerçek zamanlı yapay zeka geri bildirimleriyle mülakatları çok daha iyi yönetmeye başladım. Adaylara odaklı sorular sorabiliyorum, ekibimizin verimliliği %40 arttı.</p>
+      <p class="testi-body" data-i18n="testi2-body">Gerçek zamanlı yapay zeka geri bildirimleriyle mülakatları çok daha iyi yönetmeye başladım. Adaylara odaklı sorular sorabiliyorum, ekibimizin verimliliği %40 arttı.</p>
       <div class="testi-footer-v1">
-        <div><div class="testi-name-v1">Liam O'Connor</div><div class="testi-role-v1">Kıdemli İşe Alım Uzmanı</div></div>
+        <div><div class="testi-name-v1" data-i18n="testi2-name">Liam O'Connor</div><div class="testi-role-v1" data-i18n="testi2-role">Kıdemli İşe Alım Uzmanı</div></div>
         <div class="testi-co-badge" style="color:rgba(210,35,35,0.75);border-color:rgba(210,35,35,0.2);background:rgba(210,35,35,0.06);">TK TECH</div>
       </div>
     </div>
     <div class="testi-card-v1">
       <span class="testi-quote-icon">"</span>
-      <p class="testi-body">Çalışan çıkış mülakatı modülü sayesinde neden ayrıldıklarını anlamaya başladık. Turnover oranımız 6 ayda %30 düştü.</p>
+      <p class="testi-body" data-i18n="testi3-body">Çalışan çıkış mülakatı modülü sayesinde neden ayrıldıklarını anlamaya başladık. Turnover oranımız 6 ayda %30 düştü.</p>
       <div class="testi-footer-v1">
-        <div><div class="testi-name-v1">Barış Tekin</div><div class="testi-role-v1">İnsan Kaynakları Müdürü</div></div>
+        <div><div class="testi-name-v1" data-i18n="testi3-name">Barış Tekin</div><div class="testi-role-v1" data-i18n="testi3-role">İnsan Kaynakları Müdürü</div></div>
         <div class="testi-co-badge" style="color:rgba(210,35,35,0.75);border-color:rgba(210,35,35,0.2);background:rgba(210,35,35,0.06);">BİM</div>
       </div>
     </div>
@@ -1071,11 +1246,11 @@ footer{position:relative;z-index:1;background:#02010A;border-top:1px solid var(-
 <!-- ══════ CTA ══════ -->
 <section class="cta-section">
   <div class="cta-card">
-    <h2>Yetenek Yönetimini<br>Yeniden Tanımlamaya<br>Hazır Mısınız?</h2>
-    <p>Hemen ücretsiz hesap oluşturun veya kurumsal çözüm ortaklığı için uzmanlarımızla görüşün.</p>
+    <h2 data-i18n="cta-h2">Yetenek Yönetimini<br>Yeniden Tanımlamaya<br>Hazır Mısınız?</h2>
+    <p data-i18n="cta-p">Hemen ücretsiz hesap oluşturun veya kurumsal çözüm ortaklığı için uzmanlarımızla görüşün.</p>
     <div class="cta-btns">
-      <button class="cta-white">Kurumsal Demo Al</button>
-      <button class="cta-outline">Bize Ulaşın</button>
+      <button class="cta-white" data-i18n="cta-white">Kurumsal Demo Al</button>
+      <button class="cta-outline" data-i18n="cta-outline">Bize Ulaşın</button>
     </div>
   </div>
 </section>
@@ -1095,6 +1270,14 @@ for (let i = 0; i < 150; i++) {
 }
 
 // ── Theme toggle ──
+function toggleMobNav(){
+  const overlay = document.getElementById('mobNavOverlay');
+  const btn = document.getElementById('mobMenuBtn');
+  const isOpen = overlay.classList.toggle('open');
+  btn.setAttribute('aria-expanded', isOpen);
+  document.body.style.overflow = isOpen ? 'hidden' : '';
+}
+
 function toggleTheme() {
   const html = document.documentElement;
   const isLight = html.getAttribute('data-theme') === 'light';
@@ -1118,7 +1301,182 @@ function toggleTheme() {
   }
 })();
 
-function setLang(btn){document.querySelectorAll('.lang-btn').forEach(b=>b.classList.remove('active'));btn.classList.add('active');}
+// ── i18n DATA ──────────────────────────────────────────────────────────
+const i18n = {
+  TR: {
+    'nav-home':'Ana Sayfa',
+    'nav-solutions':'Çözümler',
+    'nav-pricing':'Fiyatlar',
+    'nav-login':'Giriş Yap',
+    'nav-demo':'Demo Talep',
+    'nav-all-products':'Tüm AI Ürünleri',
+    'dm-yetenek-title':'AI Yetenek Bulma','dm-yetenek-sub':'Aday havuzunu otomatik oluştur',
+    'dm-interviewer-title':'AI Interviewer','dm-interviewer-sub':'Otonom mülakat yönetimi',
+    'dm-telefon-title':'AI Telefonla Mülakat','dm-telefon-sub':'Sesli AI mülakat sistemi',
+    'dm-dil-title':'AI Dil Mülakatı','dm-dil-sub':'Çok dilli yetkinlik değerlendirme',
+    'dm-yazilim-title':'AI Yazılım Mülakatı','dm-yazilim-sub':'Teknik beceri değerlendirme',
+    'dm-rol-title':'AI Rol Bazlı Mülakat','dm-rol-sub':'Pozisyon odaklı değerlendirme',
+    'dm-asistan-title':'AI Mülakat Asistanı','dm-asistan-sub':'Gerçek zamanlı mülakatçı desteği',
+    'dm-ats-title':'AI ATS','dm-ats-sub':'Akıllı aday takip sistemi',
+    'dm-referans-title':'AI Referans Araması','dm-referans-sub':'Otomatik referans doğrulama',
+    'dm-calisan-title':'AI Çalışan Deneyimi','dm-calisan-sub':'Çalışan bağlılığı ve gelişim',
+    'dm-roleplay-title':'AI Role Play','dm-roleplay-sub':'Simülasyon bazlı eğitim',
+    'dm-cikis-title':'AI Çıkış Mülakatı','dm-cikis-sub':'Ayrılış analizi ve içgörü',
+    'hero-h1':'Geleceğin\nYetenek Yönetimi:\nSynaps AI',
+    'hero-desc':'İşe alım süreçlerinden çalışan deneyimine kadar tüm aşamalarda yapay zeka ile verimliliği artırın, tarafsız kararlar alın.',
+    'hero-btn-primary':'Çözümleri Keşfet →',
+    'hero-btn-ghost':'Demo İzle',
+    'eco-tag':'Ekosistem Akışı',
+    'eco-h2':'Uçtan Uca Yetenek\nYönetimi Ekosistemi',
+    'eco-desc':'Her adım birbirine bağlı, her araç bir öncekini tamamlar.',
+    'eco-step1':'1. Adım','eco-step2':'2. Adım','eco-step3':'3. Adım','eco-step4':'4. Adım',
+    'eco-node-yetenek':'AI Yetenek\nBulma',
+    'eco-node-interviewer':'AI Interviewer',
+    'eco-node-telefon':'AI Telefonla Mülakat',
+    'eco-node-dil':'AI Dil Mülakatı',
+    'eco-node-yazilim':'AI Yazılım Mülakatı',
+    'eco-node-rol':'AI Rol Bazlı Mülakat',
+    'eco-node-asistan':'AI Mülakat Asistanı',
+    'eco-node-referans':'AI Referans\nAraması',
+    'eco-node-calisan':'AI Çalışan Deneyimi',
+    'eco-node-roleplay':'AI Role Play',
+    'eco-node-cikis':'AI Çıkış Mülakatı',
+    'stat-zaman':'Zaman Tasarrufu',
+    'stat-memnuniyet':'Aday Memnuniyeti',
+    'stat-kapasite':'Mülakat Kapasitesi',
+    'stat-hizli':'Daha Hızlı İşe Alım',
+    'promo-tag':'Uçtan Uca Platform',
+    'promo-h':'Uçtan Uca Yetenek\nYönetimi Ekosistemi',
+    'promo-li1':'AI Employee Experience — Çalışanlarla gerçek zamanlı etkileşim ve gelişim takibi',
+    'promo-li2':'AI Role Play — Satış, servis ve yönetici rollerine özel simülasyon mülakatları',
+    'promo-li3':'AI Çıkış Mülakatı — Ayrılış nedenlerini analiz et, çalışan kaybını azalt',
+    'promo-btn':'Ekosistemi Detaylı İncele →',
+    'ps-title':'12 AI Ürünü',
+    'video-eyebrow':'Platform Tanıtımı',
+    'video-h2':'Synaps AI Neden\nŞirketlerin Tercihi?',
+    'video-sub':'Şirketlerin işe alım süreçlerini nasıl köklü biçimde dönüştürdüğümüzü gerçek vaka çalışmalarıyla inceleyin.',
+    'video-annot':'Demo videoyu izle',
+    'video-badge':'Canlı Demo',
+    'video-label':'Synaps AI — Gerçek Şirket Vakası',
+    'testi-tag':'Başarı Hikayeleri',
+    'testi-h2':'Ürünümüzü gerçek hikâyelerle\ndeneyimleyin.',
+    'testi1-body':'Synaps AI ile haftada 50+ aday mülakatı yapabilir olduk. Bu süreç eskiden 3 hafta alıyordu, şimdi 4 günde tamamlıyoruz.',
+    'testi1-name':'Selin Kaya','testi1-role':'İK Direktörü',
+    'testi2-body':'Gerçek zamanlı yapay zeka geri bildirimleriyle mülakatları çok daha iyi yönetmeye başladım. Adaylara odaklı sorular sorabiliyorum, ekibimizin verimliliği %40 arttı.',
+    'testi2-name':'Liam O\'Connor','testi2-role':'Kıdemli İşe Alım Uzmanı',
+    'testi3-body':'Çalışan çıkış mülakatı modülü sayesinde neden ayrıldıklarını anlamaya başladık. Turnover oranımız 6 ayda %30 düştü.',
+    'testi3-name':'Barış Tekin','testi3-role':'İnsan Kaynakları Müdürü',
+    'cta-h2':'Yetenek Yönetimini\nYeniden Tanımlamaya\nHazır Mısınız?',
+    'cta-p':'Hemen ücretsiz hesap oluşturun veya kurumsal çözüm ortaklığı için uzmanlarımızla görüşün.',
+    'cta-white':'Kurumsal Demo Al',
+    'cta-outline':'Bize Ulaşın',
+  },
+  EN: {
+    'nav-home':'Home',
+    'nav-solutions':'Solutions',
+    'nav-pricing':'Pricing',
+    'nav-login':'Login',
+    'nav-demo':'Request Demo',
+    'nav-all-products':'All AI Products',
+    'dm-yetenek-title':'AI Talent Sourcing','dm-yetenek-sub':'Build your candidate pipeline automatically',
+    'dm-interviewer-title':'AI Interviewer','dm-interviewer-sub':'Autonomous interview management',
+    'dm-telefon-title':'AI Phone Interview','dm-telefon-sub':'Voice AI interview system',
+    'dm-dil-title':'AI Language Interview','dm-dil-sub':'Multilingual competency assessment',
+    'dm-yazilim-title':'AI Software Interview','dm-yazilim-sub':'Technical skills assessment',
+    'dm-rol-title':'AI Role-Based Interview','dm-rol-sub':'Position-focused evaluation',
+    'dm-asistan-title':'AI Interview Assistant','dm-asistan-sub':'Real-time interviewer support',
+    'dm-ats-title':'AI ATS','dm-ats-sub':'Smart applicant tracking system',
+    'dm-referans-title':'AI Reference Check','dm-referans-sub':'Automated reference verification',
+    'dm-calisan-title':'AI Employee Experience','dm-calisan-sub':'Employee engagement & growth',
+    'dm-roleplay-title':'AI Role Play','dm-roleplay-sub':'Simulation-based training',
+    'dm-cikis-title':'AI Exit Interview','dm-cikis-sub':'Departure analysis & insights',
+    'hero-h1':'The Future of\nTalent Management:\nSynaps AI',
+    'hero-desc':'Boost efficiency and make unbiased decisions across every stage — from recruitment to employee experience — powered by AI.',
+    'hero-btn-primary':'Explore Solutions →',
+    'hero-btn-ghost':'Watch Demo',
+    'eco-tag':'Ecosystem Flow',
+    'eco-h2':'End-to-End Talent\nManagement Ecosystem',
+    'eco-desc':'Every step connected, every tool building on the last.',
+    'eco-step1':'Step 1','eco-step2':'Step 2','eco-step3':'Step 3','eco-step4':'Step 4',
+    'eco-node-yetenek':'AI Talent\nSourcing',
+    'eco-node-interviewer':'AI Interviewer',
+    'eco-node-telefon':'AI Phone Interview',
+    'eco-node-dil':'AI Language Interview',
+    'eco-node-yazilim':'AI Software Interview',
+    'eco-node-rol':'AI Role-Based Interview',
+    'eco-node-asistan':'AI Interview Assistant',
+    'eco-node-referans':'AI Reference\nCheck',
+    'eco-node-calisan':'AI Employee Experience',
+    'eco-node-roleplay':'AI Role Play',
+    'eco-node-cikis':'AI Exit Interview',
+    'stat-zaman':'Time Saved',
+    'stat-memnuniyet':'Candidate Satisfaction',
+    'stat-kapasite':'Interview Capacity',
+    'stat-hizli':'Faster Hiring',
+    'promo-tag':'End-to-End Platform',
+    'promo-h':'End-to-End Talent\nManagement Ecosystem',
+    'promo-li1':'AI Employee Experience — Real-time engagement and development tracking with employees',
+    'promo-li2':'AI Role Play — Simulation interviews tailored for sales, service and leadership roles',
+    'promo-li3':'AI Exit Interview — Analyze departure reasons and reduce employee turnover',
+    'promo-btn':'Explore the Ecosystem →',
+    'ps-title':'12 AI Products',
+    'video-eyebrow':'Platform Overview',
+    'video-h2':'Why Do Companies\nChoose Synaps AI?',
+    'video-sub':'See how companies have fundamentally transformed their hiring processes through real case studies.',
+    'video-annot':'Watch the demo video',
+    'video-badge':'Live Demo',
+    'video-label':'Synaps AI — Real Company Case Study',
+    'testi-tag':'Success Stories',
+    'testi-h2':'Experience our product\nthrough real stories.',
+    'testi1-body':'With Synaps AI we can interview 50+ candidates per week. This used to take 3 weeks; now we finish in 4 days.',
+    'testi1-name':'Selin Kaya','testi1-role':'HR Director',
+    'testi2-body':'Real-time AI feedback helped me run much better interviews. I can ask focused questions and our team\'s efficiency increased by 40%.',
+    'testi2-name':'Liam O\'Connor','testi2-role':'Senior Recruitment Specialist',
+    'testi3-body':'Thanks to the exit interview module we started understanding why people left. Our turnover dropped 30% in 6 months.',
+    'testi3-name':'Barış Tekin','testi3-role':'Human Resources Manager',
+    'cta-h2':'Ready to Redefine\nTalent Management?',
+    'cta-p':'Create a free account now or speak with our experts for an enterprise partnership.',
+    'cta-white':'Get Enterprise Demo',
+    'cta-outline':'Contact Us',
+  }
+};
+
+// ── Lang toggle ────────────────────────────────────────────────────────
+function setLang(btn){
+  document.querySelectorAll('.lang-btn').forEach(b=>b.classList.remove('active'));
+  btn.classList.add('active');
+  const lang = btn.textContent.trim();
+  localStorage.setItem('synaps-lang', lang);
+  applyLang(lang);
+}
+
+function applyLang(lang) {
+  const d = i18n[lang] || i18n['TR'];
+  document.querySelectorAll('[data-i18n]').forEach(el => {
+    const key = el.getAttribute('data-i18n');
+    if (d[key] !== undefined) {
+      // Preserve inner HTML structure for elements with child spans
+      if (el.tagName === 'H1' && el.querySelector('span.brand')) {
+        const parts = d[key].split('\n');
+        const brandName = parts[parts.length-1];
+        const rest = parts.slice(0,-1).join('<br>');
+        el.innerHTML = rest + '<br><span class="brand">' + brandName + '</span>';
+      } else {
+        el.innerHTML = d[key].replace(/\n/g,'<br>');
+      }
+    }
+  });
+  document.documentElement.setAttribute('lang', lang === 'EN' ? 'en' : 'tr');
+}
+
+// Restore saved lang
+(function(){
+  const saved = localStorage.getItem('synaps-lang') || 'TR';
+  document.querySelectorAll('.lang-btn').forEach(b=>{
+    b.classList.toggle('active', b.textContent.trim() === saved);
+  });
+  if (saved === 'EN') applyLang('EN');
+})();
 const heroOrb=document.getElementById('heroOrb');
 document.addEventListener('mousemove',e=>{if(!heroOrb)return;const rx=(e.clientY/window.innerHeight-0.5)*22;const ry=(e.clientX/window.innerWidth-0.5)*22;heroOrb.style.transform=`rotate3d(${-rx/22},${ry/22},0,${Math.sqrt(rx*rx+ry*ry)*0.9}deg)`;});
 const style=document.createElement('style');style.textContent='@keyframes sparkOut{0%{opacity:1;transform:scale(1.5)}100%{opacity:0;transform:scale(0)}}';document.head.appendChild(style);
@@ -1224,8 +1582,6 @@ if (!document.getElementById('ecoBracketStyle')) {
 
 window.addEventListener('load', () => { setTimeout(drawAtsBracket, 150); });
 window.addEventListener('resize', () => { setTimeout(drawAtsBracket, 80); });
-const _origToggle = window.toggleTheme;
-window.toggleTheme = function() { _origToggle(); setTimeout(drawAtsBracket, 80); };
 
 </script>
 <!-- ══════ LEGAL FOOTER ══════ -->
@@ -1243,7 +1599,7 @@ window.toggleTheme = function() { _origToggle(); setTimeout(drawAtsBracket, 80);
         Synaps Yapay Zeka Teknolojileri A.Ş.<br>
         Barbaros Mah. Şebboy Sok. No:4/1<br>
         İç Kapı No:2 Ataşehir/İstanbul<br>
-        <a href="mailto:destek@synapsai.ai" style="color:rgba(196,164,255,0.6);text-decoration:none;" class="footer-email-link">destek@synapsai.ai</a>
+        <a href="/cdn-cgi/l/email-protection#e3878690978688a3909a8d829390828acd828a" style="color:rgba(196,164,255,0.6);text-decoration:none;"><span class="__cf_email__" data-cfemail="96f2f3e5e2f3fdd6e5eff8f7e6e5f7ffb8f7ff">[email&#160;protected]</span></a>
       </div>
       <div class="footer-socials" style="display:flex;gap:10px;margin-top:16px;">
   <a href="https://x.com/synapsai" target="_blank" rel="noopener" class="footer-social-icon" style="width:32px;height:32px;border-radius:8px;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.1);display:flex;align-items:center;justify-content:center;color:rgba(255,255,255,0.5);transition:all 0.2s;" onmouseover="this.style.background='rgba(123,47,255,0.2)';this.style.color='white'" onmouseout="this.style.background='rgba(255,255,255,0.06)';this.style.color='rgba(255,255,255,0.5)'"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.747l7.73-8.835L1.254 2.25H8.08l4.259 5.631 5.905-5.631zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg></a>
@@ -1295,7 +1651,7 @@ window.toggleTheme = function() { _origToggle(); setTimeout(drawAtsBracket, 80);
     <div id="legalContent" style="color:rgba(255,255,255,0.8);font-size:13.5px;line-height:1.85;"></div>
   </div>
 </div>
-<script>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
 var legalTexts = {
   kullanim: {title:'Video Mülakat Hizmeti Sözleşmesi', body:'<div class="legal-section"><h3>1. Taraflar</h3><p>İşbu Hizmet Sözleşmesi aşağıdaki taraflar arasında akdedilmiştir:</p><p><strong>Synaps Yapay Zeka Firması Anonim Şirketi</strong><br>Adres: Göztepe Mah. Pınar Sok. No.4/13 Kadıköy<br>Vergi Dairesi: Göztepe Vergi Dairesi | Vergi Numarası: 6421040257<br>Ticaret Sicil Numarası: 11322 | E-posta: info@synapsai.ai<br>(Bundan sonra "Synaps" olarak anılacaktır.)</p><p>Aday — (Bundan sonra "Aday" olarak anılacaktır.)</p></div><div class="legal-section"><h3>2. Sözleşmenin Konusu</h3><p>İşbu Sözleşme, Synaps tarafından Aday\'a sunulan one-way video mülakat hizmetinin ("Hizmet") kullanımına ilişkin şartları ve koşulları düzenlemektedir.</p></div><div class="legal-section"><h3>3. Hizmetin Kapsamı</h3><ul><li>Aday\'ın belirlenen platform üzerinden video mülakat kaydı yapabilmesi</li><li>Aday\'ın mülakat sürecinde verdiği cevapların kaydedilmesi ve değerlendirilmesi</li><li>Aday\'ın mülakat kayıtlarının işverenlere iletilmesi</li></ul></div><div class="legal-section"><h3>4. Aday\'ın Yükümlülükleri</h3><ul><li>Hizmet\'i yalnızca kişisel ve profesyonel amaçlarla kullanmak</li><li>Hizmet\'i kullanırken doğru ve güncel bilgiler sağlamak</li><li>Hizmet\'in kullanımına ilişkin tüm yerel ve ulusal yasalara uymak</li></ul></div><div class="legal-section"><h3>5. Kişisel Verilerin Korunması</h3><p>Synaps, Aday\'ın kişisel verilerini 6698 sayılı KVKK ve ilgili mevzuata uygun olarak işleyecektir.</p></div><div class="legal-section"><h3>6. Fikri Mülkiyet Hakları</h3><p>Hizmet kapsamında sunulan tüm yazılım, içerik ve materyallerin fikri mülkiyet hakları Synaps\'a aittir. Aday, bu hakları ihlal etmeyeceğini kabul eder.</p></div><div class="legal-section"><h3>7. Sözleşmenin Süresi ve Feshi</h3><p>İşbu Sözleşme, Aday\'ın Hizmet\'i kullanmaya başladığı tarihte yürürlüğe girer. Synaps, Aday\'ın Sözleşme\'ye aykırı davranması durumunda Hizmet\'i derhal durdurma hakkına sahiptir.</p></div><div class="legal-section"><h3>8. Sorumluluğun Sınırlandırılması</h3><p>Synaps, Hizmet\'in kesintisiz veya hatasız olacağını garanti etmez.</p></div><div class="legal-section"><h3>9. Uyuşmazlıkların Çözümü</h3><p>İşbu Sözleşme\'den doğabilecek uyuşmazlıklarda İstanbul Mahkemeleri yetkilidir. Türk Hukuku uygulanır.</p></div><div class="legal-section"><h3>10. Muhtelif Hükümler</h3><p>İşbu Sözleşme tarafların yazılı onayı olmadan değiştirilemez.</p></div><div class="legal-section"><h3>11. İletişim</h3><p>E-posta: info@synapsai.ai</p></div><div class="legal-section"><h3>12. Yürürlük</h3><p>İşbu Sözleşme, taraflarca elektronik ortamda onaylandığı tarihte yürürlüğe girer.</p></div>'},
   gizlilik: {title:'Gizlilik Politikası', body:'<div class="legal-section"><h3>1. Taraflar</h3><p><strong>1.1. Synaps Yapay Zeka Firması Anonim Şirketi</strong><br>Adres: Göztepe Mah. Pınar Sok. No.4/13 Kadıköy/Göztepe<br>Vergi Dairesi / No: Göztepe Vergi Dairesi / 6421040257<br>Ticaret Sicil No: 11322</p><p><strong>1.2.</strong> Kullanıcı taraf "KULLANICI" olarak anılacaktır.</p></div><div class="legal-section"><h3>2. Sözleşmenin Konusu</h3><p>Tarafların gizli bilgilerini koruma, üçüncü taraflara ifşa etmeme yükümlülüklerini ve kişisel veri işleme ile paylaşımına ilişkin düzenlemeleri kapsamaktadır.</p></div><div class="legal-section"><h3>3. Gizli Bilgilerin Kapsamı</h3><p>Ticari, finansal ve teknik her türlü bilgi; kişisel bilgiler, finansal veriler, iş planları, veritabanları, ticari sırlar, bilgisayar programları, know-how, 6698 sayılı KVKK kapsamındaki kişisel veriler ve taraflara ait tüm bilgi ve stratejiler gizli bilgi kapsamındadır.</p></div><div class="legal-section"><h3>4. Gizli Sayılmayan Bilgiler</h3><p>Gizlilik yükümlülüğü ihlal edilmeksizin kamuya açık hale gelen bilgiler gizli sayılmaz.</p></div><div class="legal-section"><h3>5–6. Gizli Bilgilerin Sahipliği ve Korunması</h3><p>Her taraf kendi gizli bilgileri üzerindeki tüm haklarını saklı tutar. Alıcı taraf, gizli bilgileri en yüksek düzeyde gizli tutmayı ve üçüncü taraflara açıklamamayı taahhüt eder. Güvenlik ihlali halinde 24 saat içinde yazılı bildirim yapılır.</p></div><div class="legal-section"><h3>7–10. Veri Aktarımı ve Saklama</h3><p>Kişisel veriler açık yazılı izin olmaksızın üçüncü kişilere aktarılamaz. KVKK ve ilgili mevzuat çerçevesinde işlenir. Yurt dışına veri aktarımı için yazılı izin şarttır.</p></div><div class="legal-section"><h3>11–14. Denetim ve Kişisel Verilerin Korunması</h3><p>Güvenlik ihlali halinde 24 saat içinde bildirim zorunludur. İlgili kişilerin başvuruları 72 saat içinde iletilir.<br>Başvuru: <a href="mailto:destek@synapsai.ai" style="color:#C4A4FF">destek@synapsai.ai</a></p></div>'},
@@ -1315,15 +1671,14 @@ document.querySelectorAll('.faq-q').forEach(function(q){q.addEventListener('clic
   if(s==='light'){h.setAttribute('data-theme','light');if(t)t.checked=true;}
   else{h.setAttribute('data-theme','dark');if(t)t.checked=false;}
   if(t){t.addEventListener('change',function(){
-      if(this.checked){
-        h.setAttribute('data-theme','light');
-        localStorage.setItem('synaps-theme','light');
-      } else {
-        h.setAttribute('data-theme','dark');
-        localStorage.setItem('synaps-theme','dark');
-      }
-    });
-  }
+    if(this.checked){
+      h.setAttribute('data-theme','light');
+      localStorage.setItem('synaps-theme','light');
+    } else {
+      h.removeAttribute('data-theme');
+      localStorage.setItem('synaps-theme','dark');
+    }
+  });}
 })();
 </script>
 </body>

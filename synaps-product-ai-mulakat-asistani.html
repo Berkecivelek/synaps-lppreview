@@ -1,26 +1,25 @@
 <!DOCTYPE html>
 <html lang="tr" data-theme="dark">
 <head>
-<meta charset="UTF-8">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="google-site-verification" content="xUPsG0KluyFmsKMAEPgRaSDlQ1o1vS0JHZkRvB5n9P8" />
   <title>AI Mülakat Asistanı — Synaps AI</title>
   <meta name="description" content="Canlı mülakatta AI asistan devrede. Anlık soru önerileri, otomatik notlar, önyargı uyarısı.">
   <meta name="robots" content="index, follow">
-  <link rel="canonical" href="https://synapsai.ai/synaps-product-ai-mulakat-asistani.html">
+  <link rel="canonical" href="https://www.synapsai.ai/synaps-product-ai-mulakat-asistani.html">
   <link rel="icon" type="image/png" href="favicon.png">
   <link rel="apple-touch-icon" href="favicon.png">
-  <!-- Open Graph -->
   <meta property="og:type" content="website">
-  <meta property="og:url" content="https://synapsai.ai/synaps-product-ai-mulakat-asistani.html">
+  <meta property="og:url" content="https://www.synapsai.ai/synaps-product-ai-mulakat-asistani.html">
   <meta property="og:title" content="AI Mülakat Asistanı — Synaps AI">
   <meta property="og:description" content="Canlı mülakatta AI asistan devrede. Anlık soru önerileri, otomatik notlar, önyargı uyarısı.">
-  <meta property="og:image" content="https://synapsai.ai/favicon.png">
+  <meta property="og:image" content="https://www.synapsai.ai/favicon.png">
   <meta property="og:locale" content="tr_TR">
-  <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="AI Mülakat Asistanı — Synaps AI">
-  <meta name="twitter:description" content="Canlı mülakatta AI asistan devrede. Anlık soru önerileri, otomatik notlar, önyargı uyarısı."><meta name="viewport" content="width=device-width,initial-scale=1.0">
-<title>AI Mülakat Asistanı — Synaps AI</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
+  <meta name="twitter:description" content="Canlı mülakatta AI asistan devrede. Anlık soru önerileri, otomatik notlar, önyargı uyarısı.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@200;300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
 <style>
 :root{--bg:#06040F;--bg2:#0C0818;--card:rgba(255,255,255,.04);--card2:rgba(255,255,255,.07);--border:rgba(255,255,255,.08);--text:#F0EEFF;--dim:rgba(240,238,255,.55);--dim2:rgba(240,238,255,.28);--vi:#9B4FFF;--lav:#C4A4FF;--nav-bg:rgba(6,4,15,.9);--gbg:rgba(123,47,255,.1);}
@@ -254,6 +253,91 @@ h1 .gr{background:linear-gradient(135deg,#9B4FFF,#C4A4FF,#E040FB);-webkit-backgr
   border-color: rgba(123,47,255,0.2) !important;
   color: rgba(26,10,60,0.5) !important;
 }
+
+/* ══════════════════════════════════════════
+   MOBILE RESPONSIVE — Synaps LP
+   ══════════════════════════════════════════ */
+
+/* Hamburger */
+.mob-menu-btn{display:none;background:none;border:1px solid var(--border);border-radius:8px;padding:7px 10px;cursor:pointer;color:var(--dim);font-size:18px;line-height:1;align-items:center;justify-content:center;gap:4px;flex-direction:column;}
+.mob-menu-btn span{display:block;width:18px;height:2px;background:currentColor;border-radius:2px;transition:all 0.3s;}
+.mob-nav-overlay{display:none;position:fixed;inset:62px 0 0 0;background:rgba(6,4,15,0.97);backdrop-filter:blur(24px);z-index:899;overflow-y:auto;padding:24px 20px 40px;}
+[data-theme="light"] .mob-nav-overlay{background:rgba(240,238,249,0.98);}
+.mob-nav-overlay.open{display:block;}
+.mob-nav-link{display:block;padding:14px 4px;font-size:15px;font-weight:500;color:var(--dim);text-decoration:none;border-bottom:1px solid var(--border);}
+.mob-nav-link:hover{color:var(--text);}
+.mob-nav-btns{display:flex;flex-direction:column;gap:10px;margin-top:20px;}
+.mob-nav-btns a{text-align:center;padding:13px;font-size:14px;border-radius:8px;font-weight:700;background:linear-gradient(135deg,#7B2FFF,#5A1ECC);color:#fff;text-decoration:none;box-shadow:0 4px 14px rgba(123,47,255,.4);}
+.mob-lang-row{display:flex;align-items:center;justify-content:space-between;padding:16px 4px;border-bottom:1px solid var(--border);margin-bottom:8px;}
+
+/* LP lang switch */
+.lp-lang-switch{display:flex;align-items:center;gap:1px;background:rgba(255,255,255,0.05);border:1px solid var(--border);border-radius:8px;overflow:hidden;}
+.lp-lang-btn{background:none;border:none;color:var(--dim2);padding:6px 11px;font-family:inherit;font-size:12px;font-weight:600;cursor:pointer;transition:all 0.2s;}
+.lp-lang-btn.active,.lp-lang-btn:hover{background:rgba(123,47,255,0.2);color:var(--lav,#C4A4FF);}
+.lp-lang-sep{width:1px;height:22px;background:var(--border);}
+
+@media(max-width:900px){
+  #snav{padding:0 16px !important;}
+  .nav-bc{display:none !important;}
+  .nav-back{display:none !important;}
+  #snav .nav-cta{display:none !important;}
+  #snav .ts-wrap{display:none !important;}
+  .lp-lang-switch.desktop-only{display:none !important;}
+  .mob-menu-btn{display:flex !important;}
+
+  /* Hero 2col → 1col */
+  .hero-inner{grid-template-columns:1fr !important;padding:0 20px !important;gap:32px !important;}
+  .vc-wrap,.hero-right,.hero-visual,.hero-vis,.hero-mockup,.hero-demo{display:none !important;}
+  .hero{padding:88px 0 52px !important;}
+  .h-main{font-size:clamp(28px,7.5vw,44px) !important;letter-spacing:-1.5px !important;}
+  .hero-sub{font-size:14px !important;max-width:100% !important;}
+  .hero-acts{flex-wrap:wrap;gap:10px;}
+  .hero-eyebrow{flex-wrap:wrap;}
+
+  /* Sections */
+  .sec-in{padding:56px 20px !important;}
+
+  /* 2-col grids inline */
+  [style*="grid-template-columns:1fr 1fr"]{grid-template-columns:1fr !important;}
+  [style*="grid-template-columns:1fr 500px"]{grid-template-columns:1fr !important;}
+  [style*="grid-template-columns:1fr 480px"]{grid-template-columns:1fr !important;}
+  [style*="grid-template-columns:1fr 460px"]{grid-template-columns:1fr !important;}
+  [style*="grid-template-columns:500px 1fr"]{grid-template-columns:1fr !important;}
+  [style*="grid-template-columns:480px 1fr"]{grid-template-columns:1fr !important;}
+
+  /* Feature grids */
+  .fc-grid,.feat-grid{grid-template-columns:1fr !important;}
+
+  /* Journey */
+  .journey-steps{flex-wrap:wrap !important;gap:20px !important;}
+  .j-step{flex:0 0 calc(50% - 10px) !important;}
+
+  /* CTA */
+  .cta-section,.cta-card-wrap{padding:40px 20px 80px !important;}
+  .cta-card{padding:40px 20px !important;border-radius:20px !important;}
+  .cta-card h2{font-size:clamp(22px,6.5vw,36px) !important;}
+  .cta-btns{flex-direction:column !important;align-items:stretch !important;}
+
+  /* Footer */
+  .uf-footer,.lf-body{padding:48px 20px 32px !important;}
+  .uf-grid{grid-template-columns:1fr 1fr !important;gap:24px !important;}
+  .lf-top{flex-direction:column;gap:16px;}
+}
+
+@media(max-width:600px){
+  #snav{padding:0 12px !important;}
+  .hero-inner{padding:0 16px !important;}
+  .hero{padding:80px 0 44px !important;}
+  .h-main{font-size:clamp(24px,8.5vw,36px) !important;}
+  .sec-in{padding:44px 16px !important;}
+  .hero-acts{flex-direction:column;}
+  .btn-pu,.btn-ghost{width:100%;text-align:center;}
+  .j-step{flex:0 0 100% !important;}
+  .uf-grid{grid-template-columns:1fr !important;}
+  .cta-card{padding:28px 16px !important;}
+  .sec-h{font-size:clamp(20px,7.5vw,30px) !important;letter-spacing:-0.5px !important;}
+}
+
 </style>
 </head>
 <body>
@@ -262,13 +346,42 @@ h1 .gr{background:linear-gradient(135deg,#9B4FFF,#C4A4FF,#E040FB);-webkit-backgr
     <div class="orb-sm"><div class="ob ob-base"></div><div class="ob ob-swirl"></div><div class="ob-hl"></div></div>
     <span class="nav-wordmark">Synaps<span class="nw-hi">AI</span></span>
   </a>
-  <div class="nav-bc"><a href="synaps-v11-toggle.html" class="bc-home">Ana Sayfa</a><span class="bc-sep">›</span><span class="bc-cur">AI Mülakat Asistanı</span></div>
+  <div class="nav-bc"><a href="synaps-v11-toggle.html" class="bc-home"><span data-lp-i18n="lp-home">Ana Sayfa</span></a><span class="bc-sep">›</span><span class="bc-cur">AI Mülakat Asistanı</span></div>
   <div class="nav-right">
-    <a href="synaps-v11-toggle.html" class="nav-back">← Ekosisteme Dön</a>
+    <a href="synaps-v11-toggle.html" class="nav-back"><span data-lp-i18n="lp-back">← Ekosisteme Dön</span></a>
     <label class="ts-wrap"><input type="checkbox" id="themeToggle"><div class="ts-track"><div class="ts-thumb"></div><span class="ts-m">🌙</span><span class="ts-s">☀️</span></div></label>
-    <a href="https://synapsai.io" class="nav-cta">Demo İste</a>
+    <a href="https://synapsai.io" class="nav-cta"><span data-lp-i18n="lp-demo">Demo İste</span></a>
   </div>
+
+  <!-- Lang switch (desktop) -->
+  <div class="lp-lang-switch desktop-only" style="margin-left:4px;">
+    <button class="lp-lang-btn active" onclick="setLpLang(this)">TR</button>
+    <div class="lp-lang-sep"></div>
+    <button class="lp-lang-btn" onclick="setLpLang(this)">EN</button>
+  </div>
+  <!-- Hamburger (mobile) -->
+  <button class="mob-menu-btn" onclick="toggleLpMobNav()" id="lpMobBtn" aria-label="Menü" aria-expanded="false">
+    <span></span><span></span><span></span>
+  </button>
 </nav>
+
+<!-- MOBILE OVERLAY NAV -->
+<div class="mob-nav-overlay" id="lpMobOverlay">
+  <div class="mob-lang-row">
+    <span style="font-size:12px;font-weight:600;color:var(--dim);">Dil / Language</span>
+    <div class="lp-lang-switch" style="display:flex;">
+      <button class="lp-lang-btn active" onclick="setLpLang(this)">TR</button>
+      <div class="lp-lang-sep"></div>
+      <button class="lp-lang-btn" onclick="setLpLang(this)">EN</button>
+    </div>
+  </div>
+  <a href="synaps-v11-toggle.html" class="mob-nav-link" data-lp-i18n="lp-home">Ana Sayfa</a>
+  <a href="synaps-v11-toggle.html" class="mob-nav-link" data-lp-i18n="lp-back">← Ekosisteme Dön</a>
+  <div class="mob-nav-btns">
+    <a href="https://synapsai.io" class="mob-nav-btns" data-lp-i18n="lp-demo" style="display:block;text-align:center;padding:13px;font-size:14px;border-radius:8px;font-weight:700;background:linear-gradient(135deg,#7B2FFF,#5A1ECC);color:#fff;text-decoration:none;">Demo İste</a>
+  </div>
+</div>
+
 
 <!-- HERO -->
 <section class="hero">
@@ -483,7 +596,7 @@ h1 .gr{background:linear-gradient(135deg,#9B4FFF,#C4A4FF,#E040FB);-webkit-backgr
         Synaps Yapay Zeka Teknolojileri A.Ş.<br>
         Barbaros Mah. Şebboy Sok. No:4/1<br>
         İç Kapı No:2 Ataşehir/İstanbul<br>
-        <a href="mailto:destek@synapsai.ai" style="color:rgba(196,164,255,0.6);text-decoration:none;">destek@synapsai.ai</a>
+        <a href="/cdn-cgi/l/email-protection#84e0e1f7f0e1efc4f7fdeae5f4f7e5edaae5ed" style="color:rgba(196,164,255,0.6);text-decoration:none;"><span class="__cf_email__" data-cfemail="9df9f8eee9f8f6ddeee4f3fcedeefcf4b3fcf4">[email&#160;protected]</span></a>
       </div>
       <div class="footer-socials" style="display:flex;gap:10px;margin-top:16px;">
   <a href="https://x.com/synapsai" target="_blank" rel="noopener" class="footer-social-icon" style="width:32px;height:32px;border-radius:8px;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.1);display:flex;align-items:center;justify-content:center;color:rgba(255,255,255,0.5);transition:all 0.2s;" onmouseover="this.style.background='rgba(123,47,255,0.2)';this.style.color='white'" onmouseout="this.style.background='rgba(255,255,255,0.06)';this.style.color='rgba(255,255,255,0.5)'">
@@ -544,7 +657,7 @@ h1 .gr{background:linear-gradient(135deg,#9B4FFF,#C4A4FF,#E040FB);-webkit-backgr
     <div id="legalContent" style="color:rgba(255,255,255,0.8);font-size:13.5px;line-height:1.85;"></div>
   </div>
 </div>
-<script>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
 var legalTexts = {
   kullanim: {title:'Video Mülakat Hizmeti Sözleşmesi', body:'<div class="legal-section"><h3>1. Taraflar</h3><p>İşbu Hizmet Sözleşmesi aşağıdaki taraflar arasında akdedilmiştir:</p><p><strong>Synaps Yapay Zeka Firması Anonim Şirketi</strong><br>Adres: Göztepe Mah. Pınar Sok. No.4/13 Kadıköy<br>Vergi Dairesi: Göztepe Vergi Dairesi | Vergi Numarası: 6421040257<br>Ticaret Sicil Numarası: 11322 | E-posta: info@synapsai.ai<br>(Bundan sonra "Synaps" olarak anılacaktır.)</p><p>Aday — (Bundan sonra "Aday" olarak anılacaktır.)</p></div><div class="legal-section"><h3>2. Sözleşmenin Konusu</h3><p>İşbu Sözleşme, Synaps tarafından Aday\'a sunulan one-way video mülakat hizmetinin ("Hizmet") kullanımına ilişkin şartları ve koşulları düzenlemektedir.</p></div><div class="legal-section"><h3>3. Hizmetin Kapsamı</h3><ul><li>Aday\'ın belirlenen platform üzerinden video mülakat kaydı yapabilmesi</li><li>Aday\'ın mülakat sürecinde verdiği cevapların kaydedilmesi ve değerlendirilmesi</li><li>Aday\'ın mülakat kayıtlarının işverenlere iletilmesi</li></ul></div><div class="legal-section"><h3>4. Aday\'ın Yükümlülükleri</h3><ul><li>Hizmet\'i yalnızca kişisel ve profesyonel amaçlarla kullanmak</li><li>Hizmet\'i kullanırken doğru ve güncel bilgiler sağlamak</li><li>Hizmet\'in kullanımına ilişkin tüm yerel ve ulusal yasalara uymak</li></ul></div><div class="legal-section"><h3>5. Kişisel Verilerin Korunması</h3><p>Synaps, Aday\'ın kişisel verilerini 6698 sayılı KVKK ve ilgili mevzuata uygun olarak işleyecektir.</p></div><div class="legal-section"><h3>6. Fikri Mülkiyet Hakları</h3><p>Hizmet kapsamında sunulan tüm yazılım, içerik ve materyallerin fikri mülkiyet hakları Synaps\'a aittir. Aday, bu hakları ihlal etmeyeceğini kabul eder.</p></div><div class="legal-section"><h3>7. Sözleşmenin Süresi ve Feshi</h3><p>İşbu Sözleşme, Aday\'ın Hizmet\'i kullanmaya başladığı tarihte yürürlüğe girer. Synaps, Aday\'ın Sözleşme\'ye aykırı davranması durumunda Hizmet\'i derhal durdurma hakkına sahiptir.</p></div><div class="legal-section"><h3>8. Sorumluluğun Sınırlandırılması</h3><p>Synaps, Hizmet\'in kesintisiz veya hatasız olacağını garanti etmez.</p></div><div class="legal-section"><h3>9. Uyuşmazlıkların Çözümü</h3><p>İşbu Sözleşme\'den doğabilecek uyuşmazlıklarda İstanbul Mahkemeleri yetkilidir. Türk Hukuku uygulanır.</p></div><div class="legal-section"><h3>10. Muhtelif Hükümler</h3><p>İşbu Sözleşme tarafların yazılı onayı olmadan değiştirilemez.</p></div><div class="legal-section"><h3>11. İletişim</h3><p>E-posta: info@synapsai.ai</p></div><div class="legal-section"><h3>12. Yürürlük</h3><p>İşbu Sözleşme, taraflarca elektronik ortamda onaylandığı tarihte yürürlüğe girer.</p></div>'},
   gizlilik: {title:'Gizlilik Politikası', body:'<div class="legal-section"><h3>1. Taraflar</h3><p><strong>1.1. Synaps Yapay Zeka Firması Anonim Şirketi</strong><br>Adres: Göztepe Mah. Pınar Sok. No.4/13 Kadıköy/Göztepe<br>Vergi Dairesi / No: Göztepe Vergi Dairesi / 6421040257<br>Ticaret Sicil No: 11322</p><p><strong>1.2.</strong> Kullanıcı taraf "KULLANICI" olarak anılacaktır.</p></div><div class="legal-section"><h3>2. Sözleşmenin Konusu</h3><p>Tarafların gizli bilgilerini koruma, üçüncü taraflara ifşa etmeme yükümlülüklerini ve kişisel veri işleme ile paylaşımına ilişkin düzenlemeleri kapsamaktadır.</p></div><div class="legal-section"><h3>3. Gizli Bilgilerin Kapsamı</h3><p>Ticari, finansal ve teknik her türlü bilgi; kişisel bilgiler, finansal veriler, iş planları, veritabanları, ticari sırlar, bilgisayar programları, know-how, 6698 sayılı KVKK kapsamındaki kişisel veriler ve taraflara ait tüm bilgi ve stratejiler gizli bilgi kapsamındadır.</p></div><div class="legal-section"><h3>4. Gizli Sayılmayan Bilgiler</h3><p>Gizlilik yükümlülüğü ihlal edilmeksizin kamuya açık hale gelen bilgiler gizli sayılmaz.</p></div><div class="legal-section"><h3>5–6. Gizli Bilgilerin Sahipliği ve Korunması</h3><p>Her taraf kendi gizli bilgileri üzerindeki tüm haklarını saklı tutar. Alıcı taraf, gizli bilgileri en yüksek düzeyde gizli tutmayı ve üçüncü taraflara açıklamamayı taahhüt eder. Güvenlik ihlali halinde 24 saat içinde yazılı bildirim yapılır.</p></div><div class="legal-section"><h3>7–10. Veri Aktarımı ve Saklama</h3><p>Kişisel veriler açık yazılı izin olmaksızın üçüncü kişilere aktarılamaz. KVKK ve ilgili mevzuat çerçevesinde işlenir. Yurt dışına veri aktarımı için yazılı izin şarttır.</p></div><div class="legal-section"><h3>11–14. Denetim ve Kişisel Verilerin Korunması</h3><p>Güvenlik ihlali halinde 24 saat içinde bildirim zorunludur. İlgili kişilerin başvuruları 72 saat içinde iletilir.<br>Başvuru: <a href="mailto:destek@synapsai.ai" style="color:#C4A4FF">destek@synapsai.ai</a></p></div>'},
@@ -564,15 +677,68 @@ document.addEventListener('DOMContentLoaded',function(){var m=document.getElemen
   if(s==='light'){h.setAttribute('data-theme','light');if(t)t.checked=true;}
   else{h.setAttribute('data-theme','dark');if(t)t.checked=false;}
   if(t){t.addEventListener('change',function(){
-            if(this.checked){
-        h.setAttribute('data-theme','light');
-        localStorage.setItem('synaps-theme','light');
-      } else {
-        h.setAttribute('data-theme','dark');
-        localStorage.setItem('synaps-theme','dark');
-      }
+    if(this.checked){
+      h.setAttribute('data-theme','light');
+      localStorage.setItem('synaps-theme','light');
+    } else {
+      h.removeAttribute('data-theme');
+      localStorage.setItem('synaps-theme','dark');
+    }
+  });}
+})();
+</script>
+
+
+<!-- ══════ LP LANG SWITCH & MOBILE NAV ══════ -->
+<script>
+(function(){
+  var LP_TR = {
+    'lp-home':'Ana Sayfa',
+    'lp-back':'← Ekosisteme Dön',
+    'lp-demo':'Demo İste',
+  };
+  var LP_EN = {
+    'lp-home':'Home',
+    'lp-back':'← Back to Ecosystem',
+    'lp-demo':'Request Demo',
+  };
+
+  function applyLpLang(lang){
+    var d = lang==='EN' ? LP_EN : LP_TR;
+    document.querySelectorAll('[data-lp-i18n]').forEach(function(el){
+      var k = el.getAttribute('data-lp-i18n');
+      if(d[k] !== undefined) el.textContent = d[k];
     });
+    document.querySelectorAll('.lp-lang-btn').forEach(function(b){
+      b.classList.toggle('active', b.textContent.trim()===lang);
+    });
+    document.documentElement.setAttribute('lang', lang==='EN'?'en':'tr');
+    localStorage.setItem('synaps-lang', lang);
   }
+
+  window.setLpLang = function(btn){
+    applyLpLang(btn.textContent.trim());
+  };
+
+  window.toggleLpMobNav = function(){
+    var ov = document.getElementById('lpMobOverlay');
+    var btn = document.getElementById('lpMobBtn');
+    if(!ov) return;
+    var open = ov.classList.toggle('open');
+    if(btn) btn.setAttribute('aria-expanded', String(open));
+    document.body.style.overflow = open ? 'hidden' : '';
+  };
+
+  // Restore saved lang on load
+  document.addEventListener('DOMContentLoaded', function(){
+    var saved = localStorage.getItem('synaps-lang') || 'TR';
+    if(saved === 'EN') applyLpLang('EN');
+    else {
+      document.querySelectorAll('.lp-lang-btn').forEach(function(b){
+        b.classList.toggle('active', b.textContent.trim()==='TR');
+      });
+    }
+  });
 })();
 </script>
 </body>

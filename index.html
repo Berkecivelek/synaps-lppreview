@@ -4,6 +4,11 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <meta name="google-site-verification" content="xUPsG0KluyFmsKMAEPgRaSDlQ1o1vS0JHZkRvB5n9P8" />
+   <script>
+  if (window.location.pathname === "/tr" || window.location.pathname === "/tr.html") {
+    window.location.replace("/");
+  }
+</script>
   <title>Synaps AI — Yapay Zeka Destekli İK Platformu</title>
   <meta name="description" content="İşe alım ve çalışan deneyimini yapay zeka ile dönüştürün. AI Interviewer, ATS, Dil Mülakatı ve daha fazlası.">
   <meta name="robots" content="index, follow">
@@ -805,6 +810,23 @@ footer{position:relative;z-index:1;background:#02010A;border-top:1px solid var(-
 [data-theme="light"] .footer-bottom-bar{color:rgba(26,10,60,0.35) !important;border-top-color:rgba(123,47,255,0.1) !important;}
 [data-theme="light"] .footer-social-icon{background:rgba(123,47,255,0.08) !important;border-color:rgba(123,47,255,0.2) !important;color:rgba(26,10,60,0.5) !important;}
 [data-theme="light"] .footer-email-link{color:rgba(123,47,255,0.8) !important;}
+
+/* SSS light mode */
+[data-theme="light"] .sss-q{color:rgba(10,5,32,0.85)!important;}
+[data-theme="light"] .sss-a{color:rgba(10,5,32,0.65)!important;}
+[data-theme="light"] .sss-q:hover{background:rgba(123,47,255,0.06)!important;}
+[data-theme="light"] .sss-item{border-color:rgba(123,47,255,0.15)!important;}
+[data-theme="light"] .sss-arrow{color:#7B2FFF!important;}
+/* Legal modal light mode */
+[data-theme="light"] #legalModal{background:rgba(230,225,255,0.96)!important;}
+[data-theme="light"] #legalModal>div{background:#FFFFFF!important;border-color:rgba(123,47,255,0.2)!important;box-shadow:0 24px 64px rgba(123,47,255,0.15)!important;}
+[data-theme="light"] #legalModal button{background:rgba(123,47,255,0.1)!important;color:#4A1A8F!important;}
+[data-theme="light"] #legalContent{color:rgba(10,5,32,0.85)!important;}
+[data-theme="light"] .legal-section h3{color:#7B2FFF!important;border-bottom-color:rgba(123,47,255,0.2)!important;}
+[data-theme="light"] .legal-section p,[data-theme="light"] .legal-section ul,[data-theme="light"] .legal-section li{color:rgba(10,5,32,0.7)!important;}
+[data-theme="light"] .legal-section a{color:#7B2FFF!important;}
+[data-theme="light"] .legal-section table,[data-theme="light"] .legal-section td,[data-theme="light"] .legal-section th{color:rgba(10,5,32,0.7)!important;border-color:rgba(123,47,255,0.15)!important;}
+[data-theme="light"] .legal-section th{background:rgba(123,47,255,0.08)!important;}
 </style>
 </head>
 <body>
@@ -1599,7 +1621,7 @@ window.addEventListener('resize', () => { setTimeout(drawAtsBracket, 80); });
         Synaps Yapay Zeka Teknolojileri A.Ş.<br>
         Barbaros Mah. Şebboy Sok. No:4/1<br>
         İç Kapı No:2 Ataşehir/İstanbul<br>
-        <a href="/cdn-cgi/l/email-protection#e3878690978688a3909a8d829390828acd828a" style="color:rgba(196,164,255,0.6);text-decoration:none;"><span class="__cf_email__" data-cfemail="96f2f3e5e2f3fdd6e5eff8f7e6e5f7ffb8f7ff">[email&#160;protected]</span></a>
+        <a href="mailto:destek@synapsai.ai" style="color:rgba(196,164,255,0.6);text-decoration:none;">destek@synapsai.ai</a>
       </div>
       <div class="footer-socials" style="display:flex;gap:10px;margin-top:16px;">
   <a href="https://x.com/synapsai" target="_blank" rel="noopener" class="footer-social-icon" style="width:32px;height:32px;border-radius:8px;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.1);display:flex;align-items:center;justify-content:center;color:rgba(255,255,255,0.5);transition:all 0.2s;" onmouseover="this.style.background='rgba(123,47,255,0.2)';this.style.color='white'" onmouseout="this.style.background='rgba(255,255,255,0.06)';this.style.color='rgba(255,255,255,0.5)'"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.747l7.73-8.835L1.254 2.25H8.08l4.259 5.631 5.905-5.631zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg></a>
@@ -1625,9 +1647,9 @@ window.addEventListener('resize', () => { setTimeout(drawAtsBracket, 80); });
     </div>
     <div style="display:flex;flex-direction:column;gap:10px;">
       <div class="footer-col-title">Şirket</div>
-      <a href="#" class="footer-link">Kariyer</a>
+      <a href="https://gettalentai.com/" target="_blank" rel="noopener" class="footer-link">Kariyer</a>
       <a href="#" class="footer-link">Hakkımızda</a>
-      <a href="#" class="footer-link">İletişim</a>
+      <a href="#" onclick="openContact();return false;" class="footer-link">İletişim</a>
     </div>
     <div style="display:flex;flex-direction:column;gap:10px;">
       <div class="footer-col-title">Yasal</div>
@@ -1651,7 +1673,7 @@ window.addEventListener('resize', () => { setTimeout(drawAtsBracket, 80); });
     <div id="legalContent" style="color:rgba(255,255,255,0.8);font-size:13.5px;line-height:1.85;"></div>
   </div>
 </div>
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+<script>
 var legalTexts = {
   kullanim: {title:'Video Mülakat Hizmeti Sözleşmesi', body:'<div class="legal-section"><h3>1. Taraflar</h3><p>İşbu Hizmet Sözleşmesi aşağıdaki taraflar arasında akdedilmiştir:</p><p><strong>Synaps Yapay Zeka Firması Anonim Şirketi</strong><br>Adres: Göztepe Mah. Pınar Sok. No.4/13 Kadıköy<br>Vergi Dairesi: Göztepe Vergi Dairesi | Vergi Numarası: 6421040257<br>Ticaret Sicil Numarası: 11322 | E-posta: info@synapsai.ai<br>(Bundan sonra "Synaps" olarak anılacaktır.)</p><p>Aday — (Bundan sonra "Aday" olarak anılacaktır.)</p></div><div class="legal-section"><h3>2. Sözleşmenin Konusu</h3><p>İşbu Sözleşme, Synaps tarafından Aday\'a sunulan one-way video mülakat hizmetinin ("Hizmet") kullanımına ilişkin şartları ve koşulları düzenlemektedir.</p></div><div class="legal-section"><h3>3. Hizmetin Kapsamı</h3><ul><li>Aday\'ın belirlenen platform üzerinden video mülakat kaydı yapabilmesi</li><li>Aday\'ın mülakat sürecinde verdiği cevapların kaydedilmesi ve değerlendirilmesi</li><li>Aday\'ın mülakat kayıtlarının işverenlere iletilmesi</li></ul></div><div class="legal-section"><h3>4. Aday\'ın Yükümlülükleri</h3><ul><li>Hizmet\'i yalnızca kişisel ve profesyonel amaçlarla kullanmak</li><li>Hizmet\'i kullanırken doğru ve güncel bilgiler sağlamak</li><li>Hizmet\'in kullanımına ilişkin tüm yerel ve ulusal yasalara uymak</li></ul></div><div class="legal-section"><h3>5. Kişisel Verilerin Korunması</h3><p>Synaps, Aday\'ın kişisel verilerini 6698 sayılı KVKK ve ilgili mevzuata uygun olarak işleyecektir.</p></div><div class="legal-section"><h3>6. Fikri Mülkiyet Hakları</h3><p>Hizmet kapsamında sunulan tüm yazılım, içerik ve materyallerin fikri mülkiyet hakları Synaps\'a aittir. Aday, bu hakları ihlal etmeyeceğini kabul eder.</p></div><div class="legal-section"><h3>7. Sözleşmenin Süresi ve Feshi</h3><p>İşbu Sözleşme, Aday\'ın Hizmet\'i kullanmaya başladığı tarihte yürürlüğe girer. Synaps, Aday\'ın Sözleşme\'ye aykırı davranması durumunda Hizmet\'i derhal durdurma hakkına sahiptir.</p></div><div class="legal-section"><h3>8. Sorumluluğun Sınırlandırılması</h3><p>Synaps, Hizmet\'in kesintisiz veya hatasız olacağını garanti etmez.</p></div><div class="legal-section"><h3>9. Uyuşmazlıkların Çözümü</h3><p>İşbu Sözleşme\'den doğabilecek uyuşmazlıklarda İstanbul Mahkemeleri yetkilidir. Türk Hukuku uygulanır.</p></div><div class="legal-section"><h3>10. Muhtelif Hükümler</h3><p>İşbu Sözleşme tarafların yazılı onayı olmadan değiştirilemez.</p></div><div class="legal-section"><h3>11. İletişim</h3><p>E-posta: info@synapsai.ai</p></div><div class="legal-section"><h3>12. Yürürlük</h3><p>İşbu Sözleşme, taraflarca elektronik ortamda onaylandığı tarihte yürürlüğe girer.</p></div>'},
   gizlilik: {title:'Gizlilik Politikası', body:'<div class="legal-section"><h3>1. Taraflar</h3><p><strong>1.1. Synaps Yapay Zeka Firması Anonim Şirketi</strong><br>Adres: Göztepe Mah. Pınar Sok. No.4/13 Kadıköy/Göztepe<br>Vergi Dairesi / No: Göztepe Vergi Dairesi / 6421040257<br>Ticaret Sicil No: 11322</p><p><strong>1.2.</strong> Kullanıcı taraf "KULLANICI" olarak anılacaktır.</p></div><div class="legal-section"><h3>2. Sözleşmenin Konusu</h3><p>Tarafların gizli bilgilerini koruma, üçüncü taraflara ifşa etmeme yükümlülüklerini ve kişisel veri işleme ile paylaşımına ilişkin düzenlemeleri kapsamaktadır.</p></div><div class="legal-section"><h3>3. Gizli Bilgilerin Kapsamı</h3><p>Ticari, finansal ve teknik her türlü bilgi; kişisel bilgiler, finansal veriler, iş planları, veritabanları, ticari sırlar, bilgisayar programları, know-how, 6698 sayılı KVKK kapsamındaki kişisel veriler ve taraflara ait tüm bilgi ve stratejiler gizli bilgi kapsamındadır.</p></div><div class="legal-section"><h3>4. Gizli Sayılmayan Bilgiler</h3><p>Gizlilik yükümlülüğü ihlal edilmeksizin kamuya açık hale gelen bilgiler gizli sayılmaz.</p></div><div class="legal-section"><h3>5–6. Gizli Bilgilerin Sahipliği ve Korunması</h3><p>Her taraf kendi gizli bilgileri üzerindeki tüm haklarını saklı tutar. Alıcı taraf, gizli bilgileri en yüksek düzeyde gizli tutmayı ve üçüncü taraflara açıklamamayı taahhüt eder. Güvenlik ihlali halinde 24 saat içinde yazılı bildirim yapılır.</p></div><div class="legal-section"><h3>7–10. Veri Aktarımı ve Saklama</h3><p>Kişisel veriler açık yazılı izin olmaksızın üçüncü kişilere aktarılamaz. KVKK ve ilgili mevzuat çerçevesinde işlenir. Yurt dışına veri aktarımı için yazılı izin şarttır.</p></div><div class="legal-section"><h3>11–14. Denetim ve Kişisel Verilerin Korunması</h3><p>Güvenlik ihlali halinde 24 saat içinde bildirim zorunludur. İlgili kişilerin başvuruları 72 saat içinde iletilir.<br>Başvuru: <a href="mailto:destek@synapsai.ai" style="color:#C4A4FF">destek@synapsai.ai</a></p></div>'},
@@ -1679,6 +1701,98 @@ document.querySelectorAll('.faq-q').forEach(function(q){q.addEventListener('clic
       localStorage.setItem('synaps-theme','dark');
     }
   });}
+})();
+</script>
+
+<!-- ══ CONTACT MODAL ══ -->
+<div id="contactModal" style="display:none;position:fixed;inset:0;z-index:9998;background:rgba(6,4,15,0.92);backdrop-filter:blur(12px);overflow-y:auto;padding:40px 20px;" onclick="if(event.target===this)closeContact()">
+  <div id="cmi" style="max-width:680px;margin:0 auto;background:#120E20;border:1px solid rgba(123,47,255,0.2);border-radius:20px;padding:48px;position:relative;">
+    <button onclick="closeContact()" style="position:absolute;top:20px;right:20px;background:rgba(255,255,255,0.08);border:none;color:white;width:36px;height:36px;border-radius:50%;cursor:pointer;font-size:20px;line-height:1;">&#215;</button>
+    <div style="display:inline-flex;align-items:center;gap:7px;background:rgba(123,47,255,0.12);border:1px solid rgba(123,47,255,0.25);border-radius:20px;padding:5px 13px;margin-bottom:20px;">
+      <span style="font-size:13px;color:#9B4FFF;">&#10022;</span>
+      <span style="font-size:11px;font-weight:700;letter-spacing:2px;color:#C4A4FF;text-transform:uppercase;">&#304;leti&#351;im Sayfas&#305;</span>
+    </div>
+    <h2 id="cmt" style="font-size:28px;font-weight:900;letter-spacing:-1px;margin-bottom:8px;color:var(--text,#F0EEFF);">&#304;leti&#351;ime Ge&#231;in</h2>
+    <p id="cmsp" style="font-size:14px;color:var(--dim,rgba(240,238,255,0.55));margin-bottom:32px;line-height:1.65;">A&#351;a&#287;&#305;daki formu doldurdu&#287;unuzda k&#305;sa s&#252;re i&#231;erisinde sizinle ileti&#351;ime ge&#231;mi&#351; olaca&#287;&#305;z. Hadi, potansiyel i&#351; birli&#287;imizi ke&#351;fedelim!</p>
+    <form id="cForm" novalidate>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:16px;">
+        <div><label class="cfl">Ad <span style="color:#9B4FFF;">*</span></label><input id="cf1" type="text" placeholder="Ad&#305;n&#305;z" class="cfi"></div>
+        <div><label class="cfl">Soyad <span style="color:#9B4FFF;">*</span></label><input id="cf2" type="text" placeholder="Soyad&#305;n&#305;z" class="cfi"></div>
+      </div>
+      <div style="margin-bottom:16px;"><label class="cfl">&#350;irket Ad&#305; <span style="color:#9B4FFF;">*</span></label><input id="cf3" type="text" placeholder="&#350;irket ad&#305;n&#305;z" class="cfi"></div>
+      <div style="margin-bottom:16px;"><label class="cfl">Kurumsal E-posta <span style="color:#9B4FFF;">*</span></label><input id="cf4" type="email" placeholder="ornek@sirket.com" class="cfi"></div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:16px;">
+        <div><label class="cfl">Lokasyon</label><input id="cf5" type="text" placeholder="&#304;stanbul, T&#252;rkiye" class="cfi"></div>
+        <div><label class="cfl">Telefon</label><input id="cf6" type="tel" placeholder="+90 5xx xxx xx xx" class="cfi"></div>
+      </div>
+      <div style="margin-bottom:28px;"><label class="cfl">&#199;al&#305;&#351;an Say&#305;s&#305;</label>
+        <select id="cf7" class="cfi" style="cursor:pointer;-webkit-appearance:none;appearance:none;">
+          <option value="" disabled selected>Se&#231;iniz&#8230;</option>
+          <option value="1-10">1&#8211;10</option>
+          <option value="11-50">11&#8211;50</option>
+          <option value="51-200">51&#8211;200</option>
+          <option value="201-500">201&#8211;500</option>
+          <option value="500+">500+</option>
+        </select>
+      </div>
+      <div style="text-align:center;"><button type="button" onclick="submitContact()" style="background:linear-gradient(135deg,#7B2FFF,#5A1ECC);color:#fff;border:none;border-radius:12px;padding:14px 48px;font-size:15px;font-weight:700;cursor:pointer;font-family:inherit;box-shadow:0 6px 22px rgba(123,47,255,0.4);">G&#246;nder</button></div>
+    </form>
+    <div id="cf-ok" style="display:none;text-align:center;padding:40px 0;">
+      <div style="width:64px;height:64px;border-radius:50%;background:rgba(123,47,255,0.15);display:flex;align-items:center;justify-content:center;margin:0 auto 20px;font-size:32px;color:#4ADE80;">&#10003;</div>
+      <h3 style="font-size:20px;font-weight:800;margin-bottom:8px;color:var(--text,#F0EEFF);">Mesaj&#305;n&#305;z &#304;letildi!</h3>
+      <p style="font-size:14px;color:var(--dim,rgba(240,238,255,0.55));">En k&#305;sa s&#252;rede <strong style="color:#C4A4FF;">destek@synapsai.ai</strong> adresinden sizinle ileti&#351;ime ge&#231;ece&#287;iz.</p>
+    </div>
+  </div>
+</div>
+<style>
+.cfl{font-size:12px;font-weight:600;color:var(--dim,rgba(240,238,255,0.55));display:block;margin-bottom:6px;}
+.cfi{width:100%;box-sizing:border-box;background:rgba(255,255,255,0.05);border:1px solid rgba(123,47,255,0.2);border-radius:10px;padding:11px 14px;font-size:13.5px;color:var(--text,#F0EEFF);outline:none;font-family:inherit;transition:border-color .2s;}
+.cfi:focus{border-color:rgba(123,47,255,0.55);}
+[data-theme="light"] #contactModal{background:rgba(230,225,255,0.96)!important;}
+[data-theme="light"] #cmi{background:#FFFFFF!important;border-color:rgba(123,47,255,0.2)!important;box-shadow:0 24px 64px rgba(123,47,255,0.15)!important;}
+[data-theme="light"] #contactModal>div>button{background:rgba(123,47,255,0.1)!important;color:#4A1A8F!important;}
+[data-theme="light"] #cmt{color:#0A0520!important;}
+[data-theme="light"] #cmsp,[data-theme="light"] .cfl{color:rgba(10,5,32,0.6)!important;}
+[data-theme="light"] .cfi{background:rgba(123,47,255,0.04)!important;color:#0A0520!important;border-color:rgba(123,47,255,0.2)!important;}
+[data-theme="light"] .cfi::placeholder{color:rgba(10,5,32,0.35)!important;}
+[data-theme="light"] #cf-ok h3{color:#0A0520!important;}
+[data-theme="light"] #cf-ok p{color:rgba(10,5,32,0.55)!important;}
+@media(max-width:600px){#cmi{padding:28px 16px!important;}#cForm>div[style*="grid-template-columns:1fr 1fr"]{grid-template-columns:1fr!important;}}
+</style>
+<script>
+(function(){
+function openContact(){
+  document.getElementById('contactModal').style.display='block';
+  document.body.style.overflow='hidden';
+  document.getElementById('cForm').style.display='block';
+  document.getElementById('cf-ok').style.display='none';
+  document.getElementById('cForm').reset();
+}
+function closeContact(){
+  document.getElementById('contactModal').style.display='none';
+  document.body.style.overflow='';
+}
+function submitContact(){
+  var fn=document.getElementById('cf1').value.trim();
+  var ln=document.getElementById('cf2').value.trim();
+  var co=document.getElementById('cf3').value.trim();
+  var em=document.getElementById('cf4').value.trim();
+  if(!fn||!ln||!co||!em){
+    alert('Lütfen zorunlu alanları doldurun.');
+    return;
+  }
+  document.getElementById('cForm').style.display='none';
+  document.getElementById('cf-ok').style.display='block';
+}
+window.openContact=openContact;
+window.closeContact=closeContact;
+window.submitContact=submitContact;
+document.addEventListener('keydown',function(e){
+  if(e.key==='Escape'){
+    var m=document.getElementById('contactModal');
+    if(m&&m.style.display==='block')closeContact();
+  }
+});
 })();
 </script>
 </body>

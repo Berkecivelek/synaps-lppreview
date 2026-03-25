@@ -311,6 +311,23 @@ background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/sv
   .uf-inner{grid-template-columns:1fr !important;}
 }
 
+
+/* SSS light mode */
+[data-theme="light"] .sss-q{color:rgba(10,5,32,0.85)!important;}
+[data-theme="light"] .sss-a{color:rgba(10,5,32,0.65)!important;}
+[data-theme="light"] .sss-q:hover{background:rgba(123,47,255,0.06)!important;}
+[data-theme="light"] .sss-item{border-color:rgba(123,47,255,0.15)!important;}
+[data-theme="light"] .sss-arrow{color:#7B2FFF!important;}
+/* Legal modal light mode */
+[data-theme="light"] #legalModal{background:rgba(230,225,255,0.96)!important;}
+[data-theme="light"] #legalModal>div{background:#FFFFFF!important;border-color:rgba(123,47,255,0.2)!important;box-shadow:0 24px 64px rgba(123,47,255,0.15)!important;}
+[data-theme="light"] #legalModal button{background:rgba(123,47,255,0.1)!important;color:#4A1A8F!important;}
+[data-theme="light"] #legalContent{color:rgba(10,5,32,0.85)!important;}
+[data-theme="light"] .legal-section h3{color:#7B2FFF!important;border-bottom-color:rgba(123,47,255,0.2)!important;}
+[data-theme="light"] .legal-section p,[data-theme="light"] .legal-section ul,[data-theme="light"] .legal-section li{color:rgba(10,5,32,0.7)!important;}
+[data-theme="light"] .legal-section a{color:#7B2FFF!important;}
+[data-theme="light"] .legal-section table,[data-theme="light"] .legal-section td,[data-theme="light"] .legal-section th{color:rgba(10,5,32,0.7)!important;border-color:rgba(123,47,255,0.15)!important;}
+[data-theme="light"] .legal-section th{background:rgba(123,47,255,0.08)!important;}
 </style>
 </head>
 <body>
@@ -527,9 +544,9 @@ background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/sv
     </div>
     <div class="uf-col">
       <div class="uf-col-title">Şirket</div>
-      <a href="#">Kariyer</a>
+      <a href="https://gettalentai.com/" target="_blank" rel="noopener">Kariyer</a>
       <a href="#">Hakkımızda</a>
-      <a href="#">İletişim</a>
+      <a href="#" onclick="openContact();return false;" class="footer-link">İletişim</a>
     </div>
     <div class="uf-col">
       <div class="uf-col-title">Yasal</div>
@@ -667,6 +684,98 @@ document.addEventListener('DOMContentLoaded',function(){var m=document.getElemen
     setLangButtons(saved);
     if (saved === 'EN') applyEN();
   });
+})();
+</script>
+
+<!-- ══ CONTACT MODAL ══ -->
+<div id="contactModal" style="display:none;position:fixed;inset:0;z-index:9998;background:rgba(6,4,15,0.92);backdrop-filter:blur(12px);overflow-y:auto;padding:40px 20px;" onclick="if(event.target===this)closeContact()">
+  <div id="cmi" style="max-width:680px;margin:0 auto;background:#120E20;border:1px solid rgba(123,47,255,0.2);border-radius:20px;padding:48px;position:relative;">
+    <button onclick="closeContact()" style="position:absolute;top:20px;right:20px;background:rgba(255,255,255,0.08);border:none;color:white;width:36px;height:36px;border-radius:50%;cursor:pointer;font-size:20px;line-height:1;">&#215;</button>
+    <div style="display:inline-flex;align-items:center;gap:7px;background:rgba(123,47,255,0.12);border:1px solid rgba(123,47,255,0.25);border-radius:20px;padding:5px 13px;margin-bottom:20px;">
+      <span style="font-size:13px;color:#9B4FFF;">&#10022;</span>
+      <span style="font-size:11px;font-weight:700;letter-spacing:2px;color:#C4A4FF;text-transform:uppercase;">&#304;leti&#351;im Sayfas&#305;</span>
+    </div>
+    <h2 id="cmt" style="font-size:28px;font-weight:900;letter-spacing:-1px;margin-bottom:8px;color:var(--text,#F0EEFF);">&#304;leti&#351;ime Ge&#231;in</h2>
+    <p id="cmsp" style="font-size:14px;color:var(--dim,rgba(240,238,255,0.55));margin-bottom:32px;line-height:1.65;">A&#351;a&#287;&#305;daki formu doldurdu&#287;unuzda k&#305;sa s&#252;re i&#231;erisinde sizinle ileti&#351;ime ge&#231;mi&#351; olaca&#287;&#305;z. Hadi, potansiyel i&#351; birli&#287;imizi ke&#351;fedelim!</p>
+    <form id="cForm" novalidate>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:16px;">
+        <div><label class="cfl">Ad <span style="color:#9B4FFF;">*</span></label><input id="cf1" type="text" placeholder="Ad&#305;n&#305;z" class="cfi"></div>
+        <div><label class="cfl">Soyad <span style="color:#9B4FFF;">*</span></label><input id="cf2" type="text" placeholder="Soyad&#305;n&#305;z" class="cfi"></div>
+      </div>
+      <div style="margin-bottom:16px;"><label class="cfl">&#350;irket Ad&#305; <span style="color:#9B4FFF;">*</span></label><input id="cf3" type="text" placeholder="&#350;irket ad&#305;n&#305;z" class="cfi"></div>
+      <div style="margin-bottom:16px;"><label class="cfl">Kurumsal E-posta <span style="color:#9B4FFF;">*</span></label><input id="cf4" type="email" placeholder="ornek@sirket.com" class="cfi"></div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:16px;">
+        <div><label class="cfl">Lokasyon</label><input id="cf5" type="text" placeholder="&#304;stanbul, T&#252;rkiye" class="cfi"></div>
+        <div><label class="cfl">Telefon</label><input id="cf6" type="tel" placeholder="+90 5xx xxx xx xx" class="cfi"></div>
+      </div>
+      <div style="margin-bottom:28px;"><label class="cfl">&#199;al&#305;&#351;an Say&#305;s&#305;</label>
+        <select id="cf7" class="cfi" style="cursor:pointer;-webkit-appearance:none;appearance:none;">
+          <option value="" disabled selected>Se&#231;iniz&#8230;</option>
+          <option value="1-10">1&#8211;10</option>
+          <option value="11-50">11&#8211;50</option>
+          <option value="51-200">51&#8211;200</option>
+          <option value="201-500">201&#8211;500</option>
+          <option value="500+">500+</option>
+        </select>
+      </div>
+      <div style="text-align:center;"><button type="button" onclick="submitContact()" style="background:linear-gradient(135deg,#7B2FFF,#5A1ECC);color:#fff;border:none;border-radius:12px;padding:14px 48px;font-size:15px;font-weight:700;cursor:pointer;font-family:inherit;box-shadow:0 6px 22px rgba(123,47,255,0.4);">G&#246;nder</button></div>
+    </form>
+    <div id="cf-ok" style="display:none;text-align:center;padding:40px 0;">
+      <div style="width:64px;height:64px;border-radius:50%;background:rgba(123,47,255,0.15);display:flex;align-items:center;justify-content:center;margin:0 auto 20px;font-size:32px;color:#4ADE80;">&#10003;</div>
+      <h3 style="font-size:20px;font-weight:800;margin-bottom:8px;color:var(--text,#F0EEFF);">Mesaj&#305;n&#305;z &#304;letildi!</h3>
+      <p style="font-size:14px;color:var(--dim,rgba(240,238,255,0.55));">En k&#305;sa s&#252;rede <strong style="color:#C4A4FF;">destek@synapsai.ai</strong> adresinden sizinle ileti&#351;ime ge&#231;ece&#287;iz.</p>
+    </div>
+  </div>
+</div>
+<style>
+.cfl{font-size:12px;font-weight:600;color:var(--dim,rgba(240,238,255,0.55));display:block;margin-bottom:6px;}
+.cfi{width:100%;box-sizing:border-box;background:rgba(255,255,255,0.05);border:1px solid rgba(123,47,255,0.2);border-radius:10px;padding:11px 14px;font-size:13.5px;color:var(--text,#F0EEFF);outline:none;font-family:inherit;transition:border-color .2s;}
+.cfi:focus{border-color:rgba(123,47,255,0.55);}
+[data-theme="light"] #contactModal{background:rgba(230,225,255,0.96)!important;}
+[data-theme="light"] #cmi{background:#FFFFFF!important;border-color:rgba(123,47,255,0.2)!important;box-shadow:0 24px 64px rgba(123,47,255,0.15)!important;}
+[data-theme="light"] #contactModal>div>button{background:rgba(123,47,255,0.1)!important;color:#4A1A8F!important;}
+[data-theme="light"] #cmt{color:#0A0520!important;}
+[data-theme="light"] #cmsp,[data-theme="light"] .cfl{color:rgba(10,5,32,0.6)!important;}
+[data-theme="light"] .cfi{background:rgba(123,47,255,0.04)!important;color:#0A0520!important;border-color:rgba(123,47,255,0.2)!important;}
+[data-theme="light"] .cfi::placeholder{color:rgba(10,5,32,0.35)!important;}
+[data-theme="light"] #cf-ok h3{color:#0A0520!important;}
+[data-theme="light"] #cf-ok p{color:rgba(10,5,32,0.55)!important;}
+@media(max-width:600px){#cmi{padding:28px 16px!important;}#cForm>div[style*="grid-template-columns:1fr 1fr"]{grid-template-columns:1fr!important;}}
+</style>
+<script>
+(function(){
+function openContact(){
+  document.getElementById('contactModal').style.display='block';
+  document.body.style.overflow='hidden';
+  document.getElementById('cForm').style.display='block';
+  document.getElementById('cf-ok').style.display='none';
+  document.getElementById('cForm').reset();
+}
+function closeContact(){
+  document.getElementById('contactModal').style.display='none';
+  document.body.style.overflow='';
+}
+function submitContact(){
+  var fn=document.getElementById('cf1').value.trim();
+  var ln=document.getElementById('cf2').value.trim();
+  var co=document.getElementById('cf3').value.trim();
+  var em=document.getElementById('cf4').value.trim();
+  if(!fn||!ln||!co||!em){
+    alert('Lütfen zorunlu alanları doldurun.');
+    return;
+  }
+  document.getElementById('cForm').style.display='none';
+  document.getElementById('cf-ok').style.display='block';
+}
+window.openContact=openContact;
+window.closeContact=closeContact;
+window.submitContact=submitContact;
+document.addEventListener('keydown',function(e){
+  if(e.key==='Escape'){
+    var m=document.getElementById('contactModal');
+    if(m&&m.style.display==='block')closeContact();
+  }
+});
 })();
 </script>
 </body>

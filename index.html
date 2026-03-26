@@ -1647,7 +1647,7 @@ window.addEventListener('resize', () => { setTimeout(drawAtsBracket, 80); });
     <div style="display:flex;flex-direction:column;gap:10px;">
       <div class="footer-col-title" data-i18n="footer-company">Şirket</div>
       <a href="https://gettalentai.com/" target="_blank" rel="noopener" class="footer-link" data-i18n="footer-careers">Kariyer</a>
-      <a href="#" class="footer-link" data-i18n="footer-about">Hakkımızda</a>
+      <a href="#" onclick="openHakk();return false;" class="footer-link" data-i18n="footer-about">Hakkımızda</a>
       <a href="#" onclick="openContact();return false;" class="footer-link" data-i18n="footer-contact">İletişim</a>
     </div>
     <div style="display:flex;flex-direction:column;gap:10px;">
@@ -1811,6 +1811,39 @@ document.addEventListener('keydown',function(e){
   }
 });
 })();
+</script>
+
+<!-- ══ HAKKIMIZDA MODAL ══ -->
+<div id="hakkModal" style="display:none;position:fixed;inset:0;z-index:9998;background:rgba(6,4,15,0.92);backdrop-filter:blur(12px);overflow-y:auto;padding:40px 20px;" onclick="if(event.target===this)closeHakk()">
+  <div style="max-width:720px;margin:0 auto;background:var(--card-bg,#100c23);border:1px solid rgba(123,47,255,0.25);border-radius:20px;padding:48px 52px;position:relative;">
+    <button onclick="closeHakk()" style="position:absolute;top:20px;right:20px;background:rgba(123,47,255,0.15);border:none;border-radius:50%;width:36px;height:36px;color:var(--text,#F0EEFF);font-size:18px;cursor:pointer;display:flex;align-items:center;justify-content:center;line-height:1;">&#215;</button>
+    <div id="hakkContent"></div>
+  </div>
+</div>
+<script>
+
+function openHakk(){
+  var lang=localStorage.getItem('synaps-lang')||'TR';
+  var isEN=lang==='EN';
+  var isLight=document.documentElement.getAttribute('data-theme')==='light';
+  var m=document.getElementById('hakkModal');
+  var c=document.getElementById('hakkContent');
+  var box=m.querySelector('div');
+  if(isLight){
+    box.style.background='#ffffff';
+    box.style.border='1px solid rgba(123,47,255,0.15)';
+  } else {
+    box.style.background='#100c23';
+    box.style.border='1px solid rgba(123,47,255,0.25)';
+  }
+  c.innerHTML=isEN?'<div style="margin-bottom:32px;">\n  <span style="font-size:11px;font-weight:700;letter-spacing:2px;color:#C4A4FF;text-transform:uppercase;background:rgba(123,47,255,0.12);border:1px solid rgba(123,47,255,0.25);border-radius:100px;padding:6px 14px;">&#9733; About Us</span>\n</div>\n<h2 style="font-size:28px;font-weight:900;color:var(--text,#F0EEFF);margin-bottom:20px;letter-spacing:-0.5px;line-height:1.25;">Synaps AI Technologies Inc.</h2>\n<p style="font-size:15px;color:var(--dim,rgba(240,238,255,0.7));line-height:1.8;margin-bottom:16px;">Our ultimate mission at Synaps AI is to expedite the process by which the most qualified candidates are placed in the best available employment. We connect businesses with talented individuals by using the power of technology, ensuring that both parties are perfectly matched.</p>\n<p style="font-size:15px;color:var(--dim,rgba(240,238,255,0.7));line-height:1.8;margin-bottom:16px;">Synaps&#39;s revolutionary approach helps individuals evaluate their abilities and potential and helps businesses identify the top candidates quickly.</p>\n<p style="font-size:15px;color:var(--dim,rgba(240,238,255,0.7));line-height:1.8;margin-bottom:32px;">We streamline recruitment and satisfy both parties with our innovative algorithms and data-driven strategy. As you advance in your career, Synaps AI will be there to support you every step of the way.</p>\n<div style="border-top:1px solid rgba(123,47,255,0.15);padding-top:24px;">\n  <p style="font-size:13px;color:var(--dim2,rgba(240,238,255,0.45));line-height:1.7;margin:0;">\n    Synaps Yapay Zeka Teknolojileri A.&#350;.<br>\n    Barbaros Mah. &#350;ebboy Sok. No:4/1, &#304;&#231; Kap&#305; No:2 Ata&#351;ehir/&#304;stanbul<br>\n    <a href="mailto:destek@synapsai.ai" style="color:#C4A4FF;">destek@synapsai.ai</a>\n  </p>\n</div>':'<div style="margin-bottom:32px;">\n  <span style="font-size:11px;font-weight:700;letter-spacing:2px;color:#C4A4FF;text-transform:uppercase;background:rgba(123,47,255,0.12);border:1px solid rgba(123,47,255,0.25);border-radius:100px;padding:6px 14px;">&#9733; Hakkımızda</span>\n</div>\n<h2 style="font-size:28px;font-weight:900;color:var(--text,#F0EEFF);margin-bottom:20px;letter-spacing:-0.5px;line-height:1.25;">Synaps Yapay Zeka Teknolojileri A.Ş.</h2>\n<p style="font-size:15px;color:var(--dim,rgba(240,238,255,0.7));line-height:1.8;margin-bottom:16px;">Synaps AI, en nitelikli adayların en iyi işe yerleştirilmesi için gereken süreci benzersiz analizleri ile hızlandırmaktadır. Teknolojinin gücünü kullanarak işletmeleri yetenekli bireylerle buluşturuyor ve her iki tarafın da mükemmel bir şekilde eşleşmesini sağlıyoruz.</p>\n<p style="font-size:15px;color:var(--dim,rgba(240,238,255,0.7));line-height:1.8;margin-bottom:16px;">Synaps&#39;ın devrim niteliğindeki yaklaşımı, bireylerin yeteneklerini ve potansiyellerini değerlendirmelerine, bununla birlikte işletmelerin de en iyi adayları hızlıca belirlemelerine yardımcı olur.</p>\n<p style="font-size:15px;color:var(--dim,rgba(240,238,255,0.7));line-height:1.8;margin-bottom:32px;">Yenilikçi algoritmalarımız ve veri odaklı stratejimizle işe alımları kolaylaştırıyor ve her iki tarafın memnuniyetini önemsiyoruz. Kariyerinizde ilerlerken, Synaps AI her adımda sizi desteklemek için yanınızda olacaktır.</p>\n<div style="border-top:1px solid rgba(123,47,255,0.15);padding-top:24px;">\n  <p style="font-size:13px;color:var(--dim2,rgba(240,238,255,0.45));line-height:1.7;margin:0;">\n    Synaps Yapay Zeka Teknolojileri A.&#350;.<br>\n    Barbaros Mah. &#350;ebboy Sok. No:4/1, &#304;&#231; Kap&#305; No:2 Ata&#351;ehir/&#304;stanbul<br>\n    <a href="mailto:destek@synapsai.ai" style="color:#C4A4FF;">destek@synapsai.ai</a>\n  </p>\n</div>';
+  m.style.display='block';
+  document.body.style.overflow='hidden';
+}
+function closeHakk(){
+  document.getElementById('hakkModal').style.display='none';
+  document.body.style.overflow='';
+}
 </script>
 </body>
 </html>

@@ -821,12 +821,14 @@ function openContact(){
     var okt=document.getElementById('cf-ok-title'),oks=document.getElementById('cf-ok-sub');
     if(okt)okt.textContent='Message Sent!';
     if(oks)oks.innerHTML='We will contact you at <strong style="color:#C4A4FF">destek@synapsai.ai</strong>.';
+
     var lblEN={'cf1-lbl':'First Name ','cf2-lbl':'Last Name ','cf3-lbl':'Company Name ','cf4-lbl':'Business Email ','cf5-lbl':'Location','cf6-lbl':'Phone','cf7-lbl':'Employee Count'};
     for(var lid in lblEN){var lel=document.getElementById(lid);if(lel&&lel.childNodes[0])lel.childNodes[0].textContent=lblEN[lid];}
   } else {
     if(b)b.textContent='\u0130leti\u015fim Sayfas\u0131';if(tt)tt.textContent='\u0130leti\u015fime Ge\u00e7in';
     if(s)s.textContent='A\u015fa\u011f\u0131daki formu doldurdu\u011funuzda k\u0131sa s\u00fcre i\u00e7erisinde sizinle ileti\u015fime ge\u00e7mi\u015f olaca\u011f\u0131z.';
     if(btn)btn.textContent='G\u00f6nder';
+
     var lblTR={'cf1-lbl':'Ad ','cf2-lbl':'Soyad ','cf3-lbl':'Şirket Adı ','cf4-lbl':'Kurumsal E-posta ','cf5-lbl':'Lokasyon','cf6-lbl':'Telefon','cf7-lbl':'Çalışan Sayısı'};
     for(var lid2 in lblTR){var lel2=document.getElementById(lid2);if(lel2&&lel2.childNodes[0])lel2.childNodes[0].textContent=lblTR[lid2];}
   }

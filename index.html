@@ -1019,7 +1019,7 @@ footer{position:relative;z-index:1;background:#02010A;border-top:1px solid var(-
       <!-- 1. ADIM -->
       <div class="eco-col">
         <div class="eco-badge" data-i18n="eco-step1">1. Adım</div>
-        <a href="synaps-product-ai-yetenek-bulma.html" class="eco-node big" style="min-width:130px;">AI Yetenek<br>Bulma</a>
+        <a href="synaps-product-ai-yetenek-bulma.html" class="eco-node big" style="min-width:130px;" data-i18n="eco-node-yetenek">AI Yetenek<br>Bulma</a>
       </div>
 
       <svg width="68" height="156" viewBox="0 0 68 156" fill="none" style="flex-shrink:0;">
@@ -1089,7 +1089,7 @@ footer{position:relative;z-index:1;background:#02010A;border-top:1px solid var(-
       <!-- 3. ADIM -->
       <div class="eco-col">
         <div class="eco-badge" data-i18n="eco-step3">3. Adım</div>
-        <a href="synaps-product-ai-referans-aramasi.html" class="eco-node big" style="min-width:130px;">AI Referans<br>Araması</a>
+        <a href="synaps-product-ai-referans-aramasi.html" class="eco-node big" style="min-width:130px;" data-i18n="eco-node-referans">AI Referans<br>Araması</a>
       </div>
 
       <svg width="68" height="120" viewBox="0 0 68 120" fill="none" style="flex-shrink:0;">
@@ -1715,16 +1715,16 @@ document.querySelectorAll('.faq-q').forEach(function(q){q.addEventListener('clic
     <p id="cmsp" style="font-size:14px;color:var(--dim,rgba(240,238,255,0.55));margin-bottom:32px;line-height:1.65;">A&#351;a&#287;&#305;daki formu doldurdu&#287;unuzda k&#305;sa s&#252;re i&#231;erisinde sizinle ileti&#351;ime ge&#231;mi&#351; olaca&#287;&#305;z. Hadi, potansiyel i&#351; birli&#287;imizi ke&#351;fedelim!</p>
     <form id="cForm" novalidate>
       <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:16px;">
-        <div><label class="cfl">Ad <span style="color:#9B4FFF;">*</span></label><input id="cf1" type="text" placeholder="Ad&#305;n&#305;z" class="cfi"></div>
-        <div><label class="cfl">Soyad <span style="color:#9B4FFF;">*</span></label><input id="cf2" type="text" placeholder="Soyad&#305;n&#305;z" class="cfi"></div>
+        <div><label class="cfl" id="cf1-lbl">Ad <span style="color:#9B4FFF;">*</span></label><input id="cf1" type="text" placeholder="Ad&#305;n&#305;z" class="cfi"></div>
+        <div><label class="cfl" id="cf2-lbl">Soyad <span style="color:#9B4FFF;">*</span></label><input id="cf2" type="text" placeholder="Soyad&#305;n&#305;z" class="cfi"></div>
       </div>
-      <div style="margin-bottom:16px;"><label class="cfl">&#350;irket Ad&#305; <span style="color:#9B4FFF;">*</span></label><input id="cf3" type="text" placeholder="&#350;irket ad&#305;n&#305;z" class="cfi"></div>
-      <div style="margin-bottom:16px;"><label class="cfl">Kurumsal E-posta <span style="color:#9B4FFF;">*</span></label><input id="cf4" type="email" placeholder="ornek@sirket.com" class="cfi"></div>
+      <div style="margin-bottom:16px;"><label class="cfl" id="cf3-lbl">&#350;irket Ad&#305; <span style="color:#9B4FFF;">*</span></label><input id="cf3" type="text" placeholder="&#350;irket ad&#305;n&#305;z" class="cfi"></div>
+      <div style="margin-bottom:16px;"><label class="cfl" id="cf4-lbl">Kurumsal E-posta <span style="color:#9B4FFF;">*</span></label><input id="cf4" type="email" placeholder="ornek@sirket.com" class="cfi"></div>
       <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:16px;">
-        <div><label class="cfl">Lokasyon</label><input id="cf5" type="text" placeholder="&#304;stanbul, T&#252;rkiye" class="cfi"></div>
-        <div><label class="cfl">Telefon</label><input id="cf6" type="tel" placeholder="+90 5xx xxx xx xx" class="cfi"></div>
+        <div><label class="cfl" id="cf5-lbl">Lokasyon</label><input id="cf5" type="text" placeholder="&#304;stanbul, T&#252;rkiye" class="cfi"></div>
+        <div><label class="cfl" id="cf6-lbl">Telefon</label><input id="cf6" type="tel" placeholder="+90 5xx xxx xx xx" class="cfi"></div>
       </div>
-      <div style="margin-bottom:28px;"><label class="cfl">&#199;al&#305;&#351;an Say&#305;s&#305;</label>
+      <div style="margin-bottom:28px;"><label class="cfl" id="cf7-lbl">&#199;al&#305;&#351;an Say&#305;s&#305;</label>
         <select id="cf7" class="cfi" style="cursor:pointer;-webkit-appearance:none;appearance:none;">
           <option value="" disabled selected>Se&#231;iniz&#8230;</option>
           <option value="1-10">1&#8211;10</option>
@@ -1779,10 +1779,14 @@ function openContact(){
     var okt=document.getElementById('cf-ok-title'),oks=document.getElementById('cf-ok-sub');
     if(okt)okt.textContent='Message Sent!';
     if(oks)oks.innerHTML='We will contact you at <strong style="color:#C4A4FF">destek@synapsai.ai</strong>.';
+    var lblEN={'cf1-lbl':'First Name ','cf2-lbl':'Last Name ','cf3-lbl':'Company Name ','cf4-lbl':'Business Email ','cf5-lbl':'Location','cf6-lbl':'Phone','cf7-lbl':'Employee Count'};
+    for(var lid in lblEN){var lel=document.getElementById(lid);if(lel&&lel.childNodes[0])lel.childNodes[0].textContent=lblEN[lid];}
   } else {
     if(b)b.textContent='\u0130leti\u015fim Sayfas\u0131';if(tt)tt.textContent='\u0130leti\u015fime Ge\u00e7in';
     if(s)s.textContent='A\u015fa\u011f\u0131daki formu doldurdu\u011funuzda k\u0131sa s\u00fcre i\u00e7erisinde sizinle ileti\u015fime ge\u00e7mi\u015f olaca\u011f\u0131z.';
     if(btn)btn.textContent='G\u00f6nder';
+    var lblTR={'cf1-lbl':'Ad ','cf2-lbl':'Soyad ','cf3-lbl':'Şirket Adı ','cf4-lbl':'Kurumsal E-posta ','cf5-lbl':'Lokasyon','cf6-lbl':'Telefon','cf7-lbl':'Çalışan Sayısı'};
+    for(var lid2 in lblTR){var lel2=document.getElementById(lid2);if(lel2&&lel2.childNodes[0])lel2.childNodes[0].textContent=lblTR[lid2];}
   }
 }
 function closeContact(){
@@ -1812,11 +1816,15 @@ document.addEventListener('keydown',function(e){
 });
 })();
 </script>
-
-<div id="hakkModal" style="display:none;position:fixed;inset:0;z-index:9998;background:rgba(6,4,15,0.92);backdrop-filter:blur(12px);overflow-y:auto;padding:40px 20px;" onclick="if(event.target===this)closeHakk()"><div style="max-width:720px;margin:0 auto;background:#100c23;border:1px solid rgba(123,47,255,0.25);border-radius:20px;padding:48px 52px;position:relative;"><button onclick="closeHakk()" style="position:absolute;top:20px;right:20px;background:rgba(123,47,255,0.15);border:none;border-radius:50%;width:36px;height:36px;color:var(--text,#F0EEFF);font-size:18px;cursor:pointer;display:flex;align-items:center;justify-content:center;">&#215;</button><div id="hakkContent"></div></div></div>
+<div id="hakkModal" style="display:none;position:fixed;inset:0;z-index:9998;background:rgba(6,4,15,0.92);backdrop-filter:blur(12px);overflow-y:auto;padding:40px 20px;" onclick="if(event.target===this)closeHakk()">
+  <div style="max-width:700px;margin:0 auto;background:#100c23;border:1px solid rgba(123,47,255,0.25);border-radius:20px;padding:44px 48px;position:relative;">
+    <button onclick="closeHakk()" style="position:absolute;top:16px;right:16px;background:rgba(123,47,255,0.15);border:none;border-radius:50%;width:34px;height:34px;color:var(--text,#F0EEFF);font-size:18px;cursor:pointer;display:flex;align-items:center;justify-content:center;">&#215;</button>
+    <div id="hakkContent"></div>
+  </div>
+</div>
 <script>
-var TR_HAKK_CONTENT='<div style="margin-bottom:32px;"><span style="font-size:11px;font-weight:700;letter-spacing:2px;color:#C4A4FF;text-transform:uppercase;background:rgba(123,47,255,0.12);border:1px solid rgba(123,47,255,0.25);border-radius:100px;padding:6px 14px;">&#9733; Hakkımızda</span></div><h2 style="font-size:28px;font-weight:900;color:var(--text,#F0EEFF);margin-bottom:20px;">Synaps Yapay Zeka Teknolojileri A.Ş.</h2><p style="font-size:15px;color:var(--dim,rgba(240,238,255,0.7));line-height:1.8;margin-bottom:16px;">Synaps AI, en nitelikli adayların en iyi işe yerleştirilmesi için gereken süreci benzersiz analizleri ile hızlandırmaktadır. Teknolojinin gücünü kullanarak işletmeleri yetenekli bireylerle buluşturuyor ve her iki tarafın da mükemmel şekilde eşleşmesini sağlıyoruz.</p><p style="font-size:15px;color:var(--dim,rgba(240,238,255,0.7));line-height:1.8;margin-bottom:16px;">Yenilikçi algoritmalarımız ve veri odaklı stratejimizle işe alımları kolaylaştırıyor ve her iki tarafın memnuniyetini önemsiyoruz.</p><div style="border-top:1px solid rgba(123,47,255,0.15);padding-top:24px;"><p style="font-size:13px;color:var(--dim2,rgba(240,238,255,0.45));line-height:1.7;margin:0;">Synaps Yapay Zeka Teknolojileri A.Ş. | Barbaros Mah. Şebboy Sok. No:4/1, İç Kapı No:2 Ataşehir/İstanbul<br><a href="mailto:destek@synapsai.ai" style="color:#C4A4FF;">destek@synapsai.ai</a></p></div>';
-var EN_HAKK_CONTENT='<div style="margin-bottom:32px;"><span style="font-size:11px;font-weight:700;letter-spacing:2px;color:#C4A4FF;text-transform:uppercase;background:rgba(123,47,255,0.12);border:1px solid rgba(123,47,255,0.25);border-radius:100px;padding:6px 14px;">&#9733; About Us</span></div><h2 style="font-size:28px;font-weight:900;color:var(--text,#F0EEFF);margin-bottom:20px;">Synaps AI Technologies Inc.</h2><p style="font-size:15px;color:var(--dim,rgba(240,238,255,0.7));line-height:1.8;margin-bottom:16px;">Our ultimate mission at Synaps AI is to expedite the process by which the most qualified candidates are placed in the best available employment. We connect businesses with talented individuals by using the power of technology, ensuring that both parties are perfectly matched.</p><p style="font-size:15px;color:var(--dim,rgba(240,238,255,0.7));line-height:1.8;margin-bottom:16px;">Synaps\'s revolutionary approach helps individuals evaluate their abilities and potential and helps businesses identify the top candidates quickly. We streamline recruitment and satisfy both parties with our innovative algorithms and data-driven strategy.</p><div style="border-top:1px solid rgba(123,47,255,0.15);padding-top:24px;"><p style="font-size:13px;color:var(--dim2,rgba(240,238,255,0.45));line-height:1.7;margin:0;">Synaps Yapay Zeka Teknolojileri A.Ş. | Barbaros Mah. Şebboy Sok. No:4/1, İç Kapı No:2 Ataşehir/İstanbul<br><a href="mailto:destek@synapsai.ai" style="color:#C4A4FF;">destek@synapsai.ai</a></p></div>';
+var TR_HAKK='<div style="margin-bottom:28px;"><span style="font-size:11px;font-weight:700;letter-spacing:2px;color:#C4A4FF;text-transform:uppercase;background:rgba(123,47,255,0.12);border:1px solid rgba(123,47,255,0.25);border-radius:100px;padding:6px 14px;">&#9733; Hakkımızda</span></div><h2 style="font-size:26px;font-weight:900;color:var(--text,#F0EEFF);margin-bottom:18px;">Synaps Yapay Zeka Teknolojileri A.Ş.</h2><p style="font-size:15px;color:var(--dim,rgba(240,238,255,0.7));line-height:1.8;margin-bottom:14px;">Synaps AI, en nitelikli adayların en iyi işe yerleştirilmesi için gereken süreci benzersiz analizleri ile hızlandırmaktadır. Teknolojinin gücünü kullanarak işletmeleri yetenekli bireylerle buluşturuyor ve her iki tarafın da mükemmel şekilde eşleşmesini sağlıyoruz.</p><p style="font-size:15px;color:var(--dim,rgba(240,238,255,0.7));line-height:1.8;margin-bottom:28px;">Yenilikçi algoritmalarımız ve veri odaklı stratejimizle işe alımları kolaylaştırıyor ve her iki tarafın memnuniyetini önemsiyoruz.</p><div style="border-top:1px solid rgba(123,47,255,0.15);padding-top:20px;"><p style="font-size:13px;color:var(--dim2,rgba(240,238,255,0.45));line-height:1.7;margin:0;">Synaps Yapay Zeka Teknolojileri A.Ş.<br>Barbaros Mah. Şebboy Sok. No:4/1, İç Kapı No:2 Ataşehir/İstanbul<br><a href="mailto:destek@synapsai.ai" style="color:#C4A4FF;">destek@synapsai.ai</a></p></div>';
+var EN_HAKK='<div style="margin-bottom:28px;"><span style="font-size:11px;font-weight:700;letter-spacing:2px;color:#C4A4FF;text-transform:uppercase;background:rgba(123,47,255,0.12);border:1px solid rgba(123,47,255,0.25);border-radius:100px;padding:6px 14px;">&#9733; About Us</span></div><h2 style="font-size:26px;font-weight:900;color:var(--text,#F0EEFF);margin-bottom:18px;">Synaps AI Technologies Inc.</h2><p style="font-size:15px;color:var(--dim,rgba(240,238,255,0.7));line-height:1.8;margin-bottom:14px;">Our ultimate mission at Synaps AI is to expedite the process by which the most qualified candidates are placed in the best available employment. We connect businesses with talented individuals by using the power of technology, ensuring that both parties are perfectly matched.</p><p style="font-size:15px;color:var(--dim,rgba(240,238,255,0.7));line-height:1.8;margin-bottom:28px;">We streamline recruitment and satisfy both parties with our innovative algorithms and data-driven strategy. As you advance in your career, Synaps AI will be there to support you every step of the way.</p><div style="border-top:1px solid rgba(123,47,255,0.15);padding-top:20px;"><p style="font-size:13px;color:var(--dim2,rgba(240,238,255,0.45));line-height:1.7;margin:0;">Synaps Yapay Zeka Teknolojileri A.Ş.<br>Barbaros Mah. Şebboy Sok. No:4/1, İç Kapı No:2 Ataşehir/İstanbul<br><a href="mailto:destek@synapsai.ai" style="color:#C4A4FF;">destek@synapsai.ai</a></p></div>';
 function openHakk(){
   var lang=localStorage.getItem('synaps-lang')||'TR';
   var isEN=lang==='EN';
@@ -1824,9 +1832,9 @@ function openHakk(){
   var m=document.getElementById('hakkModal');
   var c=document.getElementById('hakkContent');
   var box=m.querySelector('div');
-  if(isLight){box.style.background='#ffffff';box.style.border='1px solid rgba(123,47,255,0.15)';}
-  else{box.style.background='#100c23';box.style.border='1px solid rgba(123,47,255,0.25)';}
-  c.innerHTML=isEN?EN_HAKK_CONTENT:TR_HAKK_CONTENT;
+  box.style.background=isLight?'#ffffff':'#100c23';
+  box.style.border=isLight?'1px solid rgba(123,47,255,0.15)':'1px solid rgba(123,47,255,0.25)';
+  c.innerHTML=isEN?EN_HAKK:TR_HAKK;
   m.style.display='block';
   document.body.style.overflow='hidden';
 }

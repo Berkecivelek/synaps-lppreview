@@ -1637,7 +1637,7 @@ window.addEventListener('resize', () => { setTimeout(drawAtsBracket, 80); });
         Synaps Yapay Zeka Teknolojileri A.Ş.<br>
         Barbaros Mah. Şebboy Sok. No:4/1<br>
         İç Kapı No:2 Ataşehir/İstanbul<br>
-        <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="3c58594f4859577c4f45525d4c4f5d55125d55">[email&#160;protected]</a>
+        <a href="mailto:destek@synapsai.ai">destek@synapsai.ai</a>
       </div>
       <div class="footer-socials" style="display:flex;gap:10px;margin-top:16px;">
   <a href="https://x.com/synapsai" target="_blank" rel="noopener" class="footer-social-icon" style="width:32px;height:32px;border-radius:8px;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.1);display:flex;align-items:center;justify-content:center;color:rgba(255,255,255,0.5);transition:all 0.2s;" onmouseover="this.style.background='rgba(123,47,255,0.2)';this.style.color='white'" onmouseout="this.style.background='rgba(255,255,255,0.06)';this.style.color='rgba(255,255,255,0.5)'"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.747l7.73-8.835L1.254 2.25H8.08l4.259 5.631 5.905-5.631zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg></a>
@@ -1756,7 +1756,7 @@ document.querySelectorAll('.faq-q').forEach(function(q){q.addEventListener('clic
     <div id="cf-ok" style="display:none;text-align:center;padding:40px 0;">
       <div style="width:64px;height:64px;border-radius:50%;background:rgba(123,47,255,0.15);display:flex;align-items:center;justify-content:center;margin:0 auto 20px;font-size:32px;color:#4ADE80;">&#10003;</div>
       <h3 id="cf-ok-title" style="font-size:20px;font-weight:800;margin-bottom:8px;color:var(--text,#F0EEFF);">Mesaj&#305;n&#305;z &#304;letildi!</h3>
-      <p id="cf-ok-sub" style="font-size:14px;color:var(--dim,rgba(240,238,255,0.55));">En k&#305;sa s&#252;rede <strong style="color:#C4A4FF;"><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="5e3a3b2d2a3b351e2d27303f2e2d3f37703f37">[email&#160;protected]</a></strong> adresinden sizinle ileti&#351;ime ge&#231;ece&#287;iz.</p>
+      <p id="cf-ok-sub" style="font-size:14px;color:var(--dim,rgba(240,238,255,0.55));">En k&#305;sa s&#252;rede <strong style="color:#C4A4FF;"><a href="mailto:destek@synapsai.ai" style="color:#C4A4FF;">destek@synapsai.ai</a></strong> adresinden sizinle ileti&#351;ime ge&#231;ece&#287;iz.</p>
     </div>
   </div>
 </div>
@@ -1849,4 +1849,37 @@ function openHakk(){
   var isEN=lang==='EN';
   var isLight=document.documentElement.getAttribute('data-theme')==='light';
   var m=document.getElementById('hakkModal');
-  var c=document.getEle
+  var c=document.getElementById('hakkContent');
+  if(!m||!c)return;
+  c.innerHTML=isEN?EN_HAKK:TR_HAKK;
+  if(isLight){
+    m.style.background='rgba(230,225,255,0.96)';
+    var inner=m.querySelector('div');
+    if(inner){inner.style.background='#FFFFFF';inner.style.borderColor='rgba(123,47,255,0.2)';}
+    var h2=c.querySelector('h2');
+    if(h2)h2.style.color='#0A0520';
+    var ps=c.querySelectorAll('p');
+    ps.forEach(function(p){p.style.color='rgba(10,5,32,0.65)';});
+  } else {
+    m.style.background='rgba(6,4,15,0.92)';
+    var inner2=m.querySelector('div');
+    if(inner2){inner2.style.background='#100c23';inner2.style.borderColor='rgba(123,47,255,0.25)';}
+  }
+  m.style.display='block';
+  document.body.style.overflow='hidden';
+}
+function closeHakk(){
+  document.getElementById('hakkModal').style.display='none';
+  document.body.style.overflow='';
+}
+window.openHakk=openHakk;
+window.closeHakk=closeHakk;
+document.addEventListener('keydown',function(e){
+  if(e.key==='Escape'){
+    var m=document.getElementById('hakkModal');
+    if(m&&m.style.display==='block')closeHakk();
+  }
+});
+</script>
+</body>
+</html>

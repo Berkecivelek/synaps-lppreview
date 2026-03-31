@@ -649,7 +649,7 @@ footer{position:relative;z-index:1;background:#02010A;border-top:1px solid var(-
    ══════════════════════════════════════════ */
 
 /* ── Hamburger menu ── */
-.mob-menu-btn{display:none;background:none;border:1px solid var(--border);border-radius:8px;padding:7px 10px;cursor:pointer;color:var(--dim);font-size:18px;line-height:1;}
+.mob-menu-btn{display:none;background:none;border:1px solid var(--border);border-radius:8px;padding:7px 10px;cursor:pointer;color:var(--dim);line-height:1;flex-direction:column;gap:4px;align-items:center;justify-content:center;}
 .mob-nav-overlay{display:none;position:fixed;inset:64px 0 0 0;background:rgba(5,5,16,0.97);backdrop-filter:blur(24px);z-index:299;overflow-y:auto;padding:24px 20px 40px;}
 [data-theme="light"] .mob-nav-overlay{background:rgba(240,238,249,0.98);}
 .mob-nav-overlay.open{display:block;}
@@ -668,7 +668,7 @@ footer{position:relative;z-index:1;background:#02010A;border-top:1px solid var(-
   nav{padding:0 20px;}
   .nav-center{display:none;}
   .nav-right .nav-ghost,.nav-right .nav-cta{display:none;}
-  .mob-menu-btn{display:flex;align-items:center;justify-content:center;}
+  .mob-menu-btn{display:flex !important;}
 
   /* Hero */
   .hero{grid-template-columns:1fr;padding:100px 24px 60px;gap:40px;min-height:auto;text-align:center;}
@@ -792,7 +792,6 @@ footer{position:relative;z-index:1;background:#02010A;border-top:1px solid var(-
 
 /* Hamburger icon lines */
 .mob-menu-btn span{display:block;width:18px;height:2px;background:currentColor;border-radius:2px;transition:all 0.3s;}
-.mob-menu-btn span+span{margin-top:4px;}
 
 /* ── Footer light mode fixes ── */
 [data-theme="light"] .uf-footer {

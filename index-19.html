@@ -1,0 +1,2393 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Synaps AI — Kariyerini Şekillendir</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,300;12..96,400;12..96,500;12..96,600;12..96,700;12..96,800&family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;1,9..144,300;1,9..144,400;1,9..144,700&display=swap" rel="stylesheet">
+<style>
+/* ╔══════════════════════════════════════════╗
+   ║  DESIGN TOKENS                          ║
+   ╚══════════════════════════════════════════╝ */
+:root {
+  --bg:       #F7F5FF;   /* lavanta beyazı */
+  --bg-off:   #EFECFE;
+  --bg-w:     #FFFFFF;
+  --bg-dark:  #13082B;
+  --bg-dark2: #0C0518;
+
+  --p800: #4C1D95;
+  --p700: #6D28D9;
+  --p600: #7C3AED;
+  --p500: #8B5CF6;
+  --p400: #A78BFA;
+  --p300: #C4B5FD;
+  --p200: #DDD6FE;
+  --p100: #EDE9FE;
+  --p50:  #F5F3FF;
+
+  --ink:  #0F0A1E;
+  --ink2: #2E1E5A;
+  --ink3: #6B5F8A;
+  --ink4: #A89EC0;
+  --ink5: #C8C0DC;
+
+  --green:  #059669;
+  --amber:  #D97706;
+  --coral:  #E11D48;
+  --sky:    #0284C7;
+
+  --bdr:   rgba(109,40,217,0.12);
+  --bdr2:  rgba(109,40,217,0.07);
+  --bdr3:  rgba(109,40,217,0.18);
+
+  --s1: 0 1px 4px rgba(109,40,217,0.06);
+  --s2: 0 4px 24px rgba(109,40,217,0.1);
+  --s3: 0 16px 64px rgba(109,40,217,0.14);
+  --s4: 0 32px 100px rgba(15,10,30,0.18);
+  --s5: 0 48px 140px rgba(15,10,30,0.25);
+
+  --ease: cubic-bezier(0.25,0,0,1);
+  --ease-spring: cubic-bezier(0.34,1.56,0.64,1);
+  --r: 18px;
+  --r2: 26px;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: 'Bricolage Grotesque', sans-serif;
+  background: var(--bg);
+  color: var(--ink);
+  overflow-x: hidden;
+  line-height: 1.55;
+}
+img { max-width: 100%; display: block; }
+a { text-decoration: none; }
+button { font-family: inherit; cursor: pointer; border: none; }
+
+/* ╔══════════════════════════════════════════╗
+   ║  TYPOGRAPHY                              ║
+   ╚══════════════════════════════════════════╝ */
+.f-serif { font-family: 'Fraunces', serif; }
+.t-display {
+  font-family: 'Bricolage Grotesque';
+  font-weight: 800;
+  font-size: clamp(3.6rem, 7.5vw, 7.8rem);
+  line-height: 1.0;
+  letter-spacing: -0.04em;
+}
+.t-h2 {
+  font-family: 'Bricolage Grotesque';
+  font-weight: 800;
+  font-size: clamp(2.6rem, 4.5vw, 5rem);
+  line-height: 1.06;
+  letter-spacing: -0.03em;
+}
+.t-h3 {
+  font-family: 'Bricolage Grotesque';
+  font-weight: 700;
+  font-size: clamp(1.6rem, 2.5vw, 2.4rem);
+  line-height: 1.15;
+  letter-spacing: -0.025em;
+}
+.t-italic {
+  font-family: 'Fraunces', serif;
+  font-style: italic;
+  font-weight: 300;
+  color: var(--p600);
+}
+.eyebrow {
+  display: inline-flex; align-items: center; gap: 7px;
+  font-size: 0.72rem; font-weight: 700;
+  letter-spacing: 0.1em; text-transform: uppercase;
+  color: var(--p600); margin-bottom: 16px;
+}
+.eyebrow::before {
+  content: '';
+  display: block;
+  width: 20px; height: 2px;
+  background: var(--p500);
+  border-radius: 2px;
+}
+
+/* ╔══════════════════════════════════════════╗
+   ║  LAYOUT                                  ║
+   ╚══════════════════════════════════════════╝ */
+.wrap { max-width: 1180px; margin: 0 auto; padding: 0 32px; }
+.wrap-wide { max-width: 1480px; margin: 0 auto; padding: 0 32px; }
+
+/* ╔══════════════════════════════════════════╗
+   ║  BUTTONS                                 ║
+   ╚══════════════════════════════════════════╝ */
+.btn {
+  display: inline-flex; align-items: center; gap: 9px;
+  font-family: 'Bricolage Grotesque', sans-serif;
+  font-weight: 700;
+  border: none;
+  cursor: pointer;
+  transition: all 0.28s var(--ease);
+  white-space: nowrap;
+}
+.btn-dark {
+  background: var(--ink);
+  color: #fff;
+  padding: 15px 30px;
+  border-radius: 100px;
+  font-size: 0.95rem;
+}
+.btn-dark:hover {
+  background: var(--p700);
+  transform: translateY(-2px);
+  box-shadow: 0 10px 32px rgba(109,40,217,0.4);
+}
+.btn-purple {
+  background: var(--p600);
+  color: #fff;
+  padding: 15px 30px;
+  border-radius: 100px;
+  font-size: 0.95rem;
+  box-shadow: 0 4px 20px rgba(109,40,217,0.3);
+}
+.btn-purple:hover {
+  background: var(--p700);
+  transform: translateY(-2px);
+  box-shadow: 0 12px 36px rgba(109,40,217,0.45);
+}
+.btn-outline {
+  background: transparent;
+  color: var(--ink);
+  padding: 14px 28px;
+  border-radius: 100px;
+  font-size: 0.95rem;
+  border: 2px solid rgba(15,10,30,0.14);
+}
+.btn-outline:hover {
+  border-color: var(--p400);
+  color: var(--p700);
+  background: var(--p50);
+}
+.btn-ghost-light {
+  background: rgba(255,255,255,0.1);
+  color: #fff;
+  padding: 12px 22px;
+  border-radius: 100px;
+  font-size: 0.88rem;
+  border: 1px solid rgba(255,255,255,0.2);
+}
+.btn-ghost-light:hover {
+  background: rgba(255,255,255,0.2);
+}
+.btn-lg { padding: 18px 40px; font-size: 1.05rem; }
+.btn-sm { padding: 10px 20px; font-size: 0.85rem; }
+.ico-arr { width: 15px; height: 15px; fill: none; stroke: currentColor; stroke-width: 2.5; transition: transform 0.2s; }
+.btn:hover .ico-arr { transform: translateX(4px); }
+
+/* ╔══════════════════════════════════════════╗
+   ║  NAV                                     ║
+   ╚══════════════════════════════════════════╝ */
+#nav {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 900;
+  height: 68px;
+  display: flex; align-items: center;
+  padding: 0 36px;
+  transition: all 0.35s var(--ease);
+}
+#nav.stuck {
+  background: rgba(247,245,255,0.94);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  border-bottom: 1px solid var(--bdr2);
+  box-shadow: var(--s1);
+}
+.nav-inner {
+  max-width: 1180px;
+  margin: 0 auto;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.nav-logo { display: flex; align-items: center; gap: 10px; }
+.nav-logo-mark {
+  width: 34px; height: 34px;
+  border-radius: 9px;
+  background: var(--ink);
+  display: flex; align-items: center; justify-content: center;
+  font-family: 'Fraunces', serif;
+  font-style: italic;
+  font-size: 1.05rem;
+  color: #fff;
+  transition: background 0.25s;
+}
+.nav-logo:hover .nav-logo-mark { background: var(--p700); }
+.nav-logo-name {
+  font-weight: 800;
+  font-size: 1.1rem;
+  color: var(--ink);
+  letter-spacing: -0.03em;
+}
+.nav-logo-name span { color: var(--p600); }
+.nav-menu { display: flex; gap: 2px; list-style: none; }
+.nav-menu a {
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: var(--ink3);
+  padding: 8px 14px;
+  border-radius: 10px;
+  transition: all 0.2s;
+}
+.nav-menu a:hover { color: var(--ink); background: var(--p50); }
+.nav-actions { display: flex; align-items: center; gap: 10px; }
+.nav-sign {
+  font-size: 0.88rem;
+  font-weight: 700;
+  color: var(--ink3);
+  padding: 8px 14px;
+  border-radius: 10px;
+  transition: color 0.2s;
+}
+.nav-sign:hover { color: var(--ink); }
+
+/* ╔══════════════════════════════════════════╗
+   ║  HERO                                    ║
+   ╚══════════════════════════════════════════╝ */
+#hero {
+  padding: 144px 0 0;
+  min-height: 100vh;
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Soft background mesh */
+.hero-mesh {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background:
+    radial-gradient(ellipse 70% 60% at 15% 50%, rgba(139,92,246,0.09) 0%, transparent 65%),
+    radial-gradient(ellipse 55% 70% at 85% 30%, rgba(109,40,217,0.06) 0%, transparent 60%),
+    radial-gradient(ellipse 40% 50% at 50% 90%, rgba(196,181,253,0.08) 0%, transparent 55%);
+}
+/* Subtle grid */
+.hero-grid-lines {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background-image:
+    linear-gradient(rgba(109,40,217,0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(109,40,217,0.04) 1px, transparent 1px);
+  background-size: 72px 72px;
+  mask-image: radial-gradient(ellipse 80% 80% at 50% 30%, black 20%, transparent 100%);
+}
+
+.hero-text-zone {
+  position: relative;
+  z-index: 2;
+  padding: 0 32px;
+  max-width: 1180px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+/* Pill badge */
+.hero-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--p100);
+  border: 1px solid var(--p200);
+  color: var(--p700);
+  border-radius: 100px;
+  padding: 6px 14px 6px 10px;
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  margin-bottom: 32px;
+}
+.hero-badge-pulse {
+  width: 22px; height: 22px;
+  border-radius: 50%;
+  background: var(--p600);
+  display: flex; align-items: center; justify-content: center;
+}
+.hero-badge-pulse::after {
+  content: '';
+  width: 6px; height: 6px;
+  background: #fff;
+  border-radius: 50%;
+}
+.hero-badge-ring {
+  position: absolute;
+  width: 22px; height: 22px;
+  border-radius: 50%;
+  border: 2px solid var(--p400);
+  animation: ripple 2s infinite;
+  opacity: 0;
+}
+.hero-badge-pulse { position: relative; }
+@keyframes ripple {
+  0%   { transform: scale(1); opacity: 0.6; }
+  100% { transform: scale(2.2); opacity: 0; }
+}
+
+/* Hero title */
+.hero-title { margin-bottom: 28px; }
+.hero-title-line { display: block; }
+.hero-sub {
+  font-size: 1.2rem;
+  color: var(--ink3);
+  font-weight: 400;
+  line-height: 1.7;
+  max-width: 580px;
+  margin-bottom: 44px;
+}
+.hero-actions {
+  display: flex;
+  gap: 14px;
+  align-items: center;
+  flex-wrap: wrap;
+  margin-bottom: 56px;
+}
+.hero-proof {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  font-size: 0.84rem;
+  color: var(--ink3);
+  font-weight: 500;
+}
+.proof-avs { display: flex; }
+.proof-av {
+  width: 28px; height: 28px;
+  border-radius: 50%;
+  border: 2px solid var(--bg);
+  margin-right: -7px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 0.58rem; font-weight: 900; color: #fff;
+}
+.proof-stars { color: #FBBF24; letter-spacing: 1px; }
+
+/* ── Hero 3-product mockup grid ── */
+.hero-mocks {
+  position: relative;
+  z-index: 2;
+  padding: 0 32px;
+  max-width: 1180px;
+  margin: 0 auto;
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1.15fr 1fr 1fr;
+  gap: 16px;
+  margin-top: auto;
+}
+
+.hmock {
+  background: var(--bg-w);
+  border: 1px solid var(--bdr);
+  border-radius: 20px 20px 0 0;
+  overflow: hidden;
+  box-shadow: var(--s3);
+  transform-origin: bottom center;
+  transition: transform 0.4s var(--ease), box-shadow 0.4s var(--ease);
+}
+.hmock:hover {
+  transform: translateY(-8px);
+  box-shadow: var(--s4);
+  z-index: 5;
+}
+.hmock:nth-child(1) { transform-origin: bottom left; }
+.hmock:nth-child(3) { transform-origin: bottom right; }
+
+.hmock-bar {
+  background: var(--p50);
+  border-bottom: 1px solid var(--bdr2);
+  padding: 10px 14px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.hmock-dots { display: flex; gap: 5px; }
+.hd { width: 9px; height: 9px; border-radius: 50%; }
+.hd.r{background:#FF5F57} .hd.y{background:#FEBC2E} .hd.g{background:#28C840}
+.hmock-title {
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: var(--ink3);
+  letter-spacing: -0.01em;
+}
+.hmock-tag {
+  margin-left: auto;
+  font-size: 0.6rem;
+  font-weight: 800;
+  padding: 2px 8px;
+  border-radius: 100px;
+  background: var(--p100);
+  color: var(--p700);
+}
+.hmock-body { padding: 16px; }
+
+/* CV Builder mock content */
+.cv-mock-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 12px;
+}
+.cv-mock-name-block {}
+.cv-mock-name { font-weight: 800; font-size: 0.82rem; color: var(--ink); }
+.cv-mock-role { font-size: 0.68rem; color: var(--ink3); }
+.cv-ats-score {
+  background: rgba(5,150,105,0.08);
+  border: 1px solid rgba(5,150,105,0.18);
+  border-radius: 10px;
+  padding: 5px 10px;
+  text-align: center;
+}
+.cv-ats-num { font-weight: 900; font-size: 1.1rem; color: var(--green); line-height: 1; }
+.cv-ats-lbl { font-size: 0.54rem; color: var(--green); font-weight: 700; }
+
+.prog-row {
+  display: flex; align-items: center; gap: 8px; margin-bottom: 7px;
+}
+.prog-lbl { font-size: 0.65rem; color: var(--ink3); font-weight: 600; min-width: 78px; }
+.prog-track {
+  flex: 1; height: 5px;
+  background: var(--p100);
+  border-radius: 100px;
+  overflow: hidden;
+}
+.prog-fill {
+  height: 100%;
+  border-radius: 100px;
+  background: linear-gradient(90deg, var(--p600), var(--p400));
+}
+.prog-val { font-size: 0.65rem; font-weight: 800; color: var(--p600); min-width: 26px; text-align: right; }
+
+.ai-hint {
+  margin-top: 10px;
+  background: var(--p50);
+  border: 1px solid var(--p200);
+  border-radius: 10px;
+  padding: 9px 11px;
+  display: flex;
+  gap: 7px;
+  align-items: flex-start;
+}
+.ai-hint-icon {
+  width: 20px; height: 20px;
+  background: var(--p600);
+  border-radius: 6px;
+  flex-shrink: 0;
+  display: flex; align-items: center; justify-content: center;
+}
+.ai-hint-icon svg { width: 10px; height: 10px; stroke: #fff; fill: none; stroke-width: 2; }
+.ai-hint-txt { font-size: 0.68rem; color: var(--ink2); line-height: 1.45; }
+.ai-hint-txt strong { color: var(--p700); font-weight: 700; }
+
+/* Interview mock */
+.int-q {
+  background: var(--p50);
+  border: 1px solid var(--p200);
+  border-radius: 10px;
+  padding: 10px 12px;
+  margin-bottom: 10px;
+}
+.int-q-lbl { font-size: 0.6rem; font-weight: 800; color: var(--p700); margin-bottom: 5px; }
+.int-q-txt { font-size: 0.74rem; color: var(--ink); line-height: 1.45; }
+.int-tags { display: flex; gap: 5px; flex-wrap: wrap; margin-top: 7px; }
+.int-tag {
+  font-size: 0.58rem; font-weight: 800;
+  padding: 2px 7px; border-radius: 100px;
+}
+.int-tag.beh { background: var(--p100); color: var(--p700); }
+.int-tag.med { background: rgba(217,119,6,0.1); color: var(--amber); }
+
+.int-answer {
+  background: rgba(5,150,105,0.06);
+  border: 1px solid rgba(5,150,105,0.15);
+  border-radius: 10px;
+  padding: 9px 11px;
+}
+.int-answer-score { font-size: 0.6rem; font-weight: 800; color: var(--green); margin-bottom: 4px; }
+.int-answer-bars { display: flex; flex-direction: column; gap: 4px; }
+.int-abar { }
+.int-abar-lbl { font-size: 0.58rem; color: var(--ink3); margin-bottom: 2px; display: flex; justify-content: space-between; }
+.int-abar-lbl span { font-weight: 700; color: var(--green); }
+.int-abar-track { height: 3.5px; background: rgba(5,150,105,0.1); border-radius: 100px; overflow: hidden; }
+.int-abar-fill { height: 100%; border-radius: 100px; background: linear-gradient(90deg, var(--green), #34D399); }
+
+/* Career mock */
+.kb-mini { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+.kb-col-h {
+  font-size: 0.58rem; font-weight: 800;
+  text-transform: uppercase; letter-spacing: 0.08em;
+  padding-bottom: 5px;
+  margin-bottom: 6px;
+  border-bottom: 2px solid;
+}
+.kb-col-h.blue { color: var(--sky); border-color: var(--sky); }
+.kb-col-h.amber { color: var(--amber); border-color: var(--amber); }
+.kb-col-h.green { color: var(--green); border-color: var(--green); }
+.kb-item {
+  background: var(--p50);
+  border: 1px solid var(--bdr2);
+  border-radius: 7px;
+  padding: 7px 8px;
+  margin-bottom: 5px;
+}
+.kb-item.hl { background: rgba(5,150,105,0.06); border-color: rgba(5,150,105,0.2); }
+.kb-item.warn { background: rgba(217,119,6,0.06); border-color: rgba(217,119,6,0.2); }
+.kb-co { font-size: 0.68rem; font-weight: 800; color: var(--ink); }
+.kb-ro { font-size: 0.6rem; color: var(--ink3); }
+.kb-dt { font-size: 0.56rem; font-weight: 700; margin-top: 3px; }
+.ai-career-bar {
+  margin-top: 10px;
+  background: var(--p50);
+  border: 1px solid var(--p200);
+  border-radius: 8px;
+  padding: 8px 10px;
+  font-size: 0.68rem;
+  color: var(--ink2);
+  display: flex;
+  gap: 7px;
+  align-items: center;
+}
+.ai-career-bar-ic {
+  width: 18px; height: 18px;
+  background: var(--p600);
+  border-radius: 5px;
+  flex-shrink: 0;
+  display: flex; align-items: center; justify-content: center;
+}
+.ai-career-bar-ic svg { width: 9px; height: 9px; stroke: #fff; fill: none; stroke-width: 2; }
+
+/* ╔══════════════════════════════════════════╗
+   ║  TICKER                                  ║
+   ╚══════════════════════════════════════════╝ */
+.ticker {
+  background: var(--p700);
+  overflow: hidden;
+  padding: 13px 0;
+  position: relative;
+  z-index: 3;
+}
+.ticker-track {
+  display: flex;
+  gap: 64px;
+  animation: tickMove 30s linear infinite;
+  width: max-content;
+}
+.ticker-track:hover { animation-play-state: paused; }
+.tick-item {
+  display: flex; align-items: center; gap: 10px;
+  font-size: 0.86rem; font-weight: 600;
+  color: rgba(255,255,255,0.6);
+  flex-shrink: 0;
+}
+.tick-item strong { color: #fff; }
+.tick-sep { color: rgba(255,255,255,0.25); font-size: 1.2rem; }
+@keyframes tickMove { to { transform: translateX(-50%); } }
+
+/* ╔══════════════════════════════════════════╗
+   ║  3 PRODUCT SECTIONS (stacked, alternating)║
+   ╚══════════════════════════════════════════╝ */
+
+/* ─── Section wrapper ─── */
+.product-section {
+  padding: 140px 0;
+  position: relative;
+  overflow: hidden;
+}
+.product-section:nth-child(even) {
+  background: var(--bg-w);
+}
+.product-section:nth-child(odd) {
+  background: var(--bg);
+}
+
+/* Decorative blob bg */
+.section-blob {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(100px);
+  pointer-events: none;
+  opacity: 0.5;
+}
+
+/* Layout: copy left / visual right (alternates) */
+.ps-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+  align-items: center;
+}
+.ps-grid.flip { }
+.ps-grid.flip .ps-copy { order: 2; }
+.ps-grid.flip .ps-visual { order: 1; }
+
+.ps-copy {}
+.ps-copy p {
+  font-size: 1.05rem;
+  color: var(--ink3);
+  line-height: 1.75;
+  margin: 18px 0 28px;
+}
+.ps-feats {
+  list-style: none;
+  margin-bottom: 36px;
+}
+.ps-feats li {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  padding: 10px 0;
+  border-bottom: 1px solid var(--bdr2);
+  font-size: 0.9rem;
+  color: var(--ink2);
+  line-height: 1.5;
+}
+.ps-feats li:last-child { border: none; }
+.ps-feat-check {
+  width: 20px; height: 20px;
+  border-radius: 50%;
+  background: var(--p100);
+  border: 1px solid var(--p300);
+  display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0;
+  margin-top: 1px;
+  font-size: 0.6rem;
+  color: var(--p700);
+  font-weight: 900;
+}
+.ps-free-note {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  font-size: 0.78rem;
+  color: var(--green);
+  font-weight: 700;
+  background: rgba(5,150,105,0.08);
+  border: 1px solid rgba(5,150,105,0.15);
+  border-radius: 100px;
+  padding: 5px 12px;
+  margin-bottom: 18px;
+}
+.ps-limit-note {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  font-size: 0.78rem;
+  color: var(--amber);
+  font-weight: 700;
+  background: rgba(217,119,6,0.08);
+  border: 1px solid rgba(217,119,6,0.15);
+  border-radius: 100px;
+  padding: 5px 12px;
+  margin-bottom: 18px;
+}
+
+/* ─── Big product visual cards ─── */
+.ps-visual {
+  position: relative;
+}
+
+/* CV Builder visual: editor + floating CV preview */
+.cv-editor-card {
+  background: var(--bg-w);
+  border: 1px solid var(--bdr);
+  border-radius: var(--r2);
+  overflow: hidden;
+  box-shadow: var(--s4);
+}
+.ced-topbar {
+  background: var(--p50);
+  border-bottom: 1px solid var(--bdr2);
+  padding: 12px 18px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.ced-dots { display: flex; gap: 6px; }
+.cd { width: 10px; height: 10px; border-radius: 50%; }
+.cd.r{background:#FF5F57} .cd.y{background:#FEBC2E} .cd.g{background:#28C840}
+.ced-progress {
+  background: var(--p100);
+  border-radius: 100px;
+  height: 6px;
+  width: 120px;
+  overflow: hidden;
+}
+.ced-prog-fill {
+  width: 73%;
+  height: 100%;
+  background: var(--p600);
+  border-radius: 100px;
+  animation: progPulse 2.5s ease-in-out infinite;
+}
+@keyframes progPulse { 0%,100%{opacity:1} 50%{opacity:0.65} }
+.ced-save { font-size: 0.65rem; color: var(--green); font-weight: 800; }
+
+.ced-body {
+  display: grid;
+  grid-template-columns: 1fr 1px 1fr;
+  height: 360px;
+}
+.ced-divider { background: var(--bdr2); }
+.ced-editor { padding: 20px; overflow: hidden; }
+.ced-preview { padding: 14px; background: rgba(109,40,217,0.02); }
+
+.ef { margin-bottom: 12px; }
+.ef-label {
+  font-size: 0.6rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--ink4);
+  margin-bottom: 4px;
+}
+.ef-val {
+  background: var(--bg-off);
+  border: 1px solid var(--bdr);
+  border-radius: 8px;
+  padding: 7px 10px;
+  font-size: 0.76rem;
+  color: var(--ink2);
+}
+.ef-val.active {
+  border-color: var(--p400);
+  background: var(--p50);
+}
+.ef-val.typing::after {
+  content: '|';
+  color: var(--p600);
+  animation: blink 1s infinite;
+}
+@keyframes blink { 0%,100%{opacity:1} 50%{opacity:0} }
+.ef-ai {
+  background: var(--p50);
+  border: 1px solid var(--p200);
+  border-radius: 8px;
+  padding: 7px 9px;
+  font-size: 0.66rem;
+  color: var(--p700);
+  display: flex;
+  gap: 6px;
+  align-items: flex-start;
+  margin-top: 6px;
+}
+.ef-ai svg { width: 11px; height: 11px; stroke: var(--p600); fill: none; flex-shrink: 0; margin-top: 1px; }
+
+/* Simulated PDF preview inside editor */
+.cv-pdf-preview {
+  background: #fff;
+  border-radius: 8px;
+  height: 100%;
+  overflow: hidden;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.08);
+}
+.pdf-header-band {
+  height: 52px;
+  padding: 10px 12px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.pdf-avatar {
+  width: 28px; height: 28px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.3);
+  flex-shrink: 0;
+}
+.pdf-name-block {}
+.pdf-name { font-size: 0.7rem; font-weight: 900; color: #fff; }
+.pdf-role { font-size: 0.58rem; color: rgba(255,255,255,0.75); }
+.pdf-body { padding: 10px 12px; }
+.pdf-sec-label {
+  font-size: 0.52rem; font-weight: 800;
+  text-transform: uppercase; letter-spacing: 0.08em;
+  margin-bottom: 4px; padding-bottom: 3px;
+  border-bottom: 1px solid rgba(0,0,0,0.08);
+  color: rgba(0,0,0,0.4);
+  margin-top: 8px;
+}
+.pdf-line {
+  height: 3.5px; border-radius: 2px;
+  background: rgba(0,0,0,0.08);
+  margin-bottom: 3px;
+}
+.pdf-line.a { background: currentColor; }
+.pdf-line.w100{width:100%} .pdf-line.w80{width:80%} .pdf-line.w65{width:65%} .pdf-line.w50{width:50%}
+
+/* Floating ATS score badge */
+.float-badge {
+  position: absolute;
+  background: var(--bg-w);
+  border-radius: 16px;
+  padding: 12px 18px;
+  box-shadow: var(--s3);
+  border: 1px solid var(--bdr);
+}
+.fb-ats {
+  top: -18px; right: -20px;
+}
+.fb-ats-num { font-family: 'Fraunces', serif; font-size: 2rem; font-weight: 700; color: var(--green); line-height: 1; }
+.fb-ats-lbl { font-size: 0.68rem; color: var(--ink3); font-weight: 600; }
+.fb-ats-bar { height: 4px; background: var(--p100); border-radius: 100px; margin-top: 6px; width: 80px; overflow: hidden; }
+.fb-ats-fill { height: 100%; background: linear-gradient(90deg, var(--green), #34D399); border-radius: 100px; }
+
+.fb-ai {
+  bottom: 20px; left: -20px;
+  max-width: 200px;
+}
+.fb-ai-label { font-size: 0.6rem; font-weight: 800; color: var(--p700); margin-bottom: 4px; display: flex; align-items: center; gap: 5px; }
+.fb-ai-label::before { content: ''; display: block; width: 6px; height: 6px; border-radius: 50%; background: var(--p500); animation: glow2 1.5s infinite; }
+@keyframes glow2 { 0%,100%{opacity:1} 50%{opacity:0.4} }
+.fb-ai-txt { font-size: 0.68rem; color: var(--ink2); line-height: 1.45; }
+.fb-ai-txt strong { color: var(--p700); }
+
+/* Interview visual */
+.int-window {
+  background: var(--bg-w);
+  border: 1px solid var(--bdr);
+  border-radius: var(--r2);
+  overflow: hidden;
+  box-shadow: var(--s4);
+}
+.iw-topbar {
+  background: var(--p50);
+  border-bottom: 1px solid var(--bdr2);
+  padding: 12px 18px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.iw-status {
+  display: flex; align-items: center; gap: 6px;
+  font-size: 0.72rem; font-weight: 800; color: var(--coral);
+}
+.iw-status-dot {
+  width: 7px; height: 7px;
+  border-radius: 50%;
+  background: var(--coral);
+  animation: recPulse 1.2s infinite;
+}
+@keyframes recPulse { 0%,100%{opacity:1} 50%{opacity:0.3} }
+.iw-timer { margin-left: auto; font-size: 0.8rem; font-weight: 800; color: var(--ink3); font-variant-numeric: tabular-nums; }
+.iw-body { padding: 20px; display: flex; flex-direction: column; gap: 12px; }
+
+.chat-msg { }
+.chat-msg.ai { }
+.chat-msg.user { margin-left: 24px; }
+.chat-who { font-size: 0.6rem; font-weight: 800; color: var(--ink4); margin-bottom: 4px; padding-left: 4px; }
+.chat-msg.user .chat-who { text-align: right; padding-right: 4px; }
+.chat-bubble {
+  padding: 10px 14px;
+  border-radius: 14px;
+  font-size: 0.8rem;
+  line-height: 1.55;
+}
+.chat-msg.ai .chat-bubble {
+  background: var(--p50);
+  border: 1px solid var(--p200);
+  color: var(--ink2);
+  border-top-left-radius: 4px;
+}
+.chat-msg.user .chat-bubble {
+  background: var(--p600);
+  color: #fff;
+  border-top-right-radius: 4px;
+}
+
+.score-chips {
+  display: flex; gap: 6px; flex-wrap: wrap; margin-top: 8px;
+}
+.sc {
+  display: flex; align-items: center; gap: 5px;
+  font-size: 0.66rem; font-weight: 800;
+  padding: 4px 9px; border-radius: 100px;
+}
+.sc.good { background: rgba(5,150,105,0.09); color: var(--green); border: 1px solid rgba(5,150,105,0.18); }
+.sc.warn { background: rgba(217,119,6,0.09); color: var(--amber); border: 1px solid rgba(217,119,6,0.18); }
+.sc.info { background: var(--p100); color: var(--p700); border: 1px solid var(--p200); }
+
+.typing-bubble {
+  display: flex; gap: 4px;
+  align-items: center;
+  padding: 10px 14px;
+  background: var(--p50);
+  border: 1px solid var(--p200);
+  border-radius: 14px;
+  border-top-left-radius: 4px;
+  width: fit-content;
+}
+.typing-bubble span {
+  width: 5px; height: 5px;
+  border-radius: 50%;
+  background: var(--p400);
+  animation: bounce 1.2s ease-in-out infinite;
+}
+.typing-bubble span:nth-child(2) { animation-delay: 0.2s; }
+.typing-bubble span:nth-child(3) { animation-delay: 0.4s; }
+@keyframes bounce { 0%,60%,100%{transform:translateY(0)} 30%{transform:translateY(-5px)} }
+
+/* Progress tracker float */
+.int-progress-float {
+  position: absolute;
+  top: -16px;
+  right: -22px;
+  background: var(--bg-w);
+  border: 1px solid var(--bdr);
+  border-radius: 14px;
+  padding: 12px 16px;
+  box-shadow: var(--s3);
+}
+.ipf-label { font-size: 0.6rem; font-weight: 800; color: var(--ink4); margin-bottom: 7px; }
+.ipf-steps { display: flex; gap: 5px; }
+.ipf-step {
+  width: 28px; height: 8px;
+  border-radius: 100px;
+}
+.ipf-step.done { background: var(--green); }
+.ipf-step.active { background: var(--p500); animation: stepPulse 1.5s infinite; }
+.ipf-step.todo { background: var(--p100); }
+@keyframes stepPulse { 0%,100%{opacity:1} 50%{opacity:0.5} }
+.ipf-count { font-size: 0.65rem; font-weight: 700; color: var(--ink3); margin-top: 5px; }
+
+/* Career visual */
+.career-card {
+  background: var(--bg-w);
+  border: 1px solid var(--bdr);
+  border-radius: var(--r2);
+  overflow: hidden;
+  box-shadow: var(--s4);
+}
+.cc-topbar {
+  background: var(--p50);
+  border-bottom: 1px solid var(--bdr2);
+  padding: 12px 18px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.cc-title { font-size: 0.8rem; font-weight: 800; color: var(--ink); }
+.cc-active { font-size: 0.7rem; font-weight: 700; color: var(--p700); background: var(--p100); padding: 3px 10px; border-radius: 100px; }
+.cc-body { padding: 16px; }
+
+.kanban {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 10px;
+  margin-bottom: 14px;
+}
+.kb-h {
+  font-size: 0.6rem; font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+  padding-bottom: 5px;
+  margin-bottom: 7px;
+  border-bottom: 2px solid;
+}
+.kbh-b { color: var(--sky); border-color: var(--sky); }
+.kbh-i { color: var(--amber); border-color: var(--amber); }
+.kbh-o { color: var(--green); border-color: var(--green); }
+.kbh-r { color: var(--coral); border-color: var(--coral); }
+.kbcard {
+  background: var(--p50);
+  border: 1px solid var(--bdr2);
+  border-radius: 8px;
+  padding: 8px 9px;
+  margin-bottom: 6px;
+  transition: all 0.2s;
+  cursor: pointer;
+}
+.kbcard:hover { border-color: var(--p300); transform: translateY(-1px); }
+.kbcard.green-tint { background: rgba(5,150,105,0.05); border-color: rgba(5,150,105,0.2); }
+.kbcard.amber-tint { background: rgba(217,119,6,0.05); border-color: rgba(217,119,6,0.2); }
+.kbcard-co { font-size: 0.68rem; font-weight: 800; color: var(--ink); }
+.kbcard-ro { font-size: 0.6rem; color: var(--ink3); }
+.kbcard-dt { font-size: 0.55rem; font-weight: 800; margin-top: 4px; }
+
+.career-ai-row {
+  background: linear-gradient(135deg, var(--p50), var(--bg-off));
+  border: 1px solid var(--p200);
+  border-radius: 12px;
+  padding: 11px 14px;
+  display: flex;
+  gap: 9px;
+  align-items: center;
+}
+.car-ai-ic {
+  width: 24px; height: 24px;
+  background: var(--p600);
+  border-radius: 7px;
+  flex-shrink: 0;
+  display: flex; align-items: center; justify-content: center;
+  animation: aiIconPulse 3s infinite;
+}
+@keyframes aiIconPulse { 0%,100%{box-shadow:0 0 0 0 rgba(139,92,246,0.3)} 50%{box-shadow:0 0 0 6px rgba(139,92,246,0)} }
+.car-ai-ic svg { width: 11px; height: 11px; stroke: #fff; fill: none; stroke-width: 2; }
+.car-ai-txt { font-size: 0.72rem; color: var(--ink2); line-height: 1.4; }
+.car-ai-txt strong { color: var(--p700); font-weight: 700; }
+
+/* Offer float badge */
+.offer-float {
+  position: absolute;
+  top: -16px; right: -20px;
+  background: var(--bg-w);
+  border: 1px solid rgba(5,150,105,0.3);
+  border-radius: 14px;
+  padding: 12px 16px;
+  box-shadow: var(--s3);
+}
+.of-label { font-size: 0.6rem; font-weight: 800; color: var(--green); margin-bottom: 4px; }
+.of-company { font-weight: 800; font-size: 0.88rem; color: var(--ink); }
+.of-salary { font-size: 0.72rem; color: var(--green); font-weight: 700; margin-top: 2px; }
+
+/* ╔══════════════════════════════════════════╗
+   ║  HOW IT WORKS                            ║
+   ╚══════════════════════════════════════════╝ */
+#hiw {
+  padding: 140px 0;
+  background: var(--bg-dark);
+}
+
+.hiw-header { text-align: center; margin-bottom: 80px; }
+.hiw-header .t-h2 { color: #fff; }
+.hiw-header .t-italic { color: var(--p300); }
+.hiw-header p { color: rgba(255,255,255,0.55); font-size: 1.05rem; margin-top: 16px; max-width: 480px; margin-left: auto; margin-right: auto; }
+
+.hiw-steps {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  position: relative;
+}
+
+/* Connecting line */
+.hiw-steps::before {
+  content: '';
+  position: absolute;
+  top: 36px;
+  left: calc(100% / 6);
+  right: calc(100% / 6);
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--p500), var(--p300), transparent);
+}
+
+.hiw-step {
+  padding: 36px 32px 32px;
+  position: relative;
+  transition: all 0.35s var(--ease);
+  cursor: default;
+}
+.hiw-step:hover { background: rgba(255,255,255,0.03); border-radius: 20px; }
+.hiw-step:hover .step-circle { background: var(--p500); border-color: var(--p400); transform: scale(1.1); }
+
+.step-circle {
+  width: 72px; height: 72px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.05);
+  border: 1px solid rgba(255,255,255,0.1);
+  display: flex; align-items: center; justify-content: center;
+  margin: 0 auto 24px;
+  transition: all 0.35s var(--ease-spring);
+  position: relative; z-index: 1;
+}
+.step-circle svg { width: 28px; height: 28px; stroke: var(--p300); fill: none; stroke-width: 1.5; transition: stroke 0.3s; }
+.hiw-step:hover .step-circle svg { stroke: #fff; }
+
+.step-num {
+  font-family: 'Fraunces', serif;
+  font-style: italic;
+  font-size: 0.72rem;
+  color: var(--p400);
+  font-weight: 300;
+  text-align: center;
+  margin-bottom: 12px;
+}
+.hiw-step h3 { font-size: 1.1rem; font-weight: 800; color: #fff; margin-bottom: 10px; text-align: center; letter-spacing: -0.02em; }
+.hiw-step p { font-size: 0.88rem; color: rgba(255,255,255,0.55); line-height: 1.65; text-align: center; }
+
+/* ╔══════════════════════════════════════════╗
+   ║  PRICING                                 ║
+   ╚══════════════════════════════════════════╝ */
+#pricing {
+  padding: 140px 0;
+  background: var(--bg);
+  position: relative;
+  overflow: hidden;
+}
+.pricing-glow {
+  position: absolute; border-radius: 50%;
+  filter: blur(100px); pointer-events: none;
+}
+.pg1 { width: 500px; height: 500px; background: rgba(139,92,246,0.07); top: -100px; right: -100px; }
+.pg2 { width: 350px; height: 350px; background: rgba(109,40,217,0.05); bottom: 0; left: 100px; }
+
+.pricing-header { text-align: center; margin-bottom: 24px; }
+.pricing-header .t-h2 { margin-bottom: 14px; }
+.pricing-header p { font-size: 1.05rem; color: var(--ink3); max-width: 520px; margin: 0 auto; }
+
+/* Toggle */
+.pricing-toggle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  margin-bottom: 60px;
+}
+.pt-lbl { font-size: 0.88rem; font-weight: 700; color: var(--ink4); transition: color 0.25s; }
+.pt-lbl.on { color: var(--ink); }
+.pt-switch {
+  position: relative;
+  width: 48px; height: 26px;
+  background: var(--p200);
+  border-radius: 100px;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+.pt-switch.on { background: var(--p600); }
+.pt-knob {
+  position: absolute;
+  width: 20px; height: 20px;
+  background: #fff;
+  border-radius: 50%;
+  top: 3px; left: 3px;
+  transition: left 0.3s var(--ease-spring);
+  box-shadow: 0 1px 6px rgba(0,0,0,0.15);
+}
+.pt-switch.on .pt-knob { left: 25px; }
+.save-pill {
+  background: rgba(5,150,105,0.1);
+  border: 1px solid rgba(5,150,105,0.2);
+  color: var(--green);
+  font-size: 0.72rem; font-weight: 800;
+  padding: 4px 11px; border-radius: 100px;
+}
+
+/* Pricing table — VERTICAL (cards stacked side by side horizontally) */
+.pricing-table {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  max-width: 1050px;
+  margin: 0 auto;
+}
+
+.price-card {
+  background: var(--bg-w);
+  border: 1px solid var(--bdr);
+  border-radius: var(--r2);
+  overflow: hidden;
+  transition: all 0.35s var(--ease);
+  position: relative;
+}
+.price-card:hover { transform: translateY(-6px); box-shadow: var(--s3); }
+.price-card.popular {
+  border-color: var(--p500);
+  box-shadow: 0 0 0 3px var(--p200), var(--s3);
+}
+.price-card.popular:hover { box-shadow: 0 0 0 3px var(--p300), var(--s4); }
+
+.pc-top-band {
+  padding: 28px 28px 22px;
+  border-bottom: 1px solid var(--bdr2);
+}
+.pc-popular-badge {
+  position: absolute;
+  top: -1px; left: 50%; transform: translateX(-50%);
+  background: linear-gradient(90deg, var(--p700), var(--p500));
+  color: #fff;
+  font-size: 0.66rem; font-weight: 800;
+  letter-spacing: 0.06em; text-transform: uppercase;
+  padding: 5px 16px; border-radius: 0 0 12px 12px;
+}
+.pc-plan-name {
+  font-weight: 800; font-size: 1rem;
+  color: var(--ink); letter-spacing: -0.02em;
+  margin-bottom: 4px;
+  margin-top: 14px;
+}
+.price-card:not(.popular) .pc-plan-name { margin-top: 0; }
+.pc-tagline { font-size: 0.78rem; color: var(--ink3); margin-bottom: 18px; }
+.pc-price {
+  display: flex; align-items: flex-end; gap: 4px; margin-bottom: 6px;
+}
+.pc-price-num {
+  font-family: 'Fraunces', serif;
+  font-weight: 700;
+  font-size: 3rem;
+  line-height: 1;
+  color: var(--ink);
+}
+.price-card.popular .pc-price-num { color: var(--p700); }
+.pc-price-currency {
+  font-family: 'Bricolage Grotesque';
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: var(--ink3);
+  margin-bottom: 4px;
+}
+.price-card.popular .pc-price-currency { color: var(--p600); }
+.pc-price-period { font-size: 0.82rem; color: var(--ink4); margin-bottom: 4px; }
+.pc-annual-note {
+  font-size: 0.72rem;
+  color: var(--green);
+  font-weight: 600;
+  height: 18px;
+}
+
+.pc-cta-area { padding: 18px 28px; border-bottom: 1px solid var(--bdr2); }
+.pc-cta {
+  display: flex; align-items: center; justify-content: center; gap: 8px;
+  width: 100%;
+  padding: 13px;
+  border-radius: 100px;
+  font-family: 'Bricolage Grotesque', sans-serif;
+  font-weight: 800; font-size: 0.9rem;
+  cursor: pointer;
+  border: none;
+  transition: all 0.28s var(--ease);
+}
+.pc-cta.dark { background: var(--ink); color: #fff; }
+.pc-cta.dark:hover { background: var(--p700); box-shadow: 0 8px 24px rgba(109,40,217,0.4); }
+.pc-cta.purple { background: var(--p600); color: #fff; box-shadow: 0 4px 18px rgba(109,40,217,0.3); }
+.pc-cta.purple:hover { background: var(--p700); box-shadow: 0 10px 32px rgba(109,40,217,0.45); transform: translateY(-2px); }
+.pc-cta.outline { background: transparent; color: var(--ink2); border: 2px solid var(--bdr3); }
+.pc-cta.outline:hover { border-color: var(--p400); color: var(--p700); background: var(--p50); }
+.pc-cta svg { width: 14px; height: 14px; stroke: currentColor; fill: none; stroke-width: 2.5; transition: transform 0.2s; }
+.pc-cta:hover svg { transform: translateX(3px); }
+
+/* Features list inside card */
+.pc-feats-area { padding: 20px 28px 28px; }
+.pc-feats-section { margin-bottom: 18px; }
+.pc-feats-section-label {
+  font-size: 0.62rem; font-weight: 800;
+  text-transform: uppercase; letter-spacing: 0.09em;
+  color: var(--ink4); margin-bottom: 10px;
+}
+.pc-feat {
+  display: flex; align-items: flex-start;
+  gap: 9px; padding: 6px 0;
+  border-bottom: 1px solid var(--bdr2);
+  font-size: 0.84rem;
+  color: var(--ink2);
+}
+.pc-feat:last-child { border: none; }
+.pc-feat-check { font-size: 0.75rem; font-weight: 800; color: var(--p600); flex-shrink: 0; margin-top: 1px; }
+.price-card.popular .pc-feat-check { color: var(--p600); }
+.pc-feat-cross { font-size: 0.75rem; color: var(--ink5); flex-shrink: 0; }
+.pc-feat-muted { color: var(--ink4); }
+.pc-feat-badge {
+  margin-left: auto;
+  font-size: 0.58rem; font-weight: 800;
+  padding: 2px 7px; border-radius: 100px;
+  background: var(--p100); color: var(--p700);
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+.pc-feat-badge.green { background: rgba(5,150,105,0.1); color: var(--green); }
+
+/* ╔══════════════════════════════════════════╗
+   ║  TESTIMONIALS                            ║
+   ╚══════════════════════════════════════════╝ */
+#testi {
+  padding: 140px 0;
+  background: var(--bg-w);
+  overflow: hidden;
+}
+.testi-header { text-align: center; margin-bottom: 72px; }
+.testi-header .t-h2 { margin-bottom: 14px; }
+.testi-header p { color: var(--ink3); font-size: 1.05rem; }
+
+.testi-rows { display: flex; flex-direction: column; gap: 20px; }
+.testi-row { position: relative; overflow: hidden; }
+.testi-row::before, .testi-row::after {
+  content: '';
+  position: absolute; top: 0; bottom: 0;
+  width: 120px; z-index: 10; pointer-events: none;
+}
+.testi-row::before { left: 0; background: linear-gradient(to right, var(--bg-w), transparent); }
+.testi-row::after { right: 0; background: linear-gradient(to left, var(--bg-w), transparent); }
+
+.testi-track {
+  display: flex; gap: 18px;
+  width: max-content;
+  animation: testiR 45s linear infinite;
+}
+.testi-track:hover { animation-play-state: paused; }
+.testi-track.rev { animation-name: testiL; }
+@keyframes testiR { to { transform: translateX(-50%); } }
+@keyframes testiL { from { transform: translateX(-50%); } to { transform: translateX(0); } }
+
+.tcard {
+  min-width: 300px; flex-shrink: 0;
+  background: var(--bg);
+  border: 1px solid var(--bdr2);
+  border-radius: 20px;
+  padding: 24px 22px;
+  transition: all 0.3s var(--ease);
+  cursor: pointer;
+}
+.tcard:hover {
+  border-color: var(--p300);
+  box-shadow: var(--s2);
+  transform: translateY(-4px);
+  background: var(--bg-w);
+}
+.tcard-stars { color: #FBBF24; font-size: 0.78rem; letter-spacing: 2px; margin-bottom: 10px; }
+.tcard-text { font-size: 0.88rem; color: var(--ink2); line-height: 1.7; margin-bottom: 16px; }
+.tcard-author { display: flex; align-items: center; gap: 10px; }
+.tcard-av {
+  width: 34px; height: 34px; border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 0.7rem; font-weight: 900; color: #fff; flex-shrink: 0;
+}
+.tcard-name { font-weight: 800; font-size: 0.84rem; color: var(--ink); }
+.tcard-role { font-size: 0.72rem; color: var(--ink3); }
+.tcard-product {
+  margin-left: auto;
+  font-size: 0.6rem; font-weight: 800;
+  background: var(--p100); color: var(--p700);
+  padding: 3px 8px; border-radius: 100px;
+}
+
+/* ╔══════════════════════════════════════════╗
+   ║  FINAL CTA                               ║
+   ╚══════════════════════════════════════════╝ */
+#cta {
+  padding: 160px 0;
+  background: var(--bg-dark);
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+.cta-glow {
+  position: absolute; border-radius: 50%; filter: blur(120px); pointer-events: none;
+}
+.cg1 { width: 800px; height: 500px; background: rgba(109,40,217,0.25); top: -200px; left: 50%; transform: translateX(-50%); }
+.cg2 { width: 400px; height: 400px; background: rgba(196,181,253,0.1); bottom: 0; right: 5%; }
+
+.cta-inner { position: relative; z-index: 1; max-width: 780px; margin: 0 auto; padding: 0 32px; }
+.cta-inner .t-h2 { color: #fff; margin-bottom: 22px; }
+.cta-inner .t-italic { color: var(--p300); }
+.cta-inner p { font-size: 1.1rem; color: rgba(255,255,255,0.55); max-width: 500px; margin: 0 auto 48px; line-height: 1.7; }
+.cta-btns { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
+.cta-note { font-size: 0.8rem; color: rgba(255,255,255,0.3); margin-top: 20px; }
+
+/* ╔══════════════════════════════════════════╗
+   ║  FOOTER                                  ║
+   ╚══════════════════════════════════════════╝ */
+footer {
+  background: var(--bg-dark2);
+  padding: 72px 0 36px;
+}
+.ft-grid {
+  display: grid;
+  grid-template-columns: 2.2fr 1fr 1fr 1fr;
+  gap: 48px;
+  margin-bottom: 56px;
+}
+.ft-brand { }
+.ft-brand .nav-logo-name { color: rgba(255,255,255,0.9); font-size: 1.05rem; }
+.ft-brand .nav-logo-name span { color: var(--p400); }
+.ft-brand p { font-size: 0.86rem; color: rgba(255,255,255,0.4); line-height: 1.7; margin-top: 14px; max-width: 260px; }
+.ft-col h5 {
+  font-size: 0.7rem; font-weight: 800;
+  text-transform: uppercase; letter-spacing: 0.1em;
+  color: rgba(255,255,255,0.35); margin-bottom: 16px;
+}
+.ft-col ul { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+.ft-col ul a { font-size: 0.86rem; color: rgba(255,255,255,0.5); transition: color 0.2s; }
+.ft-col ul a:hover { color: rgba(255,255,255,0.9); }
+.ft-bottom {
+  border-top: 1px solid rgba(255,255,255,0.06);
+  padding-top: 28px;
+  display: flex; justify-content: space-between;
+  font-size: 0.8rem; color: rgba(255,255,255,0.28);
+  flex-wrap: wrap; gap: 12px;
+}
+
+/* ╔══════════════════════════════════════════╗
+   ║  MODAL                                   ║
+   ╚══════════════════════════════════════════╝ */
+.modal-overlay {
+  position: fixed; inset: 0; z-index: 2000;
+  background: rgba(13,8,43,0.7);
+  backdrop-filter: blur(14px);
+  display: flex; align-items: center; justify-content: center;
+  opacity: 0; pointer-events: none;
+  transition: opacity 0.35s var(--ease);
+}
+.modal-overlay.open { opacity: 1; pointer-events: all; }
+.modal-card {
+  background: var(--bg-w);
+  border-radius: 28px; padding: 44px 40px;
+  width: 100%; max-width: 400px;
+  position: relative;
+  box-shadow: var(--s5);
+  transform: scale(0.94) translateY(16px);
+  transition: transform 0.4s var(--ease-spring);
+}
+.modal-overlay.open .modal-card { transform: scale(1) translateY(0); }
+.modal-x {
+  position: absolute; top: 18px; right: 20px;
+  width: 30px; height: 30px; border-radius: 9px;
+  background: var(--bg-off);
+  border: none; cursor: pointer;
+  font-size: 0.95rem; color: var(--ink3);
+  display: flex; align-items: center; justify-content: center;
+  transition: all 0.2s;
+}
+.modal-x:hover { background: var(--p100); color: var(--p700); }
+.modal-title { font-weight: 800; font-size: 1.5rem; letter-spacing: -0.03em; color: var(--ink); margin-bottom: 4px; }
+.modal-sub { font-size: 0.84rem; color: var(--ink3); margin-bottom: 24px; }
+.m-tabs { display: flex; background: var(--bg-off); border-radius: 12px; padding: 3px; margin-bottom: 24px; }
+.m-tab {
+  flex: 1; padding: 9px; border-radius: 10px;
+  border: none; background: transparent;
+  font-family: 'Bricolage Grotesque';
+  font-weight: 700; font-size: 0.85rem;
+  color: var(--ink4); cursor: pointer; transition: all 0.25s;
+}
+.m-tab.on { background: var(--ink); color: #fff; }
+.mf { }
+.mf-group { margin-bottom: 15px; }
+.mf-label { display: block; font-size: 0.76rem; font-weight: 700; color: var(--ink2); margin-bottom: 6px; }
+.mf-input {
+  width: 100%; background: var(--bg-off);
+  border: 1.5px solid var(--bdr);
+  border-radius: 12px; padding: 12px 14px;
+  font-family: 'Bricolage Grotesque';
+  font-size: 0.9rem; color: var(--ink);
+  outline: none; transition: all 0.2s;
+}
+.mf-input:focus { border-color: var(--p500); background: var(--p50); }
+.mf-input::placeholder { color: var(--ink5); }
+.mf-cta {
+  display: flex; align-items: center; justify-content: center;
+  width: 100%; padding: 14px; border-radius: 100px;
+  font-family: 'Bricolage Grotesque';
+  font-weight: 800; font-size: 0.92rem;
+  background: var(--ink); color: #fff;
+  border: none; cursor: pointer;
+  transition: all 0.28s var(--ease);
+}
+.mf-cta:hover { background: var(--p700); box-shadow: 0 8px 28px rgba(109,40,217,0.4); }
+.mf-sep { display: flex; align-items: center; gap: 12px; margin: 18px 0; }
+.mf-sep::before, .mf-sep::after { content: ''; flex: 1; height: 1px; background: var(--bdr2); }
+.mf-sep span { font-size: 0.72rem; color: var(--ink4); }
+.mf-google {
+  display: flex; align-items: center; justify-content: center; gap: 10px;
+  width: 100%; padding: 12px; border-radius: 100px;
+  border: 1.5px solid var(--bdr); background: transparent;
+  font-family: 'Bricolage Grotesque';
+  font-weight: 700; font-size: 0.88rem; color: var(--ink2);
+  cursor: pointer; transition: all 0.2s;
+}
+.mf-google:hover { background: var(--p50); border-color: var(--p300); color: var(--p700); }
+
+/* ╔══════════════════════════════════════════╗
+   ║  SCROLL REVEAL                           ║
+   ╚══════════════════════════════════════════╝ */
+[data-sr] {
+  opacity: 0;
+  transition: opacity 0.8s var(--ease), transform 0.8s var(--ease);
+}
+[data-sr="up"]     { transform: translateY(40px); }
+[data-sr="left"]   { transform: translateX(-40px); }
+[data-sr="right"]  { transform: translateX(40px); }
+[data-sr="scale"]  { transform: scale(0.94); }
+[data-sr="fade"]   { transform: none; }
+[data-sr].in {
+  opacity: 1;
+  transform: translateY(0) translateX(0) scale(1);
+}
+[data-sd="1"] { transition-delay: 0.1s; }
+[data-sd="2"] { transition-delay: 0.2s; }
+[data-sd="3"] { transition-delay: 0.3s; }
+[data-sd="4"] { transition-delay: 0.4s; }
+[data-sd="5"] { transition-delay: 0.5s; }
+[data-sd="6"] { transition-delay: 0.6s; }
+
+/* ╔══════════════════════════════════════════╗
+   ║  RESPONSIVE                              ║
+   ╚══════════════════════════════════════════╝ */
+@media (max-width: 1100px) {
+  .hero-mocks { grid-template-columns: 1fr; }
+  .hero-mocks .hmock:not(:first-child) { display: none; }
+  .ps-grid, .ps-grid.flip { grid-template-columns: 1fr; gap: 40px; }
+  .ps-grid.flip .ps-copy { order: 0; }
+  .ps-grid.flip .ps-visual { order: 0; }
+  .pricing-table { grid-template-columns: 1fr; max-width: 420px; }
+  .ft-grid { grid-template-columns: 1fr 1fr; gap: 32px; }
+  .hiw-steps { grid-template-columns: 1fr; }
+  .hiw-steps::before { display: none; }
+}
+@media (max-width: 768px) {
+  .t-display { font-size: 3rem; }
+  .t-h2 { font-size: 2.4rem; }
+  .nav-menu { display: none; }
+  .ft-grid { grid-template-columns: 1fr; gap: 24px; }
+  .cta-inner p { max-width: 100%; }
+}
+</style>
+</head>
+<body>
+
+<!-- ═══════════════════════════════════════
+     NAV
+═══════════════════════════════════════ -->
+<nav id="nav">
+  <div class="nav-inner">
+    <a href="index.html" class="nav-logo">
+      <div class="nav-logo-mark">S</div>
+      <span class="nav-logo-name">Synaps<span>AI</span></span>
+    </a>
+    <ul class="nav-menu">
+      <li><a href="#cv">CV Builder</a></li>
+      <li><a href="#interview">Mülakat Koçu</a></li>
+      <li><a href="#career">Kariyer Asistanı</a></li>
+      <li><a href="#pricing">Fiyatlar</a></li>
+    </ul>
+    <div class="nav-actions">
+      <a href="#" class="nav-sign" onclick="openModal('login')">Giriş Yap</a>
+      <a href="#" class="btn btn-dark btn-sm" onclick="openModal('register')">
+        Ücretsiz Başla
+        <svg class="ico-arr" viewBox="0 0 24 24"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg>
+      </a>
+    </div>
+  </div>
+</nav>
+
+<!-- ═══════════════════════════════════════
+     HERO
+═══════════════════════════════════════ -->
+<section id="hero">
+  <div class="hero-mesh"></div>
+  <div class="hero-grid-lines"></div>
+
+  <div class="hero-text-zone">
+    <div data-sr="up" data-sd="0">
+      <div class="hero-badge">
+        <div class="hero-badge-pulse">
+          <div class="hero-badge-ring"></div>
+        </div>
+        Türkiye'nin AI Kariyer Platformu
+      </div>
+    </div>
+
+    <div class="hero-title" data-sr="up" data-sd="1">
+      <h1 class="t-display">
+        <span class="hero-title-line">Hayalindeki</span>
+        <span class="hero-title-line" style="color:var(--p600); font-family:'Fraunces',serif; font-style:italic; font-weight:300;">işe ulaşmanın</span>
+        <span class="hero-title-line">en akıllı yolu</span>
+      </h1>
+    </div>
+
+    <p class="hero-sub" data-sr="up" data-sd="2">
+      CV oluştur, mülakata hazırlan, kariyerini planla. Yapay zekanın gücüyle iş arayışının her adımında yanında.
+    </p>
+
+    <div class="hero-actions" data-sr="up" data-sd="3">
+      <a href="#" class="btn btn-dark btn-lg" onclick="openModal('register')">
+        Ücretsiz Başla
+        <svg class="ico-arr" viewBox="0 0 24 24"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg>
+      </a>
+      <a href="#cv" class="btn btn-outline btn-lg">Ürünleri Keşfet</a>
+    </div>
+
+    <div class="hero-proof" data-sr="fade" data-sd="4">
+      <div class="proof-avs">
+        <div class="proof-av" style="background:linear-gradient(135deg,#7C3AED,#A78BFA)">AY</div>
+        <div class="proof-av" style="background:linear-gradient(135deg,#059669,#34D399)">ZK</div>
+        <div class="proof-av" style="background:linear-gradient(135deg,#D97706,#FCD34D)">MC</div>
+        <div class="proof-av" style="background:linear-gradient(135deg,#0284C7,#38BDF8)">EŞ</div>
+      </div>
+      <span class="proof-stars">★★★★★</span>
+      <span>250.000+ kullanıcı güveniyor</span>
+    </div>
+  </div>
+
+  <!-- 3 product mockups -->
+  <div class="hero-mocks" data-sr="up" data-sd="5">
+    <!-- CV Builder -->
+    <div class="hmock">
+      <div class="hmock-bar">
+        <div class="hmock-dots"><div class="hd r"></div><div class="hd y"></div><div class="hd g"></div></div>
+        <span class="hmock-title">CV Builder</span>
+        <span class="hmock-tag">Ücretsiz</span>
+      </div>
+      <div class="hmock-body">
+        <div class="cv-mock-head">
+          <div class="cv-mock-name-block">
+            <div class="cv-mock-name">Zeynep Kaya</div>
+            <div class="cv-mock-role">Senior UX Designer</div>
+          </div>
+          <div class="cv-ats-score">
+            <div class="cv-ats-num">87</div>
+            <div class="cv-ats-lbl">ATS Skoru</div>
+          </div>
+        </div>
+        <div class="prog-row"><span class="prog-lbl">ATS Uyum</span><div class="prog-track"><div class="prog-fill" style="width:87%"></div></div><span class="prog-val">87%</span></div>
+        <div class="prog-row"><span class="prog-lbl">Anahtar Kelime</span><div class="prog-track"><div class="prog-fill" style="width:72%"></div></div><span class="prog-val">72%</span></div>
+        <div class="prog-row"><span class="prog-lbl">Okunabilirlik</span><div class="prog-track"><div class="prog-fill" style="width:94%"></div></div><span class="prog-val">94%</span></div>
+        <div class="ai-hint">
+          <div class="ai-hint-icon"><svg viewBox="0 0 24 24"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg></div>
+          <div class="ai-hint-txt"><strong>AI:</strong> "Figma" ve "design system" ekleyerek ATS skorunu <strong>%12 artırabilirsiniz.</strong></div>
+        </div>
+      </div>
+    </div>
+    <!-- Mülakat Koçu -->
+    <div class="hmock">
+      <div class="hmock-bar">
+        <div class="hmock-dots"><div class="hd r"></div><div class="hd y"></div><div class="hd g"></div></div>
+        <span class="hmock-title">Mülakat Koçu</span>
+        <span class="hmock-tag" style="background:rgba(217,119,6,0.1);color:var(--amber)">1 Ücretsiz</span>
+      </div>
+      <div class="hmock-body">
+        <div class="int-q">
+          <div class="int-q-lbl">Soru 3 / 5 — Davranışsal</div>
+          <div class="int-q-txt">"Zorlu bir kararı ekibinize nasıl sunup ikna ettiniz?"</div>
+          <div class="int-tags">
+            <span class="int-tag beh">STAR Yöntemi</span>
+            <span class="int-tag med">Orta Zorluk</span>
+          </div>
+        </div>
+        <div class="int-answer">
+          <div class="int-answer-score">✓ AI Geri Bildirimi — 8.5 / 10</div>
+          <div class="int-answer-bars">
+            <div class="int-abar"><div class="int-abar-lbl">Yapı <span>92%</span></div><div class="int-abar-track"><div class="int-abar-fill" style="width:92%"></div></div></div>
+            <div class="int-abar"><div class="int-abar-lbl">Somutluk <span>78%</span></div><div class="int-abar-track"><div class="int-abar-fill" style="width:78%"></div></div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Kariyer Asistanı -->
+    <div class="hmock">
+      <div class="hmock-bar">
+        <div class="hmock-dots"><div class="hd r"></div><div class="hd y"></div><div class="hd g"></div></div>
+        <span class="hmock-title">Kariyer Asistanı</span>
+        <span class="hmock-tag" style="background:rgba(217,119,6,0.1);color:var(--amber)">1 Ücretsiz</span>
+      </div>
+      <div class="hmock-body">
+        <div class="kb-mini">
+          <div>
+            <div class="kb-col-h blue">Başvuruldu</div>
+            <div class="kb-item"><div class="kb-co">Trendyol</div><div class="kb-ro">Frontend Dev</div><div class="kb-dt" style="color:var(--sky)">3 gün</div></div>
+            <div class="kb-item"><div class="kb-co">Getir</div><div class="kb-ro">React Dev</div><div class="kb-dt" style="color:var(--sky)">5 gün</div></div>
+          </div>
+          <div>
+            <div class="kb-col-h amber">Mülakat</div>
+            <div class="kb-item warn"><div class="kb-co">Hepsiburada</div><div class="kb-ro">SWE</div><div class="kb-dt" style="color:var(--amber)">Yarın</div></div>
+            <div class="kb-col-h green" style="margin-top:10px">Teklif</div>
+            <div class="kb-item hl"><div class="kb-co">Peak Games</div><div class="kb-ro">Senior</div><div class="kb-dt" style="color:var(--green)">₺95K ✓</div></div>
+          </div>
+        </div>
+        <div class="ai-career-bar">
+          <div class="ai-career-bar-ic"><svg viewBox="0 0 24 24"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg></div>
+          <span style="font-size:0.68rem;color:var(--p700);font-weight:700;">AI: Hepsiburada mülakatın yarın — hazırlık başlatalım?</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TICKER -->
+<div class="ticker">
+  <div class="ticker-track">
+    <div class="tick-item"><strong>CV Builder</strong><span class="tick-sep">·</span>ATS analizi ücretsiz</div>
+    <div class="tick-item"><strong>Mülakat Koçu</strong><span class="tick-sep">·</span>10.000+ soru bankası</div>
+    <div class="tick-item"><strong>Kariyer Asistanı</strong><span class="tick-sep">·</span>Kanban iş takibi</div>
+    <div class="tick-item"><strong>250K+</strong> kullanıcı</div>
+    <div class="tick-item"><strong>%78</strong> mülakat başarısı</div>
+    <div class="tick-item"><strong>4.9 ★</strong> ortalama puan</div>
+    <div class="tick-item"><strong>50+</strong> CV şablonu</div>
+    <div class="tick-item"><strong>CV Builder</strong><span class="tick-sep">·</span>ATS analizi ücretsiz</div>
+    <div class="tick-item"><strong>Mülakat Koçu</strong><span class="tick-sep">·</span>10.000+ soru bankası</div>
+    <div class="tick-item"><strong>Kariyer Asistanı</strong><span class="tick-sep">·</span>Kanban iş takibi</div>
+    <div class="tick-item"><strong>250K+</strong> kullanıcı</div>
+    <div class="tick-item"><strong>%78</strong> mülakat başarısı</div>
+    <div class="tick-item"><strong>4.9 ★</strong> ortalama puan</div>
+    <div class="tick-item"><strong>50+</strong> CV şablonu</div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════
+     PRODUCT 1: CV BUILDER
+═══════════════════════════════════════ -->
+<section class="product-section" id="cv">
+  <!-- bg blobs -->
+  <div class="section-blob" style="width:600px;height:600px;background:rgba(139,92,246,0.06);top:-150px;right:-200px;"></div>
+
+  <div class="wrap">
+    <div class="ps-grid">
+      <div class="ps-copy">
+        <div data-sr="left">
+          <div class="eyebrow">CV Builder</div>
+          <h2 class="t-h2">ATS'yi geçen,<br>dikkat çeken<br><span class="t-italic">CV'ler saniyede</span></h2>
+        </div>
+        <div data-sr="left" data-sd="1">
+          <div class="ps-free-note">✓ Temel özellikler tamamen ücretsiz</div>
+          <p>Yapay zeka destekli CV oluşturucumuz özgeçmişini iş ilanına göre optimize eder, ATS filtrelerini geçirir ve işe alım uzmanlarının dikkatini çeker. Temel kullanım hiçbir zaman ücretli olmaz — AI önerileri ve premium şablonlar için Pro'ya geç.</p>
+        </div>
+        <ul class="ps-feats" data-sr="left" data-sd="2">
+          <li><span class="ps-feat-check">✓</span><div><strong>Ücretsiz:</strong> Sınırsız CV oluşturma, 5 temel şablon, ATS skoru</div></li>
+          <li><span class="ps-feat-check">✓</span><div><strong>Ücretsiz:</strong> PDF/DOCX indirme, kişisel CV linki</div></li>
+          <li><span class="ps-feat-check">✓</span><div><strong>Pro:</strong> AI içerik önerileri, iş ilanına göre optimizasyon</div></li>
+          <li><span class="ps-feat-check">✓</span><div><strong>Pro:</strong> 50+ premium ATS uyumlu şablon</div></li>
+          <li><span class="ps-feat-check">✓</span><div><strong>Pro:</strong> LinkedIn'den tek tıkla içe aktar</div></li>
+        </ul>
+        <div data-sr="left" data-sd="3" style="display:flex;gap:12px;flex-wrap:wrap;">
+          <a href="pages/cv-builder.html" class="btn btn-dark btn-lg">
+            CV'mi Ücretsiz Oluştur
+            <svg class="ico-arr" viewBox="0 0 24 24"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg>
+          </a>
+          <a href="#pricing" class="btn btn-outline btn-lg">AI Pro →</a>
+        </div>
+      </div>
+
+      <div class="ps-visual" data-sr="right" data-sd="1">
+        <div class="cv-editor-card">
+          <div class="ced-topbar">
+            <div class="ced-dots"><div class="cd r"></div><div class="cd y"></div><div class="cd g"></div></div>
+            <div class="ced-progress"><div class="ced-prog-fill"></div></div>
+            <span class="ced-save">● Otomatik Kaydedildi</span>
+          </div>
+          <div class="ced-body">
+            <div class="ced-editor">
+              <div class="ef"><div class="ef-label">Ad Soyad</div><div class="ef-val">Zeynep Kaya</div></div>
+              <div class="ef"><div class="ef-label">Hedef Pozisyon</div><div class="ef-val active typing">Senior UX Designer</div></div>
+              <div class="ef"><div class="ef-label">Özet — AI Önerisi</div><div class="ef-val" style="font-size:0.7rem;min-height:48px;line-height:1.5;">8+ yıl deneyimli UX tasarımcı, B2B SaaS ürünlerinde kullanıcı araştırması ve Figma...</div></div>
+              <div class="ef-ai">
+                <svg viewBox="0 0 24 24"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+                "Kullanıcı araştırması" eklenerek gücü %18 artırılabilir
+              </div>
+              <div class="ef" style="margin-top:10px"><div class="ef-label">Beceriler</div>
+                <div style="display:flex;gap:5px;flex-wrap:wrap;margin-top:3px;">
+                  <span style="background:var(--p100);color:var(--p700);border-radius:6px;padding:3px 8px;font-size:0.65rem;font-weight:700;">Figma</span>
+                  <span style="background:var(--p100);color:var(--p700);border-radius:6px;padding:3px 8px;font-size:0.65rem;font-weight:700;">Prototyping</span>
+                  <span style="background:var(--bg-off);color:var(--ink4);border-radius:6px;padding:3px 8px;font-size:0.65rem;font-weight:700;">+ Ekle</span>
+                </div>
+              </div>
+            </div>
+            <div class="ced-divider"></div>
+            <div class="ced-preview">
+              <div class="cv-pdf-preview">
+                <div class="pdf-header-band" style="background:linear-gradient(135deg,var(--p700),var(--p500))">
+                  <div class="pdf-avatar"></div>
+                  <div class="pdf-name-block">
+                    <div class="pdf-name">Zeynep Kaya</div>
+                    <div class="pdf-role">Senior UX Designer</div>
+                  </div>
+                </div>
+                <div class="pdf-body">
+                  <div class="pdf-sec-label">Özet</div>
+                  <div class="pdf-line a w100" style="color:var(--p500)"></div>
+                  <div class="pdf-line w80"></div>
+                  <div class="pdf-line w65"></div>
+                  <div class="pdf-sec-label">Deneyim</div>
+                  <div class="pdf-line a w50" style="color:var(--p600)"></div>
+                  <div class="pdf-line w100"></div>
+                  <div class="pdf-line w80"></div>
+                  <div class="pdf-line w65"></div>
+                  <div class="pdf-line w80"></div>
+                  <div class="pdf-sec-label">Beceriler</div>
+                  <div style="display:flex;gap:4px;flex-wrap:wrap;margin-top:4px;">
+                    <div style="background:#EFF6FF;color:#1D4ED8;border-radius:4px;padding:2px 5px;font-size:0.52rem;font-weight:800;">Figma</div>
+                    <div style="background:#EFF6FF;color:#1D4ED8;border-radius:4px;padding:2px 5px;font-size:0.52rem;font-weight:800;">UX</div>
+                    <div style="background:#EFF6FF;color:#1D4ED8;border-radius:4px;padding:2px 5px;font-size:0.52rem;font-weight:800;">Design</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- Float badges -->
+        <div class="float-badge fb-ats">
+          <div class="fb-ats-num">87</div>
+          <div class="fb-ats-lbl">ATS Skoru</div>
+          <div class="fb-ats-bar"><div class="fb-ats-fill" style="width:87%"></div></div>
+        </div>
+        <div class="float-badge fb-ai">
+          <div class="fb-ai-label">AI Önerisi Aktif</div>
+          <div class="fb-ai-txt">3 anahtar kelime ekleyerek skor <strong>92'ye</strong> çıkabilir.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════
+     PRODUCT 2: MÜLAKAT KOÇU
+═══════════════════════════════════════ -->
+<section class="product-section" id="interview">
+  <div class="section-blob" style="width:500px;height:500px;background:rgba(109,40,217,0.07);top:-100px;left:-150px;"></div>
+
+  <div class="wrap">
+    <div class="ps-grid flip">
+      <div class="ps-copy">
+        <div data-sr="right">
+          <div class="eyebrow">Mülakat Koçu</div>
+          <h2 class="t-h2">Her mülakata<br><span class="t-italic">hazır gel,</span><br>işe gir</h2>
+        </div>
+        <div data-sr="right" data-sd="1">
+          <div class="ps-limit-note">⚡ 1 ücretsiz deneme · Sonrası paket gerektirir</div>
+          <p>Yapay zeka mülakat koçunla gerçekçi simülasyonlar yap, anlık geri bildirim al. Sesli ve görüntülü pratik, STAR analizi, 10.000+ soruluk banka. Bir kez deneyince bırakamazsın — çünkü sonuç konuşur.</p>
+        </div>
+        <ul class="ps-feats" data-sr="right" data-sd="2">
+          <li><span class="ps-feat-check">✓</span><div><strong>Ücretsiz:</strong> 1 tam mülakat simülasyonu (sesli veya yazılı)</div></li>
+          <li><span class="ps-feat-check">✓</span><div><strong>Growth+:</strong> Sınırsız simülasyon, sesli & görüntülü pratik</div></li>
+          <li><span class="ps-feat-check">✓</span><div><strong>Growth+:</strong> STAR analizi, detaylı geri bildirim raporu</div></li>
+          <li><span class="ps-feat-check">✓</span><div><strong>Growth+:</strong> Sektöre özel soru bankası (Teknoloji, Finans, FMCG...)</div></li>
+          <li><span class="ps-feat-check">✓</span><div><strong>Unlimited:</strong> Maaş müzakeresi senaryoları ve koçluğu</div></li>
+        </ul>
+        <div data-sr="right" data-sd="3" style="display:flex;gap:12px;flex-wrap:wrap;">
+          <a href="pages/mulakat-kocu.html" class="btn btn-purple btn-lg">
+            Ücretsiz Dene
+            <svg class="ico-arr" viewBox="0 0 24 24"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg>
+          </a>
+          <a href="#pricing" class="btn btn-outline btn-lg">Paketleri Gör →</a>
+        </div>
+      </div>
+
+      <div class="ps-visual" data-sr="left" data-sd="1">
+        <div class="int-window">
+          <div class="iw-topbar">
+            <div class="iw-status"><div class="iw-status-dot"></div> Canlı Simülasyon</div>
+            <div style="font-size:0.72rem;font-weight:700;color:var(--ink3);">Trendyol · Senior Frontend</div>
+            <div class="iw-timer">04:22 ⏱</div>
+          </div>
+          <div class="iw-body">
+            <div class="chat-msg ai">
+              <div class="chat-who">AI Mülakat Uzmanı · Soru 3/5</div>
+              <div class="chat-bubble">"Çok zorlandığınız bir teknik sorunu nasıl çözdüğünüzü, ekibinizle nasıl iletişim kurduğunuzu ve sonucu anlatır mısınız?"</div>
+            </div>
+            <div class="chat-msg user">
+              <div class="chat-who">Zeynep K.</div>
+              <div class="chat-bubble">Monolitik bir yapıyı microservices'e geçirirken performans sorunuyla karşılaştık. ROI analizi hazırlayıp ekibi ikna ettim, 4 ayda başarıyla teslim ettik.</div>
+            </div>
+            <div class="chat-msg ai">
+              <div class="chat-who">AI Geri Bildirimi</div>
+              <div class="chat-bubble">
+                Yapı güçlü, somut sonuç var. Zorlukları biraz daha derinleştirseniz 9+ a çıkar.
+                <div class="score-chips">
+                  <span class="sc good">✓ Yapı: Mükemmel</span>
+                  <span class="sc good">✓ Somut Sonuç</span>
+                  <span class="sc warn">⚠ Detay Ekle</span>
+                </div>
+              </div>
+            </div>
+            <div class="chat-msg ai">
+              <div class="typing-bubble"><span></span><span></span><span></span></div>
+            </div>
+          </div>
+        </div>
+        <!-- Float -->
+        <div class="int-progress-float">
+          <div class="ipf-label">SORULAR</div>
+          <div class="ipf-steps">
+            <div class="ipf-step done"></div>
+            <div class="ipf-step done"></div>
+            <div class="ipf-step active"></div>
+            <div class="ipf-step todo"></div>
+            <div class="ipf-step todo"></div>
+          </div>
+          <div class="ipf-count">3 / 5 tamamlandı</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════
+     PRODUCT 3: KARİYER ASİSTANI
+═══════════════════════════════════════ -->
+<section class="product-section" id="career">
+  <div class="section-blob" style="width:600px;height:400px;background:rgba(139,92,246,0.05);bottom:-100px;right:-150px;"></div>
+
+  <div class="wrap">
+    <div class="ps-grid">
+      <div class="ps-copy">
+        <div data-sr="left">
+          <div class="eyebrow">Kariyer Asistanı</div>
+          <h2 class="t-h2">Kariyer yolunu<br>AI ile <span class="t-italic">çiz ve kazan</span></h2>
+        </div>
+        <div data-sr="left" data-sd="1">
+          <div class="ps-limit-note">⚡ 1 ücretsiz deneme · Sonrası paket gerektirir</div>
+          <p>Kişiselleştirilmiş kariyer yol haritası, Kanban iş takip panosu, maaş analizi ve 7/24 AI danışmanı. Başvurularını organize et, mülakata hazır gir, teklifleri akıllıca değerlendir. Sektörde bir ilk.</p>
+        </div>
+        <ul class="ps-feats" data-sr="left" data-sd="2">
+          <li><span class="ps-feat-check">✓</span><div><strong>Ücretsiz:</strong> 1 kariyer planı danışmanlığı seansı</div></li>
+          <li><span class="ps-feat-check">✓</span><div><strong>Growth+:</strong> Sınırsız AI kariyer danışmanlığı ve yol haritası</div></li>
+          <li><span class="ps-feat-check">✓</span><div><strong>Growth+:</strong> Kanban iş başvuru takip panosu</div></li>
+          <li><span class="ps-feat-check">✓</span><div><strong>Growth+:</strong> LinkedIn profil optimizasyon önerileri</div></li>
+          <li><span class="ps-feat-check">✓</span><div><strong>Unlimited:</strong> Piyasa maaş analizi ve müzakere rehberi</div></li>
+        </ul>
+        <div data-sr="left" data-sd="3" style="display:flex;gap:12px;flex-wrap:wrap;">
+          <a href="pages/kariyer-asistani.html" class="btn btn-dark btn-lg">
+            Kariyer Planımı Yap
+            <svg class="ico-arr" viewBox="0 0 24 24"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg>
+          </a>
+          <a href="#pricing" class="btn btn-outline btn-lg">Paketleri Gör →</a>
+        </div>
+      </div>
+
+      <div class="ps-visual" data-sr="right" data-sd="1">
+        <div class="career-card">
+          <div class="cc-topbar">
+            <div class="cc-title">Kariyer Panosu</div>
+            <div class="cc-active">14 Aktif Başvuru</div>
+          </div>
+          <div class="cc-body">
+            <div class="kanban">
+              <div>
+                <div class="kb-h kbh-b">Başvuru</div>
+                <div class="kbcard"><div class="kbcard-co">Trendyol</div><div class="kbcard-ro">Frontend Dev</div><div class="kbcard-dt" style="color:var(--sky)">3 gün</div></div>
+                <div class="kbcard"><div class="kbcard-co">Getir</div><div class="kbcard-ro">React Dev</div><div class="kbcard-dt" style="color:var(--sky)">5 gün</div></div>
+              </div>
+              <div>
+                <div class="kb-h kbh-i">Mülakat</div>
+                <div class="kbcard amber-tint"><div class="kbcard-co">Hepsiburada</div><div class="kbcard-ro">Software Eng.</div><div class="kbcard-dt" style="color:var(--amber)">Yarın 14:00</div></div>
+                <div class="kbcard"><div class="kbcard-co">Zynga</div><div class="kbcard-ro">Backend Dev</div><div class="kbcard-dt" style="color:var(--amber)">5 Haz.</div></div>
+              </div>
+              <div>
+                <div class="kb-h kbh-o">Teklif</div>
+                <div class="kbcard green-tint"><div class="kbcard-co">Peak Games</div><div class="kbcard-ro">Senior Dev</div><div class="kbcard-dt" style="color:var(--green)">₺95K ✓</div></div>
+              </div>
+              <div>
+                <div class="kb-h kbh-r">Geçti</div>
+                <div class="kbcard" style="opacity:0.45"><div class="kbcard-co">N11</div><div class="kbcard-ro">Dev</div><div class="kbcard-dt" style="color:var(--coral)">Red</div></div>
+              </div>
+            </div>
+            <div class="career-ai-row">
+              <div class="car-ai-ic"><svg viewBox="0 0 24 24"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg></div>
+              <div class="car-ai-txt"><strong>AI:</strong> Hepsiburada mülakatın yarın 14:00! Sana özel 12 beklenen soruyu hazırladım. Şimdi pratik yapalım mı?</div>
+            </div>
+          </div>
+        </div>
+        <!-- Float badge -->
+        <div class="offer-float">
+          <div class="of-label">🎉 Teklif Alındı!</div>
+          <div class="of-company">Peak Games</div>
+          <div class="of-salary">₺95.000 / ay</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════
+     HOW IT WORKS
+═══════════════════════════════════════ -->
+<section id="hiw">
+  <div class="wrap">
+    <div class="hiw-header" data-sr="up">
+      <span class="eyebrow" style="color:var(--p300);justify-content:center;display:flex;">Nasıl Çalışır</span>
+      <h2 class="t-h2">3 adımda <span class="t-italic">hayalindeki işe</span></h2>
+      <p>Hesap oluştur, yapay zekanın geri kalanını yapmasına izin ver.</p>
+    </div>
+    <div class="hiw-steps">
+      <div class="hiw-step" data-sr="up" data-sd="1">
+        <div class="step-num">Adım 01</div>
+        <div class="step-circle">
+          <svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M20 21a8 8 0 1 0-16 0"/></svg>
+        </div>
+        <h3>Profilini Oluştur</h3>
+        <p>LinkedIn'den içe aktar ya da bilgilerini gir. 2 dakikada profil hazır, AI analizi başlar.</p>
+      </div>
+      <div class="hiw-step" data-sr="up" data-sd="2">
+        <div class="step-num">Adım 02</div>
+        <div class="step-circle">
+          <svg viewBox="0 0 24 24"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+        </div>
+        <h3>AI ile Güçlendir</h3>
+        <p>CV'ni optimize et, mülakat pratiği yap, kariyer haritanı çiz. Araçlar birbirini besler.</p>
+      </div>
+      <div class="hiw-step" data-sr="up" data-sd="3">
+        <div class="step-num">Adım 03</div>
+        <div class="step-circle">
+          <svg viewBox="0 0 24 24"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+        </div>
+        <h3>Başvur ve Kazan</h3>
+        <p>Güçlendirilmiş CV'nle başvur, Kanban'da takip et, teklif al. Her adımda asistanın yanında.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════
+     PRICING — VERTICAL COMPARISON
+═══════════════════════════════════════ -->
+<section id="pricing">
+  <div class="pricing-glow pg1"></div>
+  <div class="pricing-glow pg2"></div>
+  <div class="wrap">
+    <div class="pricing-header" data-sr="up">
+      <span class="eyebrow" style="justify-content:center;display:flex;">Fiyatlandırma</span>
+      <h2 class="t-h2">Ücretsiz başla,<br><span class="t-italic">sonuç görünce</span> yükselt</h2>
+      <p>CV Builder tamamen ücretsiz. Mülakat Koçu ve Kariyer Asistanı için 1'er deneme hakkı var — beğenirsen paket al.</p>
+    </div>
+
+    <div class="pricing-toggle" data-sr="fade">
+      <span class="pt-lbl on" id="ptl-m">Aylık</span>
+      <div class="pt-switch" id="ptSwitch" onclick="togglePricing()"><div class="pt-knob"></div></div>
+      <span class="pt-lbl" id="ptl-y">Yıllık</span>
+      <span class="save-pill">Yıllık alırsan %40 tasarruf</span>
+    </div>
+
+    <div class="pricing-table" data-sr="up">
+
+      <!-- ── CARD 1: STARTER ── -->
+      <div class="price-card">
+        <div class="pc-top-band">
+          <div class="pc-plan-name">Starter</div>
+          <div class="pc-tagline">Tanımak, denemek isteyenler için</div>
+          <div class="pc-price">
+            <span class="pc-price-currency">₺</span>
+            <span class="pc-price-num" id="price-starter">0</span>
+          </div>
+          <div class="pc-annual-note" id="note-starter"></div>
+        </div>
+        <div class="pc-cta-area">
+          <button class="pc-cta dark" onclick="openModal('register')">
+            Ücretsiz Başla
+            <svg viewBox="0 0 24 24"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg>
+          </button>
+        </div>
+        <div class="pc-feats-area">
+          <div class="pc-feats-section">
+            <div class="pc-feats-section-label">CV Builder</div>
+            <div class="pc-feat"><span class="pc-feat-check">✓</span> Sınırsız CV oluşturma</div>
+            <div class="pc-feat"><span class="pc-feat-check">✓</span> 5 temel şablon</div>
+            <div class="pc-feat"><span class="pc-feat-check">✓</span> ATS uyumluluk skoru</div>
+            <div class="pc-feat"><span class="pc-feat-check">✓</span> PDF ve DOCX indirme</div>
+            <div class="pc-feat"><span class="pc-feat-cross">—</span> <span class="pc-feat-muted">AI içerik önerileri</span></div>
+            <div class="pc-feat"><span class="pc-feat-cross">—</span> <span class="pc-feat-muted">50+ premium şablon</span></div>
+          </div>
+          <div class="pc-feats-section">
+            <div class="pc-feats-section-label">Mülakat Koçu</div>
+            <div class="pc-feat"><span class="pc-feat-check">✓</span> 1 tam simülasyon hakkı <span class="pc-feat-badge">Deneme</span></div>
+            <div class="pc-feat"><span class="pc-feat-cross">—</span> <span class="pc-feat-muted">Sınırsız simülasyon</span></div>
+            <div class="pc-feat"><span class="pc-feat-cross">—</span> <span class="pc-feat-muted">Sesli & görüntülü pratik</span></div>
+          </div>
+          <div class="pc-feats-section">
+            <div class="pc-feats-section-label">Kariyer Asistanı</div>
+            <div class="pc-feat"><span class="pc-feat-check">✓</span> 1 kariyer danışmanlığı <span class="pc-feat-badge">Deneme</span></div>
+            <div class="pc-feat"><span class="pc-feat-cross">—</span> <span class="pc-feat-muted">Kanban iş takibi</span></div>
+            <div class="pc-feat"><span class="pc-feat-cross">—</span> <span class="pc-feat-muted">LinkedIn optimizasyon</span></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ── CARD 2: GROWTH (POPULAR) ── -->
+      <div class="price-card popular">
+        <div class="pc-popular-badge">EN ÇOK TERCİH EDİLEN</div>
+        <div class="pc-top-band">
+          <div class="pc-plan-name">Growth</div>
+          <div class="pc-tagline">Aktif iş arayanlar için eksiksiz paket</div>
+          <div class="pc-price">
+            <span class="pc-price-currency">₺</span>
+            <span class="pc-price-num" id="price-growth">299</span>
+            <span class="pc-price-period">/ay</span>
+          </div>
+          <div class="pc-annual-note" id="note-growth"></div>
+        </div>
+        <div class="pc-cta-area">
+          <button class="pc-cta purple" onclick="openModal('register')">
+            Hemen Başla
+            <svg viewBox="0 0 24 24"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg>
+          </button>
+        </div>
+        <div class="pc-feats-area">
+          <div class="pc-feats-section">
+            <div class="pc-feats-section-label">CV Builder</div>
+            <div class="pc-feat"><span class="pc-feat-check">✓</span> Sınırsız CV oluşturma</div>
+            <div class="pc-feat"><span class="pc-feat-check">✓</span> 50+ premium ATS şablon</div>
+            <div class="pc-feat"><span class="pc-feat-check">✓</span> AI içerik önerileri <span class="pc-feat-badge">Pro</span></div>
+            <div class="pc-feat"><span class="pc-feat-check">✓</span> LinkedIn'den içe aktar</div>
+            <div class="pc-feat"><span class="pc-feat-check">✓</span> Kişisel CV linki + tıklama analizi</div>
+          </div>
+          <div class="pc-feats-section">
+            <div class="pc-feats-section-label">Mülakat Koçu</div>
+            <div class="pc-feat"><span class="pc-feat-check">✓</span> Sınırsız simülasyon <span class="pc-feat-badge green">Sınırsız</span></div>
+            <div class="pc-feat"><span class="pc-feat-check">✓</span> Sesli & görüntülü pratik</div>
+            <div class="pc-feat"><span class="pc-feat-check">✓</span> STAR analizi & geri bildirim</div>
+            <div class="pc-feat"><span class="pc-feat-check">✓</span> 10.000+ sektöre özel soru</div>
+            <div class="pc-feat"><span class="pc-feat-cross">—</span> <span class="pc-feat-muted">Maaş müzakeresi koçluğu</span></div>
+          </div>
+          <div class="pc-feats-section">
+            <div class="pc-feats-section-label">Kariyer Asistanı</div>
+            <div class="pc-feat"><span class="pc-feat-check">✓</span> Sınırsız AI danışmanlığı <span class="pc-feat-badge green">Sınırsız</span></div>
+            <div class="pc-feat"><span class="pc-feat-check">✓</span> Kariyer yol haritası</div>
+            <div class="pc-feat"><span class="pc-feat-check">✓</span> Kanban iş takip panosu</div>
+            <div class="pc-feat"><span class="pc-feat-check">✓</span> LinkedIn profil optimizasyonu</div>
+            <div class="pc-feat"><span class="pc-feat-cross">—</span> <span class="pc-feat-muted">Maaş analizi & müzakere</span></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ── CARD 3: UNLIMITED ── -->
+      <div class="price-card">
+        <div class="pc-top-band">
+          <div class="pc-plan-name">Unlimited</div>
+          <div class="pc-tagline">Her şey, sınır yok, öncelikli destek</div>
+          <div class="pc-price">
+            <span class="pc-price-currency">₺</span>
+            <span class="pc-price-num" id="price-unlimited">499</span>
+            <span class="pc-price-period">/ay</span>
+          </div>
+          <div class="pc-annual-note" id="note-unlimited"></div>
+        </div>
+        <div class="pc-cta-area">
+          <button class="pc-cta outline" onclick="openModal('register')">
+            Unlimited'a Geç
+            <svg viewBox="0 0 24 24"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg>
+          </button>
+        </div>
+        <div class="pc-feats-area">
+          <div class="pc-feats-section">
+            <div class="pc-feats-section-label">CV Builder</div>
+            <div class="pc-feat"><span class="pc-feat-check">✓</span> Growth'taki her şey</div>
+            <div class="pc-feat"><span class="pc-feat-check">✓</span> Özel şablon tasarımı</div>
+            <div class="pc-feat"><span class="pc-feat-check">✓</span> Çoklu dil desteği (EN/DE/FR)</div>
+          </div>
+          <div class="pc-feats-section">
+            <div class="pc-feats-section-label">Mülakat Koçu</div>
+            <div class="pc-feat"><span class="pc-feat-check">✓</span> Growth'taki her şey</div>
+            <div class="pc-feat"><span class="pc-feat-check">✓</span> Maaş müzakeresi koçluğu <span class="pc-feat-badge">Sadece Unlimited</span></div>
+            <div class="pc-feat"><span class="pc-feat-check">✓</span> Kişisel mock interview raporu</div>
+          </div>
+          <div class="pc-feats-section">
+            <div class="pc-feats-section-label">Kariyer Asistanı</div>
+            <div class="pc-feat"><span class="pc-feat-check">✓</span> Growth'taki her şey</div>
+            <div class="pc-feat"><span class="pc-feat-check">✓</span> Maaş analizi & müzakere <span class="pc-feat-badge">Sadece Unlimited</span></div>
+            <div class="pc-feat"><span class="pc-feat-check">✓</span> Kariyer koçu 1-1 oturum (2/ay)</div>
+            <div class="pc-feat"><span class="pc-feat-check">✓</span> Öncelikli destek (max 2 saat yanıt)</div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <p style="text-align:center;margin-top:28px;font-size:0.84rem;color:var(--ink3);" data-sr="fade" data-sd="2">
+      Kredi kartı gerekmez · İstediğin zaman iptal et · Tüm planlar 7 gün para iade garantisi
+    </p>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════
+     TESTIMONIALS
+═══════════════════════════════════════ -->
+<section id="testi">
+  <div class="wrap">
+    <div class="testi-header" data-sr="up">
+      <span class="eyebrow" style="justify-content:center;display:flex;">Başarı Hikayeleri</span>
+      <h2 class="t-h2">Onlar denedi,<br><span class="t-italic">işe girdi</span></h2>
+      <p>250.000+ kullanıcının gerçek deneyimleri</p>
+    </div>
+  </div>
+  <div class="testi-rows">
+    <!-- Row 1: L→R -->
+    <div class="testi-row">
+      <div class="testi-track">
+        <div class="tcard"><div class="tcard-stars">★★★★★</div><p class="tcard-text">"CV Builder ile 3 haftada 4 mülakat daveti aldım. ATS skoru 62'den 91'e çıktı, farkı anında hissettim."</p><div class="tcard-author"><div class="tcard-av" style="background:linear-gradient(135deg,#7C3AED,#A78BFA)">AY</div><div><div class="tcard-name">Ahmet Yılmaz</div><div class="tcard-role">Software Eng. · İstanbul</div></div><span class="tcard-product">CV Builder</span></div></div>
+        <div class="tcard"><div class="tcard-stars">★★★★★</div><p class="tcard-text">"Mülakat Koçu ile 2 hafta pratik yaptım. Gerçek mülakata inanılmaz hazır girdim. Peak Games'ten teklif aldım!"</p><div class="tcard-author"><div class="tcard-av" style="background:linear-gradient(135deg,#059669,#34D399)">ZK</div><div><div class="tcard-name">Zeynep Koç</div><div class="tcard-role">Product Manager · Ankara</div></div><span class="tcard-product">Mülakat Koçu</span></div></div>
+        <div class="tcard"><div class="tcard-stars">★★★★★</div><p class="tcard-text">"Kariyer Asistanı başvurularımı organize etmeme inanılmaz yardımcı oldu. Kanban panosu olmadan nasıl iş arayacağımı bilemiyorum."</p><div class="tcard-author"><div class="tcard-av" style="background:linear-gradient(135deg,#D97706,#FCD34D)">MC</div><div><div class="tcard-name">Mert Can</div><div class="tcard-role">Data Scientist · İzmir</div></div><span class="tcard-product">Kariyer Asistanı</span></div></div>
+        <div class="tcard"><div class="tcard-stars">★★★★★</div><p class="tcard-text">"ATS analizi sayesinde geri dönüş oranım 3 katına çıktı. 'Figma' kelimesini ekleyince klik aynı haftada geldi."</p><div class="tcard-author"><div class="tcard-av" style="background:linear-gradient(135deg,#0284C7,#38BDF8)">EŞ</div><div><div class="tcard-name">Elif Şahin</div><div class="tcard-role">UX Designer · İstanbul</div></div><span class="tcard-product">CV Builder</span></div></div>
+        <div class="tcard"><div class="tcard-stars">★★★★★</div><p class="tcard-text">"Kariyer geçişi yaparken yol haritası önerileri paha biçilemezdi. 6 ayda tamamen farklı bir sektöre geçtim."</p><div class="tcard-author"><div class="tcard-av" style="background:linear-gradient(135deg,#7C3AED,#C4B5FD)">BÖ</div><div><div class="tcard-name">Burak Öztürk</div><div class="tcard-role">Fintech Analyst · İstanbul</div></div><span class="tcard-product">Kariyer Asistanı</span></div></div>
+        <!-- dup -->
+        <div class="tcard"><div class="tcard-stars">★★★★★</div><p class="tcard-text">"CV Builder ile 3 haftada 4 mülakat daveti aldım."</p><div class="tcard-author"><div class="tcard-av" style="background:linear-gradient(135deg,#7C3AED,#A78BFA)">AY</div><div><div class="tcard-name">Ahmet Yılmaz</div><div class="tcard-role">Software Eng.</div></div><span class="tcard-product">CV Builder</span></div></div>
+        <div class="tcard"><div class="tcard-stars">★★★★★</div><p class="tcard-text">"Peak Games'ten teklif aldım!"</p><div class="tcard-author"><div class="tcard-av" style="background:linear-gradient(135deg,#059669,#34D399)">ZK</div><div><div class="tcard-name">Zeynep Koç</div><div class="tcard-role">Product Manager</div></div><span class="tcard-product">Mülakat Koçu</span></div></div>
+        <div class="tcard"><div class="tcard-stars">★★★★★</div><p class="tcard-text">"Kanban panosu olmadan nasıl iş arardım bilemiyorum."</p><div class="tcard-author"><div class="tcard-av" style="background:linear-gradient(135deg,#D97706,#FCD34D)">MC</div><div><div class="tcard-name">Mert Can</div><div class="tcard-role">Data Scientist</div></div><span class="tcard-product">Kariyer Asistanı</span></div></div>
+        <div class="tcard"><div class="tcard-stars">★★★★★</div><p class="tcard-text">"ATS skoru 62'den 91'e çıktı."</p><div class="tcard-author"><div class="tcard-av" style="background:linear-gradient(135deg,#0284C7,#38BDF8)">EŞ</div><div><div class="tcard-name">Elif Şahin</div><div class="tcard-role">UX Designer</div></div><span class="tcard-product">CV Builder</span></div></div>
+        <div class="tcard"><div class="tcard-stars">★★★★★</div><p class="tcard-text">"6 ayda tamamen farklı sektöre geçtim."</p><div class="tcard-author"><div class="tcard-av" style="background:linear-gradient(135deg,#7C3AED,#C4B5FD)">BÖ</div><div><div class="tcard-name">Burak Öztürk</div><div class="tcard-role">Fintech Analyst</div></div><span class="tcard-product">Kariyer Asistanı</span></div></div>
+      </div>
+    </div>
+    <!-- Row 2: R→L -->
+    <div class="testi-row">
+      <div class="testi-track rev">
+        <div class="tcard"><div class="tcard-stars">★★★★★</div><p class="tcard-text">"LinkedIn recruiter mesajlarım 1 haftada 5 katına çıktı. Optimizasyon önerileri gerçekten işe yarıyor."</p><div class="tcard-author"><div class="tcard-av" style="background:linear-gradient(135deg,#E11D48,#FB7185)">SA</div><div><div class="tcard-name">Selin Arslan</div><div class="tcard-role">Creative Director</div></div><span class="tcard-product">Kariyer Asistanı</span></div></div>
+        <div class="tcard"><div class="tcard-stars">★★★★★</div><p class="tcard-text">"Maaş müzakeresi modülü sayesinde teklifi %28 artırdım. Bu yatırım 3 günde geri döndü."</p><div class="tcard-author"><div class="tcard-av" style="background:linear-gradient(135deg,#059669,#6EE7B7)">KD</div><div><div class="tcard-name">Kemal Demir</div><div class="tcard-role">Backend Dev.</div></div><span class="tcard-product">Unlimited</span></div></div>
+        <div class="tcard"><div class="tcard-stars">★★★★★</div><p class="tcard-text">"50+ şablon arasından mükemmelini bulmak 5 dakika aldı. CV'mi gönderdiğim 10 firmadan 7'si geri döndü."</p><div class="tcard-author"><div class="tcard-av" style="background:linear-gradient(135deg,#6D28D9,#A78BFA)">NÖ</div><div><div class="tcard-name">Nil Öztürk</div><div class="tcard-role">Marketing Spec.</div></div><span class="tcard-product">CV Builder</span></div></div>
+        <div class="tcard"><div class="tcard-stars">★★★★★</div><p class="tcard-text">"STAR analizi ile mülakat yanıtlarımı tamamen yeniden yapılandırdım. İlk soruda 'harika' dediler."</p><div class="tcard-author"><div class="tcard-av" style="background:linear-gradient(135deg,#0D9488,#34D399)">HY</div><div><div class="tcard-name">Hasan Yıldız</div><div class="tcard-role">Product Designer</div></div><span class="tcard-product">Mülakat Koçu</span></div></div>
+        <!-- dup -->
+        <div class="tcard"><div class="tcard-stars">★★★★★</div><p class="tcard-text">"LinkedIn mesajlarım 5 katına çıktı."</p><div class="tcard-author"><div class="tcard-av" style="background:linear-gradient(135deg,#E11D48,#FB7185)">SA</div><div><div class="tcard-name">Selin Arslan</div><div class="tcard-role">Creative Director</div></div><span class="tcard-product">Kariyer Asistanı</span></div></div>
+        <div class="tcard"><div class="tcard-stars">★★★★★</div><p class="tcard-text">"Teklifi %28 artırdım."</p><div class="tcard-author"><div class="tcard-av" style="background:linear-gradient(135deg,#059669,#6EE7B7)">KD</div><div><div class="tcard-name">Kemal Demir</div><div class="tcard-role">Backend Dev.</div></div><span class="tcard-product">Unlimited</span></div></div>
+        <div class="tcard"><div class="tcard-stars">★★★★★</div><p class="tcard-text">"10 firmadan 7'si geri döndü."</p><div class="tcard-author"><div class="tcard-av" style="background:linear-gradient(135deg,#6D28D9,#A78BFA)">NÖ</div><div><div class="tcard-name">Nil Öztürk</div><div class="tcard-role">Marketing Spec.</div></div><span class="tcard-product">CV Builder</span></div></div>
+        <div class="tcard"><div class="tcard-stars">★★★★★</div><p class="tcard-text">"İlk soruda 'harika' dediler."</p><div class="tcard-author"><div class="tcard-av" style="background:linear-gradient(135deg,#0D9488,#34D399)">HY</div><div><div class="tcard-name">Hasan Yıldız</div><div class="tcard-role">Product Designer</div></div><span class="tcard-product">Mülakat Koçu</span></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════
+     CTA
+═══════════════════════════════════════ -->
+<section id="cta">
+  <div class="cta-glow cg1"></div>
+  <div class="cta-glow cg2"></div>
+  <div class="cta-inner">
+    <div data-sr="up">
+      <span class="eyebrow" style="color:var(--p300);justify-content:center;display:flex;margin-bottom:20px;">Hazır mısın?</span>
+      <h2 class="t-h2">Kariyerinin <span class="t-italic">en iyi kararını</span><br>bugün ver</h2>
+    </div>
+    <p data-sr="up" data-sd="1">250.000+ kariyer profesyonelinin tercih ettiği Synaps AI ile hayalindeki pozisyona bir adım daha yaklaş. CV Builder tamamen ücretsiz — hemen başla.</p>
+    <div class="cta-btns" data-sr="up" data-sd="2">
+      <a href="#" class="btn btn-purple btn-lg" onclick="openModal('register')">
+        Ücretsiz Başla
+        <svg class="ico-arr" viewBox="0 0 24 24"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg>
+      </a>
+      <a href="#pricing" class="btn btn-ghost-light btn-lg">Paketlere Bak</a>
+    </div>
+    <p class="cta-note" data-sr="fade" data-sd="3">Kredi kartı gerekmez · İstediğin zaman iptal et · 7 gün para iade garantisi</p>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════
+     FOOTER
+═══════════════════════════════════════ -->
+<footer>
+  <div class="wrap">
+    <div class="ft-grid">
+      <div class="ft-brand">
+        <div class="nav-logo">
+          <div class="nav-logo-mark">S</div>
+          <span class="nav-logo-name">Synaps<span>AI</span></span>
+        </div>
+        <p>Türkiye'nin yapay zeka destekli kariyer platformu. CV oluştur, mülakata hazırlan, kariyerini planla.</p>
+      </div>
+      <div class="ft-col"><h5>Ürünler</h5><ul><li><a href="pages/cv-builder.html">CV Builder</a></li><li><a href="pages/mulakat-kocu.html">Mülakat Koçu</a></li><li><a href="pages/kariyer-asistani.html">Kariyer Asistanı</a></li><li><a href="#pricing">Fiyatlandırma</a></li></ul></div>
+      <div class="ft-col"><h5>Şirket</h5><ul><li><a href="#">Hakkımızda</a></li><li><a href="#">Blog</a></li><li><a href="#">Kariyer</a></li><li><a href="#">İletişim</a></li></ul></div>
+      <div class="ft-col"><h5>Destek</h5><ul><li><a href="#">Yardım Merkezi</a></li><li><a href="#">Gizlilik Politikası</a></li><li><a href="#">Kullanım Koşulları</a></li><li><a href="#">KVKK</a></li></ul></div>
+    </div>
+    <div class="ft-bottom">
+      <span>© 2025 SynapsAI. Tüm hakları saklıdır.</span>
+      <span>Türkiye'de 🇹🇷 ile üretildi</span>
+    </div>
+  </div>
+</footer>
+
+<!-- MODAL -->
+<div class="modal-overlay" id="modalOverlay">
+  <div class="modal-card">
+    <button class="modal-x" onclick="closeModal()">✕</button>
+    <div class="nav-logo" style="margin-bottom:20px;">
+      <div class="nav-logo-mark">S</div>
+      <span class="nav-logo-name" style="color:var(--ink)">Synaps<span style="color:var(--p600)">AI</span></span>
+    </div>
+    <div class="modal-title" id="m-title">Hoş Geldin</div>
+    <div class="modal-sub" id="m-sub">Hesabına giriş yap.</div>
+    <div class="m-tabs">
+      <button class="m-tab on" id="mt-l" onclick="switchMTab('l')">Giriş Yap</button>
+      <button class="m-tab" id="mt-r" onclick="switchMTab('r')">Kayıt Ol</button>
+    </div>
+    <!-- Login -->
+    <div id="mf-l">
+      <div class="mf-group"><label class="mf-label">E-posta</label><input type="email" class="mf-input" placeholder="ornek@email.com"></div>
+      <div class="mf-group"><label class="mf-label">Şifre</label><input type="password" class="mf-input" placeholder="••••••••"></div>
+      <button class="mf-cta">Giriş Yap</button>
+      <div class="mf-sep"><span>veya</span></div>
+      <button class="mf-google"><svg width="18" height="18" viewBox="0 0 24 24"><path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/><path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/><path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z" fill="#FBBC05"/><path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/></svg>Google ile devam et</button>
+    </div>
+    <!-- Register -->
+    <div id="mf-r" style="display:none">
+      <div class="mf-group"><label class="mf-label">Ad Soyad</label><input type="text" class="mf-input" placeholder="Adınız Soyadınız"></div>
+      <div class="mf-group"><label class="mf-label">E-posta</label><input type="email" class="mf-input" placeholder="ornek@email.com"></div>
+      <div class="mf-group"><label class="mf-label">Şifre</label><input type="password" class="mf-input" placeholder="En az 8 karakter"></div>
+      <button class="mf-cta">Ücretsiz Kayıt Ol</button>
+      <div class="mf-sep"><span>veya</span></div>
+      <button class="mf-google"><svg width="18" height="18" viewBox="0 0 24 24"><path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/><path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/><path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z" fill="#FBBC05"/><path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/></svg>Google ile kayıt ol</button>
+    </div>
+  </div>
+</div>
+
+<script>
+/* ── NAV SCROLL ── */
+window.addEventListener('scroll', () => {
+  document.getElementById('nav').classList.toggle('stuck', scrollY > 24);
+}, { passive: true });
+
+/* ── SCROLL REVEAL ── */
+const srObs = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if (e.isIntersecting) e.target.classList.add('in');
+  });
+}, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+
+document.querySelectorAll('[data-sr]').forEach(el => srObs.observe(el));
+
+/* ── MODAL ── */
+function openModal(type) {
+  document.getElementById('modalOverlay').classList.add('open');
+  switchMTab(type === 'register' ? 'r' : 'l');
+  document.body.style.overflow = 'hidden';
+}
+function closeModal() {
+  document.getElementById('modalOverlay').classList.remove('open');
+  document.body.style.overflow = '';
+}
+function switchMTab(t) {
+  const isL = t === 'l';
+  document.getElementById('mt-l').classList.toggle('on', isL);
+  document.getElementById('mt-r').classList.toggle('on', !isL);
+  document.getElementById('mf-l').style.display = isL ? '' : 'none';
+  document.getElementById('mf-r').style.display = isL ? 'none' : '';
+  document.getElementById('m-title').textContent = isL ? 'Hoş Geldin' : 'Hesap Oluştur';
+  document.getElementById('m-sub').textContent = isL ? 'Hesabına giriş yap.' : 'Ücretsiz başla, hemen kullan.';
+}
+document.getElementById('modalOverlay').addEventListener('click', e => {
+  if (e.target === document.getElementById('modalOverlay')) closeModal();
+});
+
+/* ── PRICING TOGGLE ── */
+let yearly = false;
+const PRICES = {
+  starter:   { m: '0',   y: '0'   },
+  growth:    { m: '299', y: '179' },
+  unlimited: { m: '499', y: '299' },
+};
+function togglePricing() {
+  yearly = !yearly;
+  document.getElementById('ptSwitch').classList.toggle('on', yearly);
+  document.getElementById('ptl-m').classList.toggle('on', !yearly);
+  document.getElementById('ptl-y').classList.toggle('on', yearly);
+
+  const k = yearly ? 'y' : 'm';
+  document.getElementById('price-starter').textContent   = PRICES.starter[k];
+  document.getElementById('price-growth').textContent    = PRICES.growth[k];
+  document.getElementById('price-unlimited').textContent = PRICES.unlimited[k];
+
+  document.getElementById('note-starter').textContent   = '';
+  document.getElementById('note-growth').textContent    = yearly ? 'Yıllık ₺2.148 · %40 tasarruf' : '';
+  document.getElementById('note-unlimited').textContent = yearly ? 'Yıllık ₺3.588 · %40 tasarruf' : '';
+}
+
+/* ── SMOOTH SCROLL ── */
+document.querySelectorAll('a[href^="#"]').forEach(a => {
+  a.addEventListener('click', e => {
+    const id = a.getAttribute('href');
+    if (id.length <= 1) return;
+    const target = document.querySelector(id);
+    if (target && !a.getAttribute('onclick')) {
+      e.preventDefault();
+      target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  });
+});
+
+/* ── HERO PANEL PARALLAX ── */
+window.addEventListener('scroll', () => {
+  const mocks = document.querySelector('.hero-mocks');
+  if (!mocks) return;
+  const y = scrollY * 0.12;
+  mocks.style.transform = `translateY(${-y}px)`;
+}, { passive: true });
+</script>
+</body>
+</html>

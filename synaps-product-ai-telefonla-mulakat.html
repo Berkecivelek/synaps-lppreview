@@ -906,7 +906,7 @@ function openHakk(){
   var isEN=lang==='EN';
   var isLight=document.documentElement.getAttribute('data-theme')==='light';
   var m=document.getElementById('hakkModal');
-  ment('hakkContent');
+  var c=document.getElementById('hakkContent');
   var box=m.querySelector('div');
   box.style.background=isLight?'#ffffff':'#100c23';
   box.style.border=isLight?'1px solid rgba(123,47,255,0.15)':'1px solid rgba(123,47,255,0.25)';

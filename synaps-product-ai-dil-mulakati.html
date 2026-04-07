@@ -947,7 +947,7 @@ var EN_HAKK='<div style="margin-bottom:28px;"><span style="font-size:11px;font-w
 function openHakk(){
   var lang=(typeof curLang!=='undefined'?curLang:(localStorage.getItem('synaps-lang')||'TR'));
   var isEN=lang==='EN';
-  cumentElement.getAttribute('data-theme')==='light';
+  var isLight=document.documentElement.getAttribute('data-theme')==='light';
   var m=document.getElementById('hakkModal');
   var c=document.getElementById('hakkContent');
   var box=m.querySelector('div');

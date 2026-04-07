@@ -720,9 +720,7 @@ document.addEventListener('DOMContentLoaded',function(){var m=document.getElemen
   }
 
     // Cache modals for EN mode restoration
-  window._contactModalHTML = (document.getElementById('contactModal')||{}).outerHTML||'';
-  window._hakkModalHTML = (document.getElementById('hakkModal')||{}).outerHTML||'';
-function applyEN() {
+  function applyEN() {
     var enHTML = b64decode(EN_B64);
     document.body.innerHTML = enHTML;
     reAttachTheme();
@@ -806,6 +804,9 @@ function applyEN() {
 
   document.addEventListener('DOMContentLoaded', function() {
     reAttachTheme();
+    // Cache modals AFTER DOM is ready so outerHTML is not empty
+    window._contactModalHTML = (document.getElementById('contactModal')||{}).outerHTML||'';
+    window._hakkModalHTML = (document.getElementById('hakkModal')||{}).outerHTML||'';
     var saved = localStorage.getItem('synaps-lang') || 'TR';
     curLang = saved;
     setLangButtons(saved);

@@ -1688,7 +1688,7 @@ document.querySelectorAll('.faq-q').forEach(function(q){q.addEventListener('clic
 <script>
 (function(){
   var t=document.getElementById('themeToggle'),h=document.documentElement;
-  var s=localStorage.getItem('synaps-theme')||'dark';
+  var s=localStorage.getItem('synaps-theme')||'light';
   if(s==='light'){h.setAttribute('data-theme','light');if(t)t.checked=true;}
   else{h.setAttribute('data-theme','dark');if(t)t.checked=false;}
   if(t){t.addEventListener('change',function(){

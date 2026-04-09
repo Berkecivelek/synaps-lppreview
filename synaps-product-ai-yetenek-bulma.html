@@ -407,6 +407,26 @@ background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/sv
 [data-theme="light"] #cf-ok p{color:rgba(10,5,32,0.55)!important;}
 @media(max-width:600px){#cmi{padding:28px 16px!important;}#cForm>div[style*="grid-template-columns:1fr 1fr"]{grid-template-columns:1fr!important;}}
 
+
+/* ── yb-hero: show right panel stacked on mobile ── */
+@media(max-width:700px){
+  section.yb-hero>div[style]{
+    grid-template-columns:1fr !important;
+    gap:32px !important;
+  }
+  section.yb-hero>div[style]>div:last-child{
+    display:block !important;
+    width:100% !important;
+    overflow:hidden !important;
+  }
+  section.yb-hero>div[style]>div:last-child>div{
+    width:100% !important;
+    max-width:100% !important;
+    transform:none !important;
+    border-radius:16px !important;
+  }
+}
+
 /* ══ MOBILE FIXES ══ */
 @media(max-width:480px){
   /* FIX 2: LP hamburger - push to right edge */
@@ -515,7 +535,7 @@ background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/sv
   <a href="index.html" class="mob-nav-link" id="mn-h">Ana Sayfa</a>
   <a href="index.html" class="mob-nav-link" id="mn-b">← Ekosisteme Dön</a>
   <div class="mob-nav-btns">
-    <a href="https://synapsai.ai" class="mob-cta-btn" id="mn-d">Demo İste</a>
+    <a href="https://calendly.com/tanju-synapsai/30min" target="_blank" rel="noopener" class="mob-cta-btn" id="mn-d">Demo İste</a>
   </div>
 </div>
 
@@ -534,7 +554,7 @@ background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/sv
     <h1 class="yb-h1">En İyi Yeteneği<br><mark>Saniyeler İçinde</mark> Bul</h1>
     <p class="yb-sub">Yapay zeka destekli eşleştirme motoruyla yüzlerce başvuru arasından pozisyonunuza en uygun adayları otomatik tespit eder, skorlar ve önünüze getirir. İK saatlerini dakikalara indirir.</p>
     <div class="yb-actions">
-      <a href="https://synapsai.ai" class="btn-pu">Demo İste →</a>
+      <a href="https://calendly.com/tanju-synapsai/30min" target="_blank" rel="noopener" class="btn-pu">Demo İste →</a>
       <a href="index.html" class="btn-gh">Ekosistemi Keşfet</a>
     </div>
     </div>
@@ -804,7 +824,7 @@ background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/sv
     <h2 class="yb-cta-h">AI Yetenek Bulma'yı<br><em>Bugün Deneyin</em></h2>
     <p class="yb-cta-sub">Demo almak veya ücretsiz başlamak için bizimle iletişime geçin. Kurulum 5 dakika.</p>
     <div class="yb-cta-btns">
-      <a href="https://synapsai.ai" class="btn-pu">Demo İste →</a>
+      <a href="https://calendly.com/tanju-synapsai/30min" target="_blank" rel="noopener" class="btn-pu">Demo İste →</a>
       <a href="index.html" class="btn-gh">← Ana Sayfaya Dön</a>
     </div>
   </div>

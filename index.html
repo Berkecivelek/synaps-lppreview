@@ -834,6 +834,24 @@ footer{position:relative;z-index:1;background:#02010A;border-top:1px solid var(-
 [data-theme="light"] .logo-img-dark{display:none;}
 [data-theme="light"] .logo-img-light{display:block;filter:invert(1);mix-blend-mode:multiply;}
 
+
+/* ── Footer responsive (inline grid override) ── */
+@media(max-width:600px){
+  #site-footer>div{
+    grid-template-columns:1fr !important;
+    padding:36px 20px 28px !important;
+    gap:28px !important;
+  }
+  #site-footer .footer-grid{grid-template-columns:1fr !important;}
+}
+@media(max-width:480px){
+  #site-footer>div{
+    grid-template-columns:1fr !important;
+    padding:28px 16px 24px !important;
+    gap:24px !important;
+  }
+}
+
 /* ══ MOBILE FIXES ══ */
 @media(max-width:480px){
   nav{padding:0 14px;}

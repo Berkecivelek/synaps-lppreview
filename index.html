@@ -668,7 +668,7 @@ footer{position:relative;z-index:1;background:#02010A;border-top:1px solid var(-
   nav{padding:0 20px;}
   .nav-center{display:none;}
   .nav-right .nav-ghost,.nav-right .nav-cta{display:none;}
-  .mob-menu-btn{display:flex;align-items:center;justify-content:center;}
+  .mob-menu-btn{display:flex;flex-direction:column;gap:5px;align-items:center;justify-content:center;width:42px;height:38px;}
 
   /* Hero */
   .hero{grid-template-columns:1fr;padding:100px 24px 60px;gap:40px;min-height:auto;text-align:center;}
@@ -837,34 +837,83 @@ footer{position:relative;z-index:1;background:#02010A;border-top:1px solid var(-
 /* ══ MOBILE FIXES ══ */
 @media(max-width:480px){
   nav{padding:0 14px;}
+  
+  /* FIX 1: Hamburger button - bigger, clearer 3 lines */
+  .mob-menu-btn{
+    padding:9px 11px !important;
+    flex-direction:column !important;
+    gap:5px !important;
+    align-items:center !important;
+    justify-content:center !important;
+    width:42px !important;
+    height:38px !important;
+    box-sizing:border-box !important;
+  }
+  .mob-menu-btn span{
+    display:block !important;
+    width:22px !important;
+    height:2.5px !important;
+    background:currentColor !important;
+    border-radius:2px !important;
+    margin-top:0 !important;
+  }
+  .mob-menu-btn span+span{margin-top:0 !important;}
+
+  /* Hero */
   .hero{padding:84px 14px 44px;}
   .hero h1{font-size:clamp(26px,9vw,36px);letter-spacing:-1.5px;}
   .hero-btns{flex-direction:column;gap:10px;}
   .btn-primary,.btn-ghost-hero{width:100%;text-align:center;box-sizing:border-box;}
-  .journey-steps{gap:12px;}
+
+  /* Journey */
   .j-step{flex:0 0 100%;}
-  .eco-section{overflow-x:auto;-webkit-overflow-scrolling:touch;}
-  .eco-inner{padding:40px 0 40px 16px;min-width:0;}
-  .eco-flow{min-width:660px;padding-right:16px;}
+  .journey-steps{gap:12px;}
+
+  /* FIX 3: Eco-flow vertical on mobile */
+  .eco-section{overflow-x:hidden !important;}
+  .eco-inner{padding:40px 16px !important;min-width:0 !important;}
+  .eco-flow{
+    flex-direction:column !important;
+    min-width:0 !important;
+    align-items:center !important;
+    gap:8px !important;
+    overflow-x:hidden !important;
+  }
+  .eco-flow>svg{display:none !important;}
+  .eco-col{width:100% !important;max-width:300px !important;align-items:center !important;}
+  .eco-badge{margin-bottom:12px !important;}
+  .eco-node{white-space:normal !important;width:100% !important;box-sizing:border-box !important;}
+
+  /* Stats bar */
   .stats-bar{grid-template-columns:1fr 1fr;padding:20px 14px;gap:10px;}
+
+  /* Promo */
   .promo-card{padding:28px 16px;}
   .ps-grid{grid-template-columns:1fr;}
+
+  /* B2C */
   .b2c-grid{grid-template-columns:1fr;padding:0 14px;}
-  .video-section{padding:40px 14px;}
+
+  /* Testimonials */
   .testi-section{padding:40px 14px 56px;}
   .testi-grid-v1{grid-template-columns:1fr;}
+
+  /* CTA */
   .cta-card{padding:36px 16px;border-radius:16px;}
   .cta-card h2{font-size:clamp(22px,7vw,32px);}
   .cta-btns{flex-direction:column;align-items:stretch;gap:10px;}
   .cta-btns button{text-align:center;width:100%;box-sizing:border-box;}
+
+  /* Footer */
   footer{padding:36px 14px 24px;}
   .footer-grid{grid-template-columns:1fr;gap:24px;}
   .footer-bottom{flex-direction:column;gap:10px;text-align:center;}
+
+  /* Mobile nav overlay */
   .mob-nav-overlay{padding:20px 14px 32px;}
   .mob-prod-grid{grid-template-columns:1fr 1fr;gap:8px;}
   .mob-prod-item{font-size:11px;padding:9px 10px;}
   #cmi{padding:24px 14px !important;}
-  #cForm>div[style*="grid-template-columns:1fr 1fr"]{grid-template-columns:1fr !important;}
 }
 </style>
 </head>

@@ -368,7 +368,15 @@ footer{position:relative;z-index:1;background:#02010A;border-top:1px solid var(-
 /* ── TESTIMONIALS V1 — Cards, name left / logo right ── */
 .testi-section{position:relative;z-index:1;max-width:1400px;margin:0 auto;padding:60px 80px 100px;}
 .testi-header{text-align:center;margin-bottom:52px;}
-.testi-scroll-wrap{position:relative;overflow:hidden;}.testi-grid-v1{display:flex;gap:20px;overflow-x:auto;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;padding:4px 4px 20px;scrollbar-width:none;-ms-overflow-style:none;cursor:grab;}.testi-grid-v1:active{cursor:grabbing;}.testi-grid-v1::-webkit-scrollbar{display:none;}.testi-scroll-hint{position:absolute;right:0;top:0;bottom:20px;width:80px;background:linear-gradient(to left,var(--bg) 0%,transparent 100%);pointer-events:none;z-index:2;}
+.testi-scroll-wrap{position:relative;overflow:visible;}.testi-grid-v1{display:flex;gap:20px;overflow-x:auto;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;padding:4px 4px 20px;scrollbar-width:none;-ms-overflow-style:none;cursor:grab;}.testi-grid-v1:active{cursor:grabbing;}.testi-grid-v1::-webkit-scrollbar{display:none;}.testi-nav-btn{position:absolute;top:50%;transform:translateY(-50%);width:40px;height:40px;border-radius:50%;background:var(--card);border:1px solid var(--border);color:var(--dim);cursor:pointer;display:flex;align-items:center;justify-content:center;z-index:10;transition:all 0.2s;padding:0;}
+.testi-nav-btn:hover{background:rgba(123,47,255,0.15);border-color:rgba(123,47,255,0.4);color:var(--text);}
+.testi-prev{left:-20px;}
+.testi-next{right:-20px;}
+.testi-nav-btn:disabled{opacity:0.25;cursor:default;}
+.testi-nav-btn:disabled:hover{background:var(--card);border-color:var(--border);color:var(--dim);}
+.testi-dots{display:flex;justify-content:center;gap:8px;margin-top:24px;}
+.testi-dot{width:8px;height:8px;border-radius:50%;background:var(--border);cursor:pointer;transition:all 0.25s;border:none;padding:0;}
+.testi-dot.active{background:rgba(123,47,255,0.7);width:24px;border-radius:4px;}
 .testi-grid-v1:active{cursor:grabbing;}
 .testi-grid-v1::-webkit-scrollbar{display:none;}
 .testi-card-v1{background:var(--card);border:1px solid var(--border);border-radius:20px;padding:28px 28px 24px;display:flex;flex-direction:column;transition:border-color 0.3s;flex:0 0 360px;min-width:0;scroll-snap-align:start;}
@@ -1351,6 +1359,12 @@ footer{position:relative;z-index:1;background:#02010A;border-top:1px solid var(-
     <h2 class="section-title" style="text-align:center;letter-spacing:-1.5px" data-i18n="testi-h2">Ürünümüzü gerçek hikâyelerle<br>deneyimleyin.</h2>
   </div>
   <div class="testi-scroll-wrap">
+    <button class="testi-nav-btn testi-prev" id="testiPrev" aria-label="Önceki">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg>
+    </button>
+    <button class="testi-nav-btn testi-next" id="testiNext" aria-label="Sonraki">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg>
+    </button>
     <div class="testi-grid-v1" id="testiGrid">
       <div class="testi-card-v1">
         <span class="testi-quote-icon">"</span>
@@ -1385,7 +1399,12 @@ footer{position:relative;z-index:1;background:#02010A;border-top:1px solid var(-
         </div>
       </div>
     </div>
-    <div class="testi-scroll-hint"></div>
+    <div class="testi-dots" id="testiDots">
+      <span class="testi-dot active" data-idx="0"></span>
+      <span class="testi-dot" data-idx="1"></span>
+      <span class="testi-dot" data-idx="2"></span>
+      <span class="testi-dot" data-idx="3"></span>
+    </div>
   </div>
 </section>
 
@@ -2006,14 +2025,56 @@ function closeHakk(){
 }
 
 
-// Testimonial carousel drag-to-scroll
+// Testimonial carousel — nav buttons + dots + drag
 (function(){
   var g=document.getElementById('testiGrid');
-  if(!g)return;
+  var prev=document.getElementById('testiPrev');
+  var next=document.getElementById('testiNext');
+  var dotsEl=document.getElementById('testiDots');
+  if(!g||!prev||!next)return;
+
+  var cards=g.querySelectorAll('.testi-card-v1');
+  var total=cards.length;
+  var cardW=function(){return cards[0].offsetWidth+20;};
+
+  function getIdx(){
+    return Math.round(g.scrollLeft/cardW());
+  }
+
+  function scrollTo(idx){
+    idx=Math.max(0,Math.min(total-1,idx));
+    g.scrollTo({left:idx*cardW(),behavior:'smooth'});
+  }
+
+  function updateUI(){
+    var idx=getIdx();
+    prev.disabled=(idx===0);
+    next.disabled=(idx>=total-1);
+    if(dotsEl){
+      dotsEl.querySelectorAll('.testi-dot').forEach(function(d,i){
+        d.classList.toggle('active',i===idx);
+      });
+    }
+  }
+
+  prev.addEventListener('click',function(){scrollTo(getIdx()-1);});
+  next.addEventListener('click',function(){scrollTo(getIdx()+1);});
+
+  if(dotsEl){
+    dotsEl.querySelectorAll('.testi-dot').forEach(function(d){
+      d.addEventListener('click',function(){scrollTo(parseInt(d.getAttribute('data-idx')));});
+    });
+  }
+
+  g.addEventListener('scroll',function(){updateUI();},{passive:true});
+
+  // drag-to-scroll
   var down=false,sx=0,sl=0;
-  g.addEventListener('mousedown',function(e){down=true;sx=e.pageX-g.offsetLeft;sl=g.scrollLeft;g.style.cursor='grabbing';});
-  document.addEventListener('mouseup',function(){down=false;g.style.cursor='grab';});
-  g.addEventListener('mousemove',function(e){if(!down)return;e.preventDefault();var dx=e.pageX-g.offsetLeft-sx;g.scrollLeft=sl-dx*1.2;});
+  g.addEventListener('mousedown',function(e){down=true;sx=e.pageX;sl=g.scrollLeft;g.style.cursor='grabbing';});
+  document.addEventListener('mouseup',function(){if(down){down=false;g.style.cursor='grab';updateUI();}});
+  g.addEventListener('mousemove',function(e){if(!down)return;e.preventDefault();g.scrollLeft=sl-(e.pageX-sx)*1.2;});
+
+  updateUI();
 })();
 
 </script>

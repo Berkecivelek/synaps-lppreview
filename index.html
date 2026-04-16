@@ -368,13 +368,15 @@ footer{position:relative;z-index:1;background:#02010A;border-top:1px solid var(-
 /* ── TESTIMONIALS V1 — Cards, name left / logo right ── */
 .testi-section{position:relative;z-index:1;max-width:1400px;margin:0 auto;padding:60px 80px 100px;}
 .testi-header{text-align:center;margin-bottom:52px;}
-.testi-grid-v1{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;}
-.testi-card-v1{background:var(--card);border:1px solid var(--border);border-radius:20px;padding:32px;display:flex;flex-direction:column;transition:all 0.3s;cursor:default;position:relative;overflow:hidden;}
+.testi-scroll-wrap{position:relative;overflow:hidden;}.testi-grid-v1{display:flex;gap:20px;overflow-x:auto;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;padding:4px 4px 20px;scrollbar-width:none;-ms-overflow-style:none;cursor:grab;}.testi-grid-v1:active{cursor:grabbing;}.testi-grid-v1::-webkit-scrollbar{display:none;}.testi-scroll-hint{position:absolute;right:0;top:0;bottom:20px;width:80px;background:linear-gradient(to left,var(--bg) 0%,transparent 100%);pointer-events:none;z-index:2;}
+.testi-grid-v1:active{cursor:grabbing;}
+.testi-grid-v1::-webkit-scrollbar{display:none;}
+.testi-card-v1{background:var(--card);border:1px solid var(--border);border-radius:20px;padding:28px 28px 24px;display:flex;flex-direction:column;transition:border-color 0.3s;flex:0 0 360px;min-width:0;scroll-snap-align:start;}
 .testi-card-v1::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,rgba(123,47,255,0.4),transparent);opacity:0;transition:opacity 0.3s;}
 .testi-card-v1:hover{border-color:rgba(123,47,255,0.25);transform:translateY(-4px);box-shadow:0 20px 50px rgba(123,47,255,0.1);}
 .testi-card-v1:hover::before{opacity:1;}
 .testi-quote-icon{font-size:48px;line-height:0.8;color:rgba(123,47,255,0.25);font-family:Georgia,serif;margin-bottom:16px;display:block;}
-.testi-body{font-size:14px;color:var(--dim);line-height:1.75;font-weight:300;flex:1;margin-bottom:28px;}
+.testi-body{font-size:14px;color:var(--dim);line-height:1.75;font-weight:300;flex:1;margin-bottom:24px;}
 .testi-footer-v1{display:flex;align-items:flex-end;justify-content:space-between;border-top:1px solid rgba(255,255,255,0.05);padding-top:20px;}
 .testi-name-v1{font-size:13px;font-weight:700;margin-bottom:3px;}
 .testi-role-v1{font-size:11px;color:var(--dim2);}
@@ -1073,9 +1075,7 @@ footer{position:relative;z-index:1;background:#02010A;border-top:1px solid var(-
         <div class="l-rim"></div>
         <div class="l-spec"></div>
         <div class="l-gleam"></div>
-      </div>
-    </div>
-  </div>
+      </div>  </div>
 </section>
 
 <!-- ══════ BRAND TICKER ══════ -->
@@ -1350,31 +1350,42 @@ footer{position:relative;z-index:1;background:#02010A;border-top:1px solid var(-
     <div class="section-tag" style="text-align:center" data-i18n="testi-tag">Başarı Hikayeleri</div>
     <h2 class="section-title" style="text-align:center;letter-spacing:-1.5px" data-i18n="testi-h2">Ürünümüzü gerçek hikâyelerle<br>deneyimleyin.</h2>
   </div>
-  <div class="testi-grid-v1">
-    <div class="testi-card-v1">
-      <span class="testi-quote-icon">"</span>
-      <p class="testi-body" data-i18n="testi1-body">Adayların kendilerini en rahat hissettikleri ortamda ve zamanda mülakat yapabilmelerine olanak tanıyan Synaps AI, işe alım süreçlerimizdeki stres faktörünü minimize etti. Aynı zamanda iç dinamiklerimizde kurum kültürümüze uygun yetkinlikleri saniyeler içinde objektif olarak raporlayabilmesi, hem bizlerin zamanından tasarruf sağladı hem de mülakat tutarlılığımızı artırarak objektif karar almamıza destek oldu.</p>
-      <div class="testi-footer-v1">
-        <div><div class="testi-name-v1" data-i18n="testi1-name">Alaaddin Çağlıköse</div><div class="testi-role-v1" data-i18n="testi1-role">İnciroğlu Otomotiv</div></div>
-        <div class="testi-co-badge" style="color:rgba(30,100,200,0.75);border-color:rgba(30,100,200,0.2);background:rgba(30,100,200,0.06);">İNCİROĞLU</div>
+  <div class="testi-scroll-wrap">
+    <div class="testi-grid-v1" id="testiGrid">
+      <div class="testi-card-v1">
+        <span class="testi-quote-icon">"</span>
+        <p class="testi-body" data-i18n="testi1-body">Adayların kendilerini en rahat hissettikleri ortamda ve zamanda mülakat yapabilmelerine olanak tanıyan Synaps AI, işe alım süreçlerimizdeki stres faktörünü minimize etti. Aynı zamanda iç dinamiklerimizde kurum kültürümüze uygun yetkinlikleri saniyeler içinde objektif olarak raporlayabilmesi, hem bizlerin zamanından tasarruf sağladı hem de mülakat tutarlılığımızı artırarak objektif karar almamıza destek oldu.</p>
+        <div class="testi-footer-v1">
+          <div><div class="testi-name-v1" data-i18n="testi1-name">Alaaddin Çağlıköse</div><div class="testi-role-v1" data-i18n="testi1-role">İnciroğlu Otomotiv</div></div>
+          <div class="testi-co-badge" style="color:rgba(30,100,200,0.75);border-color:rgba(30,100,200,0.2);background:rgba(30,100,200,0.06);">İNCİROĞLU</div>
+        </div>
+      </div>
+      <div class="testi-card-v1">
+        <span class="testi-quote-icon">"</span>
+        <p class="testi-body" data-i18n="testi2-body">Synaps AI sayesinde adaylarımızı sadece özgeçmişleri üzerinden değil, onlara birer mikrofon uzatmışçasına doğrudan kendilerinden dinleyerek tanıma fırsatı buluyoruz. Yoğun iş temposunda asenkron katılım imkanı sunması, hem ekibimiz hem de adaylarımız için süreci inanılmaz esnek ve verimli bir hale getirdi. Bu teknoloji, doğru yeteneğe çok daha insani ve hızlı bir yolla ulaşmamızı sağlıyor.</p>
+        <div class="testi-footer-v1">
+          <div><div class="testi-name-v1" data-i18n="testi2-name">Ömer Faruk Işıtan</div><div class="testi-role-v1" data-i18n="testi2-role">PROTEL</div></div>
+          <div class="testi-co-badge" style="color:rgba(180,50,50,0.75);border-color:rgba(180,50,50,0.2);background:rgba(180,50,50,0.06);">PROTEL</div>
+        </div>
+      </div>
+      <div class="testi-card-v1">
+        <span class="testi-quote-icon">"</span>
+        <p class="testi-body" data-i18n="testi3-body">Synaps AI ile en büyük önceliklerimizden biri olan kaliteli ve etkili işe alım süreçlerimizi daha güçlü hale getirdik. İlk değerlendirme aşamalarında sağladığı yapay zeka desteği sayesinde, ihtiyacımıza en uygun adaylara çok daha hızlı ve verimli şekilde ulaşabiliyoruz. Kullanım kolaylığı ve ekiplerinin sunduğu destek sayesinde süreçlerimiz sadeleşti ve hız kazandı.</p>
+        <div class="testi-footer-v1">
+          <div><div class="testi-name-v1" data-i18n="testi3-name">Merve Durmuş</div><div class="testi-role-v1" data-i18n="testi3-role">INVEON</div></div>
+          <div class="testi-co-badge" style="color:rgba(80,120,200,0.75);border-color:rgba(80,120,200,0.2);background:rgba(80,120,200,0.06);">INVEON</div>
+        </div>
+      </div>
+      <div class="testi-card-v1">
+        <span class="testi-quote-icon">"</span>
+        <p class="testi-body" data-i18n="testi4-body">Adayları daha hızlı ve objektif bir şekilde değerlendirebiliyoruz. Süreçlerimizde zaman tasarrufu sağlarken, doğru adayı seçme oranımızı artırıyor. Aynı zamanda aday deneyimini daha esnek ve erişilebilir hale getiriyor. Operasyonel yükümüzü ciddi oranda azaltıyor.</p>
+        <div class="testi-footer-v1">
+          <div><div class="testi-name-v1" data-i18n="testi4-name">Merve Kaya</div><div class="testi-role-v1" data-i18n="testi4-role">PRONET</div></div>
+          <div class="testi-co-badge" style="color:rgba(255,115,0,0.75);border-color:rgba(255,115,0,0.2);background:rgba(255,115,0,0.06);">PRONET</div>
+        </div>
       </div>
     </div>
-    <div class="testi-card-v1">
-      <span class="testi-quote-icon">"</span>
-      <p class="testi-body" data-i18n="testi2-body">Synaps AI sayesinde adaylarımızı sadece özgeçmişleri üzerinden değil, onlara birer mikrofon uzatmışçasına doğrudan kendilerinden dinleyerek tanıma fırsatı buluyoruz. Yoğun iş temposunda asenkron katılım imkanı sunması, hem ekibimiz hem de adaylarımız için süreci inanılmaz esnek ve verimli bir hale getirdi. Bu teknoloji, doğru yeteneğe çok daha insani ve hızlı bir yolla ulaşmamızı sağlıyor.</p>
-      <div class="testi-footer-v1">
-        <div><div class="testi-name-v1" data-i18n="testi2-name">Ömer Faruk Işıtan</div><div class="testi-role-v1" data-i18n="testi2-role">PROTEL</div></div>
-        <div class="testi-co-badge" style="color:rgba(180,50,50,0.75);border-color:rgba(180,50,50,0.2);background:rgba(180,50,50,0.06);">PROTEL</div>
-      </div>
-    </div>
-    <div class="testi-card-v1">
-      <span class="testi-quote-icon">"</span>
-      <p class="testi-body" data-i18n="testi3-body">Synaps AI ile en büyük önceliklerimizden biri olan kaliteli ve etkili işe alım süreçlerimizi daha güçlü hale getirdik. İlk değerlendirme aşamalarında sağladığı yapay zeka desteği sayesinde, ihtiyacımıza en uygun adaylara çok daha hızlı ve verimli şekilde ulaşabiliyoruz. Kullanım kolaylığı ve ekiplerinin sunduğu destek sayesinde süreçlerimiz sadeleşti ve hız kazandı.</p>
-      <div class="testi-footer-v1">
-        <div><div class="testi-name-v1" data-i18n="testi3-name">Merve Durmuş</div><div class="testi-role-v1" data-i18n="testi3-role">INVEON</div></div>
-        <div class="testi-co-badge" style="color:rgba(80,120,200,0.75);border-color:rgba(80,120,200,0.2);background:rgba(80,120,200,0.06);">INVEON</div>
-      </div>
-    </div>
+    <div class="testi-scroll-hint"></div>
   </div>
 </section>
 
@@ -1507,6 +1518,8 @@ const i18n = {
     'testi2-name':'Ömer Faruk Işıtan','testi2-role':'PROTEL',
     'testi3-body':'Synaps AI ile en büyük önceliklerimizden biri olan kaliteli ve etkili işe alım süreçlerimizi daha güçlü hale getirdik. İlk değerlendirme aşamalarında sağladığı yapay zeka desteği sayesinde, ihtiyacımıza en uygun adaylara çok daha hızlı ve verimli şekilde ulaşabiliyoruz. Kullanım kolaylığı ve ekiplerinin sunduğu destek sayesinde süreçlerimiz sadeleşti ve hız kazandı.',
     'testi3-name':'Merve Durmuş','testi3-role':'INVEON',
+    'testi4-body':'Adayları daha hızlı ve objektif bir şekilde değerlendirebiliyoruz. Süreçlerimizde zaman tasarrufu sağlarken, doğru adayı seçme oranımızı artırıyor. Aynı zamanda aday deneyimini daha esnek ve erişilebilir hale getiriyor. Operasyonel yükümüzü ciddi oranda azaltıyor.',
+    'testi4-name':'Merve Kaya','testi4-role':'PRONET',
     'cta-h2':'Yetenek Yönetimini\nYeniden Tanımlamaya\nHazır Mısınız?',
     'cta-p':'Hemen ücretsiz hesap oluşturun veya kurumsal çözüm ortaklığı için uzmanlarımızla görüşün.',
     'cta-white':'Kurumsal Demo Al',
@@ -1582,6 +1595,8 @@ const i18n = {
     'testi2-name':'Ömer Faruk Işıtan','testi2-role':'PROTEL',
     'testi3-body':'With Synaps AI we have strengthened our quality and effective recruitment processes, one of our biggest priorities. Thanks to the AI support it provides in the initial evaluation stages, we can reach the most suitable candidates for our needs much faster and more efficiently. Thanks to its ease of use and the support provided by their team, our processes have been simplified and accelerated.',
     'testi3-name':'Merve Durmuş','testi3-role':'Human Resources Manager',
+    'testi4-body':'We can evaluate candidates faster and more objectively. While saving time in our processes, it increases our rate of selecting the right candidates. It also makes the candidate experience more flexible and accessible. It significantly reduces our operational burden.',
+    'testi4-name':'Merve Kaya','testi4-role':'PRONET',
     'cta-h2':'Ready to Redefine\nTalent Management?',
     'cta-p':'Create a free account now or speak with our experts for an enterprise partnership.',
     'cta-white':'Get Enterprise Demo',
@@ -1989,6 +2004,18 @@ function closeHakk(){
   document.getElementById('hakkModal').style.display='none';
   document.body.style.overflow='';
 }
+
+
+// Testimonial carousel drag-to-scroll
+(function(){
+  var g=document.getElementById('testiGrid');
+  if(!g)return;
+  var down=false,sx=0,sl=0;
+  g.addEventListener('mousedown',function(e){down=true;sx=e.pageX-g.offsetLeft;sl=g.scrollLeft;g.style.cursor='grabbing';});
+  document.addEventListener('mouseup',function(){down=false;g.style.cursor='grab';});
+  g.addEventListener('mousemove',function(e){if(!down)return;e.preventDefault();var dx=e.pageX-g.offsetLeft-sx;g.scrollLeft=sl-dx*1.2;});
+})();
+
 </script>
 </body>
 </html>
